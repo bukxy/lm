@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 
@@ -32,6 +34,28 @@ class User implements UserInterface
      * @ORM\Column(type="string")
      */
     private $password;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\BoostTerritory", mappedBy="user")
+     */
+    private $boostTerritories;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Construct", mappedBy="user")
+     */
+    private $constructs;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Image", mappedBy="user")
+     */
+    private $images;
+
+    public function __construct()
+    {
+        $this->boostTerritories = new ArrayCollection();
+        $this->constructs = new ArrayCollection();
+        $this->images = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -109,5 +133,98 @@ class User implements UserInterface
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
+    }
+
+    /**
+     * @return Collection|BoostTerritory[]
+     */
+    public function getBoostTerritories(): Collection
+    {
+        return $this->boostTerritories;
+    }
+
+    public function addBoostTerritory(BoostTerritory $boostTerritory): self
+    {
+        if (!$this->boostTerritories->contains($boostTerritory)) {
+            $this->boostTerritories[] = $boostTerritory;
+            $boostTerritory->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeBoostTerritory(BoostTerritory $boostTerritory): self
+    {
+        if ($this->boostTerritories->contains($boostTerritory)) {
+            $this->boostTerritories->removeElement($boostTerritory);
+            // set the owning side to null (unless already changed)
+            if ($boostTerritory->getUser() === $this) {
+                $boostTerritory->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Construct[]
+     */
+    public function getConstructs(): Collection
+    {
+        return $this->constructs;
+    }
+
+    public function addConstruct(Construct $construct): self
+    {
+        if (!$this->constructs->contains($construct)) {
+            $this->constructs[] = $construct;
+            $construct->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeConstruct(Construct $construct): self
+    {
+        if ($this->constructs->contains($construct)) {
+            $this->constructs->removeElement($construct);
+            // set the owning side to null (unless already changed)
+            if ($construct->getUser() === $this) {
+                $construct->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Image[]
+     */
+    public function getImages(): Collection
+    {
+        return $this->images;
+    }
+
+    public function addImage(Image $image): self
+    {
+        if (!$this->images->contains($image)) {
+            $this->images[] = $image;
+            $image->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeImage(Image $image): self
+    {
+        if ($this->images->contains($image)) {
+            $this->images->removeElement($image);
+            // set the owning side to null (unless already changed)
+            if ($image->getUser() === $this) {
+                $image->setUser(null);
+            }
+        }
+
+        return $this;
     }
 }
