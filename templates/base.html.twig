@@ -46,15 +46,19 @@
                             <a class="dropdown-item" href="#">Guerre pour le Calice</a>
                         </div>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('app_login') }}">LOGIN</a>
+                    </li>
                 </div>
             </nav>
         
         {% block body %}{% endblock %}
     
         </div>
-            <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
             <script src="https://kit.fontawesome.com/4ab35c6c2f.js"></script>
-            {{ encore_entry_script_tags('app') }}
+
+            {{ encore_entry_script_tags('global') }}
+            {{ encore_entry_script_tags('front') }}
 
         {% block javascripts %}{% endblock %}
     </body>
