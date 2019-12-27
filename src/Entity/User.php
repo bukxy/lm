@@ -50,11 +50,28 @@ class User implements UserInterface
      */
     private $images;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\BoostTerritoryCategory", mappedBy="user")
+     */
+    private $boostTerritoryCategories;
+
+    /**
+     * Generates the magic method
+     * 
+     */
+    public function __toString(){
+        // to show the name of the Category in the select
+        return $this->email;
+        // to show the id of the Category in the select
+        // return $this->id;
+    }
+
     public function __construct()
     {
         $this->boostTerritories = new ArrayCollection();
         $this->constructs = new ArrayCollection();
         $this->images = new ArrayCollection();
+        $this->boostTerritoryCategories = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -222,6 +239,37 @@ class User implements UserInterface
             // set the owning side to null (unless already changed)
             if ($image->getUser() === $this) {
                 $image->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|BoostTerritoryCategory[]
+     */
+    public function getBoostTerritoryCategories(): Collection
+    {
+        return $this->boostTerritoryCategories;
+    }
+
+    public function addBoostTerritoryCategory(BoostTerritoryCategory $boostTerritoryCategory): self
+    {
+        if (!$this->boostTerritoryCategories->contains($boostTerritoryCategory)) {
+            $this->boostTerritoryCategories[] = $boostTerritoryCategory;
+            $boostTerritoryCategory->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeBoostTerritoryCategory(BoostTerritoryCategory $boostTerritoryCategory): self
+    {
+        if ($this->boostTerritoryCategories->contains($boostTerritoryCategory)) {
+            $this->boostTerritoryCategories->removeElement($boostTerritoryCategory);
+            // set the owning side to null (unless already changed)
+            if ($boostTerritoryCategory->getUser() === $this) {
+                $boostTerritoryCategory->setUser(null);
             }
         }
 
