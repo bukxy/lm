@@ -1,8 +1,23 @@
-{% extends 'baseAdmin.html.twig' %}
+{% extends 'back/baseAdmin.html.twig' %}
 
 {% block title %}Accueil{% endblock %}
 {% block category %}Accueil{% endblock %}
 
 {% block body %}
-    <p>Juste une page d'accueil :)</p>
+    {{ form_start(formBoost) }}
+
+        {{ form_row(formBoost.name) }}
+        {{ form_row(formBoost.category) }}
+        {{ form_row(formBoost.content) }}
+
+        <button type="submit">
+            {% if editMode %}
+                Sauvagarder
+            {% else %}
+                Ajouter
+            {% endif %}
+            
+        </button>
+
+    {{ form_end(formBoost) }}
 {% endblock %}

@@ -1,0 +1,211 @@
+<!-- Sidebar -->
+<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+    <!-- Sidebar - Brand -->
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+        <div class="sidebar-brand-icon rotate-n-15">
+            <i class="fas fa-laugh-wink"></i>
+        </div>
+        <div class="sidebar-brand-text mx-2">Administration</div>
+    </a>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider my-0">
+
+    <!-- Nav Item - Dashboard -->
+    <li class="nav-item active">
+        <a class="nav-link" href="index.html">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>Accueil</span>
+        </a>
+    </li>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider">
+
+    <!-- Heading -->
+    <div class="sidebar-heading">
+        Territoire
+    </div>
+
+    <!-- Nav Item - Boost Menu -->
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBoost" aria-expanded="true" aria-controls="collapseBoost">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>Boosts de territoire</span>
+        </a>
+        <div id="collapseBoost" class="collapse" aria-labelledby="headingBoost" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Catégorie Boosts</h6>
+                <a class="collapse-item" href="{{ path('admin_boost_category') }}"><i class="fas fa-folder"></i>Categories</a>
+                <a class="collapse-item" href="{{ path('admin_boost_list') }}"><i class="fas fa-list"></i>Liste</a>
+                <a class="collapse-item" href="{{ path('admin_boost_new') }}"><i class="fas fa-plus-circle"></i>Ajouter</a>
+            </div>
+        </div>
+    </li>
+
+    <!-- Nav Item - Construct Menu -->
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseConstruct" aria-expanded="true" aria-controls="collapseConstruct">
+            <i class="fas fa-hammer"></i>
+            <span>Constructions</span>
+        </a>
+        <div id="collapseConstruct" class="collapse" aria-labelledby="headingConstruct" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Catégorie Construction</h6>
+                <a class="collapse-item" href="#">
+                    <i class="fas fa-list"></i>
+                    Liste</a>
+                <a class="collapse-item" href="#">
+                    <i class="fas fa-plus-circle"></i>
+                    Ajouter</a>
+            </div>
+        </div>
+    </li>
+
+    <!-- Nav Item - Research Menu -->
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseResearch" aria-expanded="true" aria-controls="collapseResearch">
+            <i class="fas fa-book"></i>
+            <span>Recherches</span>
+        </a>
+        <div id="collapseResearch" class="collapse" aria-labelledby="headingResearch" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Catégorie Recherche</h6>
+                <a class="collapse-item" href="#">
+                    <i class="fas fa-list"></i>
+                    Liste</a>
+                <a class="collapse-item" href="#">
+                    <i class="fas fa-plus-circle"></i>
+                    Ajouter</a>
+            </div>
+        </div>
+    </li>
+
+    <!-- Nav Item - Familiar Menu -->
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseFamiliar" aria-expanded="true" aria-controls="collapseFamiliar">
+            <i class="fas fa-paw"></i>
+            <span>Familiers</span>
+        </a>
+        <div id="collapseFamiliar" class="collapse" aria-labelledby="headingFamiliar" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Catégorie Familier</h6>
+                <a class="collapse-item" href="#">
+                    <i class="fas fa-list"></i>
+                    Liste</a>
+                <a class="collapse-item" href="#">
+                    <i class="fas fa-plus-circle"></i>
+                    Ajouter</a>
+            </div>
+        </div>
+    </li>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider">
+
+    <!-- Heading -->
+    <div class="sidebar-heading">
+        Evènements Guildes (Classiques)
+    </div>
+
+    <!-- Nav Item - GF Menu -->
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseGF" aria-expanded="true" aria-controls="collapseGF">
+            <i class="fas fa-calendar-week"></i>
+            <span>Guilde Fest</span>
+        </a>
+        <div id="collapseGF" class="collapse" aria-labelledby="headingGF" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <a class="collapse-item" href="#">
+                    <i class="fas fa-edit"></i>
+                    Editer</a>
+            </div>
+        </div>
+    </li>
+    <!-- Nav Item - EG Collapse Menu -->
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseEG" aria-expanded="true" aria-controls="collapseEG">
+            <i class="fas fa-calendar-day"></i>
+            <span>Epreuve de Guilde</span>
+        </a>
+        <div id="collapseEG" class="collapse" aria-labelledby="headingEG" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <a class="collapse-item" href="#">
+                    <i class="fas fa-edit"></i>
+                    Editer</a>
+            </div>
+        </div>
+    </li>
+    <!-- Nav Item - Bash Collapse Menu -->
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBG" aria-expanded="true" aria-controls="collapseBG">
+            <i class="fas fa-calendar-week"></i>
+            <span>Bash de Guilde</span>
+        </a>
+        <div id="collapseBG" class="collapse" aria-labelledby="headingBG" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <a class="collapse-item" href="#">
+                    <i class="fas fa-edit"></i>
+                    Editer</a>
+            </div>
+        </div>
+    </li>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider">
+
+    <!-- Heading -->
+    <div class="sidebar-heading">
+        Evènements (Spéciaux)
+    </div>
+
+    <!-- Nav Item - Dragon Arena Collapse Menu -->
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseDA" aria-expanded="true" aria-controls="collapseDA">
+            <i class="fas fa-dragon"></i>
+            <span>Arène du dragon</span>
+        </a>
+        <div id="collapseDA" class="collapse" aria-labelledby="headingDA" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <a class="collapse-item" href="#">
+                    <i class="fas fa-edit"></i>Editer</a>
+            </div>
+        </div>
+    </li>
+    <!-- Nav Item - Fédale Collapse Menu -->
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseFeodale" aria-expanded="true" aria-controls="collapseFeodale">
+            <i class="fas fa-crown"></i>
+            <span>Guerre Féodale</span>
+        </a>
+        <div id="collapseFeodale" class="collapse" aria-labelledby="headingFeodale" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <a class="collapse-item" href="#">
+                    <i class="fas fa-edit"></i>Editer</a>
+            </div>
+        </div>
+    </li>
+    <!-- Nav Item - Calice Collapse Menu -->
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCalice" aria-expanded="true" aria-controls="collapseCalice">
+            <i class="fas fa-crown"></i>
+            <span>Guerre pour le calice</span>
+        </a>
+        <div id="collapseCalice" class="collapse" aria-labelledby="headingCalice" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <a class="collapse-item" href="#">
+                    <i class="fas fa-edit"></i>Editer</a>
+            </div>
+        </div>
+    </li>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider d-none d-md-block">
+
+    <!-- Sidebar Toggler (Sidebar) -->
+    <div class="text-center d-none d-md-inline">
+        <button class="rounded-circle border-0" id="sidebarToggle"></button>
+    </div>
+
+</ul>

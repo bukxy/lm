@@ -1,8 +1,40 @@
-{% extends 'baseAdmin.html.twig' %}
+{% extends 'back/baseAdmin.html.twig' %}
 
-{% block title %}Accueil{% endblock %}
-{% block category %}Accueil{% endblock %}
+{% block title %}Boosts de territoires{% endblock %}
+{% block category %}Liste des Boosts de territoires{% endblock %}
+
 
 {% block body %}
-    <p>Juste une page d'accueil :)</p>
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Nom</th>
+                <th scope="col">Catégorie</th>
+                <th scope="col">Image</th>
+                <th scope="col">Edition / Suppression</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for b in boosts %}
+
+                <tr>
+                    <th scope="row">{{ b.id }}</th>
+                    <td>{{ b.name }}</td>
+                    <td>{{ b.category }}</td>
+                    <td>{{ b.content }}</td>
+                    <td>
+                        <button class="btn btn-primary">
+                            <a href="{{ path('admin_boost_edit', {'id' : b.id }) }}">Editer</a>
+                        </button>
+                        <button class="btn btn-danger">
+                            <a href="{{ path('admin_boost_delete', {'id' : b.id }) }}">Supprimer</a>
+                        </button>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
 {% endblock %}
