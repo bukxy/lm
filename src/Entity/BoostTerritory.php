@@ -32,9 +32,9 @@ class BoostTerritory
     private $content;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\ManyToOne(targetEntity="App\Entity\BTCategory", inversedBy="boostTerritory")
      */
-    private $category;
+    private $btCategory;
 
     public function getId(): ?int
     {
@@ -77,14 +77,14 @@ class BoostTerritory
         return $this;
     }
 
-    public function getCategory(): ?string
+    public function getbtCategory(): ?BTCategory
     {
-        return $this->category;
+        return $this->btCategory;
     }
 
-    public function setCategory(string $category): self
+    public function setbtCategory(?BTCategory $btCategory): self
     {
-        $this->category = $category;
+        $this->btCategory = $btCategory;
 
         return $this;
     }

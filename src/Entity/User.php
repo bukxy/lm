@@ -36,11 +36,6 @@ class User implements UserInterface
     private $password;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\BoostTerritory", mappedBy="user")
-     */
-    private $boostTerritories;
-
-    /**
      * @ORM\OneToMany(targetEntity="App\Entity\Construct", mappedBy="user")
      */
     private $constructs;
@@ -51,9 +46,14 @@ class User implements UserInterface
     private $images;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\BoostTerritoryCategory", mappedBy="user")
+     * @ORM\OneToMany(targetEntity="App\Entity\BoostTerritory", mappedBy="user")
      */
-    private $boostTerritoryCategories;
+    private $boostTerritories;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\BTCategory", mappedBy="user")
+     */
+    private $bTCategories;
 
     /**
      * Generates the magic method
@@ -68,10 +68,10 @@ class User implements UserInterface
 
     public function __construct()
     {
-        $this->boostTerritories = new ArrayCollection();
         $this->constructs = new ArrayCollection();
         $this->images = new ArrayCollection();
-        $this->boostTerritoryCategories = new ArrayCollection();
+        $this->boostTerritories = new ArrayCollection();
+        $this->bTCategories = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -153,37 +153,6 @@ class User implements UserInterface
     }
 
     /**
-     * @return Collection|BoostTerritory[]
-     */
-    public function getBoostTerritories(): Collection
-    {
-        return $this->boostTerritories;
-    }
-
-    public function addBoostTerritory(BoostTerritory $boostTerritory): self
-    {
-        if (!$this->boostTerritories->contains($boostTerritory)) {
-            $this->boostTerritories[] = $boostTerritory;
-            $boostTerritory->setUser($this);
-        }
-
-        return $this;
-    }
-
-    public function removeBoostTerritory(BoostTerritory $boostTerritory): self
-    {
-        if ($this->boostTerritories->contains($boostTerritory)) {
-            $this->boostTerritories->removeElement($boostTerritory);
-            // set the owning side to null (unless already changed)
-            if ($boostTerritory->getUser() === $this) {
-                $boostTerritory->setUser(null);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
      * @return Collection|Construct[]
      */
     public function getConstructs(): Collection
@@ -246,30 +215,61 @@ class User implements UserInterface
     }
 
     /**
-     * @return Collection|BoostTerritoryCategory[]
+     * @return Collection|BoostTerritory[]
      */
-    public function getBoostTerritoryCategories(): Collection
+    public function getBoostTerritories(): Collection
     {
-        return $this->boostTerritoryCategories;
+        return $this->boostTerritories;
     }
 
-    public function addBoostTerritoryCategory(BoostTerritoryCategory $boostTerritoryCategory): self
+    public function addBoostTerritory(BoostTerritory $boostTerritory): self
     {
-        if (!$this->boostTerritoryCategories->contains($boostTerritoryCategory)) {
-            $this->boostTerritoryCategories[] = $boostTerritoryCategory;
-            $boostTerritoryCategory->setUser($this);
+        if (!$this->boostTerritories->contains($boostTerritory)) {
+            $this->boostTerritories[] = $boostTerritory;
+            $boostTerritory->setUser($this);
         }
 
         return $this;
     }
 
-    public function removeBoostTerritoryCategory(BoostTerritoryCategory $boostTerritoryCategory): self
+    public function removeBoostTerritory(BoostTerritory $boostTerritory): self
     {
-        if ($this->boostTerritoryCategories->contains($boostTerritoryCategory)) {
-            $this->boostTerritoryCategories->removeElement($boostTerritoryCategory);
+        if ($this->boostTerritories->contains($boostTerritory)) {
+            $this->boostTerritories->removeElement($boostTerritory);
             // set the owning side to null (unless already changed)
-            if ($boostTerritoryCategory->getUser() === $this) {
-                $boostTerritoryCategory->setUser(null);
+            if ($boostTerritory->getUser() === $this) {
+                $boostTerritory->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|BTCategory[]
+     */
+    public function getBTCategories(): Collection
+    {
+        return $this->bTCategories;
+    }
+
+    public function addBTCategory(BTCategory $bTCategory): self
+    {
+        if (!$this->bTCategories->contains($bTCategory)) {
+            $this->bTCategories[] = $bTCategory;
+            $bTCategory->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeBTCategory(BTCategory $bTCategory): self
+    {
+        if ($this->bTCategories->contains($bTCategory)) {
+            $this->bTCategories->removeElement($bTCategory);
+            // set the owning side to null (unless already changed)
+            if ($bTCategory->getUser() === $this) {
+                $bTCategory->setUser(null);
             }
         }
 
