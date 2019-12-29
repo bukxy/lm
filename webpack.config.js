@@ -27,7 +27,7 @@ Encore
     .addEntry('front', './assets/js/front.js')
 
     .addEntry('back', './assets/js/back/sb-admin-2.js')
-    .addEntry('back2', './assets/js/back.js')
+    .addEntry('backcss', './assets/js/back/backcss.js')
     //.addEntry('page1', './assets/js/page1.js')
     //.addEntry('page2', './assets/js/page2.js')
 

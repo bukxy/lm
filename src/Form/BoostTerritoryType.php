@@ -14,8 +14,7 @@ class BoostTerritoryType extends AbstractType
         $builder
             ->add('name')
             ->add('content')
-            ->add('category')
-            ->add('user')
+            ->add('btCategory')
         ;
     }
 

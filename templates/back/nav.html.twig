@@ -36,10 +36,13 @@
         </a>
         <div id="collapseBoost" class="collapse" aria-labelledby="headingBoost" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Catégorie Boosts</h6>
-                <a class="collapse-item" href="{{ path('admin_boost_category') }}"><i class="fas fa-folder"></i>Categories</a>
-                <a class="collapse-item" href="{{ path('admin_boost_list') }}"><i class="fas fa-list"></i>Liste</a>
-                <a class="collapse-item" href="{{ path('admin_boost_new') }}"><i class="fas fa-plus-circle"></i>Ajouter</a>
+                <h6 class="collapse-header">Les catégories</h6>
+                <a class="collapse-item" href="{{ path('admin_boost_category_list') }}"><i class="fas fa-list"></i> Liste</a>
+                <a class="collapse-item" href="{{ path('admin_boost_category_new') }}"><i class="fas fa-plus-circle"></i> Ajouter</a>
+                <div class="item-divider"></div>
+                <h6 class="collapse-header">Les boosts</h6>
+                <a class="collapse-item" href="{{ path('admin_boost_list') }}"><i class="fas fa-list"></i> Liste</a>
+                <a class="collapse-item" href="{{ path('admin_boost_new') }}"><i class="fas fa-plus-circle"></i> Ajouter</a>
             </div>
         </div>
     </li>
