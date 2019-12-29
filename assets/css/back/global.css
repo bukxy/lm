@@ -1,0 +1,9 @@
+/**
+**      Left navigation
+**/
+
+.nav-item .item-divider {
+    width: 160px;
+    margin: 5px auto;
+    border-bottom: 2px rgba(0,0,0,0.35) dashed;
+}
