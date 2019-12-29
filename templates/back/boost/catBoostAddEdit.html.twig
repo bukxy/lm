@@ -4,11 +4,9 @@
 {% block category %}Accueil{% endblock %}
 
 {% block body %}
-    {{ form_start(formBoost) }}
+    {{ form_start(formCatBoost) }}
 
-        {{ form_row(formBoost.name) }}
-        {{ form_row(formBoost.btCategory) }}
-        {{ form_row(formBoost.content) }}
+        {{ form_row(formCatBoost.name) }}
 
         <button type="submit">
             {% if editMode %}
@@ -19,5 +17,5 @@
             
         </button>
 
-    {{ form_end(formBoost) }}
+    {{ form_end(formCatBoost) }}
 {% endblock %}

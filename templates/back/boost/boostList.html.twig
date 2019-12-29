@@ -3,7 +3,6 @@
 {% block title %}Boosts de territoires{% endblock %}
 {% block category %}Liste des Boosts de territoires{% endblock %}
 
-
 {% block body %}
 
     <table class="table table-bordered">
@@ -18,11 +17,10 @@
         </thead>
         <tbody>
             {% for b in boosts %}
-
                 <tr>
                     <th scope="row">{{ b.id }}</th>
                     <td>{{ b.name }}</td>
-                    <td>{{ b.category }}</td>
+                    <td>{{ b.btCategory }}</td>
                     <td>{{ b.content }}</td>
                     <td>
                         <button class="btn btn-primary">
