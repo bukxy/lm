@@ -1,16 +1,29 @@
 {% extends 'back/baseAdmin.html.twig' %}
 
-{% block title %}Accueil{% endblock %}
-{% block category %}Accueil{% endblock %}
+{% block title %}
+    {% if editMode %}
+        Edition du boost
+    {% else %}
+        Ajout d'un boost
+    {% endif %}
+{% endblock %}
+
+{% block category %}
+    {% if editMode %}
+        Edition du boost
+    {% else %}
+        Ajout d'un boost
+    {% endif %}
+{% endblock %}
 
 {% block body %}
     {{ form_start(formBoost) }}
 
-        {{ form_row(formBoost.name) }}
-        {{ form_row(formBoost.btCategory) }}
-        {{ form_row(formBoost.content) }}
+        {{ form_row(formBoost.name, {'label': 'Nom du boost'}) }}
+        {{ form_row(formBoost.btCategory, {'label': 'Catégorie du boost'}) }}
+        {{ form_row(formBoost.content, {'label': 'Description'}) }}  
 
-        <button type="submit">
+        <button type="submit" class="btn btn-primary">
             {% if editMode %}
                 Sauvagarder
             {% else %}
