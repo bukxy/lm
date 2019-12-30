@@ -36,6 +36,11 @@ class BoostTerritory
      */
     private $btCategory;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Image", inversedBy="name")
+     */
+    private $image;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -85,6 +90,18 @@ class BoostTerritory
     public function setbtCategory(?BTCategory $btCategory): self
     {
         $this->btCategory = $btCategory;
+
+        return $this;
+    }
+
+    public function getImage(): ?Image
+    {
+        return $this->image;
+    }
+
+    public function setImage(?Image $image): self
+    {
+        $this->image = $image;
 
         return $this;
     }

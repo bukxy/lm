@@ -36,16 +36,6 @@ class User implements UserInterface
     private $password;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Construct", mappedBy="user")
-     */
-    private $constructs;
-
-    /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Image", mappedBy="user")
-     */
-    private $images;
-
-    /**
      * @ORM\OneToMany(targetEntity="App\Entity\BoostTerritory", mappedBy="user")
      */
     private $boostTerritories;
@@ -54,6 +44,11 @@ class User implements UserInterface
      * @ORM\OneToMany(targetEntity="App\Entity\BTCategory", mappedBy="user")
      */
     private $bTCategories;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Image", mappedBy="user")
+     */
+    private $images;
 
     /**
      * Generates the magic method
@@ -153,68 +148,6 @@ class User implements UserInterface
     }
 
     /**
-     * @return Collection|Construct[]
-     */
-    public function getConstructs(): Collection
-    {
-        return $this->constructs;
-    }
-
-    public function addConstruct(Construct $construct): self
-    {
-        if (!$this->constructs->contains($construct)) {
-            $this->constructs[] = $construct;
-            $construct->setUser($this);
-        }
-
-        return $this;
-    }
-
-    public function removeConstruct(Construct $construct): self
-    {
-        if ($this->constructs->contains($construct)) {
-            $this->constructs->removeElement($construct);
-            // set the owning side to null (unless already changed)
-            if ($construct->getUser() === $this) {
-                $construct->setUser(null);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Image[]
-     */
-    public function getImages(): Collection
-    {
-        return $this->images;
-    }
-
-    public function addImage(Image $image): self
-    {
-        if (!$this->images->contains($image)) {
-            $this->images[] = $image;
-            $image->setUser($this);
-        }
-
-        return $this;
-    }
-
-    public function removeImage(Image $image): self
-    {
-        if ($this->images->contains($image)) {
-            $this->images->removeElement($image);
-            // set the owning side to null (unless already changed)
-            if ($image->getUser() === $this) {
-                $image->setUser(null);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
      * @return Collection|BoostTerritory[]
      */
     public function getBoostTerritories(): Collection
@@ -270,6 +203,37 @@ class User implements UserInterface
             // set the owning side to null (unless already changed)
             if ($bTCategory->getUser() === $this) {
                 $bTCategory->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Image[]
+     */
+    public function getImages(): Collection
+    {
+        return $this->images;
+    }
+
+    public function addImage(Image $image): self
+    {
+        if (!$this->images->contains($image)) {
+            $this->images[] = $image;
+            $image->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeImage(Image $image): self
+    {
+        if ($this->images->contains($image)) {
+            $this->images->removeElement($image);
+            // set the owning side to null (unless already changed)
+            if ($image->getUser() === $this) {
+                $image->setUser(null);
             }
         }
 
