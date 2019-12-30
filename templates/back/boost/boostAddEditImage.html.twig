@@ -1,0 +1,37 @@
+{% extends 'back/baseAdmin.html.twig' %}
+
+{% block title %}
+    {% if editMode %}
+        Edition du boost
+    {% else %}
+        Ajout d'un boost
+    {% endif %}
+{% endblock %}
+
+{% block category %}
+    {% if editMode %}
+        Edition du boost
+    {% else %}
+        Ajout d'un boost
+    {% endif %}
+{% endblock %}
+
+{% block body %}
+    {{ form_start(formImg) }}
+
+        {{ form_row(formImg.name, {'label': 'Nom'}) }}
+
+        {{ form_row(formImg.alt, {'label': 'Description'}) }}
+
+        <button type="submit" class="btn btn-primary">
+            {% if editMode %}
+                Sauvagarder
+            {% else %}
+                Ajouter
+            {% endif %}
+            
+        </button>
+
+{{ form_end(formImg) }}
+
+{% endblock %}
