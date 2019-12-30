@@ -11,6 +11,7 @@
                 <th scope="col">ID</th>
                 <th scope="col">Nom</th>
                 <th scope="col">Catégorie</th>
+                <th scope="col">Contenu</th>
                 <th scope="col">Image</th>
                 <th scope="col">Edition / Suppression</th>
             </tr>
@@ -22,6 +23,22 @@
                     <td>{{ b.name }}</td>
                     <td>{{ b.btCategory }}</td>
                     <td>{{ b.content }}</td>
+
+                    {% if b.image is null %}
+                        <td>
+                            <button class="btn btn-primary">
+                                <a href="{{ path('admin_boost_new_image', {'id' : b.id }) }}">Ajouter l'image</a>
+                            </button>
+                        </td>
+                    {% else %}
+                        <td>
+                            <img src="{{ asset('uploads/boost_territory/' ~ b.image) }}" alt="{{ b.image.alt }}">
+                            <button class="btn btn-danger">
+                                <a href="{{ path('admin_boost_delete_image', {'id' : b.image.id }) }}">Supprimier l'image</a>
+                            </button>
+                        </td>
+                    {% endif %}
+                    
                     <td>
                         <button class="btn btn-primary">
                             <a href="{{ path('admin_boost_edit', {'id' : b.id }) }}">Editer</a>
