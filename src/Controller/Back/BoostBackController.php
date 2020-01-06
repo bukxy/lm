@@ -4,12 +4,12 @@ namespace App\Controller\Back;
 
 use App\Entity\Image;
 use App\Form\ImageType;
-
 use App\Entity\BTCategory;
 use App\Form\BTCategoryType;
 use App\Entity\BoostTerritory;
 use App\Form\BoostTerritoryType;
 
+use App\Repository\ImageRepository;
 use App\Repository\BTCategoryRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Repository\BoostTerritoryRepository;
@@ -17,6 +17,9 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Security;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+
+use Symfony\Component\Filesystem\Exception\IOExceptionInterface;
+use Symfony\Component\Filesystem\Filesystem;
 
 /**
 * @Route("/admin")
@@ -143,12 +146,19 @@ class BoostBackController extends AbstractController
     /**
      * @Route("/boost/image/delete/{id}", name="admin_boost_delete_image")
      */
-    public function deleteImage(Image $i, EntityManagerInterface $manager, Security $security) {
+    public function deleteImage(BoostTerritory $b, ImageRepository $i, EntityManagerInterface $manager, Security $security) {
         if ($security->getUser()){
-            $manager->remove($i);
-            $manager->flush();
+            $image = $i->findOneBy(['id' => $b->getImage()]);
 
-            return $this->redirectToRoute('admin_boost_list');
+            $path = 'uploads/boost_territory/'.$image->getName();
+
+            if ($image && file_exists($path)){
+                unlink($path);
+                $b->setImage(null);
+                $manager->remove($image);
+                $manager->flush();
+                return $this->redirectToRoute('admin_boost_list');
+            }
         }
     }
 
