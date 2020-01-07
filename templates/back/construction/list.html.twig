@@ -1,7 +1,7 @@
 {% extends 'back/baseAdmin.html.twig' %}
 
-{% block title %}Boosts de territoires{% endblock %}
-{% block category %}Liste des Boosts de territoires{% endblock %}
+{% block title %}Constructions{% endblock %}
+{% block category %}Listes des constructions{% endblock %}
 
 {% block body %}
 
@@ -17,34 +17,34 @@
             </tr>
         </thead>
         <tbody>
-            {% for b in boosts %}
+            {% for c in constructions %}
                 <tr>
-                    <th scope="row">{{ b.id }}</th>
-                    <td>{{ b.name }}</td>
-                    <td>{{ b.btCategory }}</td>
-                    <td>{{ b.content }}</td>
+                    <th scope="row">{{ c.id }}</th>
+                    <td>{{ c.name }}</td>
+                    <td>{{ c.constructionCat }}</td>
+                    <td>{{ c.content }}</td>
 
-                    {% if b.image is null %}
+                    {% if c.image is null %}
                         <td>
                             <button class="btn btn-primary">
-                                <a href="{{ path('admin_boost_new_image', {'id' : b.id }) }}"><i class="fas fa-plus-circle"></i></a>
+                                <a href="{{ path('admin_construction_new_image', {'id' : c.id }) }}"><i class="fas fa-plus-circle"></i></a>
                             </button>
                         </td>
                     {% else %}
                         <td>
-                            <img src="{{ asset('uploads/images/' ~ b.image) }}" alt="{{ b.image.alt }}">
+                            <img class="lm-img" src="{{ asset('uploads/images/' ~ c.image) }}" alt="{{ c.image.alt }}">
                             <button class="btn btn-danger">
-                                <a href="{{ path('admin_boost_delete_image', {'id' : b.id }) }}"><i class="fas fa-minus-circle"></i></a>
+                                <a href="{{ path('admin_construction_delete_image', {'id' : c.id }) }}"><i class="fas fa-minus-circle"></i></a>
                             </button>
                         </td>
                     {% endif %}
-                    
+
                     <td>
                         <button class="btn btn-primary">
-                            <a href="{{ path('admin_boost_edit', {'id' : b.id }) }}"><i class="fas fa-edit"></i></a>
+                            <a href="{{ path('admin_construction_edit', {'id' : c.id }) }}"><i class="fas fa-edit"></i></a>
                         </button>
                         <button class="btn btn-danger">
-                            <a href="{{ path('admin_boost_delete', {'id' : b.id }) }}"><i class="fas fa-minus-circle"></i></a>
+                            <a href="{{ path('admin_construction_delete', {'id' : c.id }) }}"><i class="fas fa-minus-circle"></i></a>
                         </button>
                     </td>
                 </tr>

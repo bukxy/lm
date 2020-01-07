@@ -1,0 +1,35 @@
+{% extends 'back/baseAdmin.html.twig' %}
+
+{% block title %}
+    {% if editMode %}
+        Edition de la construction
+    {% else %}
+        Ajout construction
+    {% endif %}
+{% endblock %}
+
+{% block category %}
+    {% if editMode %}
+        Edition de la construction
+    {% else %}
+        Ajout d'une nouvelle construction
+    {% endif %}
+{% endblock %}
+
+{% block body %}
+    {{ form_start(form) }}
+
+        {{ form_row(form.name, {'label': 'Nom de la construction'}) }}
+        {{ form_row(form.constructionCat, {'label': 'Catégorie de la construction'}) }}
+        {{ form_row(form.content, {'label': 'Description'}) }}  
+
+        <button type="submit" class="btn btn-primary">
+            {% if editMode %}
+                Sauvagarder
+            {% else %}
+                Ajouter
+            {% endif %}
+        </button>
+
+    {{ form_end(form) }}
+{% endblock %}

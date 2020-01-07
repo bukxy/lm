@@ -4,7 +4,7 @@
 {% block category %}Liste des Images{% endblock %}
 
 {% block body %}
-
+    <div class="alert alert-danger">En passant pas cette page ca ne supprime pas l'image dans le dossier du site, le fait uniquement en bdd !</div>
     <table class="table table-bordered">
         <thead>
             <tr>
@@ -22,7 +22,7 @@
                     <td>{{ i.name }}</td>
                     <td>{{ i.imageCat }}</td>
                     <td>
-                        <img src="{{ asset('uploads/images/' ~ i.name) }}" alt="{{ i.alt }}">
+                        <img class="lm-img" src="{{ asset('uploads/images/' ~ i.name) }}" alt="{{ i.alt }}">
                     </td>
                     <td>
                         <button class="btn btn-primary">
