@@ -49,6 +49,11 @@ class Image
     private $imageCat;
 
     /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Research", mappedBy="image")
+     */
+    private $researches;
+
+    /**
      * Generates the magic method
      * 
      */
@@ -64,6 +69,7 @@ class Image
     {
         $this->boostTs = new ArrayCollection();
         $this->constructions = new ArrayCollection();
+        $this->researches = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -177,6 +183,37 @@ class Image
     public function setImageCat(?ImageCat $imageCat): self
     {
         $this->imageCat = $imageCat;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Research[]
+     */
+    public function getResearches(): Collection
+    {
+        return $this->researches;
+    }
+
+    public function addResearch(Research $research): self
+    {
+        if (!$this->researches->contains($research)) {
+            $this->researches[] = $research;
+            $research->setImage($this);
+        }
+
+        return $this;
+    }
+
+    public function removeResearch(Research $research): self
+    {
+        if ($this->researches->contains($research)) {
+            $this->researches->removeElement($research);
+            // set the owning side to null (unless already changed)
+            if ($research->getImage() === $this) {
+                $research->setImage(null);
+            }
+        }
 
         return $this;
     }

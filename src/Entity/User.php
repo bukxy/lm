@@ -66,6 +66,16 @@ class User implements UserInterface
     private $imageCats;
 
     /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Research", mappedBy="user")
+     */
+    private $researches;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\ResearchCat", mappedBy="user")
+     */
+    private $researchCats;
+
+    /**
      * Generates the magic method
      * 
      */
@@ -85,6 +95,8 @@ class User implements UserInterface
         $this->constructions = new ArrayCollection();
         $this->constructionCats = new ArrayCollection();
         $this->imageCats = new ArrayCollection();
+        $this->researches = new ArrayCollection();
+        $this->researchCats = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -345,6 +357,68 @@ class User implements UserInterface
             // set the owning side to null (unless already changed)
             if ($imageCat->getUser() === $this) {
                 $imageCat->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Research[]
+     */
+    public function getResearches(): Collection
+    {
+        return $this->researches;
+    }
+
+    public function addResearch(Research $research): self
+    {
+        if (!$this->researches->contains($research)) {
+            $this->researches[] = $research;
+            $research->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeResearch(Research $research): self
+    {
+        if ($this->researches->contains($research)) {
+            $this->researches->removeElement($research);
+            // set the owning side to null (unless already changed)
+            if ($research->getUser() === $this) {
+                $research->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|ResearchCat[]
+     */
+    public function getResearchCats(): Collection
+    {
+        return $this->researchCats;
+    }
+
+    public function addResearchCat(ResearchCat $researchCat): self
+    {
+        if (!$this->researchCats->contains($researchCat)) {
+            $this->researchCats[] = $researchCat;
+            $researchCat->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeResearchCat(ResearchCat $researchCat): self
+    {
+        if ($this->researchCats->contains($researchCat)) {
+            $this->researchCats->removeElement($researchCat);
+            // set the owning side to null (unless already changed)
+            if ($researchCat->getUser() === $this) {
+                $researchCat->setUser(null);
             }
         }
 

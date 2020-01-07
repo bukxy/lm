@@ -7,9 +7,9 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\ConstructionCatRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\ResearchCatRepository")
  */
-class ConstructionCat
+class ResearchCat
 {
     /**
      * @ORM\Id()
@@ -19,7 +19,7 @@ class ConstructionCat
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="constructionCats")
+     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="researchCats")
      */
     private $user;
 
@@ -29,9 +29,9 @@ class ConstructionCat
     private $name;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Construction", mappedBy="constructionCat")
+     * @ORM\OneToMany(targetEntity="App\Entity\Research", mappedBy="researchCat")
      */
-    private $construction;
+    private $research;
 
     /**
      * Generates the magic method
@@ -46,7 +46,7 @@ class ConstructionCat
 
     public function __construct()
     {
-        $this->construction = new ArrayCollection();
+        $this->research = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -79,30 +79,30 @@ class ConstructionCat
     }
 
     /**
-     * @return Collection|Construction[]
+     * @return Collection|Research[]
      */
-    public function getConstruction(): Collection
+    public function getResearch(): Collection
     {
-        return $this->construction;
+        return $this->research;
     }
 
-    public function addConstruction(Construction $construction): self
+    public function addResearch(Research $research): self
     {
-        if (!$this->construction->contains($construction)) {
-            $this->construction[] = $construction;
-            $construction->setConstructionCat($this);
+        if (!$this->research->contains($research)) {
+            $this->research[] = $research;
+            $research->setResearchCat($this);
         }
 
         return $this;
     }
 
-    public function removeConstruction(Construction $construction): self
+    public function removeResearch(Research $research): self
     {
-        if ($this->construction->contains($construction)) {
-            $this->construction->removeElement($construction);
+        if ($this->research->contains($research)) {
+            $this->research->removeElement($research);
             // set the owning side to null (unless already changed)
-            if ($construction->getConstructionCat() === $this) {
-                $construction->setConstructionCat(null);
+            if ($research->getResearchCat() === $this) {
+                $research->setResearchCat(null);
             }
         }
 
