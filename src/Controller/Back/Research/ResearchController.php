@@ -1,78 +1,82 @@
 <?php
 
-namespace App\Controller\Back\Boost_territory;
+namespace App\Controller\Back\Research;
 
 use App\Entity\Image;
 use App\Form\ImageType;
+
+use App\Entity\Research;
+use App\Form\ResearchType;
+
+use App\Entity\ResearchCat;
+use App\Form\ResearchCatType;
+
 use App\Repository\ImageRepository;
-
-use App\Entity\BoostTerritory;
-use App\Form\BoostTerritoryType;
-use App\Repository\BoostTerritoryRepository;
-
 use Doctrine\ORM\EntityManagerInterface;
+use App\Repository\ResearchRepository;
+use App\Repository\ResearchCatRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Security;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 /**
-* @Route("/admin/boost")
+* @Route("/admin/research")
 */
-class BoostController extends AbstractController
+class ResearchController extends AbstractController
 {
     /**
-     * @Route("/", name="admin_boost_list")
+     * @Route("/", name="admin_research_list")
      */
-    public function listBoost(BoostTerritoryRepository $b)
+    public function list(ResearchRepository $c)
     {
-        return $this->render('back/boost/list.html.twig', [
-            'boosts' => $b->findAll()
+        return $this->render('back/research/list.html.twig', [
+            'Researchs' => $c->findAll()
         ]);
     }
 
     /**
-     * @Route("/new", name="admin_boost_new")
-     * @Route("/edit/{id}", name="admin_boost_edit")
+     * @Route("/new", name="admin_research_new")
+     * @Route("/edit/{id}", name="admin_research_edit")
      */
-    public function AddEdit(BoostTerritory $b = null, Request $req, EntityManagerInterface $manager, Security $security)
+    public function AddEdit(Research $c = null, Request $req, EntityManagerInterface $manager, Security $security)
     {
-        if (!$b) {
-            $b = new BoostTerritory();
+        if (!$c) {
+            $c = new Research();
         }
 
-        $formBT = $this->createForm(BoostTerritoryType::class, $b);
-        $formBT->handleRequest($req);
+        $form = $this->createForm(ResearchType::class, $c);
+        $form->handleRequest($req);
 
-        if ($formBT->isSubmitted() && $formBT->isValid()){
+        if ($form->isSubmitted() && $form->isValid()){
 
             $user = $security->getUser();
 
-            if(!$b->getImage()){
-                $b->setImage(null);
+            if(!$c->getImage()){
+                $c->setImage(null);
             }
 
-            $b->setUser($user);
-            $manager->persist($b);
+            $c->setUser($user);
+            $manager->persist($c);
             $manager->flush();
-            return $this->redirectToRoute('admin_boost_list');
+            return $this->redirectToRoute('admin_Research_list');
         }
 
-        return $this->render('back/boost/addEdit.html.twig', [
-            'formBoost' => $formBT->createView(),
-            'editMode'  => $b->getId() !== null
+        return $this->render('back/research/addEdit.html.twig', [
+            'form' => $form->createView(),
+            'editMode'  => $c->getId() !== null
         ]);
     }
 
     /**
-     * @Route("/delete/{id}", name="admin_boost_delete")
+     * @Route("/delete/{id}", name="admin_research_delete")
      */
-    public function delete(BoostTerritory $b, EntityManagerInterface $manager, Security $security) {
+    public function delete(Research $c, EntityManagerInterface $manager, Security $security) {
         if ($security->getUser()){
-            $manager->remove($b);
+            $manager->remove($c);
             $manager->flush();
 
-            return $this->redirectToRoute('admin_boost_list');
+            return $this->redirectToRoute('admin_research_list');
         }
     }
 
@@ -80,9 +84,9 @@ class BoostController extends AbstractController
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     /**
-     * @Route("/image/add/{id}", name="admin_boost_new_image")
+     * @Route("/image/add/{id}", name="admin_research_new_image")
      */
-    public function AddImage(BoostTerritory $b, Image $i = null, Request $req, EntityManagerInterface $manager, Security $security)
+    public function AddImage(Research $c, Image $i = null, Request $req, EntityManagerInterface $manager, Security $security)
     {
         if (!$i) {
             $i = new Image();
@@ -120,7 +124,7 @@ class BoostController extends AbstractController
 
             $user = $security->getUser();
 
-            $b->setImage($i);
+            $c->setImage($i);
             $i->setUser($user);
 
             $i->setName($newFilename);
@@ -129,33 +133,33 @@ class BoostController extends AbstractController
                 $i->setAlt('Aucune information sur l\'image est disponible');
             }
 
-            $manager->persist($b);
+            $manager->persist($c);
             $manager->persist($i);
             $manager->flush();
-            return $this->redirectToRoute('admin_boost_list');
+            return $this->redirectToRoute('admin_Research_list');
         }
 
-        return $this->render('back/boost/addEditImage.html.twig', [
+        return $this->render('back/research/AddEditImage.html.twig', [
             'formImg' => $formImg->createView(),
-            'editMode'  => $b->getId() !== null
+            'editMode'  => $c->getId() !== null
         ]);
     }
 
     /**
-     * @Route("/image/delete/{id}", name="admin_boost_delete_image")
+     * @Route("/image/delete/{id}", name="admin_research_delete_image")
      */
-    public function deleteImage(BoostTerritory $b, ImageRepository $i, EntityManagerInterface $manager, Security $security) {
+    public function deleteImage(Research $c, ImageRepository $i, EntityManagerInterface $manager, Security $security) {
         if ($security->getUser()){
-            $image = $i->findOneBy(['id' => $b->getImage()]);
+            $image = $i->findOneBy(['id' => $c->getImage()]);
 
             $path = 'uploads/images/'.$image->getName();
 
             if ($image && file_exists($path)){
                 unlink($path);
-                $b->setImage(null);
+                $c->setImage(null);
                 $manager->remove($image);
                 $manager->flush();
-                return $this->redirectToRoute('admin_boost_list');
+                return $this->redirectToRoute('admin_research_list');
             }
         }
     }

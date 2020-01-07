@@ -24,7 +24,7 @@ class BoostCategoryController extends AbstractController
      */
     public function listCategory(BTCategoryRepository $b)
     {
-        return $this->render('back/boost/catBoostList.html.twig', [
+        return $this->render('back/boost/catList.html.twig', [
             'categories' => $b->findAll()
         ]);
     }
@@ -50,7 +50,7 @@ class BoostCategoryController extends AbstractController
             return $this->redirectToRoute('admin_boost_category_list');
         }
 
-        return $this->render('back/boost/catBoostAddEdit.html.twig', [
+        return $this->render('back/boost/catAddEdit.html.twig', [
             'formCatBoost' => $form->createView(),
             'editMode'  => $b->getId() !== null
         ]);
