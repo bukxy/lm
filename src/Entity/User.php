@@ -51,6 +51,21 @@ class User implements UserInterface
     private $images;
 
     /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Construction", mappedBy="user")
+     */
+    private $constructions;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\ConstructionCat", mappedBy="user")
+     */
+    private $constructionCats;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\ImageCat", mappedBy="user")
+     */
+    private $imageCats;
+
+    /**
      * Generates the magic method
      * 
      */
@@ -67,6 +82,9 @@ class User implements UserInterface
         $this->images = new ArrayCollection();
         $this->boostTerritories = new ArrayCollection();
         $this->bTCategories = new ArrayCollection();
+        $this->constructions = new ArrayCollection();
+        $this->constructionCats = new ArrayCollection();
+        $this->imageCats = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -234,6 +252,99 @@ class User implements UserInterface
             // set the owning side to null (unless already changed)
             if ($image->getUser() === $this) {
                 $image->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Construction[]
+     */
+    public function getConstructions(): Collection
+    {
+        return $this->constructions;
+    }
+
+    public function addConstruction(Construction $construction): self
+    {
+        if (!$this->constructions->contains($construction)) {
+            $this->constructions[] = $construction;
+            $construction->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeConstruction(Construction $construction): self
+    {
+        if ($this->constructions->contains($construction)) {
+            $this->constructions->removeElement($construction);
+            // set the owning side to null (unless already changed)
+            if ($construction->getUser() === $this) {
+                $construction->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|ConstructionCat[]
+     */
+    public function getConstructionCats(): Collection
+    {
+        return $this->constructionCats;
+    }
+
+    public function addConstructionCat(ConstructionCat $constructionCat): self
+    {
+        if (!$this->constructionCats->contains($constructionCat)) {
+            $this->constructionCats[] = $constructionCat;
+            $constructionCat->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeConstructionCat(ConstructionCat $constructionCat): self
+    {
+        if ($this->constructionCats->contains($constructionCat)) {
+            $this->constructionCats->removeElement($constructionCat);
+            // set the owning side to null (unless already changed)
+            if ($constructionCat->getUser() === $this) {
+                $constructionCat->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|ImageCat[]
+     */
+    public function getImageCats(): Collection
+    {
+        return $this->imageCats;
+    }
+
+    public function addImageCat(ImageCat $imageCat): self
+    {
+        if (!$this->imageCats->contains($imageCat)) {
+            $this->imageCats[] = $imageCat;
+            $imageCat->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeImageCat(ImageCat $imageCat): self
+    {
+        if ($this->imageCats->contains($imageCat)) {
+            $this->imageCats->removeElement($imageCat);
+            // set the owning side to null (unless already changed)
+            if ($imageCat->getUser() === $this) {
+                $imageCat->setUser(null);
             }
         }
 
