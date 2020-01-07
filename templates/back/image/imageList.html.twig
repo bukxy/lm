@@ -1,0 +1,40 @@
+{% extends 'back/baseAdmin.html.twig' %}
+
+{% block title %}Liste des images{% endblock %}
+{% block category %}Liste des Images{% endblock %}
+
+{% block body %}
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Nom</th>
+                <th scope="col">Catégorie</th>
+                <th scope="col">Aperçu</th>
+                <th scope="col">Edition / Suppression</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in images %}
+                <tr>
+                    <th scope="row">{{ i.id }}</th>
+                    <td>{{ i.name }}</td>
+                    <td>{{ i.imageCat }}</td>
+                    <td>
+                        <img src="{{ asset('uploads/images/' ~ i.name) }}" alt="{{ i.alt }}">
+                    </td>
+                    <td>
+                        <button class="btn btn-primary">
+                            <a href="{{ path('admin_image_edit', {'id' : i.id }) }}"><i class="fas fa-edit"></i></a>
+                        </button>
+                        <button class="btn btn-danger">
+                            <a href="{{ path('admin_image_delete', {'id' : i.id }) }}"><i class="fas fa-minus-circle"></i></a>
+                        </button>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

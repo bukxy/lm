@@ -145,7 +145,7 @@ class BoostBackController extends AbstractController
         if ($security->getUser()){
             $image = $i->findOneBy(['id' => $b->getImage()]);
 
-            $path = 'uploads/boost_territory/'.$image->getName();
+            $path = '/uploads/boost_territory/' . $image->getName();
 
             if ($image && file_exists($path)){
                 unlink($path);

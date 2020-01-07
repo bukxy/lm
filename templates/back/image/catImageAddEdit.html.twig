@@ -1,0 +1,21 @@
+{% extends 'back/baseAdmin.html.twig' %}
+
+{% block title %}Accueil{% endblock %}
+{% block category %}Accueil{% endblock %}
+
+{% block body %}
+    {{ form_start(formCatImage) }}
+
+        {{ form_row(formCatImage.name) }}
+
+        <button type="submit" class="btn btn-primary">
+            {% if editMode %}
+                Sauvagarder
+            {% else %}
+                Ajouter
+            {% endif %}
+            
+        </button>
+
+    {{ form_end(formCatImage) }}
+{% endblock %}
