@@ -38,6 +38,7 @@ class ImageType extends AbstractType
                 ],
             ])
             ->add('alt', TextType::class, ['required' => false])
+            ->add('imageCat')
         ;
     }
 
