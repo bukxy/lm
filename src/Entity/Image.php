@@ -39,6 +39,16 @@ class Image
     private $boostTs;
 
     /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Construction", mappedBy="image")
+     */
+    private $constructions;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\ImageCat", inversedBy="image")
+     */
+    private $imageCat;
+
+    /**
      * Generates the magic method
      * 
      */
@@ -53,6 +63,7 @@ class Image
     public function __construct()
     {
         $this->boostTs = new ArrayCollection();
+        $this->constructions = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -123,6 +134,49 @@ class Image
                 $boost->setImage(null);
             }
         }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Construction[]
+     */
+    public function getConstructions(): Collection
+    {
+        return $this->constructions;
+    }
+
+    public function addConstruction(Construction $construction): self
+    {
+        if (!$this->constructions->contains($construction)) {
+            $this->constructions[] = $construction;
+            $construction->setImage($this);
+        }
+
+        return $this;
+    }
+
+    public function removeConstruction(Construction $construction): self
+    {
+        if ($this->constructions->contains($construction)) {
+            $this->constructions->removeElement($construction);
+            // set the owning side to null (unless already changed)
+            if ($construction->getImage() === $this) {
+                $construction->setImage(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getImageCat(): ?ImageCat
+    {
+        return $this->imageCat;
+    }
+
+    public function setImageCat(?ImageCat $imageCat): self
+    {
+        $this->imageCat = $imageCat;
 
         return $this;
     }
