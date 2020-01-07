@@ -22,16 +22,18 @@ class BoostTerritoryRepository extends ServiceEntityRepository
     // /**
     //  * @return BoostTerritory[] Returns an array of BoostTerritory objects
     //  */
+    // /**
     /*
-    public function findByImage($id)
+    public function findByExampleField($value)
     {
-        // return $this->createQueryBuilder('boost')
-        //     ->andWhere('boost.image = :id')
-        //     ->setParameter('id', $id)
-        //     // ->setMaxResults(1)
-        //     ->getQuery()
-        //     ->getResult()
-        // ;
+        return $this->createQueryBuilder('b')
+            ->andWhere('b.exampleField = :val')
+            ->setParameter('val', $value)
+            ->orderBy('b.id', 'ASC')
+            ->setMaxResults(10)
+            ->getQuery()
+            ->getResult()
+        ;
     }
     */
 
