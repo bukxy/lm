@@ -27,24 +27,24 @@
                     {% if b.image is null %}
                         <td>
                             <button class="btn btn-primary">
-                                <a href="{{ path('admin_boost_new_image', {'id' : b.id }) }}">Ajouter l'image</a>
+                                <a href="{{ path('admin_boost_new_image', {'id' : b.id }) }}"><i class="fas fa-plus-circle"></i></a>
                             </button>
                         </td>
                     {% else %}
                         <td>
-                            <img src="{{ asset('uploads/boost_territory/' ~ b.image) }}" alt="{{ b.image.alt }}">
+                            <img src="{{ asset('uploads/images/' ~ b.image) }}" alt="{{ b.image.alt }}">
                             <button class="btn btn-danger">
-                                <a href="{{ path('admin_boost_delete_image', {'id' : b.image.id }) }}">Supprimier l'image</a>
+                                <a href="{{ path('admin_boost_delete_image', {'id' : b.id }) }}"><i class="fas fa-minus-circle"></i></a>
                             </button>
                         </td>
                     {% endif %}
                     
                     <td>
                         <button class="btn btn-primary">
-                            <a href="{{ path('admin_boost_edit', {'id' : b.id }) }}">Editer</a>
+                            <a href="{{ path('admin_boost_edit', {'id' : b.id }) }}"><i class="fas fa-edit"></i></a>
                         </button>
                         <button class="btn btn-danger">
-                            <a href="{{ path('admin_boost_delete', {'id' : b.id }) }}">Supprimer</a>
+                            <a href="{{ path('admin_boost_delete', {'id' : b.id }) }}"><i class="fas fa-minus-circle"></i></a>
                         </button>
                     </td>
                 </tr>

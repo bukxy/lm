@@ -21,6 +21,34 @@
     </li>
 
     <!-- Divider -->
+    <hr
+    class="sidebar-divider">
+
+    <!-- Heading -->
+    <div class="sidebar-heading">
+        Images
+    </div>
+
+    <!-- Nav Item - Boost Menu -->
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseImage" aria-expanded="true" aria-controls="collapseImage">
+            <i class="fas fa-images"></i>
+            <span>Liste des images</span>
+        </a>
+        <div id="collapseImage" class="collapse" aria-labelledby="headingImage" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Les catégories</h6>
+                <a class="collapse-item" href="{{ path('admin_image_category_list') }}"><i class="fas fa-list"></i> Liste</a>
+                <a class="collapse-item" href="{{ path('admin_image_category_new') }}"><i class="fas fa-plus-circle"></i> Ajouter</a>
+                <div class="item-divider"></div>
+                <h6 class="collapse-header">Les images</h6>
+                <a class="collapse-item" href="{{ path('admin_image_list') }}"><i class="fas fa-list"></i> Liste</a>
+                <a class="collapse-item" href="{{ path('admin_image_new') }}"><i class="fas fa-plus-circle"></i> Ajouter</a>
+            </div>
+        </div>
+    </li>
+
+    <!-- Divider -->
     <hr class="sidebar-divider">
 
     <!-- Heading -->
@@ -56,12 +84,8 @@
         <div id="collapseConstruct" class="collapse" aria-labelledby="headingConstruct" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Catégorie Construction</h6>
-                <a class="collapse-item" href="#">
-                    <i class="fas fa-list"></i>
-                    Liste</a>
-                <a class="collapse-item" href="#">
-                    <i class="fas fa-plus-circle"></i>
-                    Ajouter</a>
+                <a class="collapse-item" href="#"><i class="fas fa-list"></i> Liste</a>
+                <a class="collapse-item" href="#"><i class="fas fa-plus-circle"></i> Ajouter</a>
             </div>
         </div>
     </li>
@@ -75,12 +99,8 @@
         <div id="collapseResearch" class="collapse" aria-labelledby="headingResearch" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Catégorie Recherche</h6>
-                <a class="collapse-item" href="#">
-                    <i class="fas fa-list"></i>
-                    Liste</a>
-                <a class="collapse-item" href="#">
-                    <i class="fas fa-plus-circle"></i>
-                    Ajouter</a>
+                <a class="collapse-item" href="#"><i class="fas fa-list"></i> Liste</a>
+                <a class="collapse-item" href="#"><i class="fas fa-plus-circle"></i> Ajouter</a>
             </div>
         </div>
     </li>
@@ -94,12 +114,8 @@
         <div id="collapseFamiliar" class="collapse" aria-labelledby="headingFamiliar" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Catégorie Familier</h6>
-                <a class="collapse-item" href="#">
-                    <i class="fas fa-list"></i>
-                    Liste</a>
-                <a class="collapse-item" href="#">
-                    <i class="fas fa-plus-circle"></i>
-                    Ajouter</a>
+                <a class="collapse-item" href="#"><i class="fas fa-list"></i> Liste</a>
+                <a class="collapse-item" href="#"><i class="fas fa-plus-circle"></i> Ajouter</a>
             </div>
         </div>
     </li>
@@ -120,9 +136,7 @@
         </a>
         <div id="collapseGF" class="collapse" aria-labelledby="headingGF" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="#">
-                    <i class="fas fa-edit"></i>
-                    Editer</a>
+                <a class="collapse-item" href="#"><i class="fas fa-edit"></i> Editer</a>
             </div>
         </div>
     </li>
@@ -134,9 +148,7 @@
         </a>
         <div id="collapseEG" class="collapse" aria-labelledby="headingEG" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="#">
-                    <i class="fas fa-edit"></i>
-                    Editer</a>
+                <a class="collapse-item" href="#"><i class="fas fa-edit"></i> Editer</a>
             </div>
         </div>
     </li>
@@ -148,9 +160,7 @@
         </a>
         <div id="collapseBG" class="collapse" aria-labelledby="headingBG" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="#">
-                    <i class="fas fa-edit"></i>
-                    Editer</a>
+                <a class="collapse-item" href="#"> <i class="fas fa-edit"></i> Editer</a>
             </div>
         </div>
     </li>
@@ -171,8 +181,7 @@
         </a>
         <div id="collapseDA" class="collapse" aria-labelledby="headingDA" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="#">
-                    <i class="fas fa-edit"></i>Editer</a>
+                <a class="collapse-item" href="#"><i class="fas fa-edit"></i> Editer</a>
             </div>
         </div>
     </li>
@@ -184,8 +193,7 @@
         </a>
         <div id="collapseFeodale" class="collapse" aria-labelledby="headingFeodale" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="#">
-                    <i class="fas fa-edit"></i>Editer</a>
+                <a class="collapse-item" href="#"><i class="fas fa-edit"></i> Editer</a>
             </div>
         </div>
     </li>
@@ -197,8 +205,7 @@
         </a>
         <div id="collapseCalice" class="collapse" aria-labelledby="headingCalice" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="#">
-                    <i class="fas fa-edit"></i>Editer</a>
+                <a class="collapse-item" href="#"><i class="fas fa-edit"></i> Editer</a>
             </div>
         </div>
     </li>
