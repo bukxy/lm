@@ -8,6 +8,7 @@ use App\Form\BTCategoryType;
 use App\Repository\BTCategoryRepository;
 
 use Doctrine\ORM\EntityManagerInterface;
+use App\Repository\BoostTerritoryRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Security;
 use Symfony\Component\Routing\Annotation\Route;
@@ -16,7 +17,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 /**
 * @Route("/admin/boost-category")
 */
-class BoostCategoryBackController extends AbstractController
+class BoostCategoryController extends AbstractController
 {
     /**
      * @Route("/", name="admin_boost_category_list")
@@ -58,8 +59,18 @@ class BoostCategoryBackController extends AbstractController
     /**
      * @Route("/delete/{id}", name="admin_boost_category_delete")
      */
-    public function deleteCategory(BTCategory $b, EntityManagerInterface $manager, Security $security) {
+    public function deleteCategory(BTCategory $b, BTCategoryRepository $bCatRepo, BoostTerritoryRepository $bRepo, EntityManagerInterface $manager, Security $security) {
         if ($security->getUser()){
+            $bts = $bRepo->findBy(['btCategory' => $b->getId()]);
+        
+            if($bts){
+                $cat = $bCatRepo->find(['id' => 1]);
+                foreach ($bts as $bt) {
+                    $bt->setbtCategory($cat);
+                    $manager->persist($bt);
+                }
+            }
+
             $manager->remove($b);
             $manager->flush();
 

@@ -19,7 +19,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 /**
 * @Route("/admin/boost")
 */
-class BoostBackController extends AbstractController
+class BoostController extends AbstractController
 {
     /**
      * @Route("/", name="admin_boost_list")
@@ -48,7 +48,10 @@ class BoostBackController extends AbstractController
 
             $user = $security->getUser();
 
-            $b->setImage(null);
+            if(!$b->getImage()){
+                $b->setImage(null);
+            }
+
             $b->setUser($user);
             $manager->persist($b);
             $manager->flush();
@@ -104,7 +107,7 @@ class BoostBackController extends AbstractController
                 // Move the file to the directory where brochures are stored
                 try {
                     $brochureFile->move(
-                        $this->getParameter('boost_folder'),
+                        $this->getParameter('image_folder'),
                         $newFilename
                     );
                 } catch (FileException $e) {
@@ -145,7 +148,7 @@ class BoostBackController extends AbstractController
         if ($security->getUser()){
             $image = $i->findOneBy(['id' => $b->getImage()]);
 
-            $path = '/uploads/boost_territory/' . $image->getName();
+            $path = 'uploads/images/'.$image->getName();
 
             if ($image && file_exists($path)){
                 unlink($path);
