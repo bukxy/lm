@@ -76,6 +76,16 @@ class User implements UserInterface
     private $researchCats;
 
     /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Familiar", mappedBy="user")
+     */
+    private $familiars;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\FamiliarCat", mappedBy="user")
+     */
+    private $familiarCats;
+
+    /**
      * Generates the magic method
      * 
      */
@@ -97,6 +107,8 @@ class User implements UserInterface
         $this->imageCats = new ArrayCollection();
         $this->researches = new ArrayCollection();
         $this->researchCats = new ArrayCollection();
+        $this->familiars = new ArrayCollection();
+        $this->familiarCats = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -419,6 +431,68 @@ class User implements UserInterface
             // set the owning side to null (unless already changed)
             if ($researchCat->getUser() === $this) {
                 $researchCat->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Familiar[]
+     */
+    public function getFamiliars(): Collection
+    {
+        return $this->familiars;
+    }
+
+    public function addFamiliar(Familiar $familiar): self
+    {
+        if (!$this->familiars->contains($familiar)) {
+            $this->familiars[] = $familiar;
+            $familiar->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeFamiliar(Familiar $familiar): self
+    {
+        if ($this->familiars->contains($familiar)) {
+            $this->familiars->removeElement($familiar);
+            // set the owning side to null (unless already changed)
+            if ($familiar->getUser() === $this) {
+                $familiar->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|FamiliarCat[]
+     */
+    public function getFamiliarCats(): Collection
+    {
+        return $this->familiarCats;
+    }
+
+    public function addFamiliarCat(FamiliarCat $familiarCat): self
+    {
+        if (!$this->familiarCats->contains($familiarCat)) {
+            $this->familiarCats[] = $familiarCat;
+            $familiarCat->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeFamiliarCat(FamiliarCat $familiarCat): self
+    {
+        if ($this->familiarCats->contains($familiarCat)) {
+            $this->familiarCats->removeElement($familiarCat);
+            // set the owning side to null (unless already changed)
+            if ($familiarCat->getUser() === $this) {
+                $familiarCat->setUser(null);
             }
         }
 
