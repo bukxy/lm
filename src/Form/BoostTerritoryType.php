@@ -2,7 +2,11 @@
 
 namespace App\Form;
 
+use App\Entity\BTCategory;
 use App\Entity\BoostTerritory;
+use App\Repository\BTCategoryRepository;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Validator\Constraints\File;
@@ -16,7 +20,13 @@ class BoostTerritoryType extends AbstractType
         $builder
             ->add('name')
             ->add('content')
-            ->add('btCategory')
+            ->add('btCategory', EntityType::class, [
+                'class' => BTCategory::class,
+                'query_builder' => function (BTCategoryRepository $bt) {
+                    return $bt->createQueryBuilder('b')
+                        ->orderBy('b.id', 'ASC');
+                },
+            ])
         ;
     }
 

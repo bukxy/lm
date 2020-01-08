@@ -3,8 +3,12 @@
 namespace App\Form;
 
 use App\Entity\Image;
+use App\Entity\ImageCat;
+use App\Repository\ImageCatRepository;
+
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Validator\Constraints\File;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
@@ -38,7 +42,13 @@ class ImageType extends AbstractType
                 ],
             ])
             ->add('alt', TextType::class, ['required' => false])
-            ->add('imageCat')
+            ->add('imageCat', EntityType::class, [
+                'class' => ImageCat::class,
+                'query_builder' => function (ImageCatRepository $i) {
+                    return $i->createQueryBuilder('i')
+                        ->orderBy('i.id', 'ASC');
+                },
+            ])
         ;
     }
 
