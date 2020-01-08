@@ -28,10 +28,10 @@ class ResearchController extends AbstractController
     /**
      * @Route("/", name="admin_research_list")
      */
-    public function list(ResearchRepository $c)
+    public function list(ResearchRepository $r)
     {
         return $this->render('back/research/list.html.twig', [
-            'Researchs' => $c->findAll()
+            'researches' => $r->findAll()
         ]);
     }
 
@@ -39,41 +39,41 @@ class ResearchController extends AbstractController
      * @Route("/new", name="admin_research_new")
      * @Route("/edit/{id}", name="admin_research_edit")
      */
-    public function AddEdit(Research $c = null, Request $req, EntityManagerInterface $manager, Security $security)
+    public function AddEdit(Research $r = null, Request $req, EntityManagerInterface $manager, Security $security)
     {
-        if (!$c) {
-            $c = new Research();
+        if (!$r) {
+            $r = new Research();
         }
 
-        $form = $this->createForm(ResearchType::class, $c);
+        $form = $this->createForm(ResearchType::class, $r);
         $form->handleRequest($req);
 
         if ($form->isSubmitted() && $form->isValid()){
 
             $user = $security->getUser();
 
-            if(!$c->getImage()){
-                $c->setImage(null);
+            if(!$r->getImage()){
+                $r->setImage(null);
             }
 
-            $c->setUser($user);
-            $manager->persist($c);
+            $r->setUser($user);
+            $manager->persist($r);
             $manager->flush();
             return $this->redirectToRoute('admin_Research_list');
         }
 
         return $this->render('back/research/addEdit.html.twig', [
             'form' => $form->createView(),
-            'editMode'  => $c->getId() !== null
+            'editMode'  => $r->getId() !== null
         ]);
     }
 
     /**
      * @Route("/delete/{id}", name="admin_research_delete")
      */
-    public function delete(Research $c, EntityManagerInterface $manager, Security $security) {
+    public function delete(Research $r, EntityManagerInterface $manager, Security $security) {
         if ($security->getUser()){
-            $manager->remove($c);
+            $manager->remove($r);
             $manager->flush();
 
             return $this->redirectToRoute('admin_research_list');
@@ -88,11 +88,11 @@ class ResearchController extends AbstractController
      */
     public function AddImage(Research $c, Image $i = null, Request $req, EntityManagerInterface $manager, Security $security)
     {
-        if (!$i) {
-            $i = new Image();
+        if (!$r) {
+            $r = new Image();
         }
 
-        $formImg = $this->createForm(ImageType::class, $i);
+        $formImg = $this->createForm(ImageType::class, $r);
         $formImg->handleRequest($req);
 
         if ($formImg->isSubmitted() && $formImg->isValid()){
@@ -124,7 +124,7 @@ class ResearchController extends AbstractController
 
             $user = $security->getUser();
 
-            $c->setImage($i);
+            $r->setImage($i);
             $i->setUser($user);
 
             $i->setName($newFilename);
@@ -133,7 +133,7 @@ class ResearchController extends AbstractController
                 $i->setAlt('Aucune information sur l\'image est disponible');
             }
 
-            $manager->persist($c);
+            $manager->persist($r);
             $manager->persist($i);
             $manager->flush();
             return $this->redirectToRoute('admin_Research_list');
@@ -141,22 +141,22 @@ class ResearchController extends AbstractController
 
         return $this->render('back/research/AddEditImage.html.twig', [
             'formImg' => $formImg->createView(),
-            'editMode'  => $c->getId() !== null
+            'editMode'  => $r->getId() !== null
         ]);
     }
 
     /**
      * @Route("/image/delete/{id}", name="admin_research_delete_image")
      */
-    public function deleteImage(Research $c, ImageRepository $i, EntityManagerInterface $manager, Security $security) {
+    public function deleteImage(Research $r, ImageRepository $i, EntityManagerInterface $manager, Security $security) {
         if ($security->getUser()){
-            $image = $i->findOneBy(['id' => $c->getImage()]);
+            $image = $i->findOneBy(['id' => $r->getImage()]);
 
             $path = 'uploads/images/'.$image->getName();
 
             if ($image && file_exists($path)){
                 unlink($path);
-                $c->setImage(null);
+                $r->setImage(null);
                 $manager->remove($image);
                 $manager->flush();
                 return $this->redirectToRoute('admin_research_list');

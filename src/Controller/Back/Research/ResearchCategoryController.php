@@ -22,10 +22,10 @@ class ResearchCategoryController extends AbstractController
     /**
      * @Route("/", name="admin_research_category_list")
      */
-    public function list(ResearchCatRepository $c)
+    public function list(ResearchCatRepository $r)
     {
         return $this->render('back/research/catList.html.twig', [
-            'categories' => $c->findAll()
+            'categories' => $r->findAll()
         ]);
     }
 
@@ -33,45 +33,45 @@ class ResearchCategoryController extends AbstractController
      * @Route("/new", name="admin_research_category_new")
      * @Route("/edit/{id}", name="admin_research_category_edit")
      */
-    public function AddEditCategory(ResearchCat $c = null, Request $req, EntityManagerInterface $manager, Security $security)
+    public function AddEditCategory(ResearchCat $r = null, Request $req, EntityManagerInterface $manager, Security $security)
     {
-        if (!$c) {
-            $c = new ResearchCat();
+        if (!$r) {
+            $r = new ResearchCat();
         }
 
-        $form = $this->createForm(ResearchCatType::class, $c);
+        $form = $this->createForm(ResearchCatType::class, $r);
         $form->handleRequest($req);
 
         if ($form->isSubmitted() && $form->isValid()){
             $user = $security->getUser();
-            $c->setUser($user);
-            $manager->persist($c);
+            $r->setUser($user);
+            $manager->persist($r);
             $manager->flush();
             return $this->redirectToRoute('admin_research_category_list');
         }
 
         return $this->render('back/research/catAddEdit.html.twig', [
             'formCat' => $form->createView(),
-            'editMode'  => $c->getId() !== null
+            'editMode'  => $r->getId() !== null
         ]);
     }
 
     /**
      * @Route("/delete/{id}", name="admin_research_category_delete")
      */
-    public function deleteCategory(ResearchCat $c, ResearchCatRepository $cCatRepo, ResearchRepository $cRepo, EntityManagerInterface $manager, Security $security) {
+    public function deleteCategory(ResearchCat $r, ResearchCatRepository $rCatRepo, ResearchRepository $rRepo, EntityManagerInterface $manager, Security $security) {
         if ($security->getUser()){
-            $cts = $cRepo->findBy(['btCategory' => $c->getId()]);
+            $rs = $rRepo->findBy(['btCategory' => $r->getId()]);
         
-            if($cts){
-                $cat = $cCatRepo->find(['id' => 1]);
-                foreach ($cts as $ct) {
-                    $ct->setbtCategory($cat);
-                    $manager->persist($ct);
+            if($rs){
+                $cat = $rCatRepo->find(['id' => 1]);
+                foreach ($rs as $research) {
+                    $research->setbtCategory($cat);
+                    $manager->persist($research);
                 }
             }
 
-            $manager->remove($c);
+            $manager->remove($r);
             $manager->flush();
 
             return $this->redirectToRoute('admin_research_list');
