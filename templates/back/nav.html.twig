@@ -102,9 +102,13 @@
         </a>
         <div id="collapseResearch" class="collapse" aria-labelledby="headingResearch" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Catégorie Recherche</h6>
-                <a class="collapse-item" href="#"><i class="fas fa-list"></i> Liste</a>
-                <a class="collapse-item" href="#"><i class="fas fa-plus-circle"></i> Ajouter</a>
+                <h6 class="collapse-header">Les catégories</h6>
+                <a class="collapse-item" href="{{ path('admin_research_category_list') }}"><i class="fas fa-list"></i> Liste</a>
+                <a class="collapse-item" href="{{ path('admin_research_category_new') }}"><i class="fas fa-plus-circle"></i> Ajouter</a>
+                <div class="item-divider"></div>
+                <h6 class="collapse-header">Les recherches</h6>
+                <a class="collapse-item" href="{{ path('admin_research_list') }}"><i class="fas fa-list"></i> Liste</a>
+                <a class="collapse-item" href="{{ path('admin_research_new') }}"><i class="fas fa-plus-circle"></i> Ajouter</a>
             </div>
         </div>
     </li>
