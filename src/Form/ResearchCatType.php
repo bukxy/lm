@@ -13,7 +13,6 @@ class ResearchCatType extends AbstractType
     {
         $builder
             ->add('name')
-            ->add('user')
         ;
     }
 

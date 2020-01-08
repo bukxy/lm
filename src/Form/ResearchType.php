@@ -3,8 +3,12 @@
 namespace App\Form;
 
 use App\Entity\Research;
+use App\Entity\ResearchCat;
+use App\Repository\ResearchCatRepository;
+
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class ResearchType extends AbstractType
@@ -14,9 +18,13 @@ class ResearchType extends AbstractType
         $builder
             ->add('name')
             ->add('content')
-            ->add('user')
-            ->add('image')
-            ->add('researchCat')
+            ->add('researchCat', EntityType::class, [
+                'class' => ResearchCat::class,
+                'query_builder' => function (ResearchCatRepository $r) {
+                    return $r->createQueryBuilder('r')
+                        ->orderBy('r.id', 'ASC');
+                },
+            ])
         ;
     }
 
