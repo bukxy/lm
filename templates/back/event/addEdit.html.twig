@@ -1,0 +1,42 @@
+{% extends 'back/baseAdmin.html.twig' %}
+
+{% block title %}
+    {% if editMode %}
+        Edition : {{ event.name }}
+    {% else %}
+        Ajout de la Guilde fest
+    {% endif %}
+{% endblock %}
+
+{% block category %}
+    {% if editMode %}
+        Edition : {{ event.name }}
+    {% else %}
+        Ajout de la Guilde fest
+    {% endif %}
+{% endblock %}
+
+{% block body %}
+    <div class="tinyMCE">
+        {{ form_start(form) }}
+
+            <div class="form-group">
+                {{ form_label(form.content, 'Contenu de la page') }}
+                {{ form_widget(form.content) }}
+
+                <div class="form-error">
+                    {{ form_errors(form.content) }}
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary">
+                {% if editMode %}
+                    Sauvgarder
+                {% else %}
+                    Ajouter
+                {% endif %}
+            </button>
+
+        {{ form_end(form) }}
+    </div>
+{% endblock %}
