@@ -1,0 +1,88 @@
+/* Familiard */
+
+.fam-head-list{
+    display: flex;
+}
+
+.fam-head-list ul {
+    display:flex;
+    padding-left: 0;
+}
+
+.fam-head img {
+    width: 45px;
+    height: auto;
+}
+
+.fam-head li {
+    list-style: none;
+    margin: 0 5px;
+}
+
+.fam img {
+    width: 650px;
+    height: auto;
+    border-radius: 10px;
+}
+
+.fam {
+    width: 650px;
+}
+
+.fam-name, .fam-comp1, .fam-comp2, .fam-comp3, .fam-talent{
+    position: absolute;
+    color: #DED078;
+    text-shadow: 0px 0px 5px #000000;
+}
+
+.comp1-img, .comp2-img, .comp3-img{
+    width: 42px;
+    height: 42px;
+    position: absolute;
+}
+.comp1-img, .comp2-img, .comp3-img, .talent-img { cursor: pointer;}
+
+.fam-name {
+    top: 40px;
+    left: 80px;
+    font-size: 16px;
+}
+
+.fam-comp1 {
+    top: 100px;
+    left: 460px;
+}
+.comp1-img{
+    left: -53px;
+    top: -7px;
+}
+
+.fam-comp2 {
+    top: 167px;
+    left: 460px;
+}
+.comp2-img{
+    left: -53px;
+    top: -5px;
+}
+
+.fam-comp3 {
+    top: 220px;
+    left: 460px;
+}
+.comp3-img{
+    left: -53px;
+    top: -5px;
+}
+
+.fam-talent {
+    top: 315px;
+    left: 485px
+}
+.talent-img{
+    position: absolute;
+    width: 58px;
+    height: 60px;
+    left: -72px;
+    top: -18px;
+}

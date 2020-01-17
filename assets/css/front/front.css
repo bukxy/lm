@@ -1,8 +1,211 @@
-body {
-    background-color: lightgray;
+@font-face {
+    font-family: 'Sansation';
+    src: url('../fonts/Sansation_Regular.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Sansation-light';
+    src: url('../fonts/Sansation_Light.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Sansation-light-italic';
+    src: url('../fonts/Sansation_Light_Italic.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Sansation-italic';
+    src: url('../fonts/Sansation_Italic.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Sansation-bold';
+    src: url('../fonts/Sansation_Bold.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Sansation-bold-italic';
+    src: url('../fonts/Sansation_Bold_Italic.ttf') format('truetype');
 }
 
-.myNav {
+body {
+    background-image: url('../img/background.jpg');
+    width: 1170px;
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-color: #fff;
+    background-attachment: fixed;
+    background-size: cover; 
+    font-family: 'Sansation', Georgia, Times, serif;
+}
+
+body .icon {
+    background: transparent url('../img/logo.png') no-repeat center top;
+    width: 500px;
+    height: 310px;
+    margin: auto;
+}
+
+.bodyContent {
+    background-color: rgba(0,0,0,0.25);
+    border-radius: 45px 45px 0 0;
+    box-shadow: 0 0 5px black;
+}
+
+.filter-menu .title, .leftNav .navbar, .leftNav .dropdown-menu, .topNav .navbar {background-color: #DED096;}
+
+.leftNav .dropdown-menu a:hover, .topNav a:hover {
+    background-color: rgba(0,0,0,0.5);
+}
+
+.topNav {
     padding: 0;
     margin: auto;
+}
+
+.topNav  .navbar {
+    border: 1px solid #716a42;
+    border-radius: 45px 45px 0 0;
+    box-shadow: 0 3px 5px rgba(0,0,0,0.5);
+}
+
+.leftNav .navbar-nav {flex-direction: column;}
+
+.leftNav .navbar{
+    border-radius: 5px;
+    border: 1px solid #716a42;
+    box-shadow: 0 0px 5px rgba(0,0,0,0.5);
+    padding: 20px 10px;
+}
+
+.leftNav {
+    padding: 0;
+    margin: 20px 0 0 0;
+    width: 250px;
+}
+
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 250px;
+    margin: 20px 0 0 0;
+    transition: .5s;
+}
+
+.leftNav-title {
+    position: absolute;
+    top: -21px;
+    left: 9px;
+}
+
+.leftNav-title img{
+    width: 230px;
+    height: 40px;
+}
+
+.leftNav-title div{
+    position: absolute;
+    top: 5px;
+    left: 20px;
+    width: 190px;
+    height: 27px;
+    font-size: 21px;
+    text-align: center;
+    color: #DED096;
+    text-shadow: 1px 1px 5px black;
+}
+
+.leftNav .nav-item img {
+    width: 40px;
+    margin-right: 15px;
+}
+
+.container.row {
+    margin: 0;
+}
+
+#content .content-title {
+    position: absolute;
+    top: -48px;
+}
+
+#content .content-title div{
+    position: absolute;
+    top: 32px;
+    left: 245px;
+    width: 365px;
+    font-size: 25px;
+    text-align: center;
+    color: #DED096;
+    text-shadow: 1px 1px 5px black;
+}
+
+#content .content-title img {
+    position: absolute;
+    left: 200px;
+    width: 450px;
+    top: 24px;
+}
+
+#content.pageWidth {
+    width: 870px;
+    background: transparent url(../img/content-top.png) no-repeat center top;
+    padding: 30px 5px;
+    margin-left: 20px;
+    position: relative;
+}
+
+#content.pageWidth::after {
+    content: "";
+    display: block;
+    width: 870px;
+    background: transparent url(../img/content-bot.png) no-repeat center top;
+    height: 56px;
+    margin: -13px -5px;
+}
+
+#content .pageContent {
+    background: #DED096 url(../img/bord.png) repeat-y center top;
+    margin: 13px -5px 0px;
+    padding: 0 25px;
+}
+
+#content .pageContent article {
+    margin: 30px auto 20px;
+    position: relative;
+}
+
+
+.pagination {
+    margin: 0 auto;
+    width: 130px;
+    background-color: white;
+}
+.pagination span {
+    margin: auto;
+}
+.pagination span a {
+    padding: 2px 5px;
+}
+.pagination span a:hover {
+    background-color: rgba(0,0,0,0.08);
+}
+
+.filter-menu .title {
+    position: absolute;
+    top: -20px;
+    left: 198px;
+    text-align: center;
+    width: 320px;
+    border-radius: 15px 70%;
+    border: 1px solid black;
+    box-shadow: 0px 5px 3px;
+}
+
+.filter-menu {
+    margin: 13px auto 20px;
+    width: 80%;
+    padding: 60px 0 0 0;
+}
+
+.filter-list {
+    position: relative;
+    padding: 30px 0 0 0;
+    background-color: #556E85;
+    border-radius: 10px;
 }
