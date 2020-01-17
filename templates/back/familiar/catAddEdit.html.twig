@@ -1,0 +1,33 @@
+{% extends 'back/baseAdmin.html.twig' %}
+
+{% block title %}
+	{% if editMode %}
+		Edition d'une catégorie de familier
+	{% else %}
+		Ajout d'une catégorie de familier
+	{% endif %}
+{% endblock %}
+
+{% block category %}
+	{% if editMode %}
+		Edition d'une catégorie de familier
+	{% else %}
+		Ajout d'une catégorie de familier
+	{% endif %}
+{% endblock %}
+
+{% block body %}
+    {{ form_start(formCat) }}
+
+        {{ form_row(formCat.name) }}
+
+        <button type="submit" class="btn btn-primary">
+            {% if editMode %}
+                Sauvgarder
+            {% else %}
+                Ajouter
+            {% endif %}
+        </button>
+
+    {{ form_end(formCat) }}
+{% endblock %}

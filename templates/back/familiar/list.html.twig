@@ -1,0 +1,77 @@
+{% extends 'back/baseAdmin.html.twig' %}
+
+{% block title %}Familiers{% endblock %}
+{% block category %}Listes des familiers{% endblock %}
+
+{% block body %}
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Nom</th>
+                <th scope="col">Catégorie</th>
+                <th scope="col">C1</th>
+                <th scope="col">C2</th>
+                <th scope="col">C3</th>
+                <th scope="col">Talent</th>
+                <th scope="col">Image</th>
+                <th scope="col">Image Tête</th>
+                <th scope="col">Edition / Suppression</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for f in familiars %}
+                <tr>
+                    <th scope="row">{{ f.id }}</th>
+                    <td>{{ f.name }}</td>
+                    <td>{{ f.familiarCat }}</td>
+                    <td>{{ f.competence1 }}</td>
+                    <td>{{ f.competence2 }}</td>
+                    <td>{{ f.competence3 }}</td>
+                    <td>{{ f.talent }}</td>
+
+                    {% if f.imageBackground is null %}
+                        <td>
+                            <button class="btn btn-primary">
+                                <a href="{{ path('admin_familiar_new_imageBackground', {'id' : f.id }) }}"><i class="fas fa-plus-circle"></i></a>
+                            </button>
+                        </td>
+                    {% else %}
+                        <td>
+                            <img class="lm-img" src="{{ asset('uploads/images/' ~ f.imageBackground) }}" alt="{{ f.imageBackground.alt }}">
+                            <button class="btn btn-danger">
+                                <a href="{{ path('admin_familiar_delete_imageBackground', {'id' : f.id }) }}"><i class="fas fa-minus-circle"></i></a>
+                            </button>
+                        </td>
+                    {% endif %}
+
+                    {% if f.imageHead is null %}
+                        <td>
+                            <button class="btn btn-primary">
+                                <a href="{{ path('admin_familiar_new_imageHead', {'id' : f.id }) }}"><i class="fas fa-plus-circle"></i></a>
+                            </button>
+                        </td>
+                    {% else %}
+                        <td>
+                            <img class="lm-img" src="{{ asset('uploads/images/' ~ f.imageHead) }}" alt="{{ f.imageHead.alt }}">
+                            <button class="btn btn-danger">
+                                <a href="{{ path('admin_familiar_delete_imageHead', {'id' : f.id }) }}"><i class="fas fa-minus-circle"></i></a>
+                            </button>
+                        </td>
+                    {% endif %} 
+
+                    <td>
+                        <button class="btn btn-primary">
+                            <a href="{{ path('admin_familiar_edit', {'id' : f.id }) }}"><i class="fas fa-edit"></i></a>
+                        </button>
+                        <button class="btn btn-danger">
+                            <a href="{{ path('admin_familiar_delete', {'id' : f.id }) }}"><i class="fas fa-minus-circle"></i></a>
+                        </button>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

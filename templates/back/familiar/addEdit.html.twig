@@ -1,0 +1,91 @@
+{% extends 'back/baseAdmin.html.twig' %}
+
+{% block title %}
+    {% if editMode %}
+        Edition d'un familier
+    {% else %}
+        Ajout d'un nouveau familier
+    {% endif %}
+{% endblock %}
+
+{% block category %}
+    {% if editMode %}
+        Edition d'un familier
+    {% else %}
+        Ajout d'un nouveau familier
+    {% endif %}
+{% endblock %}
+
+{% block body %}
+    {{ form_start(form) }}
+
+        <div class="row col-12">
+
+            <div class="form-group row col-12">
+                <div class="col-6">
+                    {{ form_label(form.name, 'Nom du familier') }}
+                    {{ form_widget(form.name) }}
+                </div>
+                <div class="col-6">
+                    {{ form_label(form.familiarCat, 'Catégorie du familier') }}
+                    {{ form_widget(form.familiarCat) }}
+                </div>
+            </div>
+
+            <div class="form-group row col-12">
+                <div class="col-6">
+                    {{ form_label(form.competence1, 'Compétence 1') }}
+                    {{ form_widget(form.competence1) }}
+                </div>
+                <div class="col-6">
+                    {{ form_label(form.competence1Desc, 'Description Compétence 1') }}
+                    {{ form_widget(form.competence1Desc) }}
+                </div>
+            </div>
+
+            <div class="form-group row col-12">
+                <div class="col-6">
+                    {{ form_label(form.competence2, 'Compétence 2') }}
+                    {{ form_widget(form.competence2) }}
+                </div>
+                <div class="col-6">
+                    {{ form_label(form.competence2Desc, 'Description Compétence 2') }}
+                    {{ form_widget(form.competence2Desc) }}
+                </div>
+            </div>
+
+            <div class="form-group row col-12">
+                <div class="col-6">
+                    {{ form_label(form.competence3, 'Compétence 3') }}
+                    {{ form_widget(form.competence3) }}
+                </div>
+                <div class="col-6">
+                    {{ form_label(form.competence3Desc, 'Description Compétence 3') }}
+                    {{ form_widget(form.competence3Desc) }}
+                </div>
+            </div>
+
+            <div class="form-group row col-12">
+                <div class="col-6">
+                    {{ form_label(form.talent, 'Talent') }}
+                    {{ form_widget(form.talent) }}
+                </div>
+                <div class="col-6">
+                    {{ form_label(form.talentDesc, 'Description du Talent') }}
+                    {{ form_widget(form.talentDesc) }}
+                </div>
+            </div>
+
+            <div class="m-auto">
+                <button type="submit" class="btn btn-primary">
+                    {% if editMode %}
+                        Sauvgarder
+                    {% else %}
+                        Ajouter
+                    {% endif %}
+                </button>
+            </div>
+        </div>
+
+    {{ form_end(form) }}
+{% endblock %}

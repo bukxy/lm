@@ -1,0 +1,36 @@
+{% extends 'back/baseAdmin.html.twig' %}
+
+{% block title %}Catégories Familiers{% endblock %}
+{% block category %}Liste des Catégories Familiers{% endblock %}
+
+{% block body %}
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Pacte</th>
+                <th scope="col">Nombre de familiers</th>
+                <th scope="col">Edition / Suppression</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for c in categories %}
+                <tr>
+                    <th scope="row">{{ c.id }}</th>
+                    <td>{{ c.name }}</td>
+                    <td>(Coming soon)</td>
+                    <td>
+                        <button class="btn btn-primary">
+                            <a href="{{ path('admin_familiar_category_edit', {'id' : c.id }) }}">Editer</a>
+                        </button>
+                        <button class="btn btn-danger">
+                            <a href="{{ path('admin_familiar_category_delete', {'id' : c.id }) }}">Supprimer</a>
+                        </button>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}
