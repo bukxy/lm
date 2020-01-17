@@ -86,6 +86,11 @@ class User implements UserInterface
     private $familiarCats;
 
     /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Events", mappedBy="user")
+     */
+    private $events;
+
+    /**
      * Generates the magic method
      * 
      */
@@ -109,6 +114,7 @@ class User implements UserInterface
         $this->researchCats = new ArrayCollection();
         $this->familiars = new ArrayCollection();
         $this->familiarCats = new ArrayCollection();
+        $this->events = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -493,6 +499,37 @@ class User implements UserInterface
             // set the owning side to null (unless already changed)
             if ($familiarCat->getUser() === $this) {
                 $familiarCat->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Events[]
+     */
+    public function getEvents(): Collection
+    {
+        return $this->events;
+    }
+
+    public function addEvent(Events $event): self
+    {
+        if (!$this->events->contains($event)) {
+            $this->events[] = $event;
+            $event->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeEvent(Events $event): self
+    {
+        if ($this->events->contains($event)) {
+            $this->events->removeElement($event);
+            // set the owning side to null (unless already changed)
+            if ($event->getUser() === $this) {
+                $event->setUser(null);
             }
         }
 
