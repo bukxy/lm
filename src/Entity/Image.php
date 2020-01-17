@@ -2,9 +2,9 @@
 
 namespace App\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ImageRepository")
@@ -54,6 +54,16 @@ class Image
     private $researches;
 
     /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Familiar", mappedBy="imageBackground")
+     */
+    private $familiars;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Familiar", mappedBy="imageHead")
+     */
+    private $familiarsHead;
+
+    /**
      * Generates the magic method
      * 
      */
@@ -70,6 +80,8 @@ class Image
         $this->boostTs = new ArrayCollection();
         $this->constructions = new ArrayCollection();
         $this->researches = new ArrayCollection();
+        $this->familiars = new ArrayCollection();
+        $this->familiarsHead = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -212,6 +224,68 @@ class Image
             // set the owning side to null (unless already changed)
             if ($research->getImage() === $this) {
                 $research->setImage(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Familiar[]
+     */
+    public function getFamiliars(): Collection
+    {
+        return $this->familiars;
+    }
+
+    public function addFamiliar(Familiar $familiar): self
+    {
+        if (!$this->familiars->contains($familiar)) {
+            $this->familiars[] = $familiar;
+            $familiar->setImageBackground($this);
+        }
+
+        return $this;
+    }
+
+    public function removeFamiliar(Familiar $familiar): self
+    {
+        if ($this->familiars->contains($familiar)) {
+            $this->familiars->removeElement($familiar);
+            // set the owning side to null (unless already changed)
+            if ($familiar->getImageBackground() === $this) {
+                $familiar->setImageBackground(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Familiar[]
+     */
+    public function getFamiliarsHead(): Collection
+    {
+        return $this->familiarsHead;
+    }
+
+    public function addFamiliarHead(Familiar $familiarHead): self
+    {
+        if (!$this->familiarsHead->contains($familiarHead)) {
+            $this->familiarsHead[] = $familiarHead;
+            $familiarHead->setImageHead($this);
+        }
+
+        return $this;
+    }
+
+    public function removeFamiliarHead(Familiar $familiarHead): self
+    {
+        if ($this->familiarsHead->contains($familiarHead)) {
+            $this->familiarsHead->removeElement($familiarHead);
+            // set the owning side to null (unless already changed)
+            if ($familiarHead->getImageHead() === $this) {
+                $familiarHead->setImageHead(null);
             }
         }
 
