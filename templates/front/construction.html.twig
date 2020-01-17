@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Les constructions{% endblock %}
+
+{% block contentTitle %}Les constructions{% endblock %}
+
+{% block body %}
+
+    <div class="filter-menu">
+        <div class="filter-list row">
+            <div class="col-12 title">
+                <h4>Filtres</h4>
+            </div>
+            <div class="col-6">
+                <div class="btn-group" role="group">
+                    <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Catégories
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                        <a class="dropdown-item" href="{{ path('construction') }}">Tout affiché</a>
+                        <div class="dropdown-divider"></div>
+                        {% for c in constructionCat %}
+                            {% if c.name != 'Default' %}
+                                <a class="dropdown-item" href="{{ path('construction_filter', {'id': c.id}) }}">{{ c.name }}</a>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% for c in construction %}
+        <article id="{{ c.name }}" class="const">
+            <div class="name">
+                <img src="{{ asset('uploads/bandeau_rouge.png') }}" alt="">
+                <div>
+                    <span>{{ c.name }}</span>
+                </div>
+            </div>
+
+            {% if c.image is null %}
+                <img src="{{ asset('uploads/default.png') }}" alt="">
+            {% else %}
+                <img src="{{ asset('uploads/images/' ~ c.image ) }}" alt="{{ c.image.alt }}">
+            {% endif %}
+
+            <div class="content">
+                {{ c.content | raw }}
+            </div>
+        </article>
+    {% endfor %}
+
+    <div class="navigation">
+        {{ knp_pagination_render(construction) }}
+    </div>
+
+{% endblock %}
+
