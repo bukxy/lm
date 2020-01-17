@@ -8,54 +8,90 @@
 
         {% block stylesheets %}{% endblock %}
     </head>
-    <body>
-        <div class="col-lg-8 myNav">
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+    <body class="m-auto">
+        <div class="icon"></div>
+        <section class="bodyContent">
+            <div class="col-lg-12 topNav mb-4">
+                <nav class="navbar navbar-expand-lg navbar-light">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#topNavigation" aria-controls="topNavigation" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#leftNavigation" aria-controls="leftNavigation" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
 
-                <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-                    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ path('index') }}">Accueil</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ path('familiar') }}">Familiers</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ path('hero') }}">Héros</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Constructions</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Recherches</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Evénements
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">Guilde Fest</a>
-                            <a class="dropdown-item" href="#">Epreuve de Guilde</a>
-                            <a class="dropdown-item" href="#">Bash de Guilde</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Arène du dragon</a>
-                            <a class="dropdown-item" href="#">Guerre Féodale</a>
-                            <a class="dropdown-item" href="#">Guerre pour le Calice</a>
+                    <div class="collapse navbar-collapse" id="topNavigation">
+                        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ path('index') }}"><i class="fas fa-home"></i> Accueil</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ path('app_login') }}">LOGIN</a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+
+            <div class="container col-12 row mr-auto">
+                <div class="leftNav mt-5">
+                    <nav class="navbar navbar-expand-lg navbar-light">
+                        <div class="leftNav-title">
+                            <img src="{{ asset('uploads/title-content.png') }}" alt="">
+                            <div>
+                                <p>Menu</p>
+                            </div>
                         </div>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ path('app_login') }}">LOGIN</a>
-                    </li>
+                        <div class="collapse navbar-collapse" id="leftNavigation">
+                            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ path('construction')}}">
+                                        <img src="{{ asset('uploads/icon/castle.png') }}" alt="">Constructions
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">
+                                        <img src="{{ asset('uploads/icon/academie.png') }}" alt="">Recherches
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ path('familiar') }}">
+                                        <img src="{{ asset('uploads/icon/familier.png') }}" alt="">Familiers
+                                    </a>
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Evénements
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item" href="#">Guilde Fest</a>
+                                        <a class="dropdown-item" href="#">Epreuve de Guilde</a>
+                                        <a class="dropdown-item" href="#">Bash de Guilde</a>
+                                        <a class="dropdown-item" href="#">Arène du dragon</a>
+                                        <a class="dropdown-item" href="#">Guerre Féodale</a>
+                                        <a class="dropdown-item" href="#">Guerre pour le Calice</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
                 </div>
-            </nav>
-        
-        {% block body %}{% endblock %}
-    
-        </div>
+                <div id="content" class="pageWidth mt-5">
+                    <div class="pageContent row-fluid">
+                        <div class="content-title">
+                            <img src="{{ asset('uploads/title-content.png') }}" alt="">
+                            <div>
+                                {% block contentTitle %}{% endblock %}
+                            </div>
+                        </div>
+                        {% block body %}{% endblock %}
+                    </div>
+                </div>
+            </div>        
+        </section>
+
             <script src="https://kit.fontawesome.com/4ab35c6c2f.js"></script>
+            <script src="https://unpkg.com/@popperjs/core@2.0.0-rc.1"></script>
 
             {{ encore_entry_script_tags('global') }}
             {{ encore_entry_script_tags('front') }}
