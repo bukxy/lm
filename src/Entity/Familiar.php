@@ -27,19 +27,34 @@ class Familiar
     private $name;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $competence1;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $competence1Desc;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $competence2;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $competence2Desc;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $competence3;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $competence3Desc;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -47,14 +62,22 @@ class Familiar
     private $talent;
 
     /**
-     * @ORM\OneToOne(targetEntity="App\Entity\Image", cascade={"persist", "remove"})
-     * @ORM\Column(nullable=true)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $image;
+    private $talentDesc;
 
     /**
-     * @ORM\OneToOne(targetEntity="App\Entity\Image", cascade={"persist", "remove"})
-     * @ORM\Column(nullable=true)
+     * @ORM\ManyToOne(targetEntity="App\Entity\FamiliarCat", inversedBy="familiar")
+     */
+    private $familiarCat;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Image", inversedBy="familiars")
+     */
+    private $imageBackground;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Image", inversedBy="familiarsHead")
      */
     private $imageHead;
 
@@ -92,9 +115,21 @@ class Familiar
         return $this->competence1;
     }
 
-    public function setCompetence1(string $competence1): self
+    public function setCompetence1(?string $competence1): self
     {
         $this->competence1 = $competence1;
+
+        return $this;
+    }
+
+    public function getCompetence1Desc(): ?string
+    {
+        return $this->competence1Desc;
+    }
+
+    public function setCompetence1Desc(?string $competence1Desc): self
+    {
+        $this->competence1Desc = $competence1Desc;
 
         return $this;
     }
@@ -104,9 +139,21 @@ class Familiar
         return $this->competence2;
     }
 
-    public function setCompetence2(string $competence2): self
+    public function setCompetence2(?string $competence2): self
     {
         $this->competence2 = $competence2;
+
+        return $this;
+    }
+
+    public function getCompetence2Desc(): ?string
+    {
+        return $this->competence2Desc;
+    }
+
+    public function setCompetence2Desc(?string $competence2Desc): self
+    {
+        $this->competence2Desc = $competence2Desc;
 
         return $this;
     }
@@ -116,9 +163,21 @@ class Familiar
         return $this->competence3;
     }
 
-    public function setCompetence3(string $competence3): self
+    public function setCompetence3(?string $competence3): self
     {
         $this->competence3 = $competence3;
+
+        return $this;
+    }
+
+    public function getCompetence3Desc(): ?string
+    {
+        return $this->competence3Desc;
+    }
+
+    public function setCompetence3Desc(?string $competence3Desc): self
+    {
+        $this->competence3Desc = $competence3Desc;
 
         return $this;
     }
@@ -135,14 +194,38 @@ class Familiar
         return $this;
     }
 
-    public function getImage(): ?Image
+    public function getTalentDesc(): ?string
     {
-        return $this->image;
+        return $this->talentDesc;
     }
 
-    public function setImage(?Image $image): self
+    public function setTalentDesc(?string $talentDesc): self
     {
-        $this->image = $image;
+        $this->talentDesc = $talentDesc;
+
+        return $this;
+    }
+
+    public function getFamiliarCat(): ?FamiliarCat
+    {
+        return $this->familiarCat;
+    }
+
+    public function setFamiliarCat(?FamiliarCat $familiarCat): self
+    {
+        $this->familiarCat = $familiarCat;
+
+        return $this;
+    }
+
+    public function getImageBackground(): ?Image
+    {
+        return $this->imageBackground;
+    }
+
+    public function setImageBackground(?Image $imageBackground): self
+    {
+        $this->imageBackground = $imageBackground;
 
         return $this;
     }
