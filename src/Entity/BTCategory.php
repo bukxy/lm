@@ -29,7 +29,7 @@ class BTCategory
     private $name;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\BoostTerritory", mappedBy="bTCategory")
+     * @ORM\OneToMany(targetEntity="App\Entity\BoostTerritory", mappedBy="btCategory")
      */
     private $boostTerritory;
 
