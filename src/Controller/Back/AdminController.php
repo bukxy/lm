@@ -4,7 +4,11 @@ namespace App\Controller\Back;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
+/**
+* @IsGranted("ROLE_ADMIN_ACCESS")
+**/
 class AdminController extends AbstractController
 {
     /**

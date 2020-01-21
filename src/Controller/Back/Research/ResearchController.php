@@ -19,8 +19,10 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Security;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 /**
+* @IsGranted("ROLE_ADMIN_RESEARCHS")
 * @Route("/admin/research")
 */
 class ResearchController extends AbstractController
@@ -59,7 +61,7 @@ class ResearchController extends AbstractController
             $r->setUser($user);
             $manager->persist($r);
             $manager->flush();
-            return $this->redirectToRoute('admin_Research_list');
+            return $this->redirectToRoute('admin_research_list');
         }
 
         return $this->render('back/research/addEdit.html.twig', [
@@ -86,10 +88,10 @@ class ResearchController extends AbstractController
     /**
      * @Route("/image/add/{id}", name="admin_research_new_image")
      */
-    public function AddImage(Research $c, Image $i = null, Request $req, EntityManagerInterface $manager, Security $security)
+    public function AddImage(Research $r, Image $i = null, Request $req, EntityManagerInterface $manager, Security $security)
     {
-        if (!$r) {
-            $r = new Image();
+        if (!$i) {
+            $i = new Image();
         }
 
         $formImg = $this->createForm(ImageType::class, $r);
@@ -136,7 +138,7 @@ class ResearchController extends AbstractController
             $manager->persist($r);
             $manager->persist($i);
             $manager->flush();
-            return $this->redirectToRoute('admin_Research_list');
+            return $this->redirectToRoute('admin_research_list');
         }
 
         return $this->render('back/research/AddEditImage.html.twig', [
