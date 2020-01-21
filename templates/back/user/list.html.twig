@@ -1,0 +1,36 @@
+{% extends 'back/baseAdmin.html.twig' %}
+
+{% block title %}utilisateurs{% endblock %}
+{% block category %}Listes des utilisateurs{% endblock %}
+
+{% block body %}
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Pseudo</th>
+                <th scope="col">Adresse E-Mail</th>
+                <th scope="col">Edition / Suppression</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for u in users %}
+                <tr>
+                    <th scope="row">{{ u.id }}</th>
+                    <td>{{ u.pseudo }}</td>
+                    <td>{{ u.email }}</td>
+                    <td>
+                        <button class="btn btn-primary">
+                            <a href="{{ path('admin_user_edit', {'id' : u.id }) }}"><i class="fas fa-edit"></i></a>
+                        </button>
+                        <button class="btn btn-danger">
+                            <a href="{{ path('admin_user_delete', {'id' : u.id }) }}"><i class="fas fa-minus-circle"></i></a>
+                        </button>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}
