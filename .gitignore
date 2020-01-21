@@ -1,4 +1,6 @@
 /cmd.lnk
+###> images uploads ###
+/public/uploads/images/
 ###> symfony/framework-bundle ###
 /.env.local
 /.env.local.php
