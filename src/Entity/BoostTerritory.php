@@ -37,7 +37,7 @@ class BoostTerritory
     private $btCategory;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Image", inversedBy="name")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Image", inversedBy="boostTs")
      */
     private $image;
 
