@@ -1,4 +1,4 @@
-# lm
+# v.ALPHA
 
 Site non officiel de tutoriels pour le jeu LordsMobile,
 
