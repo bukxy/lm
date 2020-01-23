@@ -2,26 +2,18 @@
 
 {% block title %}
     {% if editMode %}
-        Edition de la construction
+        Edition utilisateur
     {% else %}
-        Ajout construction
-    {% endif %}
-{% endblock %}
-
-{% block category %}
-    {% if editMode %}
-        Edition de la construction
-    {% else %}
-        Ajout d'une nouvelle construction
+        Ajout utilisateur
     {% endif %}
 {% endblock %}
 
 {% block body %}
 {{ form_start(form) }}
-    <div class="row col-10 m-auto">
+    <div class="row col-10 m-auto perms">
         <div class="card col-8">
             <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">Mon compte</h6>
+                <h6 class="m-0 font-weight-bold text-primary">Edition de l'utilisateur</h6>
             </div>
             <div class="card-body">
                 
@@ -54,14 +46,13 @@
                 {% endif %}
             </button>
         </div>
-        <div class="card col-4">
+        <div class="card col-3">
             <div class="card-header py-3">
                 <h6 class="m-0 font-weight-bold text-primary">Permissions</h6>
             </div>
             <div class="card-body">
                 
                 <div class="form-group user-perms">
-                    {{ form_label(form.roles, 'Permissions') }}
                     {{ form_widget(form.roles) }}
                 </div> 
                 
