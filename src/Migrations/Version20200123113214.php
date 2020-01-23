@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20191229175259 extends AbstractMigration
+final class Version20200123113214 extends AbstractMigration
 {
     public function getDescription() : string
     {
@@ -22,10 +22,9 @@ final class Version20191229175259 extends AbstractMigration
         // this up() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('ALTER TABLE boost_territory ADD image_id INT DEFAULT NULL');
-        $this->addSql('ALTER TABLE boost_territory ADD CONSTRAINT FK_94EC41593DA5256D FOREIGN KEY (image_id) REFERENCES image (id)');
-        $this->addSql('CREATE INDEX IDX_94EC41593DA5256D ON boost_territory (image_id)');
-        $this->addSql('ALTER TABLE image ADD alt VARCHAR(255) NOT NULL');
+        $this->addSql('CREATE TABLE research (id INT AUTO_INCREMENT NOT NULL, user_id INT DEFAULT NULL, image_id INT DEFAULT NULL, name VARCHAR(255) NOT NULL, content LONGTEXT NOT NULL, INDEX IDX_57EB50C2A76ED395 (user_id), INDEX IDX_57EB50C23DA5256D (image_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
+        $this->addSql('ALTER TABLE research ADD CONSTRAINT FK_57EB50C2A76ED395 FOREIGN KEY (user_id) REFERENCES user (id)');
+        $this->addSql('ALTER TABLE research ADD CONSTRAINT FK_57EB50C23DA5256D FOREIGN KEY (image_id) REFERENCES image (id)');
     }
 
     public function down(Schema $schema) : void
@@ -33,9 +32,6 @@ final class Version20191229175259 extends AbstractMigration
         // this down() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('ALTER TABLE boost_territory DROP FOREIGN KEY FK_94EC41593DA5256D');
-        $this->addSql('DROP INDEX IDX_94EC41593DA5256D ON boost_territory');
-        $this->addSql('ALTER TABLE boost_territory DROP image_id');
-        $this->addSql('ALTER TABLE image DROP alt');
+        $this->addSql('DROP TABLE research');
     }
 }

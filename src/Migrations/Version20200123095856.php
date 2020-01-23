@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20200113162352 extends AbstractMigration
+final class Version20200123095856 extends AbstractMigration
 {
     public function getDescription() : string
     {
@@ -22,7 +22,9 @@ final class Version20200113162352 extends AbstractMigration
         // this up() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('ALTER TABLE familiar CHANGE competence3 competence3 VARCHAR(255) DEFAULT NULL');
+        $this->addSql('CREATE TABLE construction (id INT AUTO_INCREMENT NOT NULL, user_id INT DEFAULT NULL, image_id INT DEFAULT NULL, name VARCHAR(255) NOT NULL, content LONGTEXT NOT NULL, INDEX IDX_DC91E26EA76ED395 (user_id), INDEX IDX_DC91E26E3DA5256D (image_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
+        $this->addSql('ALTER TABLE construction ADD CONSTRAINT FK_DC91E26EA76ED395 FOREIGN KEY (user_id) REFERENCES user (id)');
+        $this->addSql('ALTER TABLE construction ADD CONSTRAINT FK_DC91E26E3DA5256D FOREIGN KEY (image_id) REFERENCES image (id)');
     }
 
     public function down(Schema $schema) : void
@@ -30,6 +32,6 @@ final class Version20200113162352 extends AbstractMigration
         // this down() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('ALTER TABLE familiar CHANGE competence3 competence3 VARCHAR(255) CHARACTER SET utf8mb4 NOT NULL COLLATE `utf8mb4_unicode_ci`');
+        $this->addSql('DROP TABLE construction');
     }
 }
