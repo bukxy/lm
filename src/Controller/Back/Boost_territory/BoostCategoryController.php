@@ -2,10 +2,10 @@
 
 namespace App\Controller\Back\Boost_territory;
 
-use App\Entity\BTCategory;
-use App\Form\BTCategoryType;
+use App\Entity\BoostTerritoryCat;
+use App\Form\BoostTerritoryCatType;
 
-use App\Repository\BTCategoryRepository;
+use App\Repository\BoostTerritoryCatRepository;
 
 use Doctrine\ORM\EntityManagerInterface;
 use App\Repository\BoostTerritoryRepository;
@@ -24,7 +24,7 @@ class BoostCategoryController extends AbstractController
     /**
      * @Route("/", name="admin_boost_category_list")
      */
-    public function listCategory(BTCategoryRepository $b)
+    public function listCategory(BoostTerritoryCatRepository $b)
     {
         return $this->render('back/boost/catList.html.twig', [
             'categories' => $b->findAll()
@@ -35,13 +35,13 @@ class BoostCategoryController extends AbstractController
      * @Route("/new", name="admin_boost_category_new")
      * @Route("/edit/{id}", name="admin_boost_category_edit")
      */
-    public function AddEditCategory(BTCategory $b = null, Request $req, EntityManagerInterface $manager, Security $security)
+    public function AddEditCategory(BoostTerritoryCat $b = null, Request $req, EntityManagerInterface $manager, Security $security)
     {
         if (!$b) {
-            $b = new BTCategory();
+            $b = new BoostTerritoryCat();
         }
 
-        $form = $this->createForm(BTCategoryType::class, $b);
+        $form = $this->createForm(BoostTerritoryCatType::class, $b);
         $form->handleRequest($req);
 
         if ($form->isSubmitted() && $form->isValid()){
@@ -61,9 +61,9 @@ class BoostCategoryController extends AbstractController
     /**
      * @Route("/delete/{id}", name="admin_boost_category_delete")
      */
-    public function deleteCategory(BTCategory $b, BTCategoryRepository $bCatRepo, BoostTerritoryRepository $bRepo, EntityManagerInterface $manager, Security $security) {
+    public function deleteCategory(BoostTerritoryCat $b, BoostTerritoryCatRepository $bCatRepo, BoostTerritoryRepository $bRepo, EntityManagerInterface $manager, Security $security) {
         if ($security->getUser()){
-            $bts = $bRepo->findBy(['btCategory' => $b->getId()]);
+            $bts = $bRepo->findBy(['boostTerritoryCat' => $b->getId()]);
         
             if($bts){
                 $cat = $bCatRepo->find(['id' => 1]);
