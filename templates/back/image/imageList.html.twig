@@ -1,40 +1,55 @@
 {% extends 'back/baseAdmin.html.twig' %}
 
 {% block title %}Liste des images{% endblock %}
-{% block category %}Liste des Images{% endblock %}
 
 {% block body %}
-    <div class="alert alert-danger">En passant pas cette page ca ne supprime pas l'image dans le dossier du site, le fait uniquement en bdd !</div>
-    <table class="table table-bordered">
-        <thead>
-            <tr>
-                <th scope="col">ID</th>
-                <th scope="col">Nom</th>
-                <th scope="col">Catégorie</th>
-                <th scope="col">Aperçu</th>
-                <th scope="col">Edition / Suppression</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for i in images %}
-                <tr>
-                    <th scope="row">{{ i.id }}</th>
-                    <td>{{ i.name }}</td>
-                    <td>{{ i.imageCat }}</td>
-                    <td>
-                        <img class="lm-img" src="{{ asset('uploads/images/' ~ i.name) }}" alt="{{ i.alt }}">
-                    </td>
-                    <td>
-                        <button class="btn btn-primary">
-                            <a href="{{ path('admin_image_edit', {'id' : i.id }) }}"><i class="fas fa-edit"></i></a>
-                        </button>
-                        <button class="btn btn-danger">
-                            <a href="{{ path('admin_image_delete', {'id' : i.id }) }}"><i class="fas fa-minus-circle"></i></a>
-                        </button>
-                    </td>
-                </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Liste des images</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Nom</th>
+                            <th>Catégorie</th>
+                            <th>Aperçu</th>
+                            <th>options</th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th>Nom</th>
+                            <th>Catégorie</th>
+                            <th>Aperçu</th>
+                            <th>options</th>
+                        </tr>
+                    </tfoot>
+                    <tbody>
+                        {% for i in images %}
+                            <tr>
+                                <td>{{ i.name }}</td>
+                                <td>{{ i.imageCat }}</td>
+                                <td>
+                                    <img class="lm-img" src="{{ asset('uploads/images/' ~ i.name) }}" alt="{{ i.alt }}">
+                                </td>
+                                <td>
+                                    <button class="btn btn-primary">
+                                        <a href="{{ path('admin_image_edit', {'id' : i.id }) }}"><i class="fas fa-edit"></i></a>
+                                    </button>
+                                    <button class="btn btn-danger">
+                                        <a href="{{ path('admin_image_delete', {'id' : i.id }) }}"><i class="fas fa-minus-circle"></i></a>
+                                    </button>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 
 {% endblock %}
