@@ -5,15 +5,16 @@ namespace App\Controller\Back\Event;
 use App\Entity\Events;
 use App\Form\EventsType;
 
+use Cocur\Slugify\Slugify;
 use App\Repository\ImageRepository;
-use Doctrine\ORM\EntityManagerInterface;
 use App\Repository\ResearchRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use App\Repository\ResearchCatRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Security;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 /**
 * @IsGranted("ROLE_ADMIN_EVENTS")
@@ -22,7 +23,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 class EventsController extends AbstractController
 {
     /**
-     * @Route("/edit/{id}", name="admin_event_edit")
+     * @Route("/edit/{slug}", name="admin_event_edit")
      */
     public function edit(Events $e = null, Request $req, EntityManagerInterface $manager, Security $security)
     {
@@ -34,6 +35,9 @@ class EventsController extends AbstractController
         $form->handleRequest($req);
 
         if ($form->isSubmitted() && $form->isValid()){
+
+            $slugify = new Slugify();
+            $e->setSlug($slugify->slugify($form['name']->getData()));
 
             $user = $security->getUser();
 
