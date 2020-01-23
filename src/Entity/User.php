@@ -41,19 +41,19 @@ class User implements UserInterface
     private $password;
 
     /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Image", mappedBy="user")
+     */
+    private $images;
+
+    /**
      * @ORM\OneToMany(targetEntity="App\Entity\BoostTerritory", mappedBy="user")
      */
     private $boostTerritories;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\BTCategory", mappedBy="user")
+     * @ORM\OneToMany(targetEntity="App\Entity\BoostTerritoryCat", mappedBy="user")
      */
-    private $bTCategories;
-
-    /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Image", mappedBy="user")
-     */
-    private $images;
+    private $boostTerritoryCats;
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Construction", mappedBy="user")
@@ -64,6 +64,21 @@ class User implements UserInterface
      * @ORM\OneToMany(targetEntity="App\Entity\ConstructionCat", mappedBy="user")
      */
     private $constructionCats;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Events", mappedBy="user")
+     */
+    private $events;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Familiar", mappedBy="user")
+     */
+    private $familiars;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\FamiliarCat", mappedBy="user")
+     */
+    private $familiarCats;
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\ImageCat", mappedBy="user")
@@ -80,20 +95,20 @@ class User implements UserInterface
      */
     private $researchCats;
 
-    /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Familiar", mappedBy="user")
-     */
-    private $familiars;
-
-    /**
-     * @ORM\OneToMany(targetEntity="App\Entity\FamiliarCat", mappedBy="user")
-     */
-    private $familiarCats;
-
-    /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Events", mappedBy="user")
-     */
-    private $events;
+    public function __construct()
+    {
+        $this->images = new ArrayCollection();
+        $this->boostTerritories = new ArrayCollection();
+        $this->boostTerritoryCats = new ArrayCollection();
+        $this->constructions = new ArrayCollection();
+        $this->constructionCats = new ArrayCollection();
+        $this->events = new ArrayCollection();
+        $this->familiars = new ArrayCollection();
+        $this->familiarCats = new ArrayCollection();
+        $this->imageCats = new ArrayCollection();
+        $this->researches = new ArrayCollection();
+        $this->researchCats = new ArrayCollection();
+    }
 
     /**
      * Generates the magic method
@@ -104,22 +119,6 @@ class User implements UserInterface
         return $this->email;
         // to show the id of the Category in the select
         // return $this->id;
-    }
-
-    public function __construct()
-    {
-        $this->constructs = new ArrayCollection();
-        $this->images = new ArrayCollection();
-        $this->boostTerritories = new ArrayCollection();
-        $this->bTCategories = new ArrayCollection();
-        $this->constructions = new ArrayCollection();
-        $this->constructionCats = new ArrayCollection();
-        $this->imageCats = new ArrayCollection();
-        $this->researches = new ArrayCollection();
-        $this->researchCats = new ArrayCollection();
-        $this->familiars = new ArrayCollection();
-        $this->familiarCats = new ArrayCollection();
-        $this->events = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -213,6 +212,37 @@ class User implements UserInterface
     }
 
     /**
+     * @return Collection|Image[]
+     */
+    public function getImages(): Collection
+    {
+        return $this->images;
+    }
+
+    public function addImage(Image $image): self
+    {
+        if (!$this->images->contains($image)) {
+            $this->images[] = $image;
+            $image->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeImage(Image $image): self
+    {
+        if ($this->images->contains($image)) {
+            $this->images->removeElement($image);
+            // set the owning side to null (unless already changed)
+            if ($image->getUser() === $this) {
+                $image->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
      * @return Collection|BoostTerritory[]
      */
     public function getBoostTerritories(): Collection
@@ -244,61 +274,30 @@ class User implements UserInterface
     }
 
     /**
-     * @return Collection|BTCategory[]
+     * @return Collection|BoostTerritoryCat[]
      */
-    public function getBTCategories(): Collection
+    public function getBoostTerritoryCats(): Collection
     {
-        return $this->bTCategories;
+        return $this->boostTerritoryCats;
     }
 
-    public function addBTCategory(BTCategory $bTCategory): self
+    public function addBoostTerritoryCat(BoostTerritoryCat $boostTerritoryCat): self
     {
-        if (!$this->bTCategories->contains($bTCategory)) {
-            $this->bTCategories[] = $bTCategory;
-            $bTCategory->setUser($this);
+        if (!$this->boostTerritoryCats->contains($boostTerritoryCat)) {
+            $this->boostTerritoryCats[] = $boostTerritoryCat;
+            $boostTerritoryCat->setUser($this);
         }
 
         return $this;
     }
 
-    public function removeBTCategory(BTCategory $bTCategory): self
+    public function removeBoostTerritoryCat(BoostTerritoryCat $boostTerritoryCat): self
     {
-        if ($this->bTCategories->contains($bTCategory)) {
-            $this->bTCategories->removeElement($bTCategory);
+        if ($this->boostTerritoryCats->contains($boostTerritoryCat)) {
+            $this->boostTerritoryCats->removeElement($boostTerritoryCat);
             // set the owning side to null (unless already changed)
-            if ($bTCategory->getUser() === $this) {
-                $bTCategory->setUser(null);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Image[]
-     */
-    public function getImages(): Collection
-    {
-        return $this->images;
-    }
-
-    public function addImage(Image $image): self
-    {
-        if (!$this->images->contains($image)) {
-            $this->images[] = $image;
-            $image->setUser($this);
-        }
-
-        return $this;
-    }
-
-    public function removeImage(Image $image): self
-    {
-        if ($this->images->contains($image)) {
-            $this->images->removeElement($image);
-            // set the owning side to null (unless already changed)
-            if ($image->getUser() === $this) {
-                $image->setUser(null);
+            if ($boostTerritoryCat->getUser() === $this) {
+                $boostTerritoryCat->setUser(null);
             }
         }
 
@@ -361,6 +360,99 @@ class User implements UserInterface
             // set the owning side to null (unless already changed)
             if ($constructionCat->getUser() === $this) {
                 $constructionCat->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Events[]
+     */
+    public function getEvents(): Collection
+    {
+        return $this->events;
+    }
+
+    public function addEvent(Events $event): self
+    {
+        if (!$this->events->contains($event)) {
+            $this->events[] = $event;
+            $event->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeEvent(Events $event): self
+    {
+        if ($this->events->contains($event)) {
+            $this->events->removeElement($event);
+            // set the owning side to null (unless already changed)
+            if ($event->getUser() === $this) {
+                $event->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Familiar[]
+     */
+    public function getFamiliars(): Collection
+    {
+        return $this->familiars;
+    }
+
+    public function addFamiliar(Familiar $familiar): self
+    {
+        if (!$this->familiars->contains($familiar)) {
+            $this->familiars[] = $familiar;
+            $familiar->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeFamiliar(Familiar $familiar): self
+    {
+        if ($this->familiars->contains($familiar)) {
+            $this->familiars->removeElement($familiar);
+            // set the owning side to null (unless already changed)
+            if ($familiar->getUser() === $this) {
+                $familiar->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|FamiliarCat[]
+     */
+    public function getFamiliarCats(): Collection
+    {
+        return $this->familiarCats;
+    }
+
+    public function addFamiliarCat(FamiliarCat $familiarCat): self
+    {
+        if (!$this->familiarCats->contains($familiarCat)) {
+            $this->familiarCats[] = $familiarCat;
+            $familiarCat->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeFamiliarCat(FamiliarCat $familiarCat): self
+    {
+        if ($this->familiarCats->contains($familiarCat)) {
+            $this->familiarCats->removeElement($familiarCat);
+            // set the owning side to null (unless already changed)
+            if ($familiarCat->getUser() === $this) {
+                $familiarCat->setUser(null);
             }
         }
 
@@ -454,99 +546,6 @@ class User implements UserInterface
             // set the owning side to null (unless already changed)
             if ($researchCat->getUser() === $this) {
                 $researchCat->setUser(null);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Familiar[]
-     */
-    public function getFamiliars(): Collection
-    {
-        return $this->familiars;
-    }
-
-    public function addFamiliar(Familiar $familiar): self
-    {
-        if (!$this->familiars->contains($familiar)) {
-            $this->familiars[] = $familiar;
-            $familiar->setUser($this);
-        }
-
-        return $this;
-    }
-
-    public function removeFamiliar(Familiar $familiar): self
-    {
-        if ($this->familiars->contains($familiar)) {
-            $this->familiars->removeElement($familiar);
-            // set the owning side to null (unless already changed)
-            if ($familiar->getUser() === $this) {
-                $familiar->setUser(null);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|FamiliarCat[]
-     */
-    public function getFamiliarCats(): Collection
-    {
-        return $this->familiarCats;
-    }
-
-    public function addFamiliarCat(FamiliarCat $familiarCat): self
-    {
-        if (!$this->familiarCats->contains($familiarCat)) {
-            $this->familiarCats[] = $familiarCat;
-            $familiarCat->setUser($this);
-        }
-
-        return $this;
-    }
-
-    public function removeFamiliarCat(FamiliarCat $familiarCat): self
-    {
-        if ($this->familiarCats->contains($familiarCat)) {
-            $this->familiarCats->removeElement($familiarCat);
-            // set the owning side to null (unless already changed)
-            if ($familiarCat->getUser() === $this) {
-                $familiarCat->setUser(null);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Events[]
-     */
-    public function getEvents(): Collection
-    {
-        return $this->events;
-    }
-
-    public function addEvent(Events $event): self
-    {
-        if (!$this->events->contains($event)) {
-            $this->events[] = $event;
-            $event->setUser($this);
-        }
-
-        return $this;
-    }
-
-    public function removeEvent(Events $event): self
-    {
-        if ($this->events->contains($event)) {
-            $this->events->removeElement($event);
-            // set the owning side to null (unless already changed)
-            if ($event->getUser() === $this) {
-                $event->setUser(null);
             }
         }
 

@@ -32,14 +32,14 @@ class BoostTerritory
     private $content;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\BTCategory", inversedBy="boostTerritory")
-     */
-    private $btCategory;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Image", inversedBy="boostTs")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Image", inversedBy="boostTerritories")
      */
     private $image;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\BoostTerritoryCat", inversedBy="boostTerritory")
+     */
+    private $boostTerritoryCat;
 
     public function getId(): ?int
     {
@@ -82,18 +82,6 @@ class BoostTerritory
         return $this;
     }
 
-    public function getbtCategory(): ?BTCategory
-    {
-        return $this->btCategory;
-    }
-
-    public function setbtCategory(?BTCategory $btCategory): self
-    {
-        $this->btCategory = $btCategory;
-
-        return $this;
-    }
-
     public function getImage(): ?Image
     {
         return $this->image;
@@ -102,6 +90,18 @@ class BoostTerritory
     public function setImage(?Image $image): self
     {
         $this->image = $image;
+
+        return $this;
+    }
+
+    public function getBoostTerritoryCat(): ?BoostTerritoryCat
+    {
+        return $this->boostTerritoryCat;
+    }
+
+    public function setBoostTerritoryCat(?BoostTerritoryCat $boostTerritoryCat): self
+    {
+        $this->boostTerritoryCat = $boostTerritoryCat;
 
         return $this;
     }

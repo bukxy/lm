@@ -2,9 +2,9 @@
 
 namespace App\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ImageRepository")
@@ -36,12 +36,22 @@ class Image
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\BoostTerritory", mappedBy="image")
      */
-    private $boostTs;
+    private $boostTerritories;
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Construction", mappedBy="image")
      */
     private $constructions;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Familiar", mappedBy="imageBackground")
+     */
+    private $familiarBackground;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Familiar", mappedBy="imageHead")
+     */
+    private $familiarHead;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\ImageCat", inversedBy="image")
@@ -53,35 +63,13 @@ class Image
      */
     private $researches;
 
-    /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Familiar", mappedBy="imageBackground")
-     */
-    private $familiars;
-
-    /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Familiar", mappedBy="imageHead")
-     */
-    private $familiarsHead;
-
-    /**
-     * Generates the magic method
-     * 
-     */
-    public function __toString(){
-        // to show the name of the Category in the select
-        return $this->name;
-        return $this->alt;
-        // to show the id of the Category in the select
-        // return $this->id;
-    }
-
     public function __construct()
     {
-        $this->boostTs = new ArrayCollection();
+        $this->boostTerritories = new ArrayCollection();
         $this->constructions = new ArrayCollection();
+        $this->familiarBackground = new ArrayCollection();
+        $this->familiarHead = new ArrayCollection();
         $this->researches = new ArrayCollection();
-        $this->familiars = new ArrayCollection();
-        $this->familiarsHead = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -128,28 +116,28 @@ class Image
     /**
      * @return Collection|BoostTerritory[]
      */
-    public function getBoostTs(): Collection
+    public function getBoostTerritories(): Collection
     {
-        return $this->boostTs;
+        return $this->boostTerritories;
     }
 
-    public function addBoostT(BoostTerritory $boost): self
+    public function addBoostTerritory(BoostTerritory $boostTerritory): self
     {
-        if (!$this->boostTs->contains($boost)) {
-            $this->boostTs[] = $boost;
-            $boost->setImage($this);
+        if (!$this->boostTerritories->contains($boostTerritory)) {
+            $this->boostTerritories[] = $boostTerritory;
+            $boostTerritory->setImage($this);
         }
 
         return $this;
     }
 
-    public function removeBoostT(BoostTerritory $boost): self
+    public function removeBoostTerritory(BoostTerritory $boostTerritory): self
     {
-        if ($this->boostTs->contains($boost)) {
-            $this->boostTs->removeElement($boost);
+        if ($this->boostTerritories->contains($boostTerritory)) {
+            $this->boostTerritories->removeElement($boostTerritory);
             // set the owning side to null (unless already changed)
-            if ($boost->getImage() === $this) {
-                $boost->setImage(null);
+            if ($boostTerritory->getImage() === $this) {
+                $boostTerritory->setImage(null);
             }
         }
 
@@ -181,6 +169,68 @@ class Image
             // set the owning side to null (unless already changed)
             if ($construction->getImage() === $this) {
                 $construction->setImage(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Familiar[]
+     */
+    public function getFamiliarBackground(): Collection
+    {
+        return $this->familiarBackground;
+    }
+
+    public function addFamiliarBackground(Familiar $familiarBackground): self
+    {
+        if (!$this->familiarBackground->contains($familiarBackground)) {
+            $this->familiarBackground[] = $familiarBackground;
+            $familiarBackground->setImageBackground($this);
+        }
+
+        return $this;
+    }
+
+    public function removeFamiliarBackground(Familiar $familiarBackground): self
+    {
+        if ($this->familiarBackground->contains($familiarBackground)) {
+            $this->familiarBackground->removeElement($familiarBackground);
+            // set the owning side to null (unless already changed)
+            if ($familiarBackground->getImageBackground() === $this) {
+                $familiarBackground->setImageBackground(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Familiar[]
+     */
+    public function getFamiliarHead(): Collection
+    {
+        return $this->familiarHead;
+    }
+
+    public function addFamiliarHead(Familiar $familiarHead): self
+    {
+        if (!$this->familiarHead->contains($familiarHead)) {
+            $this->familiarHead[] = $familiarHead;
+            $familiarHead->setImageHead($this);
+        }
+
+        return $this;
+    }
+
+    public function removeFamiliarHead(Familiar $familiarHead): self
+    {
+        if ($this->familiarHead->contains($familiarHead)) {
+            $this->familiarHead->removeElement($familiarHead);
+            // set the owning side to null (unless already changed)
+            if ($familiarHead->getImageHead() === $this) {
+                $familiarHead->setImageHead(null);
             }
         }
 
@@ -224,68 +274,6 @@ class Image
             // set the owning side to null (unless already changed)
             if ($research->getImage() === $this) {
                 $research->setImage(null);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Familiar[]
-     */
-    public function getFamiliars(): Collection
-    {
-        return $this->familiars;
-    }
-
-    public function addFamiliar(Familiar $familiar): self
-    {
-        if (!$this->familiars->contains($familiar)) {
-            $this->familiars[] = $familiar;
-            $familiar->setImageBackground($this);
-        }
-
-        return $this;
-    }
-
-    public function removeFamiliar(Familiar $familiar): self
-    {
-        if ($this->familiars->contains($familiar)) {
-            $this->familiars->removeElement($familiar);
-            // set the owning side to null (unless already changed)
-            if ($familiar->getImageBackground() === $this) {
-                $familiar->setImageBackground(null);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Familiar[]
-     */
-    public function getFamiliarsHead(): Collection
-    {
-        return $this->familiarsHead;
-    }
-
-    public function addFamiliarHead(Familiar $familiarHead): self
-    {
-        if (!$this->familiarsHead->contains($familiarHead)) {
-            $this->familiarsHead[] = $familiarHead;
-            $familiarHead->setImageHead($this);
-        }
-
-        return $this;
-    }
-
-    public function removeFamiliarHead(Familiar $familiarHead): self
-    {
-        if ($this->familiarsHead->contains($familiarHead)) {
-            $this->familiarsHead->removeElement($familiarHead);
-            // set the owning side to null (unless already changed)
-            if ($familiarHead->getImageHead() === $this) {
-                $familiarHead->setImageHead(null);
             }
         }
 

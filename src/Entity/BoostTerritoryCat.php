@@ -7,9 +7,9 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\BTCategoryRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\BoostTerritoryCatRepository")
  */
-class BTCategory
+class BoostTerritoryCat
 {
     /**
      * @ORM\Id()
@@ -19,7 +19,7 @@ class BTCategory
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="bTCategories")
+     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="boostTerritoryCats")
      */
     private $user;
 
@@ -29,20 +29,9 @@ class BTCategory
     private $name;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\BoostTerritory", mappedBy="btCategory")
+     * @ORM\OneToMany(targetEntity="App\Entity\BoostTerritory", mappedBy="boostTerritoryCat")
      */
     private $boostTerritory;
-
-    /**
-     * Generates the magic method
-     * 
-     */
-    public function __toString(){
-        // to show the name of the Category in the select
-        return $this->name;
-        // to show the id of the Category in the select
-        // return $this->id;
-    }
 
     public function __construct()
     {
@@ -90,7 +79,7 @@ class BTCategory
     {
         if (!$this->boostTerritory->contains($boostTerritory)) {
             $this->boostTerritory[] = $boostTerritory;
-            $boostTerritory->setBTCategory($this);
+            $boostTerritory->setBoostTerritoryCat($this);
         }
 
         return $this;
@@ -101,8 +90,8 @@ class BTCategory
         if ($this->boostTerritory->contains($boostTerritory)) {
             $this->boostTerritory->removeElement($boostTerritory);
             // set the owning side to null (unless already changed)
-            if ($boostTerritory->getBTCategory() === $this) {
-                $boostTerritory->setBTCategory(null);
+            if ($boostTerritory->getBoostTerritoryCat() === $this) {
+                $boostTerritory->setBoostTerritoryCat(null);
             }
         }
 

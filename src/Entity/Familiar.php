@@ -34,17 +34,7 @@ class Familiar
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $competence1Desc;
-
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
     private $competence2;
-
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $competence2Desc;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -52,7 +42,17 @@ class Familiar
     private $competence3;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $competence1Desc;
+
+    /**
+     * @ORM\Column(type="text")
+     */
+    private $competence2Desc;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
      */
     private $competence3Desc;
 
@@ -62,24 +62,24 @@ class Familiar
     private $talent;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="text", nullable=true)
      */
     private $talentDesc;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Image", inversedBy="familiarBackground")
+     */
+    private $imageBackground;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Image", inversedBy="familiarHead")
+     */
+    private $imageHead;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\FamiliarCat", inversedBy="familiar")
      */
     private $familiarCat;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Image", inversedBy="familiars")
-     */
-    private $imageBackground;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Image", inversedBy="familiarsHead")
-     */
-    private $imageHead;
 
     public function getId(): ?int
     {
@@ -122,18 +122,6 @@ class Familiar
         return $this;
     }
 
-    public function getCompetence1Desc(): ?string
-    {
-        return $this->competence1Desc;
-    }
-
-    public function setCompetence1Desc(?string $competence1Desc): self
-    {
-        $this->competence1Desc = $competence1Desc;
-
-        return $this;
-    }
-
     public function getCompetence2(): ?string
     {
         return $this->competence2;
@@ -146,18 +134,6 @@ class Familiar
         return $this;
     }
 
-    public function getCompetence2Desc(): ?string
-    {
-        return $this->competence2Desc;
-    }
-
-    public function setCompetence2Desc(?string $competence2Desc): self
-    {
-        $this->competence2Desc = $competence2Desc;
-
-        return $this;
-    }
-
     public function getCompetence3(): ?string
     {
         return $this->competence3;
@@ -166,6 +142,30 @@ class Familiar
     public function setCompetence3(?string $competence3): self
     {
         $this->competence3 = $competence3;
+
+        return $this;
+    }
+
+    public function getCompetence1Desc(): ?string
+    {
+        return $this->competence1Desc;
+    }
+
+    public function setCompetence1Desc(?string $competence1Desc): self
+    {
+        $this->competence1Desc = $competence1Desc;
+
+        return $this;
+    }
+
+    public function getCompetence2Desc(): ?string
+    {
+        return $this->competence2Desc;
+    }
+
+    public function setCompetence2Desc(string $competence2Desc): self
+    {
+        $this->competence2Desc = $competence2Desc;
 
         return $this;
     }
@@ -206,18 +206,6 @@ class Familiar
         return $this;
     }
 
-    public function getFamiliarCat(): ?FamiliarCat
-    {
-        return $this->familiarCat;
-    }
-
-    public function setFamiliarCat(?FamiliarCat $familiarCat): self
-    {
-        $this->familiarCat = $familiarCat;
-
-        return $this;
-    }
-
     public function getImageBackground(): ?Image
     {
         return $this->imageBackground;
@@ -238,6 +226,18 @@ class Familiar
     public function setImageHead(?Image $imageHead): self
     {
         $this->imageHead = $imageHead;
+
+        return $this;
+    }
+
+    public function getFamiliarCat(): ?FamiliarCat
+    {
+        return $this->familiarCat;
+    }
+
+    public function setFamiliarCat(?FamiliarCat $familiarCat): self
+    {
+        $this->familiarCat = $familiarCat;
 
         return $this;
     }
