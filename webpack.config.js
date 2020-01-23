@@ -28,6 +28,9 @@ Encore
 
     .addEntry('back', './assets/js/back/sb-admin-2.js')
     .addEntry('backcss', './assets/js/back/backcss.js')
+
+    .addEntry('dataTablesBs', './assets/js/back/dataTables.bootstrap4.js')
+
     //.addEntry('page1', './assets/js/page1.js')
     //.addEntry('page2', './assets/js/page2.js')
 
