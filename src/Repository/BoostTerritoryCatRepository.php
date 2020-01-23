@@ -2,25 +2,25 @@
 
 namespace App\Repository;
 
-use App\Entity\BTCategory;
+use App\Entity\BoostTerritoryCat;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
 
 /**
- * @method BTCategory|null find($id, $lockMode = null, $lockVersion = null)
- * @method BTCategory|null findOneBy(array $criteria, array $orderBy = null)
- * @method BTCategory[]    findAll()
- * @method BTCategory[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method BoostTerritoryCat|null find($id, $lockMode = null, $lockVersion = null)
+ * @method BoostTerritoryCat|null findOneBy(array $criteria, array $orderBy = null)
+ * @method BoostTerritoryCat[]    findAll()
+ * @method BoostTerritoryCat[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class BTCategoryRepository extends ServiceEntityRepository
+class BoostTerritoryCatRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, BTCategory::class);
+        parent::__construct($registry, BoostTerritoryCat::class);
     }
 
     // /**
-    //  * @return BTCategory[] Returns an array of BTCategory objects
+    //  * @return BoostTerritoryCat[] Returns an array of BoostTerritoryCat objects
     //  */
     /*
     public function findByExampleField($value)
@@ -37,7 +37,7 @@ class BTCategoryRepository extends ServiceEntityRepository
     */
 
     /*
-    public function findOneBySomeField($value): ?BTCategory
+    public function findOneBySomeField($value): ?BoostTerritoryCat
     {
         return $this->createQueryBuilder('b')
             ->andWhere('b.exampleField = :val')
