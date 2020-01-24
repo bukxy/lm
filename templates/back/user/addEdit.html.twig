@@ -9,56 +9,55 @@
 {% endblock %}
 
 {% block body %}
-{{ form_start(form) }}
-    <div class="row col-10 m-auto perms">
-        <div class="card col-8">
-            <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">Edition de l'utilisateur</h6>
-            </div>
-            <div class="card-body">
-                
-                <div class="form-group row col-12">
-                    <div class="col-6">
-                        {{ form_label(form.pseudo, 'Pseudo') }}
-                        {{ form_widget(form.pseudo) }}
-                    </div>
-                    <div class="col-6">
-                        {{ form_label(form.email, 'Email') }}
-                        {{ form_widget(form.email) }}
-                    </div>
+    {{ form_start(form) }}
+        <div class="row col-10 m-auto perms">
+            <div class="card col-8">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Edition de l'utilisateur</h6>
                 </div>
-                <div class="form-group row col-12">
-                    <div class="col-6">
-                        {{ form_label(form.password.first, 'Nouveau mot de passe') }}
-                        {{ form_widget(form.password.first) }}
+                <div class="card-body">
+                    
+                    <div class="form-group row col-12">
+                        <div class="col-6">
+                            {{ form_label(form.pseudo, 'Pseudo') }}
+                            {{ form_widget(form.pseudo) }}
+                        </div>
+                        <div class="col-6">
+                            {{ form_label(form.email, 'Email') }}
+                            {{ form_widget(form.email) }}
+                        </div>
                     </div>
-                    <div class="col-6">
-                        {{ form_label(form.password.second, 'Répétez le mot de passe') }}
-                        {{ form_widget(form.password.second) }}
-                    </div>
-                </div>                
+                    <div class="form-group row col-12">
+                        <div class="col-6">
+                            {{ form_label(form.password.first, 'Nouveau mot de passe') }}
+                            {{ form_widget(form.password.first) }}
+                        </div>
+                        <div class="col-6">
+                            {{ form_label(form.password.second, 'Répétez le mot de passe') }}
+                            {{ form_widget(form.password.second) }}
+                        </div>
+                    </div>                
+                </div>
+                <button type="submit" class="btn btn-primary m-auto">
+                    {% if editMode %}
+                        Sauvegarder
+                    {% else %}
+                        Ajouter
+                    {% endif %}
+                </button>
             </div>
-            <button type="submit" class="btn btn-primary m-auto">
-                {% if editMode %}
-                    Sauvegarder
-                {% else %}
-                    Ajouter
-                {% endif %}
-            </button>
+            <div class="card col-3">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Permissions</h6>
+                </div>
+                <div class="card-body">
+                    
+                    <div class="form-group user-perms">
+                        {{ form_widget(form.roles) }}
+                    </div> 
+                    
+                </div>
+            </div>
         </div>
-        <div class="card col-3">
-            <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">Permissions</h6>
-            </div>
-            <div class="card-body">
-                
-                <div class="form-group user-perms">
-                    {{ form_widget(form.roles) }}
-                </div> 
-                
-            </div>
-        </div>
-
-    </div>
-{{ form_end(form) }}
+    {{ form_end(form) }}
 {% endblock %}

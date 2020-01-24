@@ -14,27 +14,27 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th>Pacte</th>
-                            <th>Nom</th>
-                            <th>Image</th>
-                            <th>Icon</th>
-                            <th>Options</th>
+                            <th class="text-center">Pacte</th>
+                            <th class="text-center">Nom</th>
+                            <th class="text-center">Image</th>
+                            <th class="text-center">Icon</th>
+                            <th class="text-center">Options</th>
                         </tr>
                     </thead>
                     <tfoot>
                         <tr>
-                            <th>Pacte</th>
-                            <th>Nom</th>
-                            <th>Image</th>
-                            <th>Icon</th>
-                            <th>Options</th>
+                            <th class="text-center">Pacte</th>
+                            <th class="text-center">Nom</th>
+                            <th class="text-center">Image</th>
+                            <th class="text-center">Icon</th>
+                            <th class="text-center">Options</th>
                         </tr>
                     </tfoot>
                     <tbody>
                         {% for f in familiars %}
                             <tr>
-                                <th scope="row">{{ f.familiarCat }}</th>
-                                <td>{{ f.name }}</td>
+                                <th class="lm-td" scope="row">{{ f.familiarCat }}</th>
+                                <td class="lm-td">{{ f.name }}</td>
                                 {% if f.imageBackground is null %}
                                     <td>
                                         <button class="btn btn-primary">
@@ -43,38 +43,38 @@
                                     </td>
                                 {% else %}
                                     <td>
-                                        <img class="lm-img" src="{{ asset('uploads/images/' ~ f.imageBackground) }}" alt="{{ f.imageBackground.alt }}">
-                                        <button class="btn btn-danger">
-                                            <a href="{{ path('admin_familiar_delete_imageBackground', {'id' : f.id }) }}"><i class="fas fa-minus-circle"></i></a>
-                                        </button>
+                                        <div class="lm-imgFam m-auto">
+                                            <img src="{{ asset('uploads/images/' ~ f.imageBackground) }}" alt="{{ f.imageBackground.alt }}">
+                                            <div class="img-overlay">
+                                                <a class="btn btn-danger btn-circle"  href="{{ path('admin_familiar_delete_imageBackground', {'id' : f.id }) }}"><i class="fas fa-minus-circle"></i></a>
+                                            </div>
+                                        </div>
                                     </td>
                                 {% endif %}
 
                                 {% if f.imageHead is null %}
                                     <td>
-                                        <button class="btn btn-primary">
-                                            <a href="{{ path('admin_familiar_new_imageHead', {'id' : f.id }) }}"><i class="fas fa-plus-circle"></i></a>
-                                        </button>
+                                        <a class="btn btn-primary btn-circle" href="{{ path('admin_familiar_new_imageHead', {'id' : f.id }) }}"><i class="fas fa-plus-circle"></i></a>
                                     </td>
                                 {% else %}
                                     <td>
-                                        <img class="lm-img" src="{{ asset('uploads/images/' ~ f.imageHead) }}" alt="{{ f.imageHead.alt }}">
-                                        <button class="btn btn-danger">
-                                            <a href="{{ path('admin_familiar_delete_imageHead', {'id' : f.id }) }}"><i class="fas fa-minus-circle"></i></a>
-                                        </button>
+                                        <div class="lm-imgIcon m-auto">
+                                            <img src="{{ asset('uploads/images/' ~ f.imageHead) }}" alt="{{ f.imageHead.alt }}">
+                                            <div class="img-overlay">
+                                                <a class="btn btn-danger btn-circle" href="{{ path('admin_familiar_delete_imageHead', {'id' : f.id }) }}"><i class="fas fa-minus-circle"></i></a>
+                                            </div>
+                                        </div>
                                     </td>
                                 {% endif %}
                                 <td>
-                                    <button class="btn btn-primary">
-                                        <a href="{{ path('admin_familiar_edit', {'id' : f.id }) }}">
+                                    <div class="lm-options">
+                                        <a class="btn btn-primary btn-circle" href="{{ path('admin_familiar_edit', {'id' : f.id }) }}">
                                             <i class="fas fa-edit"></i>
                                         </a>
-                                    </button>
-                                    <button class="btn btn-danger">
-                                        <a href="{{ path('admin_familiar_delete', {'id' : f.id }) }}">
+                                        <a class="btn btn-danger btn-circle" href="{{ path('admin_familiar_delete', {'id' : f.id }) }}">
                                             <i class="fas fa-minus-circle"></i>
                                         </a>
-                                    </button>
+                                    </div>
                                 </td>
                             </tr>
                         {% endfor %}

@@ -35,15 +35,15 @@
                                 <td class="lm-td">{{ i.imageCat }}</td>
                                 <td class="text-center">
                                     <div class="lm-img m-auto">
-                                        <img class="" src="{{ asset('uploads/images/' ~ i.name) }}" alt="{{ i.alt }}">
+                                        <img class="lm-img" src="{{ asset('uploads/images/' ~ i.name) }}" alt="{{ i.alt }}">
                                     </div>
                                 </td>
                                 <td>
                                     <div class="lm-options">
-                                        <a class="btn btn-primary btn-circle" href="{{ path('admin_image_edit', {'id' : i.id }) }}">
+                                        <a class="btn btn-primary btn-circle" href="{{ path('admin_image_article_edit', {'id' : i.id }) }}">
                                             <i class="fas fa-edit"></i>
                                         </a>
-                                        <a class="btn btn-danger btn-circle" href="{{ path('admin_image_delete', {'id' : i.id }) }}">
+                                        <a class="btn btn-danger btn-circle" href="{{ path('admin_image_article_delete', {'id' : i.id }) }}">
                                             <i class="fas fa-minus-circle"></i>
                                         </a>
                                     </div>

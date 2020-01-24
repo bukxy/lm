@@ -14,37 +14,35 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th>#</th>
-                            <th>Pseudo</th>
-                            <th>Adresse E-mail</th>
-                            <th>Options</th>
+                            <th class="text-center">#</th>
+                            <th class="text-center">Pseudo</th>
+                            <th class="text-center">Adresse E-mail</th>
+                            <th class="text-center">Options</th>
                         </tr>
                     </thead>
                     <tfoot>
                         <tr>
-                            <th>#</th>
-                            <th>Pseudo</th>
-                            <th>Adresse E-mail</th>
-                            <th>Options</th>
+                            <th class="text-center">#</th>
+                            <th class="text-center">Pseudo</th>
+                            <th class="text-center">Adresse E-mail</th>
+                            <th class="text-center">Options</th>
                         </tr>
                     </tfoot>
                     <tbody>
                         {% for u in users %}
                             <tr>
-                                <th scope="row">{{ u.id }}</th>
-                                <td>{{ u.pseudo }}</td>
-                                <td>{{ u.email }}</td>
+                                <th class="lm-td">{{ u.id }}</th>
+                                <td class="lm-td">{{ u.pseudo }}</td>
+                                <td class="lm-td">{{ u.email }}</td>
                                 <td>
-                                    <button class="btn btn-primary">
-                                        <a href="{{ path('admin_user_edit', {'id' : u.id }) }}">
+                                    <div class="lm-options">
+                                        <a class="btn btn-primary btn-circle" href="{{ path('admin_user_edit', {'id' : u.id }) }}">
                                             <i class="fas fa-edit"></i>
                                         </a>
-                                    </button>
-                                    <button class="btn btn-danger">
-                                        <a href="{{ path('admin_user_delete', {'id' : u.id }) }}">
+                                        <a class="btn btn-danger btn-circle" href="{{ path('admin_user_delete', {'id' : u.id }) }}">
                                             <i class="fas fa-minus-circle"></i>
                                         </a>
-                                    </button>
+                                    </div>
                                 </td>
                             </tr>
                         {% endfor %}

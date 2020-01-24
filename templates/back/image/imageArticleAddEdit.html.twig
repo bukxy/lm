@@ -1,0 +1,34 @@
+{% extends 'back/baseAdmin.html.twig' %}
+
+{% block title %}
+    {% if editMode %}
+        Edition du boost
+    {% else %}
+        Ajout d'un boost
+    {% endif %}
+{% endblock %}
+
+{% block category %}
+    {% if editMode %}
+        Edition du boost
+    {% else %}
+        Ajout d'un boost
+    {% endif %}
+{% endblock %}
+
+{% block body %}
+    {{ form_start(formImage) }}
+
+        {{ form_row(formImage.name, {'label': 'Selectionner une image'}) }}
+        {{ form_row(formImage.alt, {'label': 'Description'}) }}  
+
+        <button type="submit" class="btn btn-primary">
+            {% if editMode %}
+                Sauvegarder
+            {% else %}
+                Ajouter
+            {% endif %}
+        </button>
+
+    {{ form_end(formImage) }}
+{% endblock %}

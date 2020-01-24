@@ -24,140 +24,216 @@
     <hr
     class="sidebar-divider">
 
+    {% if is_granted('ROLE_ADMIN_USERS') %}
+
+        <!-- Nav Item - Boost Menu -->
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUser" aria-expanded="true" aria-controls="collapseUser">
+                <i class="fas fa-users-cog"></i>
+                <span>Utilisateurs</span>
+            </a>
+            <div id="collapseUser" class="collapse" aria-labelledby="headingUser" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <a class="collapse-item" href="{{ path('admin_user_list') }}">
+                        <i class="fas fa-list"></i>
+                        Liste</a>
+                    <a class="collapse-item" href="{{ path('admin_user_new') }}">
+                        <i class="fas fa-plus-circle"></i>
+                        Ajouter</a>
+                    <div class="item-divider"></div>
+                </div>
+            </div>
+        </li>
+
+        <!-- Divider -->
+        <hr
+        class="sidebar-divider">
+
+    {% endif %}
+
     <!-- Heading -->
     <div class="sidebar-heading">
         Images
     </div>
 
-    <!-- Nav Item - Boost Menu -->
-    <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseImage" aria-expanded="true" aria-controls="collapseImage">
-            <i class="fas fa-images"></i>
-            <span>Liste des images</span>
-        </a>
-        <div id="collapseImage" class="collapse" aria-labelledby="headingImage" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Les catégories</h6>
-                <a class="collapse-item" href="{{ path('admin_image_category_list') }}"><i class="fas fa-list"></i> Liste</a>
-                <a class="collapse-item" href="{{ path('admin_image_category_new') }}"><i class="fas fa-plus-circle"></i> Ajouter</a>
-                <div class="item-divider"></div>
-                <h6 class="collapse-header">Les images</h6>
-                <a class="collapse-item" href="{{ path('admin_image_list') }}"><i class="fas fa-list"></i> Liste</a>
-                <a class="collapse-item" href="{{ path('admin_image_new') }}"><i class="fas fa-plus-circle"></i> Ajouter</a>
-            </div>
-        </div>
-    </li>
+    {% if is_granted('ROLE_ADMIN_IMAGES') %}
 
-    <!-- Divider -->
-    <hr class="sidebar-divider">
+        <!-- Nav Item - Boost Menu -->
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseImage" aria-expanded="true" aria-controls="collapseImage">
+                <i class="fas fa-images"></i>
+                <span>Toutes les images</span>
+            </a>
+            <div id="collapseImage" class="collapse" aria-labelledby="headingImage" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <h6 class="collapse-header">Les catégories</h6>
+                    <a class="collapse-item" href="{{ path('admin_image_category_list') }}"><i class="fas fa-list"></i> Liste</a>
+                    <a class="collapse-item" href="{{ path('admin_image_category_new') }}"><i class="fas fa-plus-circle"></i> Ajouter</a>
+                    <div class="item-divider"></div>
+                    <h6 class="collapse-header">Les images</h6>
+                    <a class="collapse-item" href="{{ path('admin_image_list') }}"><i class="fas fa-list"></i> Liste</a>
+                    <a class="collapse-item" href="{{ path('admin_image_new') }}"><i class="fas fa-plus-circle"></i> Ajouter</a>
+                </div>
+            </div>
+        </li>
+
+    {% endif %}
+
+    {% if is_granted('ROLE_ADMIN_IMAGES_ARTICLE') %}
+
+        <!-- Nav Item - Boost Menu -->
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseImage2" aria-expanded="true" aria-controls="collapseImage2">
+                <i class="fas fa-images"></i>
+                <span>Images des articles</span>
+            </a>
+            <div id="collapseImage2" class="collapse" aria-labelledby="headingImage2" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <h6 class="collapse-header">Les images</h6>
+                    <a class="collapse-item" href="{{ path('admin_image_article_list') }}"><i class="fas fa-list"></i> Liste</a>
+                    <a class="collapse-item" href="{{ path('admin_image_article_new') }}"><i class="fas fa-plus-circle"></i> Ajouter</a>
+                </div>
+            </div>
+        </li>
+
+        <!-- Divider -->
+        <hr class="sidebar-divider">
+
+    {% endif %}
+
 
     <!-- Heading -->
     <div class="sidebar-heading">
         Territoire
     </div>
 
-    <!-- Nav Item - Boost Menu -->
-    <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBoost" aria-expanded="true" aria-controls="collapseBoost">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Boosts de territoire</span>
-        </a>
-        <div id="collapseBoost" class="collapse" aria-labelledby="headingBoost" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Les catégories</h6>
-                <a class="collapse-item" href="{{ path('admin_boost_category_list') }}"><i class="fas fa-list"></i> Liste</a>
-                <a class="collapse-item" href="{{ path('admin_boost_category_new') }}"><i class="fas fa-plus-circle"></i> Ajouter</a>
-                <div class="item-divider"></div>
-                <h6 class="collapse-header">Les boosts</h6>
-                <a class="collapse-item" href="{{ path('admin_boost_list') }}"><i class="fas fa-list"></i> Liste</a>
-                <a class="collapse-item" href="{{ path('admin_boost_new') }}"><i class="fas fa-plus-circle"></i> Ajouter</a>
-            </div>
-        </div>
-    </li>
+    {% if is_granted('ROLE_ADMIN_BOOSTS') %}
 
-    <!-- Nav Item - Construct Menu -->
-    <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseConstruct" aria-expanded="true" aria-controls="collapseConstruct">
-            <i class="fas fa-hammer"></i>
-            <span>Constructions</span>
-        </a>
-        <div id="collapseConstruct" class="collapse" aria-labelledby="headingConstruct" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Les catégories</h6>
-                <a class="collapse-item" href="{{ path('admin_construction_category_list') }}"><i class="fas fa-list"></i> Liste</a>
-                <a class="collapse-item" href="{{ path('admin_construction_category_new') }}"><i class="fas fa-plus-circle"></i> Ajouter</a>
-                <div class="item-divider"></div>
-                <h6 class="collapse-header">Les Constructions</h6>
-                <a class="collapse-item" href="{{ path('admin_construction_list') }}"><i class="fas fa-list"></i> Liste</a>
-                <a class="collapse-item" href="{{ path('admin_construction_new') }}"><i class="fas fa-plus-circle"></i> Ajouter</a>
+        <!-- Nav Item - Boost Menu -->
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBoost" aria-expanded="true" aria-controls="collapseBoost">
+                <i class="fas fa-fw fa-tachometer-alt"></i>
+                <span>Boosts de territoire</span>
+            </a>
+            <div id="collapseBoost" class="collapse" aria-labelledby="headingBoost" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <h6 class="collapse-header">Les catégories</h6>
+                    <a class="collapse-item" href="{{ path('admin_boost_category_list') }}"><i class="fas fa-list"></i> Liste</a>
+                    <a class="collapse-item" href="{{ path('admin_boost_category_new') }}"><i class="fas fa-plus-circle"></i> Ajouter</a>
+                    <div class="item-divider"></div>
+                    <h6 class="collapse-header">Les boosts</h6>
+                    <a class="collapse-item" href="{{ path('admin_boost_list') }}"><i class="fas fa-list"></i> Liste</a>
+                    <a class="collapse-item" href="{{ path('admin_boost_new') }}"><i class="fas fa-plus-circle"></i> Ajouter</a>
+                </div>
             </div>
-        </div>
-    </li>
+        </li>
 
-    <!-- Nav Item - Research Menu -->
-    <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseResearch" aria-expanded="true" aria-controls="collapseResearch">
-            <i class="fas fa-book"></i>
-            <span>Recherches</span>
-        </a>
-        <div id="collapseResearch" class="collapse" aria-labelledby="headingResearch" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Les catégories</h6>
-                <a class="collapse-item" href="{{ path('admin_research_category_list') }}"><i class="fas fa-list"></i> Liste</a>
-                <a class="collapse-item" href="{{ path('admin_research_category_new') }}"><i class="fas fa-plus-circle"></i> Ajouter</a>
-                <div class="item-divider"></div>
-                <h6 class="collapse-header">Les recherches</h6>
-                <a class="collapse-item" href="{{ path('admin_research_list') }}"><i class="fas fa-list"></i> Liste</a>
-                <a class="collapse-item" href="{{ path('admin_research_new') }}"><i class="fas fa-plus-circle"></i> Ajouter</a>
-            </div>
-        </div>
-    </li>
+    {% endif %}
 
-    <!-- Nav Item - Familiar Menu -->
-    <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseFamiliar" aria-expanded="true" aria-controls="collapseFamiliar">
-            <i class="fas fa-paw"></i>
-            <span>Familiers</span>
-        </a>
-        <div id="collapseFamiliar" class="collapse" aria-labelledby="headingFamiliar" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Les catégories</h6>
-                <a class="collapse-item" href="{{ path('admin_familiar_category_list') }}"><i class="fas fa-list"></i> Liste</a>
-                <a class="collapse-item" href="{{ path('admin_familiar_category_new') }}"><i class="fas fa-plus-circle"></i> Ajouter</a>
-                <div class="item-divider"></div>
-                <h6 class="collapse-header">Les familiers</h6>
-                <a class="collapse-item" href="{{ path('admin_familiar_list') }}"><i class="fas fa-list"></i> Liste</a>
-                <a class="collapse-item" href="{{ path('admin_familiar_new') }}"><i class="fas fa-plus-circle"></i> Ajouter</a>
+    {% if is_granted('ROLE_ADMIN_CONSTRUCTIONS') %}
+
+        <!-- Nav Item - Construct Menu -->
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseConstruct" aria-expanded="true" aria-controls="collapseConstruct">
+                <i class="fas fa-hammer"></i>
+                <span>Constructions</span>
+            </a>
+            <div id="collapseConstruct" class="collapse" aria-labelledby="headingConstruct" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <h6 class="collapse-header">Les catégories</h6>
+                    <a class="collapse-item" href="{{ path('admin_construction_category_list') }}"><i class="fas fa-list"></i> Liste</a>
+                    <a class="collapse-item" href="{{ path('admin_construction_category_new') }}"><i class="fas fa-plus-circle"></i> Ajouter</a>
+                    <div class="item-divider"></div>
+                    <h6 class="collapse-header">Les Constructions</h6>
+                    <a class="collapse-item" href="{{ path('admin_construction_list') }}"><i class="fas fa-list"></i> Liste</a>
+                    <a class="collapse-item" href="{{ path('admin_construction_new') }}"><i class="fas fa-plus-circle"></i> Ajouter</a>
+                </div>
             </div>
-        </div>
-    </li>
+        </li>
+
+    {% endif %}
+
+    {% if is_granted('ROLE_ADMIN_RESEARCHS') %}
+
+        <!-- Nav Item - Research Menu -->
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseResearch" aria-expanded="true" aria-controls="collapseResearch">
+                <i class="fas fa-book"></i>
+                <span>Recherches</span>
+            </a>
+            <div id="collapseResearch" class="collapse" aria-labelledby="headingResearch" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <h6 class="collapse-header">Les catégories</h6>
+                    <a class="collapse-item" href="{{ path('admin_research_category_list') }}"><i class="fas fa-list"></i> Liste</a>
+                    <a class="collapse-item" href="{{ path('admin_research_category_new') }}"><i class="fas fa-plus-circle"></i> Ajouter</a>
+                    <div class="item-divider"></div>
+                    <h6 class="collapse-header">Les recherches</h6>
+                    <a class="collapse-item" href="{{ path('admin_research_list') }}"><i class="fas fa-list"></i> Liste</a>
+                    <a class="collapse-item" href="{{ path('admin_research_new') }}"><i class="fas fa-plus-circle"></i> Ajouter</a>
+                </div>
+            </div>
+        </li>
+
+    {% endif %}
+
+    {% if is_granted('ROLE_ADMIN_FAMILIARS') %}
+
+        <!-- Nav Item - Familiar Menu -->
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseFamiliar" aria-expanded="true" aria-controls="collapseFamiliar">
+                <i class="fas fa-paw"></i>
+                <span>Familiers</span>
+            </a>
+            <div id="collapseFamiliar" class="collapse" aria-labelledby="headingFamiliar" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <h6 class="collapse-header">Les catégories</h6>
+                    <a class="collapse-item" href="{{ path('admin_familiar_category_list') }}"><i class="fas fa-list"></i> Liste</a>
+                    <a class="collapse-item" href="{{ path('admin_familiar_category_new') }}"><i class="fas fa-plus-circle"></i> Ajouter</a>
+                    <div class="item-divider"></div>
+                    <h6 class="collapse-header">Les familiers</h6>
+                    <a class="collapse-item" href="{{ path('admin_familiar_list') }}"><i class="fas fa-list"></i> Liste</a>
+                    <a class="collapse-item" href="{{ path('admin_familiar_new') }}"><i class="fas fa-plus-circle"></i> Ajouter</a>
+                </div>
+            </div>
+        </li>
+
+    {% endif %}
 
     <!-- Divider -->
     <hr class="sidebar-divider">
 
-    <!-- Nav Item - Events Menu -->
-    <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseEvent" aria-expanded="true" aria-controls="collapseEvent">
-            <i class="fas fa-calendar"></i>
-            <span>Evènements Guildes</span>
-        </a>
-        <div id="collapseEvent" class="collapse" aria-labelledby="headingEvent" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Classiques</h6>
-                <a class="collapse-item" href="{{ path('admin_event_edit', {'slug': 'guild-fest'}) }}"><i class="fas fa-calendar-week"></i> Guilde Fest</a>
-                <a class="collapse-item" href="{{ path('admin_event_edit', {'slug': 'guild-showdown'}) }}"><i class="fas fa-calendar-week"></i> Epreuve de Guilde</a>
-                <a class="collapse-item" href="{{ path('admin_event_edit', {'slug': 'guild-bash'}) }}"><i class="fas fa-calendar-week"></i> Bash de Guilde</a>
-                <a class="collapse-item" href="{{ path('admin_event_edit', {'slug': 'lords-cup'}) }}"><i class="fas fa-calendar-week"></i> Coupe des lords</a>
-                <a class="collapse-item" href="{{ path('admin_event_edit', {'slug': 'kvk'}) }}"><i class="fas fa-calendar-week"></i> RvR (KvK)</a>
-                <a class="collapse-item" href="{{ path('admin_event_edit', {'slug': 'dragon-arena'}) }}"><i class="fas fa-calendar-week"></i> Arène du dragon</a>
-                <div class="item-divider"></div>
-                <h6 class="collapse-header">Spéciaux</h6>
-                <a class="collapse-item" href="{{ path('admin_event_edit', {'slug': 'feudal-war'}) }}"><i class="fas fa-dragon"></i> Guerre Féodale</a>
-                <a class="collapse-item" href="{{ path('admin_event_edit', {'slug': 'battle-royal'}) }}"><i class="fas fa-crown"></i> Bataille Royale</a>
-                <a class="collapse-item" href="{{ path('admin_event_edit', {'slug': 'royal-calice'}) }}"><i class="fas fa-crown"></i> Calice Royale</a>
-            </div>
+    {% if is_granted('ROLE_ADMIN_EVENTS') %}
+
+        <!-- Heading -->
+        <div class="sidebar-heading">
+            Evénements
         </div>
-    </li>
+
+        <!-- Nav Item - Events Menu -->
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseEvent" aria-expanded="true" aria-controls="collapseEvent">
+                <i class="fas fa-calendar"></i>
+                <span>Liste des events</span>
+            </a>
+            <div id="collapseEvent" class="collapse" aria-labelledby="headingEvent" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <h6 class="collapse-header">Classiques</h6>
+                    <a class="collapse-item" href="{{ path('admin_event_edit', {'slug': 'guild-fest'}) }}"><i class="fas fa-calendar-week"></i> Guilde Fest</a>
+                    <a class="collapse-item" href="{{ path('admin_event_edit', {'slug': 'guild-showdown'}) }}"><i class="fas fa-calendar-week"></i> Epreuve de Guilde</a>
+                    <a class="collapse-item" href="{{ path('admin_event_edit', {'slug': 'guild-bash'}) }}"><i class="fas fa-calendar-week"></i> Bash de Guilde</a>
+                    <a class="collapse-item" href="{{ path('admin_event_edit', {'slug': 'lords-cup'}) }}"><i class="fas fa-calendar-week"></i> Coupe des lords</a>
+                    <a class="collapse-item" href="{{ path('admin_event_edit', {'slug': 'kvk'}) }}"><i class="fas fa-calendar-week"></i> RvR (KvK)</a>
+                    <a class="collapse-item" href="{{ path('admin_event_edit', {'slug': 'dragon-arena'}) }}"><i class="fas fa-calendar-week"></i> Arène du dragon</a>
+                    <div class="item-divider"></div>
+                    <h6 class="collapse-header">Spéciaux</h6>
+                    <a class="collapse-item" href="{{ path('admin_event_edit', {'slug': 'feudal-war'}) }}"><i class="fas fa-dragon"></i> Guerre Féodale</a>
+                    <a class="collapse-item" href="{{ path('admin_event_edit', {'slug': 'battle-royal'}) }}"><i class="fas fa-crown"></i> Bataille Royale</a>
+                    <a class="collapse-item" href="{{ path('admin_event_edit', {'slug': 'royal-calice'}) }}"><i class="fas fa-crown"></i> Calice Royale</a>
+                </div>
+            </div>
+        </li>
+
+    {% endif %}
 
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">

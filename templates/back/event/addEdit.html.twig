@@ -4,39 +4,52 @@
     {% if editMode %}
         Edition : {{ event.name }}
     {% else %}
-        Ajout de la Guilde fest
-    {% endif %}
-{% endblock %}
-
-{% block category %}
-    {% if editMode %}
-        Edition : {{ event.name }}
-    {% else %}
-        Ajout de la Guilde fest
+        Ajout d'un nouvel evenement'
     {% endif %}
 {% endblock %}
 
 {% block body %}
-    <div class="tinyMCE">
-        {{ form_start(form) }}
 
-            <div class="form-group">
-                {{ form_label(form.content, 'Contenu de la page') }}
-                {{ form_widget(form.content) }}
+    <div class="alert alert-info alert-dismissible fade show" role="alert">
+        <strong>Envie d'ajouter une image ?</strong> 
+            <hr>
+            <p>2 possibilités :</p>
+            <p>
+                - La première est de faire un glisser déposer de l'image, comme sur word ou open office. 
+                (Mais je ne sais pas si l'image ne sera pas supprimer dans le temps)
+            </p>
+            <p>
+                - La deuxième est d'ajouté une image dans "Images des articles" puis l'ajouté en passant par l'icon <i class="far fa-image"></i> 
+                (insert/edit image), dans source ecrit : https://lordsmobile.com/public/uploads/ma_superbe_image.png , mettre à la place 
+                de "ma_superbe_image.png" le nom de votre image (extension autorisé PNG / JPG / GIF)
+            </p>
 
-                <div class="form-error">
-                    {{ form_errors(form.content) }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+
+    {{ form_start(form) }}
+        <div class="card event">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">{{ form_label(form.content, 'Edition de l\'evenement :') }} {{event.name}}</h6>
+            </div>
+            <div class="card-body">
+                <div class="form-group">
+                    {{ form_widget(form.content) }}
+
+                    <div class="form-error">
+                        {{ form_errors(form.content) }}
+                    </div>
                 </div>
             </div>
-
-            <button type="submit" class="btn btn-primary">
+            <button type="submit" class="btn btn-primary m-auto">
                 {% if editMode %}
-                    Sauvgarder
+                    Sauvegarder
                 {% else %}
                     Ajouter
                 {% endif %}
             </button>
-
-        {{ form_end(form) }}
-    </div>
+        </div>
+    {{ form_end(form) }}
 {% endblock %}

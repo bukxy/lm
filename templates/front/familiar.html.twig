@@ -34,13 +34,17 @@
             {% else %}
                 <img src="{{ asset('uploads/images/' ~ f.imageBackground ) }}" alt="{{ f.imageBackground.alt }}">
             {% endif %}
+            
+            <div class="fam-lvlPreview">
+                <p>Aperçu au Niveau MAX</p>
+            </div>
 
             <div class="fam-name">
                 {{ f.name }}
             </div>
 
             <div class="fam-comp1">
-                <div class="comp1-img" tabindex="0" data-toggle="tooltip" data-placement="top" title="{{ f.competence1Desc }}"></div>
+                <div class="comp1-img" tabindex="0" data-toggle="tooltip" data-placement="top" title="{{ f.competence1Desc}}"></div>
                 {{ f.competence1 }}
             </div>
 
