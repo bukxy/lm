@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inscription{% endblock %}
+{% block contentTitle %}Inscription{% endblock %}
+
+{% block body %}
+
+    {{ form_start(registrationForm) }}
+
+        <div class="login row col-10 m-auto">
+
+            <div class="col-6">
+                <div class="label">
+                    <img src="{{ asset('uploads/bandeau_rouge.png') }}" alt="">
+                    {{ form_label(registrationForm.pseudo, 'Pseudo')}}
+                </div>
+                {{ form_widget(registrationForm.pseudo) }}
+            </div>
+            <div class="col-6">
+                <div class="label">
+                    <img src="{{ asset('uploads/bandeau_rouge.png') }}" alt="">
+                    {{ form_label(registrationForm.email, 'Adresse Email')}}
+                </div>
+                {{ form_widget(registrationForm.email) }}
+            </div>
+
+            <div class="col-6 mt-4">
+                <div class="label">
+                    <img src="{{ asset('uploads/bandeau_rouge.png') }}" alt="">
+                    {{ form_label(registrationForm.plainPassword.first, 'Mot de passe')}}
+                </div>
+                {{ form_widget(registrationForm.plainPassword.first) }}
+            </div>
+
+            <div class="col-6 mt-4">
+                <div class="label">
+                    <img src="{{ asset('uploads/bandeau_rouge.png') }}" alt="">
+                    {{ form_label(registrationForm.plainPassword.second, 'Répétez mot de passe')}}
+                </div>
+                {{ form_widget(registrationForm.plainPassword.second) }}
+            </div>
+
+            {# <div class="col-6 mt-4">
+                {{ form_label(registrationForm.agreeTerms) }}
+                {{ form_widget(registrationForm.agreeTerms) }}
+            </div> #}
+
+            <div class="row mt-4">
+                <div class="col-6 text-center">
+                    <button class="btn btn-lg btn-primary" type="submit">Valider</button>
+                </div>
+                <div class="col-6 text-center">
+                    <a class="btn btn-lg btn-danger" href="{{ path('app_login') }}">Déjà un compte ?</a>
+                </div>
+            </div>
+
+        </div>
+
+    {{ form_end(registrationForm) }}
+{% endblock %}

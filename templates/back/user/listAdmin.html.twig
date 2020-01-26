@@ -1,14 +1,14 @@
 {% extends 'back/baseAdmin.html.twig' %}
 
-{% block title %}Utilisateurs{% endblock %}
+{% block title %}Admins{% endblock %}
 
 {% block body %}
 
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Liste des utilisateurs</h6>
-            <a class="btn btn-success" href="{{ path('admin_user_new') }}">Nouvel utilisateur</a>
+            <h6 class="m-0 font-weight-bold text-primary">Liste des admins</h6>
+            <a class="btn btn-success" href="{{ path('admin_user_new') }}">Nouvel admin</a>
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -30,7 +30,7 @@
                         </tr>
                     </tfoot>
                     <tbody>
-                        {% for u in users %}
+                        {% for u in admins %}
                             <tr>
                                 <th class="lm-catTd text-center">{{ u.id }}</th>
                                 <td class="lm-catTd text-center">{{ u.pseudo }}</td>
