@@ -5,10 +5,14 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
+ * @UniqueEntity(fields={"email"}, message="Adresse mail dèjà utilisé")
+ * @UniqueEntity(fields={"pseudo"}, message="Pseudo déjà utilisé")
  */
 class User implements UserInterface
 {
@@ -21,11 +25,20 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=180, unique=true)
+     * @Assert\Email(message="Adresse mail non valide")
+     * @Assert\NotBlank(message="Adresse mail obligatoire")
      */
     private $email;
 
     /**
      * @ORM\Column(type="string", length=30, unique=true)
+     * @Assert\NotBlank(message="Pseudo obligatoire")
+     * @Assert\Length(
+     *      min = 3,
+     *      minMessage = "Le pseudo doit faire au minimum {{ limit }} characters",
+     *      max = 30,
+     *      maxMessage = "Le pseudo doit faire au maximum {{ limit }} characters"
+     * )
      */
     private $pseudo;
 
@@ -37,6 +50,13 @@ class User implements UserInterface
     /**
      * @var string The hashed password
      * @ORM\Column(type="string")
+     * @Assert\NotBlank(message="Mot de passe obligatoire")
+     * @Assert\Length(
+     *      min = 6,
+     *      minMessage = "Votre mot de passe doit faire au minimum {{ limit }} characters",
+     *      max = 255,
+     *      maxMessage = "Votre mot de passe doit faire au maximum {{ limit }} characters"
+     * )
      */
     private $password;
 
@@ -94,6 +114,11 @@ class User implements UserInterface
      * @ORM\OneToMany(targetEntity="App\Entity\ResearchCat", mappedBy="user")
      */
     private $researchCats;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\UserRank", inversedBy="users")
+     */
+    private $rank;
 
     public function __construct()
     {
@@ -548,6 +573,18 @@ class User implements UserInterface
                 $researchCat->setUser(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getRank(): ?UserRank
+    {
+        return $this->rank;
+    }
+
+    public function setRank(?UserRank $rank): self
+    {
+        $this->rank = $rank;
 
         return $this;
     }
