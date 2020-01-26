@@ -29,10 +29,11 @@
     width: 650px;
 }
 
-.fam-name, .fam-comp1, .fam-comp2, .fam-comp3, .fam-talent{
+.fam-lvlPreview, .fam-name, .fam-comp1, .fam-comp2, .fam-comp3, .fam-talent{
     position: absolute;
     color: #DED078;
     text-shadow: 0px 0px 5px #000000;
+    width: 160px;
 }
 
 .comp1-img, .comp2-img, .comp3-img{
@@ -41,6 +42,15 @@
     position: absolute;
 }
 .comp1-img, .comp2-img, .comp3-img, .talent-img { cursor: pointer;}
+
+.fam-lvlPreview {
+    top: 299px;
+    left: 92px;
+    font-size: 12px;
+    width: 130px;
+    height: 20px;
+    text-align: center;
+}
 
 .fam-name {
     top: 40px;

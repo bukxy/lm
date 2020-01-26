@@ -1,7 +1,31 @@
 .tinyMCE {
-    width: 1200px;
+    width: 100%;
     margin: 25px auto 0;
 }
+
+.event{
+    padding-bottom: 20px;
+}
+
+/**
+**      User
+**/
+
+.img-profile {
+    background-color: rgba(0,0,0,0.15);
+}
+
+.img-profile i {
+    margin: 7px 8px 0;
+    color: rgba(0,0,255,0.6);
+}
+
+.perms > div:first-child {
+    margin-right: 30px;
+    padding: 0 0 30px;
+}
+
+.perms > div {padding: 0;}
 
 /**
 **      Left navigation
@@ -14,10 +38,85 @@
 }
 
 /**
-**      image
+**      Table
 **/
 
 .lm-img {
+    height: 80px;
+    width: 145px;
+}
+.lm-img img {
+    height: 80px;
     width: auto;
-    height: 200px;
+}
+
+.lm-td {
+    padding: 35px 10px 0 !important;
+    text-align: center;
+}
+
+.lm-imgFam .img-overlay, .lm-imgIcon .img-overlay {
+    position: absolute;
+    top: 71px;
+    background-color: rgba(0, 0, 0, 0.4);
+    max-width: 500px;
+    height: 79px;
+    cursor: pointer;
+    padding: 22px 0 0 0;
+    display: none;
+    transition: .5s ease;
+    text-align: center;
+}
+
+.lm-imgFam, .lm-imgFam img {
+    height: 80px;
+    width: 150px;
+}
+
+.lm-imgFam .img-overlay {
+    width: 150px;
+}
+
+
+.lm-imgIcon, .lm-imgIcon img {
+    height: 80px;
+    width: 80px;
+}
+
+.lm-imgIcon .img-overlay {
+    width: 80px;
+}
+
+.lm-imgIcon:hover .img-overlay, .lm-imgFam:hover .img-overlay {
+    display: block;
+}
+
+.lm-options {
+    text-align: center;
+    padding: 22px 0 0 0;
+}
+
+.lm-cat {
+    text-align: center;
+}
+.lm-catTd {
+    padding: 20px 0 0 0 !important;
+}
+
+.card-header h6 {
+    float: inline-start;
+    padding: 10px;
+}
+
+.card-header a {
+    float: inline-end;
+}
+
+/**
+**      BODY
+**/
+@media screen and (max-width: 992px) {
+    .body-container {
+        padding: 0 !important;
+    }
 }

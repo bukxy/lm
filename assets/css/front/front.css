@@ -129,10 +129,13 @@ body .icon {
     top: 32px;
     left: 245px;
     width: 365px;
-    font-size: 25px;
     text-align: center;
     color: #DED096;
     text-shadow: 1px 1px 5px black;
+}
+
+#content .content-title div h1{
+    font-size: 32px;
 }
 
 #content .content-title img {
@@ -156,17 +159,17 @@ body .icon {
     width: 870px;
     background: transparent url(../img/content-bot.png) no-repeat center top;
     height: 56px;
-    margin: -13px -5px;
+    margin: -30px -5px;
 }
 
 #content .pageContent {
     background: #DED096 url(../img/bord.png) repeat-y center top;
-    margin: 13px -5px 0px;
+    margin: 13px -5px;
     padding: 0 25px;
 }
 
 #content .pageContent article {
-    margin: 30px auto 20px;
+    margin: 30px auto 15px;
     position: relative;
 }
 
@@ -198,7 +201,7 @@ body .icon {
 }
 
 .filter-menu {
-    margin: 13px auto 20px;
+    margin: 13px auto 17px;
     width: 80%;
     padding: 60px 0 0 0;
 }
