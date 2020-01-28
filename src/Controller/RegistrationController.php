@@ -41,6 +41,8 @@ class RegistrationController extends AbstractController
             $activationEntity = new UserAccountActivation;
                 $activationEntity->setCode($code);
                 $activationEntity->setStatus(0);
+
+            $activationEntity->setUser($user);
             $manager->persist($activationEntity);
 
             $user->setActivation($activationEntity);
