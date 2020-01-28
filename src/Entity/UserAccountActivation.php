@@ -17,7 +17,7 @@ class UserAccountActivation
     private $id;
 
     /**
-     * @ORM\OneToOne(targetEntity="App\Entity\User", cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity="App\Entity\User", mappedBy="activation", cascade={"persist", "remove"})
      */
     private $user;
 

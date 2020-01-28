@@ -120,6 +120,11 @@ class User implements UserInterface
      */
     private $rank;
 
+    /**
+     * @ORM\OneToOne(targetEntity="App\Entity\UserAccountActivation", inversedBy="user", cascade={"persist", "remove"})
+     */
+    private $activation;
+
     public function __construct()
     {
         $this->images = new ArrayCollection();
@@ -585,6 +590,24 @@ class User implements UserInterface
     public function setRank(?UserRank $rank): self
     {
         $this->rank = $rank;
+
+        return $this;
+    }
+
+    public function getActivation(): ?UserAccountActivation
+    {
+        return $this->activation;
+    }
+
+    public function setActivation(?UserAccountActivation $activation): self
+    {
+        $this->activation = $activation;
+
+        // set (or unset) the owning side of the relation if necessary
+        $newUser = null === $activation ? null : $this;
+        if ($activation->getUser() !== $newUser) {
+            $activation->setUser($newUser);
+        }
 
         return $this;
     }
