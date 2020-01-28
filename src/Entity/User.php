@@ -50,7 +50,6 @@ class User implements UserInterface
     /**
      * @var string The hashed password
      * @ORM\Column(type="string")
-     * @Assert\NotBlank(message="Mot de passe obligatoire")
      * @Assert\Length(
      *      min = 6,
      *      minMessage = "Votre mot de passe doit faire au minimum {{ limit }} characters",
