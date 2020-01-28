@@ -1,5 +1,5 @@
 /cmd.lnk
-/config/packages/dev/swiftmailer.yaml
+# /config/packages/dev/swiftmailer.yaml
 ###> images uploads ###
 /public/uploads/images/
 ###> symfony/framework-bundle ###
