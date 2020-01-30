@@ -24,7 +24,7 @@ class RegistrationFormType extends AbstractType
             //     'mapped' => false,
             //     'constraints' => [
             //         new IsTrue([
-            //             'message' => 'Vous devez acceptez les terms.',
+            //             'message' => 'You should agree to our terms.',
             //         ]),
             //     ],
             // ])
@@ -36,6 +36,17 @@ class RegistrationFormType extends AbstractType
                 'required' => true,
                 'first_options'  => ['label' => 'Password'],
                 'second_options' => ['label' => 'Repeat Password'],
+                'constraints' => [
+                    new NotBlank([
+                        'message' => 'Un mot de passe est obligatoire',
+                    ]),
+                    new Length([
+                        'min' => 6,
+                        'minMessage' => 'Votre mot de passe doit faire au minimum {{ limit }} characters',
+                        'max' => 255,
+                        'maxMessage' => 'Votre mot de passe doit faire au maximum {{ limit }} characters',
+                    ]),
+                ],
             ])
         ;
     }
