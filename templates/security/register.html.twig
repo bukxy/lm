@@ -27,7 +27,7 @@
             <div class="col-6 mt-4">
                 <div class="label">
                     <img src="{{ asset('uploads/bandeau_rouge.png') }}" alt="">
-                    {{ form_label(registrationForm.plainPassword.first, 'Mot de passe')}}
+                    {{ form_label(registrationForm.plainPassword.first, 'Mot de passe', {errors: []})}}
                 </div>
                 {{ form_widget(registrationForm.plainPassword.first) }}
             </div>
@@ -40,6 +40,9 @@
                 {{ form_widget(registrationForm.plainPassword.second) }}
             </div>
 
+            <div class="col-12 mt-2">
+                {{ form_errors(registrationForm.plainPassword.first) }}
+            </div>
             {# <div class="col-6 mt-4">
                 {{ form_label(registrationForm.agreeTerms) }}
                 {{ form_widget(registrationForm.agreeTerms) }}
