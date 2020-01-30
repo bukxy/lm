@@ -112,6 +112,10 @@
     float: inline-end;
 }
 
+.card {
+    padding: 0 !important;
+}
+
 /**
 **      BODY
 **/
