@@ -8,7 +8,7 @@
     <div class="card shadow mb-4">
         <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold text-primary">Liste des images</h6>
-            <a class="btn btn-success" href="{{ path('admin_boost_new') }}">Nouvelle image</a>
+            <a class="btn btn-success" href="{{ path('admin_image_new') }}">Nouvelle image</a>
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -40,7 +40,7 @@
                                     </div>
                                 </td>
                                 <td>
-                                    <div class="lm-options">
+                                    <div class="lm-options lm-cat">
                                         <a class="btn btn-primary btn-circle" href="{{ path('admin_image_edit', {'id' : i.id }) }}">
                                             <i class="fas fa-edit"></i>
                                         </a>

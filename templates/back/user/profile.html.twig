@@ -6,33 +6,27 @@
 
     {{ form_start(form) }}
 
-        <div class="card col-6">
+        <div class="card col-xl-6 col-lg-12 m-auto">
             <div class="card-header py-3">
                 <h6 class="m-0 font-weight-bold text-primary">Mon compte</h6>
             </div>
             <div class="card-body">
-
-                <div class="row col-12">
-
-                    <div class="form-group row col-12">
-                        <div class="col-6">
-                            {{ form_label(form.pseudo, 'Pseudo') }}
-                            {{ form_widget(form.pseudo) }}
-                        </div>
-                        <div class="col-6">
-                            {{ form_label(form.email, 'Email') }}
-                            {{ form_widget(form.email) }}
-                        </div>
+                <div class="row col-12 m-auto">
+                    <div class="col-lg-6 col-md-12">
+                        {{ form_label(form.pseudo, 'Pseudo') }}
+                        {{ form_widget(form.pseudo) }}
                     </div>
-                    <div class="form-group row col-12">
-                        <div class="col-6">
-                            {{ form_label(form.password.first, 'Nouveau mot de passe') }}
-                            {{ form_widget(form.password.first) }}
-                        </div>
-                        <div class="col-6">
-                            {{ form_label(form.password.second, 'Répétez le mot de passe') }}
-                            {{ form_widget(form.password.second) }}
-                        </div>
+                    <div class="col-lg-6 col-md-12">
+                        {{ form_label(form.email, 'Email') }}
+                        {{ form_widget(form.email) }}
+                    </div>
+                    <div class="col-lg-6 col-md-12">
+                        {{ form_label(form.password.first, 'Nouveau mot de passe') }}
+                        {{ form_widget(form.password.first) }}
+                    </div>
+                    <div class="col-lg-6 col-md-12 mb-3">
+                        {{ form_label(form.password.second, 'Répétez le mot de passe') }}
+                        {{ form_widget(form.password.second) }}
                     </div>
 
                     <div class="m-auto">
