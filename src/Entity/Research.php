@@ -31,16 +31,6 @@ class Research
      */
     private $content;
 
-    /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Image", inversedBy="researches")
-     */
-    private $image;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\ResearchCat", inversedBy="research")
-     */
-    private $researchCat;
-
     public function getId(): ?int
     {
         return $this->id;
@@ -78,30 +68,6 @@ class Research
     public function setContent(string $content): self
     {
         $this->content = $content;
-
-        return $this;
-    }
-
-    public function getImage(): ?Image
-    {
-        return $this->image;
-    }
-
-    public function setImage(?Image $image): self
-    {
-        $this->image = $image;
-
-        return $this;
-    }
-
-    public function getResearchCat(): ?ResearchCat
-    {
-        return $this->researchCat;
-    }
-
-    public function setResearchCat(?ResearchCat $researchCat): self
-    {
-        $this->researchCat = $researchCat;
 
         return $this;
     }
