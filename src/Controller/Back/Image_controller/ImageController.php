@@ -89,10 +89,6 @@ class ImageController extends AbstractController
                 $i->setAlt('Aucune information sur l\'image est disponible');
             }
 
-            $cat = $catRepo->findOneBy(['name' => 'article']);
-
-            $test = $i->setImageCat($cat);
-
             $manager->persist($i);
             $manager->flush();
             return $this->redirectToRoute('admin_boost_list');
