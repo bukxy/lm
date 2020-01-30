@@ -16,15 +16,7 @@ class ResearchType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name')
             ->add('content')
-            ->add('researchCat', EntityType::class, [
-                'class' => ResearchCat::class,
-                'query_builder' => function (ResearchCatRepository $r) {
-                    return $r->createQueryBuilder('r')
-                        ->orderBy('r.id', 'ASC');
-                },
-            ])
         ;
     }
 
