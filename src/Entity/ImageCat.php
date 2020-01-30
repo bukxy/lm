@@ -29,7 +29,7 @@ class ImageCat
     private $name;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Image", mappedBy="imageCat")
+     * @ORM\OneToMany(targetEntity="App\Entity\Image", mappedBy="category")
      */
     private $image;
 

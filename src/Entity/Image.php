@@ -56,7 +56,7 @@ class Image
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\ImageCat", inversedBy="image")
      */
-    private $imageCat;
+    private $category;
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Research", mappedBy="image")
