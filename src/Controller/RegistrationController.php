@@ -66,10 +66,7 @@ class RegistrationController extends AbstractController
 
             $this->addFlash('success', 'Un mail pour l\'activation de votre compte vous a été envoyer');
 
-            return $this->render('security/register.html.twig', [
-                'registrationForm' => $form->createView(),
-            ]);
-            // return $this->redirectToRoute('app_login');
+            return $this->redirectToRoute('app_login');
         }
 
         return $this->render('security/register.html.twig', [
