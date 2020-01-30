@@ -251,12 +251,12 @@ class Image
 
     public function getImageCat(): ?ImageCat
     {
-        return $this->imageCat;
+        return $this->category;
     }
 
-    public function setImageCat(?ImageCat $imageCat): self
+    public function setImageCat(?ImageCat $category): self
     {
-        $this->imageCat = $imageCat;
+        $this->category = $category;
 
         return $this;
     }
