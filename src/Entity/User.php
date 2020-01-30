@@ -110,11 +110,6 @@ class User implements UserInterface
     private $researches;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\ResearchCat", mappedBy="user")
-     */
-    private $researchCats;
-
-    /**
      * @ORM\ManyToOne(targetEntity="App\Entity\UserRank", inversedBy="users")
      */
     private $rank;
