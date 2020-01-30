@@ -18,7 +18,7 @@ class UserAccountActivation
 
     /**
      * @ORM\OneToOne(targetEntity="App\Entity\User", mappedBy="activation", cascade={"persist", "remove"})
-     */
+    */
     private $user;
 
     /**
@@ -48,24 +48,24 @@ class UserAccountActivation
         return $this;
     }
 
-    public function getCode(): ?bool
+    public function getCode(): ?string
     {
         return $this->code;
     }
 
-    public function setCode(bool $code): self
+    public function setCode(string $code): self
     {
         $this->code = $code;
 
         return $this;
     }
 
-    public function getStatus(): ?string
+    public function getStatus(): ?bool
     {
         return $this->status;
     }
 
-    public function setStatus(string $status): self
+    public function setStatus(bool $status): self
     {
         $this->status = $status;
 
