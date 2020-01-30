@@ -114,7 +114,7 @@ class ImageArticleController extends AbstractController
                 $manager->remove($i);
                 $manager->flush();
             }
-            return $this->redirectToRoute('admin_image_list');
+            return $this->redirectToRoute('admin_image_article_list');
         }
     }
 }

@@ -8,12 +8,13 @@ use App\Form\ImageType;
 use App\Entity\ImageCat;
 
 use App\Repository\ImageRepository;
+use App\Repository\ImageCatRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Security;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 /**
 * @IsGranted("ROLE_ADMIN_IMAGES")
@@ -35,7 +36,7 @@ class ImageController extends AbstractController
      * @Route("/new", name="admin_image_new")
      * @Route("/edit/{id}", name="admin_image_edit")
      */
-    public function AddEditImage(Image $i = null, Request $req, EntityManagerInterface $manager, Security $security)
+    public function AddEditImage(Image $i = null,ImageCatRepository $catRepo, Request $req, EntityManagerInterface $manager, Security $security)
     {
         if (!$i) {
             $i = new Image();
@@ -65,6 +66,7 @@ class ImageController extends AbstractController
                         $this->getParameter('image_folder'),
                         $newFilename
                     );
+                    unlink('uploads/images/'.$nameFile);
                 } catch (FileException $e) {
                     // ... handle exception if something happens during file upload
                 }
@@ -87,6 +89,10 @@ class ImageController extends AbstractController
                 $i->setAlt('Aucune information sur l\'image est disponible');
             }
 
+            $cat = $catRepo->findOneBy(['name' => 'article']);
+
+            $test = $i->setImageCat($cat);
+
             $manager->persist($i);
             $manager->flush();
             return $this->redirectToRoute('admin_boost_list');
@@ -102,11 +108,13 @@ class ImageController extends AbstractController
     /**
      * @Route("/delete/{id}", name="admin_image_delete")
      */
-    public function deleteImage(Image $i, EntityManagerInterface $manager, Security $security) {
+    public function deleteImage(Image $i,ImageCatRepository $cat, EntityManagerInterface $manager, Security $security) {
         if ($security->getUser()){
-            $manager->remove($i);
-            $manager->flush();
-
+            if ($i) {
+                unlink('uploads/images/'.$i->getName());
+                $manager->remove($i);
+                $manager->flush();
+            }
             return $this->redirectToRoute('admin_image_list');
         }
     }
