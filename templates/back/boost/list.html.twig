@@ -35,8 +35,8 @@
                         {% for b in boosts %}
                             <tr>
                                 <td>{{ b.name }}</td>
-                                <td>{{ b.btCategory }}</td>
-                                <td>{{ b.content }}</td>
+                                <td>{{ b.category }}</td>
+                                <td>{{ b.content|raw }}</td>
 
                                 {% if b.image is null %}
                                     <td>
