@@ -2,84 +2,78 @@
 
 {% block title %}
     {% if editMode %}
-        Edition d'un familier
+        Edition familier
     {% else %}
-        Ajout d'un nouveau familier
-    {% endif %}
-{% endblock %}
-
-{% block category %}
-    {% if editMode %}
-        Edition d'un familier
-    {% else %}
-        Ajout d'un nouveau familier
+        Ajout familier
     {% endif %}
 {% endblock %}
 
 {% block body %}
     {{ form_start(form) }}
 
-        <div class="row col-12">
+        <div class="row col-10 m-auto">
+            <div class="card col-12 pb-3">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">
+                        {% if editMode %}
+                            Edition du familier : {{ name }}
+                        {% else %}
+                            Nouveau familier
+                        {% endif %}
+                    </h6>
+                </div>
+                <div class="card-body">
+                    <div class="form-group row col-12 p-0 m-auto">
+                        <div class="col-6">
+                            {{ form_label(form.name, 'Nom du familier') }}
+                            {{ form_widget(form.name) }}
+                        </div>
+                        <div class="col-6">
+                            {{ form_label(form.familiarCat, 'Catégorie du familier') }}
+                            {{ form_widget(form.familiarCat) }}
+                        </div>
 
-            <div class="form-group row col-12">
-                <div class="col-6">
-                    {{ form_label(form.name, 'Nom du familier') }}
-                    {{ form_widget(form.name) }}
-                </div>
-                <div class="col-6">
-                    {{ form_label(form.familiarCat, 'Catégorie du familier') }}
-                    {{ form_widget(form.familiarCat) }}
-                </div>
-            </div>
+                        <div class="col-6">
+                            {{ form_label(form.competence1, 'Compétence 1') }}
+                            {{ form_widget(form.competence1) }}
+                        </div>
+                        <div class="col-6">
+                            {{ form_label(form.competence1Desc, 'Description Compétence 1') }}
+                            {{ form_widget(form.competence1Desc) }}
+                        </div>
 
-            <div class="form-group row col-12">
-                <div class="col-6">
-                    {{ form_label(form.competence1, 'Compétence 1') }}
-                    {{ form_widget(form.competence1) }}
-                </div>
-                <div class="col-6">
-                    {{ form_label(form.competence1Desc, 'Description Compétence 1') }}
-                    {{ form_widget(form.competence1Desc) }}
-                </div>
-            </div>
+                        <div class="col-6">
+                            {{ form_label(form.competence2, 'Compétence 2') }}
+                            {{ form_widget(form.competence2) }}
+                        </div>
+                        <div class="col-6">
+                            {{ form_label(form.competence2Desc, 'Description Compétence 2') }}
+                            {{ form_widget(form.competence2Desc) }}
+                        </div>
 
-            <div class="form-group row col-12">
-                <div class="col-6">
-                    {{ form_label(form.competence2, 'Compétence 2') }}
-                    {{ form_widget(form.competence2) }}
-                </div>
-                <div class="col-6">
-                    {{ form_label(form.competence2Desc, 'Description Compétence 2') }}
-                    {{ form_widget(form.competence2Desc) }}
-                </div>
-            </div>
+                        <div class="col-6">
+                            {{ form_label(form.competence3, 'Compétence 3') }}
+                            {{ form_widget(form.competence3) }}
+                        </div>
+                        <div class="col-6">
+                            {{ form_label(form.competence3Desc, 'Description Compétence 3') }}
+                            {{ form_widget(form.competence3Desc) }}
+                        </div>
 
-            <div class="form-group row col-12">
-                <div class="col-6">
-                    {{ form_label(form.competence3, 'Compétence 3') }}
-                    {{ form_widget(form.competence3) }}
-                </div>
-                <div class="col-6">
-                    {{ form_label(form.competence3Desc, 'Description Compétence 3') }}
-                    {{ form_widget(form.competence3Desc) }}
-                </div>
-            </div>
+                        <div class="col-6">
+                            {{ form_label(form.talent, 'Talent') }}
+                            {{ form_widget(form.talent) }}
+                        </div>
+                        <div class="col-6">
+                            {{ form_label(form.talentDesc, 'Description du Talent') }}
+                            {{ form_widget(form.talentDesc) }}
+                        </div>
 
-            <div class="form-group row col-12">
-                <div class="col-6">
-                    {{ form_label(form.talent, 'Talent') }}
-                    {{ form_widget(form.talent) }}
+                    </div>      
                 </div>
-                <div class="col-6">
-                    {{ form_label(form.talentDesc, 'Description du Talent') }}
-                    {{ form_widget(form.talentDesc) }}
-                </div>
-            </div>
-
-            <div class="m-auto">
-                <button type="submit" class="btn btn-primary">
+                <button type="submit" class="btn btn-primary m-auto">
                     {% if editMode %}
-                        Sauvgarder
+                        Sauvegarder
                     {% else %}
                         Ajouter
                     {% endif %}

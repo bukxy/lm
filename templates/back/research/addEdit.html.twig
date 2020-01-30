@@ -2,27 +2,40 @@
 
 {% block title %}
     {% if editMode %}
-        Edition de la construction
+        Edition recherche
     {% else %}
-        Ajout construction
-    {% endif %}
-{% endblock %}
-
-{% block category %}
-    {% if editMode %}
-        Edition de la construction
-    {% else %}
-        Ajout d'une nouvelle construction
+        Ajout recherche
     {% endif %}
 {% endblock %}
 
 {% block body %}
+    <div class="alert alert-info alert-dismissible fade show" role="alert">
+        <strong>Envie d'ajouter une image ?</strong> 
+            <hr>
+            <p>2 possibilités :</p>
+            <p>
+                - La première est de faire un glisser déposer de l'image, comme sur word ou open office. 
+                (Mais je ne sais pas si l'image ne sera pas supprimer dans le temps)
+            </p>
+            <p>
+                - La deuxième est d'ajouté une image dans "Images des articles" puis l'ajouté en passant par l'icon <i class="far fa-image"></i> 
+                (insert/edit image), dans source ecrit : https://lordsmobile.com/public/uploads/ma_superbe_image.png , mettre à la place 
+                de "ma_superbe_image.png" le nom de votre image (extension autorisé PNG / JPG / GIF)
+            </p>
+
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
     {{ form_start(form) }}
-
-        {{ form_row(form.name, {'label': 'Nom de la recherche'}) }}
-        {{ form_row(form.researchCat, {'label': 'Catégorie de la recherche'}) }}
-        {{ form_row(form.content, {'label': 'Description'}) }}  
-
+        <div class="card event">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">{{ form_label(form.researchCat, 'Edition des recherches') }}</h6>
+            </div>
+            <div class="card-body">
+                {{ form_row(form.content) }}  
+            </div>
+        </div>
         <button type="submit" class="btn btn-primary">
             {% if editMode %}
                 Sauvagarder
@@ -30,6 +43,5 @@
                 Ajouter
             {% endif %}
         </button>
-
     {{ form_end(form) }}
 {% endblock %}

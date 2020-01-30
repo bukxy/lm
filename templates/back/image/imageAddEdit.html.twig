@@ -2,34 +2,46 @@
 
 {% block title %}
     {% if editMode %}
-        Edition du boost
+        Edition image
     {% else %}
-        Ajout d'un boost
-    {% endif %}
-{% endblock %}
-
-{% block category %}
-    {% if editMode %}
-        Edition du boost
-    {% else %}
-        Ajout d'un boost
+        Ajout image
     {% endif %}
 {% endblock %}
 
 {% block body %}
     {{ form_start(formImage) }}
-
-        {{ form_row(formImage.name, {'label': 'Selectionner une image'}) }}
-        {{ form_row(formImage.alt, {'label': 'Description'}) }}  
-        {{ form_row(formImage.imageCat, {'label': 'Catégorie de l\'image'}) }}
-
-        <button type="submit" class="btn btn-primary">
-            {% if editMode %}
-                Sauvagarder
-            {% else %}
-                Ajouter
-            {% endif %}
-        </button>
-
+        <div class="row col-10 m-auto">
+            <div class="card col-12 pb-3">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">
+                        {% if editMode %}
+                            Edition de l'image : {{ name }}
+                        {% else %}
+                            Nouvelle image
+                        {% endif %}
+                    </h6>
+                </div>
+                <div class="card-body">
+                    <div class="form-group row col-12 p-0 m-auto">
+                        <div class="col-6">
+                            {{ form_row(formImage.name, {'label': 'Selectionner une image'}) }}
+                        </div>
+                        <div class="col-6">
+                            {{ form_row(formImage.alt, {'label': 'Description'}) }}  
+                        </div>
+                    </div>   
+                    <div class="col-6 m-auto">
+                        {{ form_row(formImage.imageCat, {'label': 'Catégorie de l\'image'}) }}
+                    </div>        
+                </div>
+                <button type="submit" class="btn btn-primary m-auto">
+                    {% if editMode %}
+                        Sauvegarder
+                    {% else %}
+                        Ajouter
+                    {% endif %}
+                </button>
+            </div>
+        </div>
     {{ form_end(formImage) }}
 {% endblock %}

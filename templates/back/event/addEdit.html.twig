@@ -2,9 +2,9 @@
 
 {% block title %}
     {% if editMode %}
-        Edition : {{ event.name }}
+        Edition evenment
     {% else %}
-        Ajout d'un nouvel evenement'
+        Ajout evenement
     {% endif %}
 {% endblock %}
 
@@ -35,20 +35,10 @@
                 <h6 class="m-0 font-weight-bold text-primary">{{ form_label(form.content, 'Edition de l\'evenement :') }} {{event.name}}</h6>
             </div>
             <div class="card-body">
-                <div class="form-group">
-                    {{ form_widget(form.content) }}
-
-                    <div class="form-error">
-                        {{ form_errors(form.content) }}
-                    </div>
-                </div>
+                {{ form_widget(form.content) }}
             </div>
             <button type="submit" class="btn btn-primary m-auto">
-                {% if editMode %}
-                    Sauvegarder
-                {% else %}
-                    Ajouter
-                {% endif %}
+                Sauvegarder
             </button>
         </div>
     {{ form_end(form) }}

@@ -2,35 +2,46 @@
 
 {% block title %}
     {% if editMode %}
-        Edition du boost
+        Edition boost
     {% else %}
-        Ajout d'un boost
-    {% endif %}
-{% endblock %}
-
-{% block category %}
-    {% if editMode %}
-        Edition du boost
-    {% else %}
-        Ajout d'un boost
+        Ajout boost
     {% endif %}
 {% endblock %}
 
 {% block body %}
     {{ form_start(formBoost) }}
-
-        {{ form_row(formBoost.name, {'label': 'Nom du boost'}) }}
-        {{ form_row(formBoost.btCategory, {'label': 'Catégorie du boost'}) }}
-        {{ form_row(formBoost.content, {'label': 'Description'}) }}  
-
-        <button type="submit" class="btn btn-primary">
-            {% if editMode %}
-                Sauvagarder
-            {% else %}
-                Ajouter
-            {% endif %}
-            
-        </button>
-
+        <div class="row col-10 m-auto">
+            <div class="card col-12 pb-3">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">
+                        {% if editMode %}
+                            Edition du boost territoire : {{ name }}
+                        {% else %}
+                            Nouveau boost territoire
+                        {% endif %}
+                    </h6>
+                </div>
+                <div class="card-body">
+                    <div class="form-group row col-12 p-0 m-auto">
+                        <div class="col-6">
+                            {{ form_row(formBoost.name, {'label': 'Nom du boost'}) }}
+                        </div>
+                        <div class="col-6">
+                            {{ form_row(formBoost.category, {'label': 'Catégorie du boost'}) }}
+                        </div>
+                    </div>
+                    <div class="mt-3">
+                        {{ form_row(formBoost.content, {'label': 'Description'}) }}  
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary m-auto">
+                    {% if editMode %}
+                        Sauvegarder
+                    {% else %}
+                        Ajouter
+                    {% endif %}
+                </button>
+            </div>
+        </div>
     {{ form_end(formBoost) }}
 {% endblock %}
