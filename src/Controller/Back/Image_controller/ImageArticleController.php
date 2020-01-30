@@ -25,9 +25,9 @@ class ImageArticleController extends AbstractController
     /**
      * @Route("/", name="admin_image_article_list")
      */
-    public function listImage(ImageRepository $i,ImageCatRepository $cat)
+    public function listImage(ImageRepository $i)
     {
-        return $this->render('back/image/imageList.html.twig', [
+        return $this->render('back/image/imageArticleList.html.twig', [
             'images' => $i->findBy(['category' => 2])
         ]);
     }
@@ -36,7 +36,7 @@ class ImageArticleController extends AbstractController
      * @Route("/new", name="admin_image_article_new")
      * @Route("/edit/{id}", name="admin_image_article_edit")
      */
-    public function AddEditImage(Image $i = null,ImageCatRepository $cat, Request $req, EntityManagerInterface $manager, Security $security)
+    public function AddEditImage(Image $i = null,ImageCatRepository $catRepo, Request $req, EntityManagerInterface $manager, Security $security)
     {
         if (!$i) {
             $i = new Image();
@@ -44,7 +44,7 @@ class ImageArticleController extends AbstractController
             $nameFile = $i->getName();
         }
 
-        $form = $this->createForm(ImageType::class, $i);
+        $form = $this->createForm(ImageArticleType::class, $i);
         $form->handleRequest($req);
 
         if ($form->isSubmitted() && $form->isValid()){
@@ -66,6 +66,7 @@ class ImageArticleController extends AbstractController
                         $this->getParameter('image_folder'),
                         $newFilename
                     );
+                    unlink('uploads/images/'.$nameFile);
                 } catch (FileException $e) {
                     // ... handle exception if something happens during file upload
                 }
@@ -88,14 +89,16 @@ class ImageArticleController extends AbstractController
                 $i->setAlt('Aucune information sur l\'image est disponible');
             }
 
-            $i->setImageCat($cat->findOneBy(['id' => 2]));
+            $cat = $catRepo->findOneBy(['name' => 'article']);
+
+            $test = $i->setImageCat($cat);
 
             $manager->persist($i);
             $manager->flush();
-            return $this->redirectToRoute('admin_boost_list');
+            return $this->redirectToRoute('admin_image_article_list');
         }
 
-        return $this->render('back/image/imageAddEdit.html.twig', [
+        return $this->render('back/image/imageArticleAddEdit.html.twig', [
             'formImage' => $form->createView(),
             'editMode'  => $i->getId() !== null
         ]);
@@ -104,11 +107,13 @@ class ImageArticleController extends AbstractController
     /**
      * @Route("/delete/{id}", name="admin_image_article_delete")
      */
-    public function deleteImage(Image $i, EntityManagerInterface $manager, Security $security) {
+    public function deleteImage(Image $i,ImageCatRepository $cat, EntityManagerInterface $manager, Security $security) {
         if ($security->getUser()){
-            $manager->remove($i);
-            $manager->flush();
-
+            if ($i) {
+                unlink('uploads/images/'.$i->getName());
+                $manager->remove($i);
+                $manager->flush();
+            }
             return $this->redirectToRoute('admin_image_list');
         }
     }
