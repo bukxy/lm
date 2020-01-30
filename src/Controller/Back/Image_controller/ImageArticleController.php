@@ -28,7 +28,7 @@ class ImageArticleController extends AbstractController
     public function listImage(ImageRepository $i,ImageCatRepository $cat)
     {
         return $this->render('back/image/imageList.html.twig', [
-            'images' => $i->findBy(['category_id' => 2])
+            'images' => $i->findBy(['category' => 2])
         ]);
     }
 
