@@ -50,8 +50,9 @@ security:
         - { path: ^/admin, roles: ROLE_ADMIN_ACCESS }
         - { path: ^/admin/user, roles: ROLE_SUPER_USERS }
         - { path: ^/admin/(image|image-category), roles: ROLE_ADMIN_IMAGES }
+        - { path: ^/admin/image-article, roles: ROLE_ADMIN_IMAGES_ARTICLE }
         - { path: ^/admin/(boost|boost-category), roles: ROLE_ADMIN_BOOSTS }
-        - { path: ^/admin/(construction|construction-category), roles: ROLE_ADMIN_IMAGES }
+        - { path: ^/admin/(construction|construction-category), roles: ROLE_ADMIN_CONSTRUCTIONS }
         - { path: ^/admin/research, roles: ROLE_ADMIN_RESEARCHS }
         - { path: ^/admin/(familiar|familiar-category), roles: ROLE_ADMIN_FAMILIARS }
         - { path: ^/admin/event/\d+$, roles: ROLE_ADMIN_FAMILIARS }
