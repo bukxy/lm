@@ -39,7 +39,7 @@ class BoostTerritory
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\BoostTerritoryCat", inversedBy="boostTerritory")
      */
-    private $boostTerritoryCat;
+    private $category;
 
     public function getId(): ?int
     {
@@ -94,14 +94,14 @@ class BoostTerritory
         return $this;
     }
 
-    public function getBoostTerritoryCat(): ?BoostTerritoryCat
+    public function getcategory(): ?BoostTerritoryCat
     {
-        return $this->boostTerritoryCat;
+        return $this->category;
     }
 
-    public function setBoostTerritoryCat(?BoostTerritoryCat $boostTerritoryCat): self
+    public function setcategory(?BoostTerritoryCat $category): self
     {
-        $this->boostTerritoryCat = $boostTerritoryCat;
+        $this->category = $category;
 
         return $this;
     }

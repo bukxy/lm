@@ -29,7 +29,7 @@ class BoostTerritoryCat
     private $name;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\BoostTerritory", mappedBy="boostTerritoryCat")
+     * @ORM\OneToMany(targetEntity="App\Entity\BoostTerritory", mappedBy="category")
      */
     private $boostTerritory;
 
