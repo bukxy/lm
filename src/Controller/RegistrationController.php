@@ -43,11 +43,10 @@ class RegistrationController extends AbstractController
                 $activationEntity->setStatus(0);
 
             $activationEntity->setUser($user);
-            $manager->persist($activationEntity);
 
             $user->setActivation($activationEntity);
+            $manager->persist($activationEntity);
             $manager->persist($user);
-
             $manager->flush();
 
             $message = (new \Swift_Message('LordsMobile.com Registration Mail'))
@@ -65,7 +64,12 @@ class RegistrationController extends AbstractController
             ;
             $mailer->send($message);
 
-            return $this->redirectToRoute('app_login');
+            $this->addFlash('success', 'Un mail pour l\'activation de votre compte vous a été envoyer');
+
+            return $this->render('security/register.html.twig', [
+                'registrationForm' => $form->createView(),
+            ]);
+            // return $this->redirectToRoute('app_login');
         }
 
         return $this->render('security/register.html.twig', [
@@ -83,17 +87,12 @@ class RegistrationController extends AbstractController
                 $c->setStatus(true);
                 $manager->persist($c);
                 $manager->flush();
+                $this->addFlash('success', 'Activation du compte réussi, vous pouvez vous connecter');
+                return $this->redirectToRoute('app_login');
             }
         } else {
-
-            // return $this->redirectToRoute('app_login', [
-            //     'error' => 'Compte déjà activé !'
-            // ]);
-
-            return $this->render('security/login.html.twig', [
-                'error' => 'Compte déjà activé !'
-            ]);
-
+            $this->addFlash('error', 'Compte déjà activé...');
+            return $this->redirectToRoute('app_login');
         }
     }
 }
