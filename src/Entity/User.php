@@ -120,7 +120,7 @@ class User implements UserInterface
     private $rank;
 
     /**
-     * @ORM\OneToOne(targetEntity="App\Entity\UserAccountActivation", inversedBy="user", cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity="App\Entity\UserAccountActivation", inversedBy="user")
      */
     private $activation;
 
