@@ -9,15 +9,17 @@ $(function () {
 })
 
 $(document).ready(function () {
-    var stickyTop = $('.leftNav .navbar').offset().top;
+    // var stickyTop = $('.leftNav .navbar').offset().top;
 
-    $(window).scroll(function () {
-        var windowTop = $(window).scrollTop();
-        if (stickyTop < windowTop && $(".leftNav").height() > windowTop) {
-            $('.leftNav .navbar').addClass('sticky');
-        } else {
-            $('.leftNav .navbar').removeClass('sticky');
-            $('.leftNav .navbar').css('transition','.5s');
-        }
-    });
+    // $(window).scroll(function () {
+    //     if ($(this).width() >= 1200 ) {
+    //         var windowTop = $(window).scrollTop();
+    //         if (stickyTop < windowTop && $(".leftNav").height() > windowTop) {
+    //             $('.leftNav .navbar').addClass('sticky');
+    //         } else {
+    //             $('.leftNav .navbar').removeClass('sticky');
+    //             $('.leftNav .navbar').css('transition','.5s');
+    //         }
+    //     }
+    // });
 });
