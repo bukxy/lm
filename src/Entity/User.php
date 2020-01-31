@@ -545,37 +545,6 @@ class User implements UserInterface
         return $this;
     }
 
-    /**
-     * @return Collection|ResearchCat[]
-     */
-    public function getResearchCats(): Collection
-    {
-        return $this->researchCats;
-    }
-
-    public function addResearchCat(ResearchCat $researchCat): self
-    {
-        if (!$this->researchCats->contains($researchCat)) {
-            $this->researchCats[] = $researchCat;
-            $researchCat->setUser($this);
-        }
-
-        return $this;
-    }
-
-    public function removeResearchCat(ResearchCat $researchCat): self
-    {
-        if ($this->researchCats->contains($researchCat)) {
-            $this->researchCats->removeElement($researchCat);
-            // set the owning side to null (unless already changed)
-            if ($researchCat->getUser() === $this) {
-                $researchCat->setUser(null);
-            }
-        }
-
-        return $this;
-    }
-
     public function getRank(): ?UserRank
     {
         return $this->rank;
