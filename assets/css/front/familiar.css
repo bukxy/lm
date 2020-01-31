@@ -25,8 +25,10 @@
     border-radius: 10px;
 }
 
-.fam {
+.fam > div{
     width: 650px;
+    margin: auto;
+    position: relative;
 }
 
 .fam-lvlPreview, .fam-name, .fam-comp1, .fam-comp2, .fam-comp3, .fam-talent{
@@ -95,4 +97,81 @@
     height: 60px;
     left: -72px;
     top: -18px;
+}
+
+@media screen and (max-width: 700px) {
+    .fam > div {
+        width: 330px;
+    }
+    .fam img {
+        width: 330px;
+        border-radius: 5px;
+    }
+
+    .fam {
+        width: 100%;
+        padding: 0 5px;
+        font-size: 12px;
+    }
+
+    .fam-comp1, .fam-comp2, .fam-comp3, .fam-talent{
+        width: 75px;
+        height: 32px;
+    }
+
+    .comp1-img, .comp2-img, .comp3-img{
+        width: 100px;
+        height: 32px;
+    }
+
+    .fam-lvlPreview {
+        top: 151px;
+        left: 35px;
+        font-size: 7px;
+        width: 98px;
+        height: 14px;
+    }
+
+    .fam-name {
+        top: 12px;
+        left: 40px;
+    }
+
+    .fam-comp1 {
+        top: 39px;
+        left: 240px;
+    }
+    .comp1-img{
+        left: -28px;
+        top: 0px;
+    }
+
+    .fam-comp2 {
+        top: 74px;
+        left: 240px;
+    }
+    .comp2-img{
+        left: -28px;
+        top: 0px;
+    }
+
+    .fam-comp3 {
+        top: 108px;
+        left: 240px;
+    }
+    .comp3-img{
+        left: -28px;
+        top: 0px;
+    }
+
+    .fam-talent {
+        top: 150px;
+        left: 250px
+    }
+    .talent-img{
+        width: 112px;
+        height: 35px;
+        left: -37px;
+        top: -2px;
+    }
 }

@@ -66,11 +66,21 @@ body .icon {
 
 .leftNav .navbar-nav {flex-direction: column;}
 
+.leftNav .navbar-nav li{
+    width: 228px;
+    margin: 2px 0;
+}
+
+.leftNav .navbar-nav li:hover{
+    background-color: rgba(0,0,0,0.08);
+    border-radius: 3px;
+}
+
 .leftNav .navbar{
     border-radius: 5px;
     border: 1px solid #716a42;
     box-shadow: 0 0px 5px rgba(0,0,0,0.5);
-    padding: 20px 10px;
+    padding: 30px 10px 10px;
 }
 
 .leftNav {
@@ -94,20 +104,27 @@ body .icon {
 }
 
 .leftNav-title img{
-    width: 230px;
+    width: 190px;
     height: 40px;
 }
 
-.leftNav-title div{
+.leftNav-title > div{
     position: absolute;
     top: 5px;
     left: 20px;
     width: 190px;
     height: 27px;
     font-size: 21px;
-    text-align: center;
     color: #DED096;
     text-shadow: 1px 1px 5px black;
+}
+
+.leftNav-title > div > div{
+    position: absolute;
+    top: 5px;
+    left: 0px;
+    width: 190px;
+    height: 27px;
 }
 
 .leftNav .nav-item img {
@@ -121,29 +138,26 @@ body .icon {
 
 #content .content-title {
     position: absolute;
-    top: -48px;
+    top: -21px;
+    left: 0;
+    width: 100%;
 }
 
 #content .content-title div{
-    position: absolute;
-    top: 32px;
-    left: 245px;
-    width: 365px;
-    text-align: center;
+    top: 4px;
+    width: 400px;
     color: #DED096;
     text-shadow: 1px 1px 5px black;
+    margin: auto;
 }
 
-#content .content-title div h1{
-    font-size: 32px;
-}
-
-#content .content-title img {
+#content .content-title > div > div{
     position: absolute;
-    left: 200px;
-    width: 450px;
-    top: 24px;
 }
+
+#content .content-title div h1{font-size: 32px;}
+
+#content .content-title img {width: 100%;}
 
 #content.pageWidth {
     width: 870px;
@@ -189,17 +203,6 @@ body .icon {
     background-color: rgba(0,0,0,0.08);
 }
 
-.filter-menu .title {
-    position: absolute;
-    top: -20px;
-    left: 198px;
-    text-align: center;
-    width: 320px;
-    border-radius: 15px 70%;
-    border: 1px solid black;
-    box-shadow: 0px 5px 3px;
-}
-
 .filter-menu {
     margin: 13px auto 17px;
     width: 80%;
@@ -211,4 +214,134 @@ body .icon {
     padding: 30px 0 0 0;
     background-color: #556E85;
     border-radius: 10px;
+}
+
+.tooltip-inner {
+    background-color: burlywood;
+}
+
+@media screen and (max-width: 1200px) {
+
+    body {
+        width: 100%;
+    }
+
+    .bodyContent {
+        border-radius: 0;
+    }
+
+    .topNav .navbar {
+        border-radius: 0;
+    }
+
+    .leftNav {
+        width: 100%;
+    }
+
+    .leftNav .navbar-nav {flex-wrap: wrap;}
+
+    .leftNav-title {
+        width: 100%;
+        left: 0;
+    }
+
+    .leftNav-title > div {
+        margin: auto;
+        position: relative;
+        top: 0;
+        left: 0;
+    }
+
+    .leftNav .navbar-nav {
+        flex-direction: row;
+        flex: auto;
+        justify-content: space-between;
+    }
+
+    .leftNav .navbar-nav {
+        flex-direction: row;
+    }
+
+    #content.pageWidth {
+        margin:auto;
+    }
+}
+
+@media screen and (max-width: 992px) {
+
+    body .icon {
+        background: transparent url('../img/logo350.png') no-repeat center;
+        width: 350px;
+        height: 240px;
+    }
+
+    .bodyContent > div {
+        padding: 0px 5px;
+    }
+
+    /*=================================================
+    *
+    *
+    *                   MENU
+    *
+    *
+    =================================================*/
+
+    .leftNav-title {
+        width: 100%;
+        top:-21px;
+    }
+
+    .leftNav-title img{
+        width: 230px;
+    }
+
+    .leftNav-title > div{
+        width: 228px;
+    }
+
+    .leftNav-title > div > div{
+        left: 18px;
+        width: 134px;
+        height: 30px;
+    }
+
+    .leftNav-title > div > div > button{
+        position: absolute;
+        top: 0px;
+        left: 132px;
+        padding: 0 15px;
+        background-color: rgba(0,0,0,0.4);
+    }
+
+    /*=================================================
+    *
+    *
+    *                   CONTENT
+    *
+    *
+    =================================================*/
+
+    #content.pageWidth, #content.pageWidth::after, #content .pageContent  {
+        background: none;
+    }
+    #content.pageWidth  {
+        width: 100%;
+    }
+
+    #content .pageContent  {
+        background: #DED096;
+        border-radius: 5px;
+        padding: 0 0 10px;
+    }
+
+    #content .content-title{
+        top: 18px;
+    }
+
+    #content .content-title div{
+        max-width: 400px;
+        width: 100%;
+        min-width: 350px;
+    }
 }
