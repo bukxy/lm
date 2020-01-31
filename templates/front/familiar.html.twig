@@ -8,9 +8,6 @@
 
     <div class="filter-menu">
         <div class="filter-list fam-head-list row">
-            <div class="col-12 title">
-                <h4>Selection rapide</h4>
-            </div>
             <div class="col-12">
                 <ul class="fam-head">
                     {% for f in famIcon %}
@@ -29,45 +26,47 @@
 
     {% for f in fam %}
         <article id="{{ f.name }}" class="fam">
-            {% if f.imageBackground is null %}
-                <img src="{{ asset('uploads/familiar.png') }}" alt="">
-            {% else %}
-                <img src="{{ asset('uploads/images/' ~ f.imageBackground ) }}" alt="{{ f.imageBackground.alt }}">
-            {% endif %}
-            
-            <div class="fam-lvlPreview">
-                <p>Aperçu au Niveau MAX</p>
-            </div>
-
-            <div class="fam-name">
-                {{ f.name }}
-            </div>
-
-            <div class="fam-comp1">
-                <div class="comp1-img" tabindex="0" data-toggle="tooltip" data-placement="top" title="{{ f.competence1Desc}}"></div>
-                {{ f.competence1 }}
-            </div>
-
-            {% if f.competence2 %}
-                <div class="fam-comp2">
-                    <div class="comp2-img" tabindex="0" data-toggle="tooltip" data-placement="top" title="{{ f.competence2Desc }}"></div>
-                    {{ f.competence2 }}
+            <div class="m-auto">
+                {% if f.imageBackground is null %}
+                    <img src="{{ asset('uploads/familiar.png') }}" alt="">
+                {% else %}
+                    <img src="{{ asset('uploads/images/' ~ f.imageBackground ) }}" alt="{{ f.imageBackground.alt }}">
+                {% endif %}
+                
+                <div class="fam-lvlPreview">
+                    <p>Aperçu au Niveau MAX</p>
                 </div>
-            {% endif %}
 
-            {% if f.competence3 %}
-                <div class="fam-comp3">
-                    <div class="comp3-img" tabindex="0" data-toggle="tooltip" data-placement="top" title="{{ f.competence3Desc }}"></div>
-                    {{ f.competence3 }}
+                <div class="fam-name">
+                    {{ f.name }}
                 </div>
-            {% endif %}
 
-            {% if f.talent %}
-                <div class="fam-talent">
-                    <div class="talent-img" tabindex="0" data-toggle="tooltip" data-placement="top" title="{{ f.talentDesc }}"></div>
-                    {{ f.talent }}
+                <div class="fam-comp1">
+                    <div class="comp1-img" tabindex="0" data-toggle="tooltip" data-placement="top" title="{{ f.competence1Desc}}"></div>
+                    {{ f.competence1 }}
                 </div>
-            {% endif %}
+
+                {% if f.competence2 %}
+                    <div class="fam-comp2">
+                        <div class="comp2-img" tabindex="0" data-toggle="tooltip" data-placement="top" title="{{ f.competence2Desc }}"></div>
+                        {{ f.competence2 }}
+                    </div>
+                {% endif %}
+
+                {% if f.competence3 %}
+                    <div class="fam-comp3">
+                        <div class="comp3-img" tabindex="0" data-toggle="tooltip" data-placement="top" title="{{ f.competence3Desc }}"></div>
+                        {{ f.competence3 }}
+                    </div>
+                {% endif %}
+
+                {% if f.talent %}
+                    <div class="fam-talent">
+                        <div class="talent-img" tabindex="0" data-toggle="tooltip" data-placement="top" title="{{ f.talentDesc }}"></div>
+                        {{ f.talent }}
+                    </div>
+                {% endif %}
+            </div>
         </article>
     {% endfor %}
 

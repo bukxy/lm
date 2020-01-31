@@ -16,10 +16,6 @@
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#topNavigation" aria-controls="topNavigation" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#leftNavigation" aria-controls="leftNavigation" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-
                     <div class="collapse navbar-collapse" id="topNavigation">
                         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                             <li class="nav-item">
@@ -33,60 +29,23 @@
                 </nav>
             </div>
 
+            
             <div class="container col-12 row mr-auto">
-                <div class="leftNav mt-5">
-                    <nav class="navbar navbar-expand-lg navbar-light">
-                        <div class="leftNav-title">
-                            <img src="{{ asset('uploads/title-content.png') }}" alt="">
-                            <div>
-                                <p>Menu</p>
-                            </div>
-                        </div>
-                        <div class="collapse navbar-collapse" id="leftNavigation">
-                            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ path('construction')}}">
-                                        <img src="{{ asset('uploads/icon/castle.png') }}" alt="">Constructions
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ path('familiar') }}">
-                                        <img src="{{ asset('uploads/icon/familier.png') }}" alt="">Familiers
-                                    </a>
-                                </li>
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        Evénements
-                                    </a>
-                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="{{ path('evenement', {'slug': 'guild-fest'}) }}">Guilde Fest</a>
-                                        <a class="dropdown-item" href="{{ path('evenement', {'slug': 'guild-showdown'}) }}">Epreuve de Guilde</a>
-                                        <a class="dropdown-item" href="{{ path('evenement', {'slug': 'guild-bash'}) }}">Bash de Guilde</a>
-                                        <a class="dropdown-item" href="{{ path('evenement', {'slug': 'lords-cup'}) }}">Coupe des lords</a>
-                                        <a class="dropdown-item" href="{{ path('evenement', {'slug': 'kvk'}) }}">RvR (KvK)</a>
-                                        <a class="dropdown-item" href="{{ path('evenement', {'slug': 'dragon-arena'}) }}">Arène du dragon</a>
-                                        <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" href="{{ path('evenement', {'slug': 'feudal-war'}) }}">Guerre Féodale</a>
-                                        <a class="dropdown-item" href="{{ path('evenement', {'slug': 'battle-royal'}) }}">Bataille Royale</a>
-                                        <a class="dropdown-item" href="{{ path('evenement', {'slug': 'royal-calice'}) }}">Calice Royale</a>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </nav>
-                </div>
+                {% include "leftNav.html.twig" %}
                 <div id="content" class="pageWidth mt-5">
                     <div class="pageContent row-fluid">
                         <div class="content-title">
-                            <img src="{{ asset('uploads/title-content.png') }}" alt="">
-                            <div>
-                                <h1>{% block contentTitle %}{% endblock %}</h1>
+                            <div class="text-center">
+                                <img src="{{ asset('uploads/title-content.png') }}" alt="">
+                                <div>
+                                    <h1>{% block contentTitle %}{% endblock %}</h1>
+                                </div>
                             </div>
                         </div>
                         {% block body %}{% endblock %}
                     </div>
                 </div>
-            </div>        
+            </div>
         </section>
 
             <script src="https://kit.fontawesome.com/4ab35c6c2f.js"></script>
