@@ -11,7 +11,7 @@ Site non officiel de tutoriels pour le jeu LordsMobile,
 - ratio loot packs
 - ...
 
-Gestion du stie via un panel admin.
+Panel admin.
 
 
 Plus tard : 
