@@ -11,12 +11,21 @@
             <div class="col-12">
                 <ul class="fam-head">
                     {% for f in famIcon %}
-                        <li>
+                        <li value="{{ f.id }}" class="view_familiar">
                             {% if f.imageHead is null %}
-                                <a href="#{{ f.name }}"><img src="{{ asset('uploads/default.png') }}" alt=""></a>
+                                <img src="{{ asset('uploads/default.png') }}" alt="">
                             {% else %}
-                                <a href="#{{ f.name }}"><img src="{{ asset('uploads/images/' ~ f.imageHead ) }}" alt="{{ f.imageHead.alt }}"></a>
+                                <img src="{{ asset('uploads/images/' ~ f.imageHead ) }}" alt="{{ f.imageHead.alt }}">
                             {% endif %}
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="col-12">
+                <ul class="fam-head">
+                    {% for f in famCat %}
+                        <li value="{{ f.id }}" class="view_familiarByCat">
+                            {{ f.name }}
                         </li>
                     {% endfor %}
                 </ul>
@@ -24,55 +33,28 @@
         </div>
     </div>
 
-    {% for f in fam %}
-        <article id="{{ f.name }}" class="fam">
-            <div class="m-auto">
-                {% if f.imageBackground is null %}
-                    <img src="{{ asset('uploads/familiar.png') }}" alt="">
-                {% else %}
-                    <img src="{{ asset('uploads/images/' ~ f.imageBackground ) }}" alt="{{ f.imageBackground.alt }}">
-                {% endif %}
-                
-                <div class="fam-lvlPreview">
-                    <p>Aperçu au Niveau MAX</p>
-                </div>
+    {# <article class="fam">
+        <div class="m-auto">
+            
+            <div class="fam-name"></div>
 
-                <div class="fam-name">
-                    {{ f.name }}
-                </div>
-
-                <div class="fam-comp1">
-                    <div class="comp1-img" tabindex="0" data-toggle="tooltip" data-placement="top" title="{{ f.competence1Desc}}"></div>
-                    {{ f.competence1 }}
-                </div>
-
-                {% if f.competence2 %}
-                    <div class="fam-comp2">
-                        <div class="comp2-img" tabindex="0" data-toggle="tooltip" data-placement="top" title="{{ f.competence2Desc }}"></div>
-                        {{ f.competence2 }}
-                    </div>
-                {% endif %}
-
-                {% if f.competence3 %}
-                    <div class="fam-comp3">
-                        <div class="comp3-img" tabindex="0" data-toggle="tooltip" data-placement="top" title="{{ f.competence3Desc }}"></div>
-                        {{ f.competence3 }}
-                    </div>
-                {% endif %}
-
-                {% if f.talent %}
-                    <div class="fam-talent">
-                        <div class="talent-img" tabindex="0" data-toggle="tooltip" data-placement="top" title="{{ f.talentDesc }}"></div>
-                        {{ f.talent }}
-                    </div>
-                {% endif %}
+            <div class="fam-lvlPreview">
+                <p>Aperçu au Niveau MAX</p>
             </div>
-        </article>
-    {% endfor %}
 
-    <div class="navigation">
-        {{ knp_pagination_render(fam) }}
-    </div>
+            <div class="fam-comp1"></div>
+
+            <div class="fam-comp2"></div>
+
+            <div class="fam-comp3"></div>
+
+            <div class="fam-talent"></div>
+        </div>
+    </article> #}
 
 {% endblock %}
 
+{% block javascripts %}
+    {{ encore_entry_script_tags('familiar') }}
+    {{ encore_entry_script_tags('familiarByCat') }}
+{% endblock %}
