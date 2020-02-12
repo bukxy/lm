@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\FamiliarRepository")
@@ -13,6 +14,7 @@ class Familiar
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     * @Groups("familiarByCat:read")
      */
     private $id;
 
@@ -23,51 +25,61 @@ class Familiar
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups("familiarByCat:read")
      */
     private $name;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups("familiarByCat:read")
      */
     private $competence1;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups("familiarByCat:read")
      */
     private $competence2;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups("familiarByCat:read")
      */
     private $competence3;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups("familiarByCat:read")
      */
     private $competence1Desc;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups("familiarByCat:read")
      */
     private $competence2Desc;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups("familiarByCat:read")
      */
     private $competence3Desc;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups("familiarByCat:read")
      */
     private $talent;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups("familiarByCat:read")
      */
     private $talentDesc;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Image", inversedBy="familiarBackground")
+     * @Groups("familiarByCat:read")
      */
     private $imageBackground;
 
