@@ -2,37 +2,78 @@
 
 namespace App\Controller;
 
+use App\Entity\Familiar;
+use App\Entity\FamiliarCat;
+use App\Repository\ImageRepository;
 use App\Repository\FamiliarRepository;
 use App\Repository\FamiliarCatRepository;
-use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Serializer\Encoder\XmlEncoder;
+use Symfony\Component\Serializer\Encoder\JsonEncoder;
+use Symfony\Component\Serializer\SerializerInterface;
+use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
+/**
+* @Route("/familiar", name="familiar_")
+*/
 class FamiliarController extends AbstractController
 {
     /**
-     * @Route("/familiar", name="familiar")
-     */
-    public function index(FamiliarRepository $f, FamiliarCatRepository $fc, Request $request, PaginatorInterface $paginator)
-    {
-        $allFamiliars = $f->findAll();
-        $allFamiliarsIcon = $f->findAll();
-                
-        // Paginate the results of the query
-        $fams = $paginator->paginate(
-            // Doctrine Query, not results
-            $allFamiliars,
-            // Define the page parameter
-            $request->query->getInt('page', 1),
-            // Items per page
-            4
-        );
-
+    * @Route("/", name="list")
+    */
+    public function index(FamiliarRepository $f, FamiliarCatRepository $fc, Request $request)
+    {                
         return $this->render('front/familiar.html.twig', [
-            'fam' => $fams,
-            'famIcon' => $allFamiliarsIcon,
+            'famIcon' => $f->findAll(),
             'famCat' => $fc->findAll(),
         ]);
+    }
+
+    /**
+     * @Route("/{id}", name="one", methods={"POST"})
+     */
+    public function oneFamiliar(Familiar $f = null, FamiliarRepository $fRepo, ImageRepository $iRepo, Request $request)
+    {
+        if ($f) {
+            $url = $request->server->get('HTTP_HOST');
+
+            return $this->json([
+                    'message'       =>  true,
+                    'url'           =>  'https://'. $url . '/uploads/images/',
+                    'defaultImage'  =>  'https://'. $url . '/uploads/familiar.png',
+                    'result'        =>  $f
+                ], 200, [],
+                    ['groups' => 'familiarByCat:read']
+            );
+        } else {
+            return $this->json([
+                'message' => false
+            ], 200);
+        }
+    }
+
+    /**
+     * @Route("/category/{id}", name="listByCategory", methods={"POST"})
+     */
+    public function listByCategory(FamiliarCat $fcat = null, FamiliarRepository $fRepo, ImageRepository $iRepo, Request $request)
+    {
+        if ($fcat) {
+            $url = $request->server->get('HTTP_HOST');
+
+            return $this->json([
+                    'message'       =>  true,
+                    'url'           =>  'https://'. $url . '/uploads/images/',
+                    'defaultImage'  =>  'https://'. $url . '/uploads/familiar.png',
+                    'result'        =>  $fRepo->findBy(['familiarCat' => $fcat->getId()])
+                ], 200, [],
+                    ['groups' => 'familiarByCat:read']
+            );
+        } else {
+            return $this->json([
+                'message' => false
+            ], 200);
+        }
     }
 }
