@@ -94,12 +94,12 @@ class BoostTerritory
         return $this;
     }
 
-    public function getcategory(): ?BoostTerritoryCat
+    public function getCategory(): ?BoostTerritoryCat
     {
         return $this->category;
     }
 
-    public function setcategory(?BoostTerritoryCat $category): self
+    public function setCategory(?BoostTerritoryCat $category): self
     {
         $this->category = $category;
 
