@@ -211,7 +211,7 @@ body .icon {
 
 .filter-list {
     position: relative;
-    padding: 30px 0 0 0;
+    padding: 10px 0;
     background-color: #556E85;
     border-radius: 10px;
 }
@@ -275,7 +275,7 @@ body .icon {
         height: 240px;
     }
 
-    .bodyContent > div {
+    .bodyContent > div:nth-child(2) {
         padding: 0px 5px;
     }
 
@@ -314,6 +314,10 @@ body .icon {
         background-color: rgba(0,0,0,0.4);
     }
 
+    .leftNav li {
+        padding: 10px;
+    }
+
     /*=================================================
     *
     *
@@ -325,6 +329,12 @@ body .icon {
     #content.pageWidth, #content.pageWidth::after, #content .pageContent  {
         background: none;
     }
+
+    #content.pageWidth::after {
+        width: 0;
+        height: 0;
+    }
+
     #content.pageWidth  {
         width: 100%;
     }
@@ -332,7 +342,7 @@ body .icon {
     #content .pageContent  {
         background: #DED096;
         border-radius: 5px;
-        padding: 0 0 10px;
+        padding: 35px 0 10px;
     }
 
     #content .content-title{
