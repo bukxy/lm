@@ -49,8 +49,8 @@ class UserController extends AbstractController
 
             $password = $form['password']->getData();
             if($password) {
-                $encoded = $encoder->encodePassword($user, $password);
-                $user->setPassword($encoded);
+                $encoded = $encoder->encodePassword($u, $password);
+                $u->setPassword($encoded);
             }
 
             $manager->persist($u);
