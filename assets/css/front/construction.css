@@ -1,49 +1,62 @@
 .const {
     background-color: #556E85;
     border-radius: 10px;
-    width: 650px;
+    max-width: 650px;
+    width: 100%;
     min-height: 190px;
-    padding-top: 40px;
+    padding: 0 10px 10px 10px;
 }
 
-.const .name {
-    color: #DED078;
-    text-shadow: 0px 0px 5px #000000;
-    font-size: 18px;
-}
-
-.const img {
+.const .content div:nth-child(1){
     width: 150px;
     height: auto;
     position: absolute;
-    top: 25px;
     left: 15px;
 }
-
-.const .name img {
-    width: 450px;
-    height: auto;
-    top: -18px;
-    left: 100px;
+.const .content div:nth-child(1) img{
+    width: 100%;
 }
 
-.const .name div {
-    position: absolute;
-    top: -6px;
-    width: 250px;
+.const .name {
+    top: -18px;
+    margin: 0 -10px 0;
+}
+
+.const .content div:nth-child(2) {
+    margin: 0 0 0 170px;
+    background-color: #C7C8C2;
+    padding: 5px;
+    max-height: 200px;
     height: auto;
-    left: 200px;
-    text-align: center;
+    border-radius: 5px;
+    word-wrap: break-word;
+    overflow: auto;
+
 }
 
 .const .content {
-    margin-left: 200px;
-    background-color: #C7C8C2;
-    padding: 5px;
-    width: 435px;
-    border-radius: 5px;
+    max-height: 200px;
+    height: auto;
+    position: relative;
 }
-
 .const .content p{
     margin: 0;
+}
+
+@media screen and (max-width: 575px) {
+
+    .const .content div:nth-child(1){
+        position: relative;
+        margin: 0 auto 15px;
+        left: 0;
+    }
+
+    .const .content div:nth-child(2) {
+        margin: 0;
+        max-height: 175px;
+    }
+
+    .const .content{
+        max-height: 300px;
+    }
 }

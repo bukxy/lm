@@ -18,10 +18,33 @@
     list-style: none;
     margin: auto;
     padding: 3px 5px;
+    cursor: pointer;
 }
 
-.fam-head img {
+.fam-head .view_familiar img {
     width: 45px;
+    height: auto;
+}
+
+.fam-head .view_familiarByCat {
+    width: 90px;
+    height: 35px;
+    position: relative;
+    cursor: pointer;
+}
+.fam-head .view_familiarByCat > div{
+    position: absolute;
+}
+.fam-head .view_familiarByCat > div > div {
+    position: absolute;
+    top: 3px;
+    left: 0;
+    width: 100%;
+    color: white;
+    text-shadow: 1px 1px 2px black;
+}
+.fam-head .view_familiarByCat img {
+    width: 100%;
     height: auto;
 }
 
@@ -132,15 +155,16 @@
 
     .fam-lvlPreview {
         top: 151px;
-        left: 35px;
+        left: 27px;
         font-size: 7px;
-        width: 98px;
+        width: 105px;
         height: 14px;
     }
 
     .fam-name {
-        top: 12px;
+        top: 15px;
         left: 40px;
+        font-size: 13px;
     }
 
     .fam-comp1 {

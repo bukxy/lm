@@ -47,7 +47,7 @@ body .icon {
     box-shadow: 0 0 5px black;
 }
 
-.filter-menu .title, .leftNav .navbar, .leftNav .dropdown-menu, .topNav .navbar {background-color: #DED096;}
+.leftNav .navbar, .leftNav .dropdown-menu, .topNav .navbar {background-color: #DED096;}
 
 .leftNav .dropdown-menu a:hover, .topNav a:hover {
     background-color: rgba(0,0,0,0.5);
@@ -206,7 +206,33 @@ body .icon {
 .filter-menu {
     margin: 13px auto 17px;
     width: 80%;
-    padding: 60px 0 0 0;
+    padding: 0;
+}
+.filter-menu .title, .const .name {
+    color: #DED078;
+    text-shadow: 0px 0px 5px #000000;
+    font-size: 18px;
+}
+.filter-menu .title, .const .name{
+    position: relative;
+    top: 12px;
+    z-index: 1;
+}
+.filter-menu .title > div, .const .name > div{
+    position: relative;
+    width: 300px;
+    height: 30px;
+    margin: auto;
+}
+.filter-menu .title > div img, .const .name > div img{
+    width: 100%;
+    rotate: 180deg;
+}
+.filter-menu .title > div > div, .const .name > div > div{
+    position: absolute;
+    top: 0;
+    width: 300px;
+    text-align: center;
 }
 
 .filter-list {
