@@ -33,20 +33,25 @@
     {% for c in construction %}
         <article id="{{ c.name }}" class="const">
             <div class="name">
-                <img src="{{ asset('uploads/bandeau_rouge.png') }}" alt="">
                 <div>
-                    <span>{{ c.name }}</span>
+                    <img src="{{ asset('uploads/bandeau_rouge.png') }}" alt="">
+                    <div>
+                        <span>{{ c.name }}</span>
+                    </div>
                 </div>
             </div>
 
-            {% if c.image is null %}
-                <img src="{{ asset('uploads/default.png') }}" alt="">
-            {% else %}
-                <img src="{{ asset('uploads/images/' ~ c.image ) }}" alt="{{ c.image.alt }}">
-            {% endif %}
-
             <div class="content">
-                {{ c.content | raw }}
+                <div>
+                    {% if c.image is null %}
+                        <img src="{{ asset('uploads/default.png') }}" alt="">
+                    {% else %}
+                        <img src="{{ asset('uploads/images/' ~ c.image ) }}" alt="{{ c.image.alt }}">
+                    {% endif %}
+                </div>
+                <div>
+                    {{ c.content | raw }}
+                </div>
             </div>
         </article>
     {% endfor %}

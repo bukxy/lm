@@ -7,8 +7,16 @@
 {% block body %}
 
     <div class="filter-menu">
+        <div class="title">
+            <div>
+                <img src="{{ asset('uploads/bandeau_rouge.png') }}" alt="">
+                <div class="text-center">
+                    <span>Liste</span>
+                </div>
+            </div>
+        </div>
         <div class="filter-list fam-head-list row">
-            <div class="col-12">
+            <div class="col-12 mt-2">
                 <ul class="fam-head">
                     {% for f in famIcon %}
                         <li value="{{ f.id }}" class="view_familiar">
@@ -21,36 +29,33 @@
                     {% endfor %}
                 </ul>
             </div>
-            <div class="col-12">
+        </div>
+    </div>
+    <div class="filter-menu category">
+        <div class="title">
+            <div>
+                <img src="{{ asset('uploads/bandeau_rouge.png') }}" alt="">
+                <div class="text-center">
+                    <span>Catégories</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="filter-list fam-head-list row">
+            <div class="col-12 mt-2">
                 <ul class="fam-head">
                     {% for f in famCat %}
                         <li value="{{ f.id }}" class="view_familiarByCat">
-                            {{ f.name }}
+                            <div>
+                                <img src="{{ asset('uploads/button.png') }}" alt="">
+                                <div class="text-center">{{ f.name }}</div>
+                            </div>
                         </li>
                     {% endfor %}
                 </ul>
             </div>
         </div>
     </div>
-
-    {# <article class="fam">
-        <div class="m-auto">
-            
-            <div class="fam-name"></div>
-
-            <div class="fam-lvlPreview">
-                <p>Aperçu au Niveau MAX</p>
-            </div>
-
-            <div class="fam-comp1"></div>
-
-            <div class="fam-comp2"></div>
-
-            <div class="fam-comp3"></div>
-
-            <div class="fam-talent"></div>
-        </div>
-    </article> #}
 
 {% endblock %}
 

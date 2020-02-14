@@ -15,56 +15,55 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th>Nom</th>
-                            <th>Catégorie</th>
-                            <th>Image</th>
-                            <th>options</th>
+                            <th class="text-center">Nom</th>
+                            <th class="text-center">Catégorie</th>
+                            <th class="text-center">Image</th>
+                            <th class="text-center">options</th>
                         </tr>
                     </thead>
                     <tfoot>
                         <tr>
-                            <th>Nom</th>
-                            <th>Catégorie</th>
-                            <th>Image</th>
-                            <th>options</th>
+                            <th class="text-center">Nom</th>
+                            <th class="text-center">Catégorie</th>
+                            <th class="text-center">Image</th>
+                            <th class="text-center">options</th>
                         </tr>
                     </tfoot>
                     <tbody>
                         {% for c in constructions %}
                             <tr>
-                                <th scope="row">{{ c.id }}</th>
-                                <td>{{ c.name }}</td>
-                                <td>{{ c.constructionCat }}</td>
-                                <td>{{ c.content }}</td>
-
-                                <td>{{ c.name }}</td>
-                                <td>{{ c.constructionCat }}</td>
+                                <td class="lm-td" scope="row">{{ c.name }}</td>
+                                <td class="lm-td">{{ c.constructionCat }}</td>
                                 {% if c.image is null %}
                                     <td>
-                                        <button class="btn btn-primary">
-                                            <a href="{{ path('admin_construction_new_image', {'id' : c.id }) }}"><i class="fas fa-plus-circle"></i></a>
-                                        </button>
+                                        <div class="lm-options">
+                                            <button class="btn btn-primary">
+                                                <a href="{{ path('admin_construction_new_image', {'id' : c.id }) }}"><i class="fas fa-plus-circle"></i></a>
+                                            </button>
+                                        </div>
                                     </td>
                                 {% else %}
                                     <td>
-                                        <img class="lm-img" src="{{ asset('uploads/images/' ~ c.image) }}" alt="{{ c.image.alt }}">
-                                        <button class="btn btn-danger">
-                                            <a href="{{ path('admin_construction_delete_image', {'id' : c.id }) }}"><i class="fas fa-minus-circle"></i></a>
-                                        </button>
+                                        <div class="lm-imgIcon m-auto">
+                                            <img class="lm-img" src="{{ asset('uploads/images/' ~ c.image) }}" alt="{{ c.image.alt }}">
+                                            <div class="img-overlay">
+                                                <a href="{{ path('admin_construction_delete_image', {'id' : c.id }) }}"><i class="fas fa-minus-circle"></i></a>
+                                            </div>
+                                        </div>
                                     </td>
                                 {% endif %}
-
                                 <td>
-                                    <button class="btn btn-primary">
-                                        <a href="{{ path('admin_construction_edit', {'id' : c.id }) }}"><i class="fas fa-edit"></i></a>
-                                    </button>
-                                    <button class="btn btn-danger">
-                                        <a href="{{ path('admin_construction_delete', {'id' : c.id }) }}"><i class="fas fa-minus-circle"></i></a>
-                                    </button>
+                                    <div class="lm-options">
+                                        <a class="btn btn-primary btn-circle" href="{{ path('admin_construction_edit', {'id' : c.id }) }}">
+                                            <i class="fas fa-edit"></i>
+                                        </a>
+                                        <a class="btn btn-danger btn-circle" href="{{ path('admin_construction_delete', {'id' : c.id }) }}">
+                                            <i class="fas fa-minus-circle"></i>
+                                        </a>
+                                    </div>
                                 </td>
                             </tr>
                         {% endfor %}
-
                     </tbody>
                 </table>
             </div>

@@ -11,7 +11,7 @@
 {% block body %}
     {{ form_start(form) }}
         <div class="row col-lg-10 col-sm-12 m-auto perms">
-            <div class="card col-8">
+            <div class="card col-8 pb-3">
                 <div class="card-header py-3">
                     <h6 class="m-0 font-weight-bold text-primary">Edition de l'utilisateur</h6>
                 </div>
@@ -29,13 +29,14 @@
                     </div>
                     <div class="form-group row col-12">
                         <div class="col-6">
-                            {{ form_label(form.password.first, 'Nouveau mot de passe') }}
+                            {{ form_label(form.password.first, 'Nouveau mot de passe', {errors: []}) }}
                             {{ form_widget(form.password.first) }}
                         </div>
                         <div class="col-6">
                             {{ form_label(form.password.second, 'Répétez le mot de passe') }}
                             {{ form_widget(form.password.second) }}
                         </div>
+                        {{ form_errors(form.password.first) }}
                     </div>                
                 </div>
                 <button type="submit" class="btn btn-primary m-auto">
