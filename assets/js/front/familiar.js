@@ -31,7 +31,7 @@ let objFamiliars = {
 
                 $('.fam').remove();
 
-                $('.filter-menu').after('<article class="fam"><div class="m-auto"></div></article>');
+                $('.filter-menu.category').after('<article class="fam"><div class="m-auto"></div></article>');
 
                 if (r['imageBackground']) {
                     $('article.fam > div').append('<img src="' + response.url + r['imageBackground']['name'] + '" alt="' + r['name'] + '">')

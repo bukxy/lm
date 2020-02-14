@@ -29,16 +29,13 @@ let objFamiliarsByCat = {
         .done(function (response) {
             if (response.message == true) {
                 r = response.result
+                console.log(response);
                 $('.fam').remove();
                 $.each(r, function(i) {
 
-                    if (i === 0) {
-                        $('.filter-menu').after('<article id="'+ r[i]['id'] +'" class="fam"><div class="m-auto"></div></article>');
-                    } else {
-                        $('.fam').after('<article id="' + r[i]['id'] +'" class="fam"><div class="m-auto"></div></article>');
-                    }
+                    $('.filter-menu.category').after('<article id="'+ r[i]['id'] +'" class="fam"><div class="m-auto"></div></article>');
 
-                    if (r[i]['imageBackground']['name'] !== null) {
+                    if (r[i]['imageBackground']) {
                         $('article.fam#' + r[i]['id'] +' > div').append('<img src="'+ response.url + r[i]['imageBackground']['name'] + '" alt="' + r[i]['name'] + '">')
                     } else {
                         $('article.fam#' + r[i]['id'] +' > div').append('<img src="'+ response.defaultImage + '" alt="Aucune information">')
