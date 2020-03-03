@@ -31,6 +31,10 @@ Encore
 
     .addEntry('dataTablesBs', './assets/js/back/dataTables.bootstrap4.js')
 
+    .addEntry('construction', './assets/js/front/construction.js')
+    .addEntry('familiar', './assets/js/front/familiar.js')
+    .addEntry('familiarByCat', './assets/js/front/familiarByCat.js')
+
     //.addEntry('page1', './assets/js/page1.js')
     //.addEntry('page2', './assets/js/page2.js')
 
