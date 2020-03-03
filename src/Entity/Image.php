@@ -26,13 +26,13 @@ class Image
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups("familiarByCat:read")
+     * @Groups({"image:read"})
      */
     private $name;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups("familiarByCat:read")
+     * @Groups({"image:read"})
      */
     private $alt;
 
