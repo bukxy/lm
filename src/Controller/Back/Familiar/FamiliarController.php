@@ -89,7 +89,7 @@ class FamiliarController extends AbstractController
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     /**
-     * @Route("/image/add/{id}", name="admin_familiar_new_imageBackground")
+     * @Route("/background/add/{id}", name="admin_familiar_new_imageBackground")
      */
     public function AddImage(Familiar $f, Image $i = null, Request $req, EntityManagerInterface $manager, Security $security)
     {
@@ -151,7 +151,7 @@ class FamiliarController extends AbstractController
     }
 
     /**
-     * @Route("/image/delete/{id}", name="admin_familiar_delete_imageBackground")
+     * @Route("/background/delete/{id}", name="admin_familiar_delete_imageBackground")
      */
     public function deleteImage(Familiar $f, ImageRepository $i, EntityManagerInterface $manager, Security $security) {
         if ($security->getUser()){
