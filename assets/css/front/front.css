@@ -45,9 +45,10 @@ body .icon {
     background-color: rgba(0,0,0,0.25);
     border-radius: 45px 45px 0 0;
     box-shadow: 0 0 5px black;
+    padding: 0 0 60px 0;
 }
 
-.leftNav .navbar, .leftNav .dropdown-menu, .topNav .navbar {background-color: #DED096;}
+.leftNav .navbar, .leftNav .dropdown-menu, .topNav .navbar, footer {background-color: #DED096;}
 
 .leftNav .dropdown-menu a:hover, .topNav a:hover {
     background-color: rgba(0,0,0,0.5);
@@ -161,6 +162,7 @@ body .icon {
 
 #content.pageWidth {
     width: 870px;
+    min-height: 400px;
     background: transparent url(../img/content-top.png) no-repeat center top;
     padding: 30px 5px;
     margin-left: 20px;
@@ -180,6 +182,7 @@ body .icon {
     background: #DED096 url(../img/bord.png) repeat-y center top;
     margin: 13px -5px;
     padding: 0 25px;
+    height: 100%;
 }
 
 #content .pageContent article {
@@ -242,8 +245,19 @@ body .icon {
     border-radius: 10px;
 }
 
+#ajax-no-content {
+    text-align: center;
+    margin: 50px 0 0 0;
+}
+
 .tooltip-inner {
     background-color: burlywood;
+}
+
+footer {
+    height: 50px;
+    margin: 0 0 30px;
+    box-shadow: 0 0 8px black;
 }
 
 @media screen and (max-width: 1200px) {

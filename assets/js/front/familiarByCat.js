@@ -14,7 +14,6 @@ let objFamiliarsByCat = {
             e.preventDefault();
             let f_id = $(this).attr("value");
             context.ajax(f_id);
-            console.log('click');
         });
     },
 
@@ -29,7 +28,8 @@ let objFamiliarsByCat = {
         .done(function (response) {
             if (response.message == true) {
                 r = response.result
-                console.log(response);
+
+                $('#ajax-no-content').remove();
                 $('.fam').remove();
                 $.each(r, function(i) {
 
@@ -73,12 +73,16 @@ let objFamiliarsByCat = {
             }
 
             if (response.message == false ) {
-                console.log("nop")
+                $('#ajax-no-content').remove();
+                $('.fam').remove();
+                $('.filter-menu.category').after('<div id="ajax-no-content">Catégorie introuvable...</div>');
             }
         })
 
         .fail(function () {
-            console.log("fail")
+            $('#ajax-no-content').remove();
+            $('.fam').remove();
+            $('.filter-menu.category').after('<div id="ajax-no-content">Tiens ! Tiens ! Tiens ! Hé bha il y a un problème ^^, contact l\'admin si le problème persiste...</div>');
         })
     }
 }

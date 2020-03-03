@@ -29,6 +29,7 @@ let objFamiliars = {
             if (response.message == true) {
                 r = response.result
 
+                $('#ajax-no-content').remove();
                 $('.fam').remove();
 
                 $('.filter-menu.category').after('<article class="fam"><div class="m-auto"></div></article>');
@@ -70,26 +71,17 @@ let objFamiliars = {
             }
 
             if (response.message == false ) {
-                console.log("nop")
-                // $('#project_name').empty();
-                // $('#project_image').empty();
-                // $('#project_content').empty();
-                // $('#project_separation').empty();
+                $('#ajax-no-content').remove();
+                $('.fam').remove();
 
-                // $('#project_content').html('<div class="alert alert-danger center-text">Ce projet est introuvable</div>');
-                // $('#projectModal').modal('show');
+                $('.filter-menu.category').after('<div id="ajax-no-content">Familier introuvable...</div>');
             }
         })
 
         .fail(function () {
-            console.log("fail")
-            $('#project_name').empty();
-            $('#project_image').empty();
-            $('#project_content').empty();
-            $('#project_separation').empty();
-
-            $('#project_content').html('<div class="alert alert-danger center-text">Une erreur est suvenue, merci de contacter l\'administrateur</div>');
-            $('#projectModal').modal('show');
+            $('#ajax-no-content').remove();
+            $('.fam').remove();
+            $('.filter-menu.category').after('<div id="ajax-no-content">Tiens ! Tiens ! Tiens ! Hé bha il y a un problème ^^, contact l\'admin si le problème persiste...</div>');
         })
     }
 }
