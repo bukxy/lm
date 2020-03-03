@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ article.name }}{% endblock %}
+
+{% block contentTitle %}{{ article.name }}{% endblock %}
+
+{% block body %}
+
+    <section class="event">
+        {{article.content | raw}}
+    </section>
+{% endblock %}

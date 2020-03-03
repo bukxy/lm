@@ -14,7 +14,7 @@
         <div class="collapse navbar-collapse" id="leftNavigation">
             <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ path('construction')}}">
+                    <a class="nav-link" href="{{ path('construction_list')}}">
                         <img src="{{ asset('uploads/icon/castle.png') }}" alt="">Constructions
                     </a>
                 </li>
@@ -28,16 +28,16 @@
                         Evénements
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="{{ path('evenement', {'slug': 'guild-fest'}) }}">Guilde Fest</a>
-                        <a class="dropdown-item" href="{{ path('evenement', {'slug': 'guild-showdown'}) }}">Epreuve de Guilde</a>
-                        <a class="dropdown-item" href="{{ path('evenement', {'slug': 'guild-bash'}) }}">Bash de Guilde</a>
-                        <a class="dropdown-item" href="{{ path('evenement', {'slug': 'lords-cup'}) }}">Coupe des lords</a>
-                        <a class="dropdown-item" href="{{ path('evenement', {'slug': 'kvk'}) }}">RvR (KvK)</a>
-                        <a class="dropdown-item" href="{{ path('evenement', {'slug': 'dragon-arena'}) }}">Arène du dragon</a>
+                        <a class="dropdown-item" href="{{ path('article', {'slug': 'guild-fest'}) }}">Guilde Fest</a>
+                        <a class="dropdown-item" href="{{ path('article', {'slug': 'guild-showdown'}) }}">Epreuve de Guilde</a>
+                        <a class="dropdown-item" href="{{ path('article', {'slug': 'guild-bash'}) }}">Bash de Guilde</a>
+                        <a class="dropdown-item" href="{{ path('article', {'slug': 'lords-cup'}) }}">Coupe des lords</a>
+                        <a class="dropdown-item" href="{{ path('article', {'slug': 'kvk'}) }}">RvR (KvK)</a>
+                        <a class="dropdown-item" href="{{ path('article', {'slug': 'dragon-arena'}) }}">Arène du dragon</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="{{ path('evenement', {'slug': 'feudal-war'}) }}">Guerre Féodale</a>
-                        <a class="dropdown-item" href="{{ path('evenement', {'slug': 'battle-royal'}) }}">Bataille Royale</a>
-                        <a class="dropdown-item" href="{{ path('evenement', {'slug': 'royal-calice'}) }}">Calice Royale</a>
+                        <a class="dropdown-item" href="{{ path('article', {'slug': 'feudal-war'}) }}">Guerre Féodale</a>
+                        <a class="dropdown-item" href="{{ path('article', {'slug': 'battle-royal'}) }}">Bataille Royale</a>
+                        <a class="dropdown-item" href="{{ path('article', {'slug': 'royal-calice'}) }}">Calice Royale</a>
                     </div>
                 </li>
             </ul>

@@ -2,9 +2,9 @@
 
 {% block title %}
     {% if editMode %}
-        Edition evenment
+        Edition article
     {% else %}
-        Ajout evenement
+        Ajout article
     {% endif %}
 {% endblock %}
 
@@ -32,7 +32,7 @@
     {{ form_start(form) }}
         <div class="card event">
             <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">{{ form_label(form.content, 'Edition de l\'evenement :') }} {{event.name}}</h6>
+                <h6 class="m-0 font-weight-bold text-primary">{{ form_label(form.content, 'Edition de l\'article :') }} {{article.name}}</h6>
             </div>
             <div class="card-body">
                 {{ form_widget(form.content) }}
