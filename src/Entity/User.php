@@ -85,11 +85,6 @@ class User implements UserInterface
     private $constructionCats;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Events", mappedBy="user")
-     */
-    private $events;
-
-    /**
      * @ORM\OneToMany(targetEntity="App\Entity\Familiar", mappedBy="user")
      */
     private $familiars;
@@ -119,6 +114,11 @@ class User implements UserInterface
      */
     private $activation;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Article", mappedBy="user")
+     */
+    private $articles;
+
     public function __construct()
     {
         $this->images = new ArrayCollection();
@@ -132,6 +132,7 @@ class User implements UserInterface
         $this->imageCats = new ArrayCollection();
         $this->researches = new ArrayCollection();
         $this->researchCats = new ArrayCollection();
+        $this->articles = new ArrayCollection();
     }
 
     /**
@@ -391,37 +392,6 @@ class User implements UserInterface
     }
 
     /**
-     * @return Collection|Events[]
-     */
-    public function getEvents(): Collection
-    {
-        return $this->events;
-    }
-
-    public function addEvent(Events $event): self
-    {
-        if (!$this->events->contains($event)) {
-            $this->events[] = $event;
-            $event->setUser($this);
-        }
-
-        return $this;
-    }
-
-    public function removeEvent(Events $event): self
-    {
-        if ($this->events->contains($event)) {
-            $this->events->removeElement($event);
-            // set the owning side to null (unless already changed)
-            if ($event->getUser() === $this) {
-                $event->setUser(null);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
      * @return Collection|Familiar[]
      */
     public function getFamiliars(): Collection
@@ -570,6 +540,37 @@ class User implements UserInterface
         $newUser = null === $activation ? null : $this;
         if ($activation->getUser() !== $newUser) {
             $activation->setUser($newUser);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Article[]
+     */
+    public function getArticles(): Collection
+    {
+        return $this->articles;
+    }
+
+    public function addArticle(Article $article): self
+    {
+        if (!$this->articles->contains($article)) {
+            $this->articles[] = $article;
+            $article->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeArticle(Article $article): self
+    {
+        if ($this->articles->contains($article)) {
+            $this->articles->removeElement($article);
+            // set the owning side to null (unless already changed)
+            if ($article->getUser() === $this) {
+                $article->setUser(null);
+            }
         }
 
         return $this;
