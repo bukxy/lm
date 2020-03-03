@@ -34,7 +34,7 @@ class FamiliarController extends AbstractController
     /**
      * @Route("/{id}", name="one", methods={"POST"})
      */
-    public function oneFamiliar(Familiar $f = null, FamiliarRepository $fRepo, ImageRepository $iRepo, Request $request)
+    public function oneFamiliar(Familiar $f = null, Request $request)
     {
         if ($f) {
             $url = $request->server->get('HTTP_HOST');
@@ -45,7 +45,7 @@ class FamiliarController extends AbstractController
                     'defaultImage'  =>  'https://'. $url . '/uploads/familiar.png',
                     'result'        =>  $f
                 ], 200, [],
-                    ['groups' => 'familiarByCat:read']
+                    ['groups' => ['familiarByCat:read', 'image:read']]
             );
         } else {
             return $this->json([
@@ -57,7 +57,7 @@ class FamiliarController extends AbstractController
     /**
      * @Route("/category/{id}", name="listByCategory", methods={"POST"})
      */
-    public function listByCategory(FamiliarCat $fcat = null, FamiliarRepository $fRepo, ImageRepository $iRepo, Request $request)
+    public function listByCategory(FamiliarCat $fcat = null, FamiliarRepository $fRepo, Request $request)
     {
         if ($fcat) {
             $url = $request->server->get('HTTP_HOST');
@@ -68,7 +68,7 @@ class FamiliarController extends AbstractController
                     'defaultImage'  =>  'https://'. $url . '/uploads/familiar.png',
                     'result'        =>  $fRepo->findBy(['familiarCat' => $fcat->getId()])
                 ], 200, [],
-                    ['groups' => 'familiarByCat:read']
+                    ['groups' => ['familiarByCat:read', 'image:read']]
             );
         } else {
             return $this->json([
