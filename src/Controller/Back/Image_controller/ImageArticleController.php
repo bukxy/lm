@@ -66,7 +66,9 @@ class ImageArticleController extends AbstractController
                         $this->getParameter('image_folder'),
                         $newFilename
                     );
-                    unlink('uploads/images/'.$nameFile);
+                    if($i->getName()){
+                        unlink('uploads/images/'.$nameFile);
+                    }
                 } catch (FileException $e) {
                     // ... handle exception if something happens during file upload
                 }
