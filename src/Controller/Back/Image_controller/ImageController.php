@@ -66,7 +66,9 @@ class ImageController extends AbstractController
                         $this->getParameter('image_folder'),
                         $newFilename
                     );
-                    unlink('uploads/images/'.$nameFile);
+                    if($i->getName()){
+                        unlink('uploads/images/'.$nameFile);
+                    }
                 } catch (FileException $e) {
                     // ... handle exception if something happens during file upload
                 }
@@ -91,7 +93,7 @@ class ImageController extends AbstractController
 
             $manager->persist($i);
             $manager->flush();
-            return $this->redirectToRoute('admin_boost_list');
+            return $this->redirectToRoute('admin_image_list');
         }
 
         return $this->render('back/image/imageAddEdit.html.twig', [
