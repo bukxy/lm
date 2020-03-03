@@ -61,19 +61,19 @@ class BoostCategoryController extends AbstractController
     /**
      * @Route("/delete/{id}", name="admin_boost_category_delete")
      */
-    public function deleteCategory(BoostTerritoryCat $b, BoostTerritoryCatRepository $bCatRepo, BoostTerritoryRepository $bRepo, EntityManagerInterface $manager, Security $security) {
+    public function deleteCategory(BoostTerritoryCat $bcat, BoostTerritoryCatRepository $bCatRepo, BoostTerritoryRepository $bRepo, EntityManagerInterface $manager, Security $security) {
         if ($security->getUser()){
-            $bts = $bRepo->findBy(['boostTerritoryCat' => $b->getId()]);
+            $bts = $bRepo->findBy(['category' => $bcat->getId()]);
         
             if($bts){
-                $cat = $bCatRepo->find(['id' => 1]);
+                // $category = $bCatRepo->find(['name' => 'default']);
                 foreach ($bts as $bt) {
-                    $bt->setbtCategory($cat);
+                    $bt->setCategory(null);
                     $manager->persist($bt);
                 }
             }
 
-            $manager->remove($b);
+            $manager->remove($bcat);
             $manager->flush();
 
             return $this->redirectToRoute('admin_boost_list');
