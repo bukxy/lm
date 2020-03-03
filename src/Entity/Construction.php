@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ConstructionRepository")
@@ -13,6 +14,7 @@ class Construction
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     * @Groups("construction:read")
      */
     private $id;
 
@@ -23,16 +25,19 @@ class Construction
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups("construction:read")
      */
     private $name;
 
     /**
      * @ORM\Column(type="text")
+     * @Groups("construction:read")
      */
     private $content;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Image", inversedBy="constructions")
+     * @Groups("construction:read")
      */
     private $image;
 
