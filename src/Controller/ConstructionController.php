@@ -2,63 +2,46 @@
 
 namespace App\Controller;
 
-use App\Entity\ConstructionCat;
+use App\Entity\Construction;
 use App\Repository\ConstructionRepository;
-use Knp\Component\Pager\PaginatorInterface;
-use App\Repository\ConstructionCatRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 /**
-    * @Route("/construction")
-    */
+* @Route("/construction", name="construction_")
+*/
 class ConstructionController extends AbstractController
 {
     /**
-     * @Route("/", name="construction")
+     * @Route("/", name="list")
      */
-    public function index(ConstructionRepository $c, ConstructionCatRepository $cc, Request $request, PaginatorInterface $paginator)
+    public function index(ConstructionRepository $c)
     {
-        $allCons = $c->findAll();
-                
-        // Paginate the results of the query
-        $cs = $paginator->paginate(
-            // Doctrine Query, not results
-            $allCons,
-            // Define the page parameter
-            $request->query->getInt('page', 1),
-            // Items per page
-            1
-        );
-
         return $this->render('front/construction.html.twig', [
-            'construction' => $cs,
-            'constructionCat' => $cc->findAll(),
+            'constructions' => $c->findAll(),
         ]);
     }
 
     /**
-     * @Route("/{id}", name="construction_filter")
+     * @Route("/{id}", name="one")
      */
-    public function filter(ConstructionRepository $c, ConstructionCatRepository $ccRepo, ConstructionCat $cc, Request $request, PaginatorInterface $paginator)
+    public function filter(Construction $c = null, Request $request)
     {
+        if ($c) {
+            $url = $request->server->get('HTTP_HOST');
 
-        $allCons = $c->findBy(['constructionCat' => $cc->getId()]);
-
-        // Paginate the results of the query
-        $cs = $paginator->paginate(
-            // Doctrine Query, not results
-            $allCons,
-            // Define the page parameter
-            $request->query->getInt('page', 1),
-            // Items per page
-            1
-        );
-
-        return $this->render('front/construction.html.twig', [
-            'construction' => $cs,
-            'constructionCat' => $ccRepo->findAll(),
-        ]);
+            return $this->json([
+                    'message'       =>  true,
+                    'url'           =>  'https://'. $url . '/uploads',
+                    'result'        =>  $c
+                ], 200, [],
+                    ['groups' => ['construction:read', 'image:read'] ]
+            );
+        } else {
+            return $this->json([
+                'message' => false
+            ], 200);
+        }
     }
 }
