@@ -1,0 +1,30 @@
+article.news {
+    margin: 12px auto 15px !important;
+    background-color: rgba(112,96,63,0.08);
+    border-radius: 10px;
+    padding: 0 0 3px;
+}
+
+.news .title {
+    border-radius: 10px 10px 0 0;
+    background-color: rgba(0, 0, 0, 0.15);
+    border-bottom: 2px solid rgba(0,0,0,0.2);
+}
+
+.news .title h2 {margin: 0; font-size: 28px;}
+.news .title h2, .news .content{
+    padding: 5px;
+}
+
+.news .content {
+    background-color: white;
+    border-radius: 0 0 7px 7px;
+    margin: 0 3px;
+    padding: 8px;
+}
+
+.news .newsDate {
+    font-size: 15px;
+    text-align: end;
+    font-style: italic;
+}

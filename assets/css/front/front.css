@@ -50,19 +50,32 @@ body .icon {
 
 .leftNav .navbar, .leftNav .dropdown-menu, .topNav .navbar, footer {background-color: #DED096;}
 
-.leftNav .dropdown-menu a:hover, .topNav a:hover {
+.leftNav .dropdown-menu a:hover{
     background-color: rgba(0,0,0,0.5);
 }
+
 
 .topNav {
     padding: 0;
     margin: auto;
 }
 
-.topNav  .navbar {
-    border: 1px solid #716a42;
+.topNav a:hover {
+    background-color: rgba(85, 47, 47, 0.2);
+    border-radius: 5px;
+}
+
+.topNav .navbar {
     border-radius: 45px 45px 0 0;
     box-shadow: 0 3px 5px rgba(0,0,0,0.5);
+    padding: 10px 30px;
+}
+
+.topNav .nav-diviser{
+    background-color: #70603F;
+    width: 2px;
+    height: 32px;
+    margin: 4px 10px;
 }
 
 .leftNav .navbar-nav {flex-direction: column;}
@@ -180,8 +193,8 @@ body .icon {
 
 #content .pageContent {
     background: #DED096 url(../img/bord.png) repeat-y center top;
-    margin: 13px -5px;
-    padding: 0 25px;
+    margin: 13px -5px 15px;
+    padding: 20px 25px;
     height: 100%;
 }
 
@@ -190,11 +203,10 @@ body .icon {
     position: relative;
 }
 
-
 .pagination {
-    margin: 0 auto;
+    margin: 30px auto;
     width: 130px;
-    background-color: white;
+    background-color: rgba(112,96,63,0.6);
 }
 .pagination span {
     margin: auto;
@@ -207,11 +219,11 @@ body .icon {
 }
 
 .filter-menu {
-    margin: 13px auto 17px;
+    margin: 0px auto 17px;
     width: 80%;
     padding: 0;
 }
-.filter-menu .title, .const .name {
+.filter-menu .title, .const .name{
     color: #DED078;
     text-shadow: 0px 0px 5px #000000;
     font-size: 18px;
@@ -243,6 +255,10 @@ body .icon {
     padding: 10px 0;
     background-color: #556E85;
     border-radius: 10px;
+}
+
+.const .name {
+    top: -18px;
 }
 
 #ajax-no-content {
@@ -327,6 +343,21 @@ footer {
     *
     =================================================*/
 
+    .topNav .navbar{
+        padding: 10px 5px;
+    }
+
+    .topNav .navbar-nav{
+        flex-direction: row;
+        margin-top: 0 !important;
+    }
+
+    .topNav .navbar-nav .nav-link {
+        padding-left: .5rem;
+        padding-right: .5rem;
+        text-align: center;
+    }
+
     .leftNav-title {
         width: 100%;
         top:-21px;
@@ -393,5 +424,14 @@ footer {
         max-width: 400px;
         width: 100%;
         min-width: 350px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .leftNav ul {
+        flex-direction: column !important;
+    }
+    .leftNav ul li{
+        width: 100% !important;
     }
 }
