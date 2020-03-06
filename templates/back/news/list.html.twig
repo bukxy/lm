@@ -1,0 +1,56 @@
+{% extends 'back/baseAdmin.html.twig' %}
+
+{% block title %}Liste News{% endblock %}
+
+{% block body %}
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Liste des news</h6>
+            <a class="btn btn-success" href="{{ path('admin_news_new') }}">Nouvelle News</a>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th class="text-center">Date créer</th>
+                            <th class="text-center">Auteur</th>
+                            <th class="text-center">Titre</th>
+                            <th class="text-center">Options</th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th class="text-center">Date créer</th>
+                            <th class="text-center">Auteur</th>
+                            <th class="text-center">Titre</th>
+                            <th class="text-center">Options</th>
+                        </tr>
+                    </tfoot>
+                    <tbody>
+                        {% for n in news %}
+                            <tr>
+                                <th class="lm-td" scope="row">{{ n.dateCreated | date('d/m/Y') }}</th>
+                                <td class="lm-td">{{ n.user.pseudo }}</td>
+                                <td class="lm-td">{{ n.title }}</td>
+                                <td>
+                                    <div class="lm-options">
+                                        <a class="btn btn-primary btn-circle" href="{{ path('admin_news_edit', {'id' : n.id }) }}">
+                                            <i class="fas fa-edit"></i>
+                                        </a>
+                                        <a class="btn btn-danger btn-circle" href="{{ path('admin_news_delete', {'id' : n.id }) }}">
+                                            <i class="fas fa-minus-circle"></i>
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
