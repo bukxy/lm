@@ -1,11 +1,29 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Accueil{% endblock %}
+{% block contentTitle %}News{% endblock %}
 
 {% block body %}
 
-    <div>
-        content
-    </div>
+    {% for n in news %}
+
+        <article class="news">
+            <div class="title">
+                <h2>{{ n.title }}</h2>
+            </div>
+            <div class="content">
+                {{ n.content | raw }}
+                <div class="newsDate">
+                    publié le {{ n.dateCreated | date('d/m/Y') }} par {{ n.user.pseudo }} 
+                    {% if n.dateEdit %}
+                        (éditer le {{ n.dateEdit | date('d/m/Y') }})
+                    {% endif %}
+                </div>
+            </div>
+        </article>
+
+    {% endfor %}
+
+    {{ knp_pagination_render(news) }}
 
 {% endblock %}
