@@ -17,12 +17,13 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 /**
-* @IsGranted("ROLE_ADMIN_ARTICLE")
+* @IsGranted("ROLE_ADMIN_ARTICLES")
 * @Route("/admin/article")
 */
 class ArticleController extends AbstractController
 {
     /**
+     * @Route("/new", name="admin_article_new")
      * @Route("/edit/{slug}", name="admin_article_edit")
      */
     public function edit(Article $a = null, Request $req, EntityManagerInterface $manager, Security $security)
@@ -37,11 +38,11 @@ class ArticleController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()){
 
             $slugify = new Slugify();
-            $a->setSlug($slugify->slugify($form['name']->getData()));
+            $a->setSlug($slugify->slugify($form['title']->getData()));
 
             $user = $security->getUser();
-
             $a->setUser($user);
+
             $manager->persist($a);
             $manager->flush();
             return $this->redirectToRoute('admin_article_edit', ['id' => $a->getId()]);
