@@ -34,13 +34,13 @@
                     <tbody>
                         {% for f in familiars %}
                             <tr>
-                                <th class="lm-td" scope="row">{{ f.familiarCat }}</th>
-                                <td class="lm-td">{{ f.name }}</td>
+                                <th class="lm-td" scope="row"><div>{{ f.familiarCat }}</div></th>
+                                <td class="lm-td"><div>{{ f.name }}</div></td>
                                 {% if f.imageBackground is null %}
-                                    <td>
-                                        <button class="btn btn-primary">
-                                            <a href="{{ path('admin_familiar_new_imageBackground', {'id' : f.id }) }}"><i class="fas fa-plus-circle"></i></a>
-                                        </button>
+                                    <td class="lm-td">
+                                        <div>
+                                            <a class="btn btn-primary btn-circle" href="{{ path('admin_familiar_new_imageBackground', {'id' : f.id }) }}"><i class="fas fa-plus-circle"></i></a>
+                                        </div>
                                     </td>
                                 {% else %}
                                     <td>
@@ -54,8 +54,10 @@
                                 {% endif %}
 
                                 {% if f.imageHead is null %}
-                                    <td>
-                                        <a class="btn btn-primary btn-circle" href="{{ path('admin_familiar_new_imageHead', {'id' : f.id }) }}"><i class="fas fa-plus-circle"></i></a>
+                                    <td class="lm-td">
+                                        <div>
+                                            <a class="btn btn-primary btn-circle" href="{{ path('admin_familiar_new_imageHead', {'id' : f.id }) }}"><i class="fas fa-plus-circle"></i></a>
+                                        </div>
                                     </td>
                                 {% else %}
                                     <td>
@@ -67,8 +69,8 @@
                                         </div>
                                     </td>
                                 {% endif %}
-                                <td>
-                                    <div class="lm-options">
+                                <td class="lm-td">
+                                    <div>
                                         <a class="btn btn-primary btn-circle" href="{{ path('admin_familiar_edit', {'id' : f.id }) }}">
                                             <i class="fas fa-edit"></i>
                                         </a>

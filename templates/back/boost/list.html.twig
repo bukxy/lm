@@ -15,51 +15,50 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th>Nom</th>
-                            <th>Catégorie</th>
-                            <th>Contenu</th>
-                            <th>Image</th>
-                            <th>Options</th>
+                            <th class="text-center">Nom</th>
+                            <th class="text-center">Catégorie</th>
+                            <th class="text-center">Image</th>
+                            <th class="text-center">Options</th>
                         </tr>
                     </thead>
                     <tfoot>
                         <tr>
-                            <th>Nom</th>
-                            <th>Catégorie</th>
-                            <th>Contenu</th>
-                            <th>Image</th>
-                            <th>Options</th>
+                            <th class="text-center">Nom</th>
+                            <th class="text-center">Catégorie</th>
+                            <th class="text-center">Image</th>
+                            <th class="text-center">Options</th>
                         </tr>
                     </tfoot>
                     <tbody>
                         {% for b in boosts %}
                             <tr>
-                                <td>{{ b.name }}</td>
-                                <td>{{ b.category }}</td>
-                                <td>{{ b.content|raw }}</td>
-
+                                <td class="lm-td" scope="row"><div>{{ b.name }}</div></td>
+                                <td class="lm-td"><div>{{ b.category }}</div></td>
                                 {% if b.image is null %}
-                                    <td>
-                                        <button class="btn btn-primary">
-                                            <a href="{{ path('admin_boost_new_image', {'id' : b.id }) }}"><i class="fas fa-plus-circle"></i></a>
-                                        </button>
+                                    <td class="lm-td">
+                                        <div>
+                                            <a class="btn btn-primary btn-circle" href="{{ path('admin_boost_new_image', {'id' : b.id }) }}"><i class="fas fa-plus-circle"></i></a>
+                                        </div>
                                     </td>
                                 {% else %}
                                     <td>
-                                        <img class="lm-img" src="{{ asset('uploads/images/' ~ b.image) }}" alt="{{ b.image.alt }}">
-                                        <button class="btn btn-danger">
-                                            <a href="{{ path('admin_boost_delete_image', {'id' : b.id }) }}"><i class="fas fa-minus-circle"></i></a>
-                                        </button>
+                                        <div class="lm-imgIcon m-auto">
+                                            <img class="lm-img" src="{{ asset('uploads/images/' ~ b.image) }}" alt="{{ b.image.alt }}">
+                                            <div class="img-overlay">
+                                                <a href="{{ path('admin_boost_delete_image', {'id' : b.id }) }}"><i class="fas fa-minus-circle"></i></a>
+                                            </div>
+                                        </div>
                                     </td>
                                 {% endif %}
-                                
-                                <td>
-                                    <button class="btn btn-primary">
-                                        <a href="{{ path('admin_boost_edit', {'id' : b.id }) }}"><i class="fas fa-edit"></i></a>
-                                    </button>
-                                    <button class="btn btn-danger">
-                                        <a href="{{ path('admin_boost_delete', {'id' : b.id }) }}"><i class="fas fa-minus-circle"></i></a>
-                                    </button>
+                                <td class="lm-td">
+                                    <div>
+                                        <a class="btn btn-primary btn-circle" href="{{ path('admin_boost_edit', {'id' : b.id }) }}">
+                                            <i class="fas fa-edit"></i>
+                                        </a>
+                                        <a class="btn btn-danger btn-circle" href="{{ path('admin_boost_delete', {'id' : b.id }) }}">
+                                            <i class="fas fa-minus-circle"></i>
+                                        </a>
+                                    </div>
                                 </td>
                             </tr>
                         {% endfor %}

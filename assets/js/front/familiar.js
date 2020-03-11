@@ -10,7 +10,7 @@ let objFamiliars = {
     init: function () {
         let context = this;
 
-        $('.view_familiar').on('click', function (e) {
+        $('.ajax-view_content').on('click', function (e) {
             e.preventDefault();
             let f_id = $(this).attr("value");
             context.ajax(f_id);

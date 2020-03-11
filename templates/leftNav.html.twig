@@ -14,6 +14,11 @@
         <div class="collapse navbar-collapse" id="leftNavigation">
             <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                 <li class="nav-item">
+                    <a class="nav-link" href="{{ path('boost_list')}}">
+                        <img src="{{ asset('uploads/icon/boost_territory.png') }}" alt="">Boosts territoire
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="{{ path('construction_list')}}">
                         <img src="{{ asset('uploads/icon/castle.png') }}" alt="">Constructions
                     </a>
@@ -25,7 +30,7 @@
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Evénements
+                        <img src="{{ asset('uploads/icon/GF.png') }}" alt="">Evénements
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="{{ path('article', {'slug': 'guild-fest'}) }}">Guilde Fest</a>

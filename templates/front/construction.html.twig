@@ -19,7 +19,7 @@
             <div class="col-12 mt-2">
                 <ul class="fam-head">
                     {% for c in constructions %}
-                        <li value="{{ c.id }}" class="view_construction">
+                        <li value="{{ c.id }}" class="ajax-view_content">
                             {% if c.image is null %}
                                 <img src="{{ asset('uploads/default.png') }}" alt="">
                             {% else %}
@@ -31,32 +31,6 @@
             </div>
         </div>
     </div>
-
-    {# {% for c in construction %}
-        <article id="{{ c.name }}" class="const">
-            <div class="name">
-                <div>
-                    <img src="{{ asset('uploads/bandeau_rouge.png') }}" alt="">
-                    <div>
-                        <span>{{ c.name }}</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="content">
-                <div>
-                    {% if c.image is null %}
-                        <img src="{{ asset('uploads/default.png') }}" alt="">
-                    {% else %}
-                        <img src="{{ asset('uploads/images/' ~ c.image ) }}" alt="{{ c.image.alt }}">
-                    {% endif %}
-                </div>
-                <div>
-                    {{ c.content | raw }}
-                </div>
-            </div>
-        </article>
-    {% endfor %} #}
 
 {% endblock %}
 

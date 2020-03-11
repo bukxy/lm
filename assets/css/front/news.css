@@ -1,14 +1,18 @@
 article.news {
     margin: 12px auto 15px !important;
-    background-color: rgba(112,96,63,0.08);
+    background-color: rgba(112,96,63,0.5);
     border-radius: 10px;
     padding: 0 0 3px;
 }
 
 .news .title {
     border-radius: 10px 10px 0 0;
-    background-color: rgba(0, 0, 0, 0.15);
+    background-color: rgba(255, 255, 255, 0.6);
     border-bottom: 2px solid rgba(0,0,0,0.2);
+    color: rgba(0,0,0,.8);
+    border-left: 3px solid rgba(112,96,63,0.5);
+    border-top: 3px solid rgba(112,96,63,0.5);
+    border-right: 3px solid rgba(112,96,63,0.5);
 }
 
 .news .title h2 {margin: 0; font-size: 28px;}
@@ -24,7 +28,8 @@ article.news {
 }
 
 .news .newsDate {
-    font-size: 15px;
+    font-size: 13px;
     text-align: end;
     font-style: italic;
+    color: rgba(0,0,0,.5);
 }

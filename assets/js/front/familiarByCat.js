@@ -10,7 +10,7 @@ let objFamiliarsByCat = {
     init: function () {
         let context = this;
 
-        $('.view_familiarByCat').on('click', function (e) {
+        $('.ajax-view_contentByCat').on('click', function (e) {
             e.preventDefault();
             let f_id = $(this).attr("value");
             context.ajax(f_id);
@@ -68,8 +68,8 @@ let objFamiliarsByCat = {
                         $('.fam-talent').append(r[i]['talent']);
                     }
                 });
-                $('[data-toggle="tooltip"]').tooltip()
 
+                $('[data-toggle="tooltip"]').tooltip()
             }
 
             if (response.message == false ) {

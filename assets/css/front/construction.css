@@ -1,6 +1,5 @@
-.fam-head .view_construction img {
-    width: 45px;
-    height: auto;
+#content .pageContent article.const {
+    margin: 60px auto 15px;
 }
 
 .const {

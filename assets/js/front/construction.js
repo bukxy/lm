@@ -10,7 +10,7 @@ let objConst = {
     init: function () {
         let context = this;
 
-        $('.view_construction').on('click', function (e) {
+        $('.ajax-view_content').on('click', function (e) {
             e.preventDefault();
             let id = $(this).attr("value");
             context.ajax(id);
@@ -44,6 +44,8 @@ let objConst = {
                 }
 
                 $('article.const .content').append('<div>'+ r['content'] +'</div>')
+
+                $('[data-toggle="tooltip"]').tooltip()
             }
 
             if (response.message == false) {

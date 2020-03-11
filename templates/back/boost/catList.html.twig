@@ -7,7 +7,7 @@
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Liste des boosts territoire</h6>
+            <h6 class="m-0 font-weight-bold text-primary">Liste des catégories</h6>
             <a class="btn btn-success" href="{{ path('admin_boost_category_new') }}">Nouvelle catégorie</a>
         </div>
         <div class="card-body">
@@ -15,28 +15,29 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th>Nom</th>
-                            <th>options</th>
+                            <th class="text-center">Nom</th>
+                            <th class="text-center">Options</th>
                         </tr>
                     </thead>
                     <tfoot>
                         <tr>
-                            <th>Nom</th>
-                            <th>Options</th>
+                            <th class="text-center">Nom</th>
+                            <th class="text-center">Options</th>
                         </tr>
                     </tfoot>
                     <tbody>
                         {% for c in categories %}
-
                             <tr>
-                                <td>{{ c.name }}</td>
-                                <td>
-                                    <button class="btn btn-primary">
-                                        <a href="{{ path('admin_boost_category_edit', {'id' : c.id }) }}">Editer</a>
-                                    </button>
-                                    <button class="btn btn-danger">
-                                        <a href="{{ path('admin_boost_category_delete', {'id' : c.id }) }}">Supprimer</a>
-                                    </button>
+                                <td class="lm-td"><div>{{ c.name }}</div></td>
+                                <td class="lm-td">
+                                    <div>
+                                        <a class="btn btn-primary btn-circle" href="{{ path('admin_boost_category_edit', {'id' : c.id }) }}">
+                                            <i class="fas fa-edit"></i>
+                                        </a>
+                                        <a class="btn btn-danger btn-circle" href="{{ path('admin_boost_category_delete', {'id' : c.id }) }}">
+                                            <i class="fas fa-minus-circle"></i>
+                                        </a>
+                                    </div>
                                 </td>
                             </tr>
                         {% endfor %}

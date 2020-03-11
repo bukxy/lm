@@ -81,12 +81,14 @@ body .icon {
 .leftNav .navbar-nav {flex-direction: column;}
 
 .leftNav .navbar-nav li{
+    background-color: rgba(0,0,0,0.05);
+    box-shadow: 0 0 1px black;
     width: 228px;
     margin: 2px 0;
 }
 
 .leftNav .navbar-nav li:hover{
-    background-color: rgba(0,0,0,0.08);
+    background-color: rgba(0,0,0,0.1);
     border-radius: 3px;
 }
 
@@ -97,18 +99,16 @@ body .icon {
     padding: 30px 10px 10px;
 }
 
+.leftNav .navbar-nav .dropdown-menu {
+    position: absolute;
+    width: 100%;
+    border-radius: 0 0 5px 5px;
+}
+
 .leftNav {
     padding: 0;
     margin: 20px 0 0 0;
     width: 250px;
-}
-
-.sticky {
-    position: fixed;
-    top: 0;
-    width: 250px;
-    margin: 20px 0 0 0;
-    transition: .5s;
 }
 
 .leftNav-title {
@@ -206,7 +206,8 @@ body .icon {
 .pagination {
     margin: 30px auto;
     width: 130px;
-    background-color: rgba(112,96,63,0.6);
+    background-color: rgba(255,255,255,0.6);
+    box-shadow: 0px 0px 5px black;
 }
 .pagination span {
     margin: auto;
@@ -257,8 +258,53 @@ body .icon {
     border-radius: 10px;
 }
 
-.const .name {
-    top: -18px;
+.filter-list ul {
+    display:flex;
+    padding-left: 0;
+    flex-wrap: wrap;
+    max-height: 155px;
+    overflow: auto;
+    min-height: 50px;
+    margin-bottom: 0;
+}
+
+.filter-list .ajax-view_content img {
+    width: 45px;
+    height: 42px;
+}
+
+.filter-list li.ajax-view_content {
+    width: 45px;
+    height: 42px;
+}
+.filter-list li.ajax-view_contentByCat, .filter-list li.ajax-view_content {
+    list-style: none;
+    margin: auto;
+    padding: 0;
+    position: relative;
+    cursor: pointer;
+}
+.filter-list li.ajax-view_contentByCat {
+    width: 95px;
+    height: 35px;
+    padding: 0;
+}
+.filter-list li.ajax-view_contentByCat > div{
+    position: absolute;
+    width: 95px;
+}
+.filter-list li.ajax-view_contentByCat > div > div {
+    position: absolute;
+    width: 100%;
+    color: white;
+    text-shadow: 1px 1px 2px black;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.filter-list li.ajax-view_contentByCat img {
+    width: 100%;
+    height: auto;
 }
 
 #ajax-no-content {
