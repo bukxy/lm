@@ -119,6 +119,11 @@ class User implements UserInterface
      */
     private $articles;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\News", mappedBy="user")
+     */
+    private $news;
+
     public function __construct()
     {
         $this->images = new ArrayCollection();
@@ -133,6 +138,7 @@ class User implements UserInterface
         $this->researches = new ArrayCollection();
         $this->researchCats = new ArrayCollection();
         $this->articles = new ArrayCollection();
+        $this->news = new ArrayCollection();
     }
 
     /**
@@ -142,6 +148,7 @@ class User implements UserInterface
     public function __toString(){
         // to show the name of the Category in the select
         return $this->email;
+        return $this->pseudo;
         // to show the id of the Category in the select
         // return $this->id;
     }
@@ -571,6 +578,34 @@ class User implements UserInterface
             if ($article->getUser() === $this) {
                 $article->setUser(null);
             }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|News[]
+     */
+    public function getNews(): Collection
+    {
+        return $this->news;
+    }
+
+    public function addNews(News $news): self
+    {
+        if (!$this->news->contains($news)) {
+            $this->news[] = $news;
+            $news->addUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeNews(News $news): self
+    {
+        if ($this->news->contains($news)) {
+            $this->news->removeElement($news);
+            $news->removeUser($this);
         }
 
         return $this;
