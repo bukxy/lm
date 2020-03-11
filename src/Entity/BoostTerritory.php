@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\BoostTerritoryRepository")
@@ -13,6 +14,7 @@ class BoostTerritory
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     * @Groups("BoostTerritoryByCat:read")
      */
     private $id;
 
@@ -23,11 +25,13 @@ class BoostTerritory
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups("BoostTerritoryByCat:read")
      */
     private $name;
 
     /**
      * @ORM\Column(type="text")
+     * @Groups("BoostTerritoryByCat:read")
      */
     private $content;
 
