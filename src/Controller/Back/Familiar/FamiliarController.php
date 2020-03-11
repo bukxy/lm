@@ -3,23 +3,24 @@
 namespace App\Controller\Back\Familiar;
 
 use App\Entity\Image;
-use App\Form\ImageType;
-use App\Repository\ImageRepository;
-
 use App\Entity\Familiar;
-use App\Form\FamiliarType;
-use App\Repository\FamiliarRepository;
-
 use App\Entity\FamiliarCat;
+
+use App\Form\ImageType;
+use App\Form\FamiliarType;
 use App\Form\FamiliarCatType;
-use App\Repository\FamiliarCatRepository;
+
+use App\Repository\ImageRepository;
+use App\Repository\FamiliarRepository;
+use App\Repository\ImageCatRepository;
 
 use Doctrine\ORM\EntityManagerInterface;
+use App\Repository\FamiliarCatRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Security;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 /**
 * @IsGranted("ROLE_ADMIN_FAMILIARS")
@@ -91,7 +92,7 @@ class FamiliarController extends AbstractController
     /**
      * @Route("/background/add/{id}", name="admin_familiar_new_imageBackground")
      */
-    public function AddImage(Familiar $f, Image $i = null, Request $req, EntityManagerInterface $manager, Security $security)
+    public function AddImage(Familiar $f, Image $i = null, ImageCatRepository $iCat, Request $req, EntityManagerInterface $manager, Security $security)
     {
         if (!$i) {
             $i = new Image();
@@ -134,6 +135,8 @@ class FamiliarController extends AbstractController
 
             $i->setName($newFilename);
 
+            $i->setImageCat($iCat->findOneBy(['name' => 'familiar']));
+
             if ($formImg['alt']->getData() == null){
                 $i->setAlt('Aucune information sur l\'image est disponible');
             }
@@ -172,7 +175,7 @@ class FamiliarController extends AbstractController
     /**
      * @Route("/imageHead/add/{id}", name="admin_familiar_new_imageHead")
      */
-    public function AddImageHead(Familiar $f, Image $i = null, Request $req, EntityManagerInterface $manager, Security $security)
+    public function AddImageHead(Familiar $f, Image $i = null, ImageCatRepository $iCat, Request $req, EntityManagerInterface $manager, Security $security)
     {
         if (!$i) {
             $i = new Image();
@@ -218,6 +221,8 @@ class FamiliarController extends AbstractController
             if ($formImg['alt']->getData() == null){
                 $i->setAlt('Aucune information sur l\'image est disponible');
             }
+
+            $i->setImageCat($iCat->findOneBy(['name' => 'familiar']));
 
             $manager->persist($f);
             $manager->persist($i);
