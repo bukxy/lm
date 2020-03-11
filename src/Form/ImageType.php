@@ -42,13 +42,13 @@ class ImageType extends AbstractType
                 ],
             ])
             ->add('alt', TextType::class, ['required' => false])
-            ->add('imageCat', EntityType::class, [
-                'class' => ImageCat::class,
-                'query_builder' => function (ImageCatRepository $i) {
-                    return $i->createQueryBuilder('i')
-                        ->orderBy('i.id', 'ASC');
-                },
-            ])
+            // ->add('imageCat', EntityType::class, [
+            //     'class' => ImageCat::class,
+            //     'query_builder' => function (ImageCatRepository $i) {
+            //         return $i->createQueryBuilder('i')
+            //             ->orderBy('i.id', 'ASC');
+            //     },
+            // ])
         ;
     }
 
