@@ -62,11 +62,6 @@ class Image
     private $category;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Research", mappedBy="image")
-     */
-    private $researches;
-
-    /**
      * Generates the magic method
      * 
      */
