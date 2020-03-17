@@ -35,6 +35,9 @@ Encore
     .addEntry('familiar', './assets/js/front/familiar.js')
     .addEntry('familiarByCat', './assets/js/front/familiarByCat.js')
 
+    .addEntry('boostTerritory', './assets/js/front/boostTerritory.js')
+    .addEntry('boostTerritoryCat', './assets/js/front/boostTerritoryCat.js')
+
     //.addEntry('page1', './assets/js/page1.js')
     //.addEntry('page2', './assets/js/page2.js')
 
