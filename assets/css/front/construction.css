@@ -1,3 +1,13 @@
+.construction-list li, .construction-list li img{
+    width: 70px !important;
+    height: 70px !important;
+}
+
+.construction-list ul{
+    justify-content: center;
+    max-height: 415px
+}
+
 #content .pageContent article.const {
     margin: 60px auto 15px;
 }
@@ -7,17 +17,17 @@
     border-radius: 10px;
     max-width: 650px;
     width: 100%;
-    min-height: 190px;
+    min-height: 210px;
     padding: 0 10px 10px 10px;
 }
 
-.const .content div:nth-child(1){
+.const > div:nth-child(2){
     width: 150px;
     height: auto;
     position: absolute;
-    left: 15px;
+    left: 10px;
 }
-.const .content div:nth-child(1) img{
+.const div:nth-child(2) img{
     width: 100%;
 }
 
@@ -26,41 +36,47 @@
     margin: 0 -10px 0;
 }
 
-.const .content div:nth-child(2) {
-    margin: 0 0 0 170px;
+.const .content div {
     background-color: #C7C8C2;
     padding: 5px;
-    max-height: 200px;
+    max-height: 180px;
     height: auto;
     border-radius: 5px;
     word-wrap: break-word;
     overflow: auto;
-
 }
 
 .const .content {
     max-height: 200px;
     height: auto;
-    position: relative;
+    width: 471px;
+    position: absolute;
+    top: 20px;
+    left: 170px;
 }
+
 .const .content p{
     margin: 0;
 }
 
-@media screen and (max-width: 575px) {
+@media screen and (max-width: 675px) {
 
-    .const .content div:nth-child(1){
+    .const div:nth-child(2){
         position: relative;
         margin: 0 auto 15px;
         left: 0;
     }
 
-    .const .content div:nth-child(2) {
+    .const .content div {
         margin: 0;
         max-height: 175px;
     }
 
     .const .content{
         max-height: 300px;
+        width: 100%;
+        position: relative;
+        top: 0;
+        left: 0;
     }
 }

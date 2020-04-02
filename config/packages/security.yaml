@@ -4,7 +4,9 @@ security:
             algorithm: auto
 
     role_hierarchy:
-        ROLE_SUPER_ADMIN:   [ROLE_USER, ROLE_ADMIN_ACCESS, ROLE_ADMIN_USERS, ROLE_ADMIN_IMAGES, ROLE_ADMIN_IMAGES_ARTICLE, ROLE_ADMIN_BOOSTS, ROLE_ADMIN_CONSTRUCTIONS, ROLE_ADMIN_RESEARCHS, ROLE_ADMIN_FAMILIARS, ROLE_ADMIN_ARTICLE]
+        ROLE_SUPER_ADMIN:   [ROLE_USER, ROLE_ADMIN_ACCESS, ROLE_ADMIN_USERS, ROLE_ADMIN_IMAGES, 
+                            ROLE_ADMIN_IMAGES_ARTICLE, ROLE_ADMIN_BOOSTS, ROLE_ADMIN_CONSTRUCTIONS, ROLE_ADMIN_RESEARCHS, 
+                            ROLE_ADMIN_FAMILIARS, ROLE_ADMIN_ARTICLES, ROLE_ADMIN_NEWS]
         ROLE_ADMIN_ACCESS:  ROLE_USER
         ROLE_ADMIN_USERS:   ROLE_USER
         ROLE_ADMIN_IMAGES:  ROLE_USER
@@ -13,7 +15,8 @@ security:
         ROLE_ADMIN_CONSTRUCTIONS:   ROLE_USER
         ROLE_ADMIN_RESEARCHS:   ROLE_USER
         ROLE_ADMIN_FAMILIARS:   ROLE_USER
-        ROLE_ADMIN_ARTICLE:  ROLE_USER
+        ROLE_ADMIN_ARTICLES:  ROLE_USER
+        ROLE_ADMIN_NEWS:  ROLE_USER
 
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
     providers:
@@ -55,5 +58,6 @@ security:
         - { path: ^/admin/(construction|construction-category), roles: ROLE_ADMIN_CONSTRUCTIONS }
         - { path: ^/admin/research, roles: ROLE_ADMIN_RESEARCHS }
         - { path: ^/admin/(familiar|familiar-category), roles: ROLE_ADMIN_FAMILIARS }
-        - { path: ^/admin/article, roles: ROLE_ADMIN_ARTICLE }
+        - { path: ^/admin/article, roles: ROLE_ADMIN_ARTICLES }
+        - { path: ^/admin/news, roles: ROLE_ADMIN_NEWS }
         # - { path: ^/profile, roles: ROLE_USER }

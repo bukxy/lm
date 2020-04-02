@@ -1,0 +1,466 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Calculatrice{% endblock %}
+
+{% block contentTitle %}Calculatrice{% endblock %}
+
+{% block body %}
+
+    <div class="filter-menu category">
+        <div class="title">
+            <div>
+                <img src="{{ asset('uploads/bandeau_rouge.png') }}" alt="">
+                <div class="text-center">
+                    <span>Catégories</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="filter-list calculatorMenu row">
+            <div class="col-12 mt-2">
+                <ul>
+                    <li class="view_speedUp">
+                        <div>
+                            <img src="{{ asset('uploads/button.png') }}" alt="">
+                            <div class="text-center">Accélérateurs</div>
+                        </div>
+                    </li>
+                    <li class="view_research">
+                        <div>
+                            <img src="{{ asset('uploads/button.png') }}" alt="">
+                            <div class="text-center">Recherches</div>
+                        </div>
+                    </li>
+                    <li class="view_merging">
+                        <div>
+                            <img src="{{ asset('uploads/button.png') }}" alt="">
+                            <div class="text-center">Fusions</div>
+                        </div>
+                    </li>
+                    <li class="view_training">
+                        <div>
+                            <img src="{{ asset('uploads/button.png') }}" alt="">
+                            <div class="text-center">Entrainements</div>
+                        </div>
+                    </li>
+                    <li class="view_healing">
+                        <div>
+                            <img src="{{ asset('uploads/button.png') }}" alt="">
+                            <div class="text-center">Soins</div>
+                        </div>
+                    </li>
+                    <li class="view_wall">
+                        <div>
+                            <img src="{{ asset('uploads/button.png') }}" alt="">
+                            <div class="text-center">Murs</div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="row m-0">
+        <div class="resultMenu col-lg-6 col-12">
+            <p>Résultats</p>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#resultMenu" aria-controls="resultMenu" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        <div class="resultMenu col-lg-6 col-12">
+            <p>Combinés</p>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#resultCombineMenu" aria-controls="resultCombineMenu" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </div>
+
+    <div class="row result collapse navbar-collapse" id="resultMenu">
+        <div class="filter-menu col-lg-4 col-6">
+            <div class="r-speedUp">
+                <div class="r-title text-center">Accelerateurs</div>
+                <div class="r-content">
+                    <div class="r-list"><i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-placement="auto" title="Coming soon"></i></div>
+                    <ul class="r-total">
+                        <li class="days">Jour(s) : <span></span></li>
+                        <li class="hours">Heure(s) : <span></span></li>
+                        <li class="minutes">Minute(s) : <span></span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="filter-menu col-lg-4 col-6">
+            <div class="r-research">
+                <div class="r-title text-center">Recherches</div>
+                <div class="r-content">
+                    <div class="r-list"><i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-placement="auto" title="Coming soon"></i></div>
+                    <ul class="r-total">
+                        <li class="days">Jour(s) : <span></span></li>
+                        <li class="hours">Heure(s) : <span></span></li>
+                        <li class="minutes">Minute(s) : <span></span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="filter-menu col-lg-4 col-6">
+            <div class="r-merging">
+                <div class="r-title text-center">Fusions</div>
+                <div class="r-content">
+                    <div class="r-list"><i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-placement="auto" title="Coming soon"></i></div>
+                    <ul class="r-total">
+                        <li class="days">Jour(s) : <span></span></li>
+                        <li class="hours">Heure(s) : <span></span></li>
+                        <li class="minutes">Minute(s) : <span></span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="filter-menu col-lg-4 col-6">
+            <div class="r-training">
+                <div class="r-title text-center">Entrainements</div>
+                <div class="r-content">
+                    <div class="r-list"><i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-placement="auto" title="Coming soon"></i></div>
+                    <ul class="r-total">
+                        <li class="days">Jour(s) : <span></span></li>
+                        <li class="hours">Heure(s) : <span></span></li>
+                        <li class="minutes">Minute(s) : <span></span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="filter-menu col-lg-4 col-6">
+            <div class="r-healing">
+                <div class="r-title text-center">Soins</div>
+                <div class="r-content">
+                    <div class="r-list"><i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-placement="auto" title="Coming soon"></i></div>
+                    <ul class="r-total">
+                        <li class="days">Jour(s) : <span></span></li>
+                        <li class="hours">Heure(s) : <span></span></li>
+                        <li class="minutes">Minute(s) : <span></span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="filter-menu col-lg-4 col-6">
+            <div class="r-wall">
+                <div class="r-title text-center">Murs</div>
+                <div class="r-content">
+                    <div class="r-list"><i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-placement="auto" title="Coming soon"></i></div>
+                    <ul class="r-total">
+                        <li class="days">Jour(s) : <span></span></li>
+                        <li class="hours">Heure(s) : <span></span></li>
+                        <li class="minutes">Minute(s) : <span></span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row result collapse navbar-collapse" id="resultCombineMenu">
+        <div class="filter-menu col-lg-4 col-6">
+            <div class="r-suR">
+                <div class="r-title text-center">Accelerateurs + Recherche</div>
+                <div class="r-content">
+                    <div class="r-list"><i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-placement="auto" title="Coming soon"></i></div>
+                    <ul class="r-total">
+                        <li class="days">Jour(s) :
+                            <span></span>
+                        </li>
+                        <li class="hours">Heure(s) :
+                            <span></span>
+                        </li>
+                        <li class="minutes">Minute(s) :
+                            <span></span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="filter-menu col-lg-4 col-6">
+            <div class="r-suT">
+                <div class="r-title text-center">Accelerateurs + Entrainements</div>
+                <div class="r-content">
+                    <div class="r-list"><i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-placement="auto" title="Coming soon"></i></div>
+                    <ul class="r-total">
+                        <li class="days">Jour(s) :
+                            <span></span>
+                        </li>
+                        <li class="hours">Heure(s) :
+                            <span></span>
+                        </li>
+                        <li class="minutes">Minute(s) :
+                            <span></span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="filter-menu col-lg-4 col-6">
+            <div class="r-suH">
+                <div class="r-title text-center">Accelerateurs + Soins</div>
+                <div class="r-content">
+                    <div class="r-list"><i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-placement="auto" title="Coming soon"></i></div>
+                    <ul class="r-total">
+                        <li class="days">Jour(s) :
+                            <span></span>
+                        </li>
+                        <li class="hours">Heure(s) :
+                            <span></span>
+                        </li>
+                        <li class="minutes">Minute(s) :
+                            <span></span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="filter-menu col-lg-4 col-6">
+            <div class="r-suW">
+                <div class="r-title text-center">Accelerateurs + Murs</div>
+                <div class="r-content">
+                    <div class="r-list"><i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-placement="auto" title="Coming soon"></i></div>
+                    <ul class="r-total">
+                        <li class="days">Jour(s) :
+                            <span></span>
+                        </li>
+                        <li class="hours">Heure(s) :
+                            <span></span>
+                        </li>
+                        <li class="minutes">Minute(s) :
+                            <span></span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="filter-menu col-lg-4 col-6">
+            <div class="r-cumul">
+                <div class="r-title text-center">Cumul</div>
+                <div class="r-content">
+                    <div class="r-list"><i class="fas fa-info-circle" tabindex="0" data-toggle="tooltip" data-placement="auto" title="Coming soon"></i></div>
+                    <ul class="r-total">
+                        <li class="days">Jour(s) :
+                            <span></span>
+                        </li>
+                        <li class="hours">Heure(s) :
+                            <span></span>
+                        </li>
+                        <li class="minutes">Minute(s) :
+                            <span></span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <form class="p-1">
+        <section class="calculator">
+
+            <div class="form-row col-lg-12 speedUp">
+                <div class="input-group col-lg-3 col-md-4 col-sm-6 col-12">
+                    <img src="{{ asset('uploads/calculator/speedup/1m.png') }}" alt="">
+                    <input type="number" min="0" max="1000000" class="form-control" id="spu-1m">
+                </div>
+                <div class="input-group col-lg-3 col-md-4 col-sm-6 col-12">
+                    <img src="{{ asset('uploads/calculator/speedup/3m.png') }}" alt="">
+                    <input type="number" min="0" max="1000000" class="form-control" id="spu-3m">
+                </div>
+                <div class="input-group col-lg-3 col-md-4 col-sm-6 col-12">
+                    <img src="{{ asset('uploads/calculator/speedup/5m.png') }}" alt="">
+                    <input type="number" min="0" max="1000000" class="form-control" id="spu-5m">
+                </div>
+                <div class="input-group col-lg-3 col-md-4 col-sm-6 col-12">
+                    <img src="{{ asset('uploads/calculator/speedup/10m.png') }}" alt="">
+                    <input type="number" min="0" max="1000000" class="form-control" id="spu-10m">
+                </div>
+                <div class="input-group col-lg-3 col-md-4 col-sm-6 col-12">
+                    <img src="{{ asset('uploads/calculator/speedup/15m.png') }}" alt="">
+                    <input type="number" min="0" max="1000000" class="form-control" id="spu-15m">
+                </div>
+                <div class="input-group col-lg-3 col-md-4 col-sm-6 col-12">
+                    <img src="{{ asset('uploads/calculator/speedup/30m.png') }}" alt="">
+                    <input type="number" min="0" max="1000000" class="form-control" id="spu-30m">
+                </div>
+                <div class="input-group col-lg-3 col-md-4 col-sm-6 col-12">
+                    <img src="{{ asset('uploads/calculator/speedup/60m.png') }}" alt="">
+                    <input type="number" min="0" max="1000000" class="form-control" id="spu-60m">
+                </div>
+                <div class="input-group col-lg-3 col-md-4 col-sm-6 col-12">
+                    <img src="{{ asset('uploads/calculator/speedup/3h.png') }}" alt="">
+                    <input type="number" min="0" max="1000000" class="form-control" id="spu-3h">
+                </div>
+                <div class="input-group col-lg-3 col-md-4 col-sm-6 col-12">
+                    <img src="{{ asset('uploads/calculator/speedup/8h.png') }}" alt="">
+                    <input type="number" min="0" max="1000000" class="form-control" id="spu-8h">
+                </div>
+                <div class="input-group col-lg-3 col-md-4 col-sm-6 col-12">
+                    <img src="{{ asset('uploads/calculator/speedup/15h.png') }}" alt="">
+                    <input type="number" min="0" max="1000000" class="form-control" id="spu-15h">
+                </div>
+                <div class="input-group col-lg-3 col-md-4 col-sm-6 col-12">
+                    <img src="{{ asset('uploads/calculator/speedup/24h.png') }}" alt="">
+                    <input type="number" min="0" max="1000000" class="form-control" id="spu-24h">
+                </div>
+                <div class="input-group col-lg-3 col-md-4 col-sm-6 col-12">
+                    <img src="{{ asset('uploads/calculator/speedup/3d.png') }}" alt="">
+                    <input type="number" min="0" max="1000000" class="form-control" id="spu-3d">
+                </div>
+                <div class="input-group col-lg-3 col-md-4 col-sm-6 col-12">
+                    <img src="{{ asset('uploads/calculator/speedup/7d.png') }}" alt="">
+                    <input type="number" min="0" max="1000000" class="form-control" id="spu-7d">
+                </div>
+                <div class="input-group col-lg-3 col-md-4 col-sm-6 col-12">
+                    <img src="{{ asset('uploads/calculator/speedup/30d.png') }}" alt="">
+                    <input type="number" min="0" max="1000000" class="form-control" id="spu-30d">
+                </div>
+            </div>
+
+            <div class="form-row col-lg-12 research">
+                <div class="input-group col-lg-3 col-md-4 col-sm-6 col-12">
+                    <img src="{{ asset('uploads/calculator/research/10m.png') }}" alt="">
+                    <input type="number" min="0" max="1000000" class="form-control" id="rs-10m">
+                </div>
+                <div class="input-group col-lg-3 col-md-4 col-sm-6 col-12">
+                    <img src="{{ asset('uploads/calculator/research/15m.png') }}" alt="">
+                    <input type="number" min="0" max="1000000" class="form-control" id="rs-15m">
+                </div>
+                <div class="input-group col-lg-3 col-md-4 col-sm-6 col-12">
+                    <img src="{{ asset('uploads/calculator/research/30m.png') }}" alt="">
+                    <input type="number" min="0" max="1000000" class="form-control" id="rs-30m">
+                </div>
+                <div class="input-group col-lg-3 col-md-4 col-sm-6 col-12">
+                    <img src="{{ asset('uploads/calculator/research/60m.png') }}" alt="">
+                    <input type="number" min="0" max="1000000" class="form-control" id="rs-60m">
+                </div>
+                <div class="input-group col-lg-3 col-md-4 col-sm-6 col-12">
+                    <img src="{{ asset('uploads/calculator/research/3h.png') }}" alt="">
+                    <input type="number" min="0" max="1000000" class="form-control" id="rs-3h">
+                </div>
+                <div class="input-group col-lg-3 col-md-4 col-sm-6 col-12">
+                    <img src="{{ asset('uploads/calculator/research/8h.png') }}" alt="">
+                    <input type="number" min="0" max="1000000" class="form-control" id="rs-8h">
+                </div>
+                <div class="input-group col-lg-3 col-md-4 col-sm-6 col-12">
+                    <img src="{{ asset('uploads/calculator/research/15h.png') }}" alt="">
+                    <input type="number" min="0" max="1000000" class="form-control" id="rs-15h">
+                </div>
+                <div class="input-group col-lg-3 col-md-4 col-sm-6 col-12">
+                    <img src="{{ asset('uploads/calculator/research/24h.png') }}" alt="">
+                    <input type="number" min="0" max="1000000" class="form-control" id="rs-24h">
+                </div>
+                <div class="input-group col-lg-3 col-md-4 col-sm-6 col-12">
+                    <img src="{{ asset('uploads/calculator/research/3d.png') }}" alt="">
+                    <input type="number" min="0" max="1000000" class="form-control" id="rs-3d">
+                </div>
+            </div>
+
+            <div class="form-row col-lg-12 merging">
+                <div class="input-group col-lg-3 col-md-4 col-sm-6 col-12">
+                    <img src="{{ asset('uploads/calculator/merging/1m.png') }}" alt="">
+                    <input type="number" min="0" max="1000000" class="form-control" id="mg-1m">
+                </div>
+                <div class="input-group col-lg-3 col-md-4 col-sm-6 col-12">
+                    <img src="{{ asset('uploads/calculator/merging/15m.png') }}" alt="">
+                    <input type="number" min="0" max="1000000" class="form-control" id="mg-15m">
+                </div>
+                <div class="input-group col-lg-3 col-md-4 col-sm-6 col-12">
+                    <img src="{{ asset('uploads/calculator/merging/60m.png') }}" alt="">
+                    <input type="number" min="0" max="1000000" class="form-control" id="mg-60m">
+                </div>
+                <div class="input-group col-lg-3 col-md-4 col-sm-6 col-12">
+                    <img src="{{ asset('uploads/calculator/merging/3h.png') }}" alt="">
+                    <input type="number" min="0" max="1000000" class="form-control" id="mg-3h">
+                </div>
+                <div class="input-group col-lg-3 col-md-4 col-sm-6 col-12">
+                    <img src="{{ asset('uploads/calculator/merging/8h.png') }}" alt="">
+                    <input type="number" min="0" max="1000000" class="form-control" id="mg-8h">
+                </div>
+                <div class="input-group col-lg-3 col-md-4 col-sm-6 col-12">
+                    <img src="{{ asset('uploads/calculator/merging/15h.png') }}" alt="">
+                    <input type="number" min="0" max="1000000" class="form-control" id="mg-15h">
+                </div>
+                <div class="input-group col-lg-3 col-md-4 col-sm-6 col-12">
+                    <img src="{{ asset('uploads/calculator/merging/24h.png') }}" alt="">
+                    <input type="number" min="0" max="1000000" class="form-control" id="mg-24h">
+                </div>
+                <div class="input-group col-lg-3 col-md-4 col-sm-6 col-12">
+                    <img src="{{ asset('uploads/calculator/merging/3d.png') }}" alt="">
+                    <input type="number" min="0" max="1000000" class="form-control" id="mg-3d">
+                </div>
+                <div class="input-group col-lg-3 col-md-4 col-sm-6 col-12">
+                    <img src="{{ asset('uploads/calculator/merging/7d.png') }}" alt="">
+                    <input type="number" min="0" max="1000000" class="form-control" id="mg-7d">
+                </div>
+            </div>
+
+            <div class="form-row col-lg-12 training">
+                <div class="input-group col-lg-3 col-md-4 col-sm-6 col-12">
+                    <img src="{{ asset('uploads/calculator/training/30m.png') }}" alt="">
+                    <input type="number" min="0" max="1000000" class="form-control" id="tr-30m">
+                </div>
+                <div class="input-group col-lg-3 col-md-4 col-sm-6 col-12">
+                    <img src="{{ asset('uploads/calculator/training/60m.png') }}" alt="">
+                    <input type="number" min="0" max="1000000" class="form-control" id="tr-60m">
+                </div>
+                <div class="input-group col-lg-3 col-md-4 col-sm-6 col-12">
+                    <img src="{{ asset('uploads/calculator/training/3h.png') }}" alt="">
+                    <input type="number" min="0" max="1000000" class="form-control" id="tr-3h">
+                </div>
+                <div class="input-group col-lg-3 col-md-4 col-sm-6 col-12">
+                    <img src="{{ asset('uploads/calculator/training/8h.png') }}" alt="">
+                    <input type="number" min="0" max="1000000" class="form-control" id="tr-8h">
+                </div>
+                <div class="input-group col-lg-3 col-md-4 col-sm-6 col-12">
+                    <img src="{{ asset('uploads/calculator/training/24h.png') }}" alt="">
+                    <input type="number" min="0" max="1000000" class="form-control" id="tr-24h">
+                </div>
+            </div>
+
+            <div class="form-row col-lg-12 healing">
+                <div class="input-group col-lg-3 col-md-4 col-sm-6 col-12">
+                    <img src="{{ asset('uploads/calculator/heal/15m.png') }}" alt="">
+                    <input type="number" min="0" max="1000000" class="form-control" id="he-15m">
+                </div>
+                <div class="input-group col-lg-3 col-md-4 col-sm-6 col-12">
+                    <img src="{{ asset('uploads/calculator/heal/60m.png') }}" alt="">
+                    <input type="number" min="0" max="1000000" class="form-control" id="he-60m">
+                </div>
+                <div class="input-group col-lg-3 col-md-4 col-sm-6 col-12">
+                    <img src="{{ asset('uploads/calculator/heal/3h.png') }}" alt="">
+                    <input type="number" min="0" max="1000000" class="form-control" id="he-3h">
+                </div>
+            </div>
+
+            <div class="form-row col-lg-12 wall">
+                <div class="input-group col-lg-3 col-md-4 col-sm-6 col-12">
+                    <img src="{{ asset('uploads/calculator/wall/15m.png') }}" alt="">
+                    <input type="number" min="0" max="1000000" class="form-control" id="wa-15m">
+                </div>
+                <div class="input-group col-lg-3 col-md-4 col-sm-6 col-12">
+                    <img src="{{ asset('uploads/calculator/wall/60m.png') }}" alt="">
+                    <input type="number" min="0" max="1000000" class="form-control" id="wa-60m">
+                </div>
+                <div class="input-group col-lg-3 col-md-4 col-sm-6 col-12">
+                    <img src="{{ asset('uploads/calculator/wall/3h.png') }}" alt="">
+                    <input type="number" min="0" max="1000000" class="form-control" id="wa-3h">
+                </div>
+                <div class="input-group col-lg-3 col-md-4 col-sm-6 col-12">
+                    <img src="{{ asset('uploads/calculator/wall/8h.png') }}" alt="">
+                    <input type="number" min="0" max="1000000" class="form-control" id="wa-8h">
+                </div>
+                <div class="input-group col-lg-3 col-md-4 col-sm-6 col-12">
+                    <img src="{{ asset('uploads/calculator/wall/24h.png') }}" alt="">
+                    <input type="number" min="0" max="1000000" class="form-control" id="wa-24h">
+                </div>
+            </div>
+
+        </section>
+    </form>
+        
+{% endblock %}
+
+{% block javascripts %}
+	{{ encore_entry_script_tags('calculator') }}
+	{{ encore_entry_script_tags('calculatorEvent') }}
+{% endblock %}

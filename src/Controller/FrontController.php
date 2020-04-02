@@ -26,4 +26,12 @@ class FrontController extends AbstractController
             'news' => $result
         ]);
     }
+
+    /**
+     * @Route("/calculator", name="calculator")
+     */
+    public function calculator()
+    {
+        return $this->render('front/calculator.html.twig', []);
+    }
 }

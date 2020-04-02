@@ -39,11 +39,16 @@
                         <a class="dropdown-item" href="{{ path('article', {'slug': 'lords-cup'}) }}">Coupe des lords</a>
                         <a class="dropdown-item" href="{{ path('article', {'slug': 'kvk'}) }}">RvR (KvK)</a>
                         <a class="dropdown-item" href="{{ path('article', {'slug': 'dragon-arena'}) }}">Arène du dragon</a>
-                        <div class="dropdown-divider"></div>
+                        {# <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="{{ path('article', {'slug': 'feudal-war'}) }}">Guerre Féodale</a>
                         <a class="dropdown-item" href="{{ path('article', {'slug': 'battle-royal'}) }}">Bataille Royale</a>
-                        <a class="dropdown-item" href="{{ path('article', {'slug': 'royal-calice'}) }}">Calice Royale</a>
+                        <a class="dropdown-item" href="{{ path('article', {'slug': 'royal-calice'}) }}">Calice Royale</a> #}
                     </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('calculator') }}">
+                        <img src="{{ asset('uploads/icon/calculator.png') }}" alt="">Calculatrice
+                    </a>
                 </li>
             </ul>
         </div>

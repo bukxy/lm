@@ -7,10 +7,12 @@ import('../../css/back/familiar.css');
 tinymce.init({
     selector: 'textarea',  // change this value according to your HTML
     height: '650',
+    content_css: ['https://www.dafont.com/sansation.font'],
+    font_formats: 'Sensation=sensation',
     plugins: [
         "advlist autolink lists link image charmap print preview anchor",
         "searchreplace visualblocks code fullscreen",
-        "insertdatetime media table paste imagetools wordcount"
+        "insertdatetime media table paste imagetools wordcount image imagetools"
     ],
     toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image",
     content_css: [

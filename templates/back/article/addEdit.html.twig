@@ -20,7 +20,7 @@
             </p>
             <p>
                 - La deuxième est d'ajouté une image dans "Images des articles" puis l'ajouté en passant par l'icon <i class="far fa-image"></i> 
-                (insert/edit image), dans source ecrit : https://lordsmobile.com/public/uploads/ma_superbe_image.png , mettre à la place 
+                (insert/edit image), dans source ecrit : /public/uploads/images/ma_superbe_image.png , mettre à la place 
                 de "ma_superbe_image.png" le nom de votre image (extension autorisé PNG / JPG / GIF)
             </p>
 
@@ -32,7 +32,7 @@
     {{ form_start(form) }}
         <div class="card event">
             <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">{{ form_label(form.content, 'Edition de l\'article :') }} {{article.name}}</h6>
+                <h6 class="m-0 font-weight-bold text-primary">{{ form_label(form.content, 'Edition de l\'article :') }} {{article.title}}</h6>
             </div>
             <div class="card-body">
                 {{ form_widget(form.content) }}

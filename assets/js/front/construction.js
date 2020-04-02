@@ -38,9 +38,9 @@ let objConst = {
                 $('article.const .name div').append('<div><span>'+ r['name'] +'</span></div>')
 
                 if (r['image']) {
-                    $('article.const .content').append('<div><img src="' + response.url + '/images/' + r['image']['name'] +'"></div>')
+                    $('article.const .name').after('<div><img src="' + response.url + '/images/' + r['image']['name'] +'"></div>')
                 } else {
-                    $('article.const .content').append('<div><img src="' + response.url + '/uploads/default.png"></div>')
+                    $('article.const .name').after('<div><img src="' + response.url + '/uploads/default.png"></div>')
                 }
 
                 $('article.const .content').append('<div>'+ r['content'] +'</div>')

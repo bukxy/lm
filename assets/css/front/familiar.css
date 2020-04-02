@@ -9,6 +9,9 @@
     height: auto;
     border-radius: 10px;
 }
+.familiar ul{
+    max-height: 215px !important;
+}
 
 .fam > div{
     width: 650px;
@@ -21,6 +24,7 @@
     color: #DED078;
     text-shadow: 0px 0px 5px #000000;
     width: 160px;
+    height: 60px;
 }
 
 .comp1-img, .comp2-img, .comp3-img{
@@ -40,13 +44,14 @@
 }
 
 .fam-name {
-    top: 40px;
+    top: 45px;
     left: 80px;
     font-size: 16px;
+    height: 20px;
 }
 
 .fam-comp1 {
-    top: 100px;
+    top: 82px;
     left: 460px;
 }
 .comp1-img{
@@ -55,7 +60,7 @@
 }
 
 .fam-comp2 {
-    top: 167px;
+    top: 153px;
     left: 460px;
 }
 .comp2-img{
@@ -64,7 +69,7 @@
 }
 
 .fam-comp3 {
-    top: 220px;
+    top: 216px;
     left: 460px;
 }
 .comp3-img{
@@ -73,9 +78,11 @@
 }
 
 .fam-talent {
-    top: 315px;
-    left: 485px
+    top: 297px;
+    left: 480px;
+    width: 140px
 }
+
 .talent-img{
     position: absolute;
     width: 58px;
@@ -102,10 +109,11 @@
     .fam-comp1, .fam-comp2, .fam-comp3, .fam-talent{
         width: 75px;
         height: 32px;
+        font-size: 11px;
     }
 
     .comp1-img, .comp2-img, .comp3-img{
-        width: 100px;
+        width: 115px;
         height: 32px;
     }
 
@@ -118,46 +126,39 @@
     }
 
     .fam-name {
-        top: 15px;
+        top: 20px;
         left: 40px;
-        font-size: 13px;
+        font-size: 11px;
+    }
+
+    .comp1-img, .comp2-img, .comp3-img{
+        left: -37px;
+        top: 0px;
     }
 
     .fam-comp1 {
         top: 39px;
-        left: 240px;
-    }
-    .comp1-img{
-        left: -28px;
-        top: 0px;
+        left: 233px;
     }
 
     .fam-comp2 {
         top: 74px;
-        left: 240px;
-    }
-    .comp2-img{
-        left: -28px;
-        top: 0px;
+        left: 233px;
     }
 
     .fam-comp3 {
         top: 108px;
-        left: 240px;
-    }
-    .comp3-img{
-        left: -28px;
-        top: 0px;
+        left: 233px;
     }
 
     .fam-talent {
         top: 150px;
-        left: 250px
+        left: 245px
     }
     .talent-img{
-        width: 112px;
+        width: 111px;
         height: 35px;
-        left: -37px;
+        left: -38px;
         top: -2px;
     }
 }

@@ -76,7 +76,7 @@ class FamiliarCategoryController extends AbstractController
             $manager->remove($f);
             $manager->flush();
 
-            return $this->redirectToRoute('admin_familiar_list');
+            return $this->redirectToRoute('admin_familiar_category_list');
         }
     }
 }

@@ -92,11 +92,9 @@ class FamiliarController extends AbstractController
     /**
      * @Route("/background/add/{id}", name="admin_familiar_new_imageBackground")
      */
-    public function AddImage(Familiar $f, Image $i = null, ImageCatRepository $iCat, Request $req, EntityManagerInterface $manager, Security $security)
+    public function AddImage(Familiar $f, ImageCatRepository $iCat, Request $req, EntityManagerInterface $manager, Security $security)
     {
-        if (!$i) {
-            $i = new Image();
-        }
+        $i = new Image();
 
         $formImg = $this->createForm(ImageType::class, $i);
         $formImg->handleRequest($req);
@@ -141,8 +139,8 @@ class FamiliarController extends AbstractController
                 $i->setAlt('Aucune information sur l\'image est disponible');
             }
 
-            $manager->persist($f);
             $manager->persist($i);
+            $manager->persist($f);
             $manager->flush();
             return $this->redirectToRoute('admin_familiar_list');
         }
@@ -163,9 +161,11 @@ class FamiliarController extends AbstractController
             $path = 'uploads/images/'.$image->getName();
 
             if ($image && file_exists($path)){
-                unlink($path);
                 $f->setImageBackground(null);
+                unlink($path);
                 $manager->remove($image);
+                $manager->persist($image);
+                $manager->persist($f);
                 $manager->flush();
                 return $this->redirectToRoute('admin_familiar_list');
             }
@@ -175,11 +175,9 @@ class FamiliarController extends AbstractController
     /**
      * @Route("/imageHead/add/{id}", name="admin_familiar_new_imageHead")
      */
-    public function AddImageHead(Familiar $f, Image $i = null, ImageCatRepository $iCat, Request $req, EntityManagerInterface $manager, Security $security)
+    public function AddImageHead(Familiar $f, ImageCatRepository $iCat, Request $req, EntityManagerInterface $manager, Security $security)
     {
-        if (!$i) {
-            $i = new Image();
-        }
+        $i = new Image();
 
         $formImg = $this->createForm(ImageType::class, $i);
         $formImg->handleRequest($req);
@@ -211,21 +209,19 @@ class FamiliarController extends AbstractController
             // updates the 'brochureFilename' property to store the PDF file name
             // instead of its contents
 
-            $user = $security->getUser();
-
-            $f->setImageHead($i);
-            $i->setUser($user);
+            $i->setUser($security->getUser());
 
             $i->setName($newFilename);
+
+            $i->setImageCat($iCat->findOneBy(['name' => 'familiar']));
 
             if ($formImg['alt']->getData() == null){
                 $i->setAlt('Aucune information sur l\'image est disponible');
             }
 
-            $i->setImageCat($iCat->findOneBy(['name' => 'familiar']));
-
-            $manager->persist($f);
             $manager->persist($i);
+            $f->setImageHead($i);
+            $manager->persist($f);
             $manager->flush();
             return $this->redirectToRoute('admin_familiar_list');
         }

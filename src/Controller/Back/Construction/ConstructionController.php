@@ -6,20 +6,21 @@ use App\Entity\Image;
 use App\Form\ImageType;
 
 use App\Entity\Construction;
+
 use App\Form\ConstructionType;
-
 use App\Entity\ConstructionCat;
-use App\Form\ConstructionCatType;
 
+use App\Form\ConstructionCatType;
 use App\Repository\ImageRepository;
+use App\Repository\ImageCatRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Repository\ConstructionRepository;
 use App\Repository\ConstructionCatRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Security;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 /**
 * @IsGranted("ROLE_ADMIN_CONSTRUCTIONS")
@@ -88,11 +89,9 @@ class ConstructionController extends AbstractController
     /**
      * @Route("/image/add/{id}", name="admin_construction_new_image")
      */
-    public function AddImage(Construction $c, Image $i = null, Request $req, EntityManagerInterface $manager, Security $security)
+    public function AddImage(Construction $c, ImageCatRepository $iCat, Request $req, EntityManagerInterface $manager, Security $security)
     {
-        if (!$i) {
-            $i = new Image();
-        }
+        $i = new Image();
 
         $formImg = $this->createForm(ImageType::class, $i);
         $formImg->handleRequest($req);
@@ -134,6 +133,8 @@ class ConstructionController extends AbstractController
             if ($formImg['alt']->getData() == null){
                 $i->setAlt('Aucune information sur l\'image est disponible');
             }
+
+            $i->setImageCat($iCat->findOneBy(['name' => 'construction']));
 
             $manager->persist($c);
             $manager->persist($i);

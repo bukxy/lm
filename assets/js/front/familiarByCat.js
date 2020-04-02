@@ -46,26 +46,26 @@ let objFamiliarsByCat = {
 
                     if (r[i]['competence1']) {
                         $('article.fam#' + r[i]['id'] +' > div').append('<div class="fam-comp1"></div>')
-                        $('.fam-comp1').append('<div class="comp1-img" tabindex="0" data-toggle="tooltip" data-placement="top" title="' + r[i]['competence1Desc'] + '"></div>');
-                        $('.fam-comp1').append(r[i]['competence1']);
+                        $('article.fam#' + r[i]['id'] +' .fam-comp1').html('<div class="comp1-img" tabindex="0" data-toggle="tooltip" data-placement="top" title="' + r[i]['competence1Desc'] + '"></div>');
+                        $('article.fam#' + r[i]['id'] +' .fam-comp1').append(r[i]['competence1']);
                     }
 
                     if (r[i]['competence2']) {
                         $('article.fam#' + r[i]['id'] +' > div').append('<div class="fam-comp2"></div>')
-                        $('.fam-comp2').append('<div class="comp2-img" tabindex="0" data-toggle="tooltip" data-placement="top" title="' + r[i]['competence2Desc'] + '"></div>');
-                        $('.fam-comp2').append(r[i]['competence2']);
+                        $('article.fam#' + r[i]['id'] +' .fam-comp2').append('<div class="comp2-img" tabindex="0" data-toggle="tooltip" data-placement="top" title="' + r[i]['competence2Desc'] + '"></div>');
+                        $('article.fam#' + r[i]['id'] +' .fam-comp2').append(r[i]['competence2']);
                     }
 
                     if (r[i]['competence3']) {
                         $('article.fam#' + r[i]['id'] +' > div').append('<div class="fam-comp3"></div>')
-                        $('.fam-comp3').append('<div class="comp3-img" tabindex="0" data-toggle="tooltip" data-placement="top" title="' + r[i]['competence3Desc'] + '"></div>');
-                        $('.fam-comp3').append(r[i]['competence3']);
+                        $('article.fam#' + r[i]['id'] +' .fam-comp3').append('<div class="comp3-img" tabindex="0" data-toggle="tooltip" data-placement="top" title="' + r[i]['competence3Desc'] + '"></div>');
+                        $('article.fam#' + r[i]['id'] +' .fam-comp3').append(r[i]['competence3']);
                     }
 
                     if (r[i]['talent']) {
                         $('article.fam#' + r[i]['id'] +' > div').append('<div class="fam-talent"></div>')
-                        $('.fam-talent').append('<div class="talent-img" tabindex="0" data-toggle="tooltip" data-placement="top" title="' + r[i]['talentDesc'] + '"></div>');
-                        $('.fam-talent').append(r[i]['talent']);
+                        $('article.fam#' + r[i]['id'] +' .fam-talent').append('<div class="talent-img" tabindex="0" data-toggle="tooltip" data-placement="top" title="' + r[i]['talentDesc'] + '"></div>');
+                        $('article.fam#' + r[i]['id'] +' .fam-talent').append(r[i]['talent']);
                     }
                 });
 

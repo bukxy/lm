@@ -37,15 +37,14 @@ class ArticleController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()){
 
-            $slugify = new Slugify();
-            $a->setSlug($slugify->slugify($form['title']->getData()));
+            // $slugify = new Slugify();
+            // $a->setSlug($slugify->slugify($form['title']->getData()));
 
-            $user = $security->getUser();
-            $a->setUser($user);
+            $a->setUser($security->getUser());
 
             $manager->persist($a);
             $manager->flush();
-            return $this->redirectToRoute('admin_article_edit', ['id' => $a->getId()]);
+            return $this->redirectToRoute('admin_article_edit', ['slug' => $a->getSlug()]);
         }
 
         return $this->render('back/article/addEdit.html.twig', [

@@ -1,10 +1,13 @@
 import('../css/front/front.css');
+// import('../css/front/front.min.css');
 
 import('../css/front/login.css');
 import('../css/front/news.css');
 import('../css/front/familiar.css');
 import('../css/front/construction.css');
 import('../css/front/boost.css');
+import('../css/front/calculator.css');
+import('../css/front/article.css');
 
 $(function () {
     $('[data-toggle="tooltip"]').tooltip()

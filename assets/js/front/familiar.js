@@ -45,25 +45,25 @@ let objFamiliars = {
 
                 if (r['competence1']) {
                     $('article.fam > div').append('<div class="fam-comp1"></div>')
-                    $('.fam-comp1').append('<div class="comp1-img" tabindex="0" data-toggle="tooltip" data-placement="top" title="' + r['competence1Desc'] + '"></div>');
+                    $('.fam-comp1').append('<div class="comp1-img" tabindex="0" data-toggle="tooltip" data-placement="left" title="' + r['competence1Desc'] + '"></div>');
                     $('.fam-comp1').append(r['competence1']);
                 }
 
                 if (r['competence2']) {
                     $('article.fam > div').append('<div class="fam-comp2"></div>')
-                    $('.fam-comp2').append('<div class="comp2-img" tabindex="0" data-toggle="tooltip" data-placement="top" title="' + r['competence2Desc'] + '"></div>');
+                    $('.fam-comp2').append('<div class="comp2-img" tabindex="0" data-toggle="tooltip" data-placement="left" title="' + r['competence2Desc'] + '"></div>');
                     $('.fam-comp2').append(r['competence2']);
                 }
 
                 if (r['competence3']) {
                     $('article.fam > div').append('<div class="fam-comp3"></div>')
-                    $('.fam-comp3').append('<div class="comp3-img" tabindex="0" data-toggle="tooltip" data-placement="top" title="' + r['competence3Desc'] + '"></div>');
+                    $('.fam-comp3').append('<div class="comp3-img" tabindex="0" data-toggle="tooltip" data-placement="left" title="' + r['competence3Desc'] + '"></div>');
                     $('.fam-comp3').append(r['competence3']);
                 }
 
                 if (r['talent']) {
                     $('article.fam > div').append('<div class="fam-talent"></div>')
-                    $('.fam-talent').append('<div class="talent-img" tabindex="0" data-toggle="tooltip" data-placement="top" title="' + r['talentDesc'] + '"></div>');
+                    $('.fam-talent').append('<div class="talent-img" tabindex="0" data-toggle="tooltip" data-placement="left" title="' + r['talentDesc'] + '"></div>');
                     $('.fam-talent').append(r['talent']);
                 }
 

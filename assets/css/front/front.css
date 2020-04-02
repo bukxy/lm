@@ -54,7 +54,6 @@ body .icon {
     background-color: rgba(0,0,0,0.5);
 }
 
-
 .topNav {
     padding: 0;
     margin: auto;
@@ -152,7 +151,7 @@ body .icon {
 
 #content .content-title {
     position: absolute;
-    top: -21px;
+    top: -18px;
     left: 0;
     width: 100%;
 }
@@ -176,10 +175,18 @@ body .icon {
 #content.pageWidth {
     width: 870px;
     min-height: 400px;
-    background: transparent url(../img/content-top.png) no-repeat center top;
     padding: 30px 5px;
     margin-left: 20px;
     position: relative;
+}
+
+#content.pageWidth::before {
+    content: "";
+    display: block;
+    width: 870px;
+    background: transparent url(../img/content-top.png) no-repeat center top;
+    padding: 28px 0;
+    margin: -26px -5px;
 }
 
 #content.pageWidth::after {
@@ -188,12 +195,12 @@ body .icon {
     width: 870px;
     background: transparent url(../img/content-bot.png) no-repeat center top;
     height: 56px;
-    margin: -30px -5px;
+    margin: -40px -5px;
 }
 
 #content .pageContent {
     background: #DED096 url(../img/bord.png) repeat-y center top;
-    margin: 13px -5px 15px;
+    margin: 13px -5px 21px;
     padding: 20px 25px;
     height: 100%;
 }
@@ -233,6 +240,7 @@ body .icon {
     position: relative;
     top: 12px;
     z-index: 1;
+    margin: 0 -15px;
 }
 .filter-menu .title > div, .const .name > div{
     position: relative;
@@ -270,16 +278,20 @@ body .icon {
 
 .filter-list .ajax-view_content img {
     width: 45px;
-    height: 42px;
+    height: 45px;
 }
 
 .filter-list li.ajax-view_content {
     width: 45px;
     height: 42px;
 }
-.filter-list li.ajax-view_contentByCat, .filter-list li.ajax-view_content {
+.filter-list.familiar ul{
+    justify-content: center;
+}
+
+.filter-list li.ajax-view_contentByCat, .filter-list li.ajax-view_content, .filter-list.calculatorMenu li{
     list-style: none;
-    margin: auto;
+    margin: 6px;
     padding: 0;
     position: relative;
     cursor: pointer;
@@ -293,7 +305,7 @@ body .icon {
     position: absolute;
     width: 95px;
 }
-.filter-list li.ajax-view_contentByCat > div > div {
+.filter-list li.ajax-view_contentByCat > div > div, .filter-list.calculatorMenu li > div > div{
     position: absolute;
     width: 100%;
     color: white;
@@ -302,18 +314,41 @@ body .icon {
     left: 50%;
     transform: translate(-50%, -50%);
 }
-.filter-list li.ajax-view_contentByCat img {
+.filter-list li.ajax-view_contentByCat img, .filter-list.calculatorMenu li img{
     width: 100%;
     height: auto;
 }
 
+footer {
+    position: relative;
+}
+footer div{
+    text-align: center;
+    color: rgba(0,0,0,.5);
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
 #ajax-no-content {
     text-align: center;
+    margin: 50px auto 0;
+    width: 500px;
+}
+#ajax-no-content > div {
+    text-align: center;
     margin: 50px 0 0 0;
+    width: 500px;
 }
 
 .tooltip-inner {
-    background-color: burlywood;
+    background-color: #844314;
+    color: white;
+    border: 1px solid black;
+    padding: 10px;
+    font-size: 15px;
 }
 
 footer {
@@ -443,7 +478,7 @@ footer {
     *
     =================================================*/
 
-    #content.pageWidth, #content.pageWidth::after, #content .pageContent  {
+    #content.pageWidth, #content.pageWidth::before, #content.pageWidth::after, #content .pageContent  {
         background: none;
     }
 
@@ -459,11 +494,11 @@ footer {
     #content .pageContent  {
         background: #DED096;
         border-radius: 5px;
-        padding: 35px 0 10px;
+        padding: 35px 5px 10px;
     }
 
     #content .content-title{
-        top: 18px;
+        top: 22px;
     }
 
     #content .content-title div{
