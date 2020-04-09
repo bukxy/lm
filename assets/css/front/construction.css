@@ -59,6 +59,11 @@
     margin: 0;
 }
 
+.boost > div:nth-child(2){
+    width: 100px;
+    left: 35px;
+}
+
 @media screen and (max-width: 675px) {
 
     .const div:nth-child(2){

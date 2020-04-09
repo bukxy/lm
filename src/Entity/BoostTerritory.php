@@ -14,7 +14,7 @@ class BoostTerritory
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
-     * @Groups("BoostTerritoryByCat:read")
+     * @Groups("boost:read")
      */
     private $id;
 
@@ -25,18 +25,19 @@ class BoostTerritory
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups("BoostTerritoryByCat:read")
+     * @Groups("boost:read")
      */
     private $name;
 
     /**
      * @ORM\Column(type="text")
-     * @Groups("BoostTerritoryByCat:read")
+     * @Groups("boost:read")
      */
     private $content;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Image", inversedBy="boostTerritories")
+     * @Groups("boost:read")
      */
     private $image;
 

@@ -142,8 +142,8 @@ class ConstructionController extends AbstractController
             return $this->redirectToRoute('admin_construction_list');
         }
 
-        return $this->render('back/construction/AddEditImage.html.twig', [
-            'formImg' => $formImg->createView(),
+        return $this->render('back/image/imageAddEdit.html.twig', [
+            'formImage' => $formImg->createView(),
             'editMode'  => $c->getId() !== null
         ]);
     }

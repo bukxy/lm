@@ -15,9 +15,9 @@
                 </div>
             </div>
         </div>
-        <div class="filter-list row">
+        <div class="filter-list fam-head-list row construction-list">
             <div class="col-12 mt-2">
-                <ul>
+                <ul class="fam-head">
                     {% for b in boostIcon %}
                         <li value="{{ b.id }}" class="ajax-view_content">
                             {% if b.image is null %}
@@ -57,7 +57,17 @@
         </div>
     </div>
 
-    <div id="ajax-no-content">Cliquez sur un familier ou une catégorie...</div>
+    <div id="ajax-no-content">
+        <div class="alert alert-primary" role="alert">
+            Cliquez sur un batiment...
+        </div>
+    </div>
+
+    <div id="ajax-loading" class="text-center">
+        <div class="spinner-grow text-primary" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
 
 {% endblock %}
 

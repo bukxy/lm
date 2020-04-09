@@ -137,8 +137,8 @@ class BoostController extends AbstractController
             return $this->redirectToRoute('admin_boost_list');
         }
 
-        return $this->render('back/boost/addEditImage.html.twig', [
-            'formImg' => $formImg->createView(),
+        return $this->render('back/image/imageAddEdit.html.twig', [
+            'formImage' => $formImg->createView(),
             'editMode'  => $b->getId() !== null
         ]);
     }

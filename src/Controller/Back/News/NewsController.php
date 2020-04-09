@@ -38,7 +38,6 @@ class NewsController extends AbstractController
     {
         if (!$n) {
             $n = new News();
-            $user = $security->getUser();
         }
 
         $form = $this->createForm(NewsType::class, $n);
@@ -49,8 +48,8 @@ class NewsController extends AbstractController
             $slugify = new Slugify();
             $n->setSlug($slugify->slugify($form['title']->getData()));
 
-            if (!$n){
-                $n->setUser($user);
+            if (!$n->getUser()){
+                $n->setUser($security->getUser());
             }
 
             if ($n->getDateCreated()) {

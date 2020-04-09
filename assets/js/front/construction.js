@@ -12,6 +12,9 @@ let objConst = {
 
         $('.ajax-view_content').on('click', function (e) {
             e.preventDefault();
+            $('article.const').remove();
+            $('#ajax-no-content').css('display', 'none');
+            $('#ajax-loading').css('display', 'block');
             let id = $(this).attr("value");
             context.ajax(id);
         });
@@ -26,11 +29,9 @@ let objConst = {
         })
 
         .done(function (response) {
+            $('#ajax-loading').css('display', 'none');
             if (response.message == true) {
                 r = response.result
-
-                $('#ajax-no-content').remove();
-                $('article.const').remove();
 
                 $('.filter-menu').after('<article class="const"><div class="name"></div><div class="content"></div></article>');
 
@@ -49,16 +50,14 @@ let objConst = {
             }
 
             if (response.message == false) {
-                $('#ajax-no-content').remove();
-                $('article.const').remove();
-                $('.filter-menu').after('<div id="ajax-no-content">Construction introuvable...</div>');
+                $('#ajax-no-content').css('display', 'block');
+                $('#ajax-no-content').html('<div class="alert alert-danger" role="alert">Construction introuvable...</</div>');
             }
         })
 
         .fail(function () {
-            $('#ajax-no-content').remove();
-            $('article.const').remove();
-            $('.filter-menu').after('<div id="ajax-no-content">Tiens ! Tiens ! Tiens ! Hé bha il y a un problème ^^, contact l\'admin si le problème persiste...</div>');
+            $('#ajax-no-content').css('display', 'block');
+            $('#ajax-no-content').html('<div class="alert alert-danger" role="alert">Tiens ! Tiens ! Tiens ! Hé bha il y a un problème ^^, contact l\'admin si le problème persiste...</div>');
         })
     }
 }

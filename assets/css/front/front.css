@@ -335,12 +335,16 @@ footer div{
 #ajax-no-content {
     text-align: center;
     margin: 50px auto 0;
-    width: 500px;
+    max-width: 500px;
 }
 #ajax-no-content > div {
     text-align: center;
     margin: 50px 0 0 0;
-    width: 500px;
+    width: 100%;
+}
+
+#ajax-loading {
+    display: none;
 }
 
 .tooltip-inner {
@@ -355,6 +359,29 @@ footer {
     height: 50px;
     margin: 0 0 30px;
     box-shadow: 0 0 8px black;
+}
+
+.backToTop {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    z-index: 1;
+    width: 50px;
+    height: 50px;
+    border-radius: 5px;
+    background-color: rgba(0,0,0,.7);
+    display: none;
+}
+
+.backToTop > div {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.backToTop > div a i{
+    color: white;
 }
 
 @media screen and (max-width: 1200px) {
@@ -482,7 +509,7 @@ footer {
         background: none;
     }
 
-    #content.pageWidth::after {
+    #content.pageWidth::before, #content.pageWidth::after {
         width: 0;
         height: 0;
     }
@@ -514,5 +541,33 @@ footer {
     }
     .leftNav ul li{
         width: 100% !important;
+    }
+}
+
+@media screen and (max-width: 375px) {
+    body .icon {
+        width: 100%;
+    }
+
+    #content .content-title {
+        top: 32px
+    }
+    #content .content-title div{
+        min-width: 0;
+    }
+    #content .content-title > div{
+        width: 235px;
+        min-width: 235px;
+        position: relative;
+    }
+    #content .content-title div h1{
+        font-size: 19px;
+    }
+
+    .filter-menu .title > div, .const .name > div {
+        width: 100%;
+    }
+    .filter-menu .title > div > div, .const .name > div > div {
+        width: 100%;
     }
 }

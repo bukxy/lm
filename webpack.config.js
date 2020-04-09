@@ -31,11 +31,11 @@ Encore
 
     .addEntry('dataTablesBs', './assets/js/back/dataTables.bootstrap4.js')
 
-    .addEntry('construction', './assets/js/front/construction.min.js')
-    .addEntry('familiar', './assets/js/front/familiar.min.js')
+    .addEntry('construction', './assets/js/front/construction.js')
+    .addEntry('familiar', './assets/js/front/familiar.js')
     .addEntry('familiarByCat', './assets/js/front/familiarByCat.js')
-    .addEntry('boostTerritory', './assets/js/front/boostTerritory.min.js')
-    .addEntry('boostTerritoryCat', './assets/js/front/boostTerritoryCat.min.js')
+    .addEntry('boostTerritory', './assets/js/front/boostTerritory.js')
+    .addEntry('boostTerritoryCat', './assets/js/front/boostTerritoryCat.js')
     .addEntry('calculator', './assets/js/front/calculator.js')
     .addEntry('calculatorEvent', './assets/js/front/calculatorEvent.js')
 

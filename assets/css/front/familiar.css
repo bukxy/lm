@@ -1,5 +1,16 @@
 /* Familiard */
 
+.familiar-dragon-info {
+    margin: 0;
+    padding: 0;
+}
+.familiar-dragon-info div{
+    margin: 10px 0;
+}
+.familiar-dragon-info img{
+    width: 30px;
+}
+
 .familiar{
     display: flex;
 }

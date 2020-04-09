@@ -42,10 +42,9 @@ class BoostTerritoryController extends AbstractController
             return $this->json([
                     'message'       =>  true,
                     'url'           =>  'https://'. $url . '/uploads',
-                    'defaultImage'  =>  'https://'. $url . '/uploads/default.png',
                     'result'        =>  $b
                 ], 200, [],
-                    ['groups' => ['BoostTerritoryByCat:read', 'image:read']]
+                    ['groups' => ['boost:read', 'image:read']]
             );
         } else {
             return $this->json([
@@ -64,11 +63,10 @@ class BoostTerritoryController extends AbstractController
 
             return $this->json([
                     'message'       =>  true,
-                    'url'           =>  'https://'. $url . '/uploads/images/',
-                    'defaultImage'  =>  'https://'. $url . '/uploads/familiar.png',
+                    'url'           =>  'https://'. $url . '/uploads',
                     'result'        =>  $bRepo->findBy(['category' => $bcat->getId()])
                 ], 200, [],
-                    ['groups' => ['BoostTerritoryByCat:read', 'image:read']]
+                    ['groups' => ['boost:read', 'image:read']]
             );
         } else {
             return $this->json([

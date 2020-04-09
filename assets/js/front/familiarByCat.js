@@ -12,6 +12,9 @@ let objFamiliarsByCat = {
 
         $('.ajax-view_contentByCat').on('click', function (e) {
             e.preventDefault();
+            $('.fam').remove();
+            $('#ajax-no-content').css('display', 'none');
+            $('#ajax-loading').css('display', 'block');
             let f_id = $(this).attr("value");
             context.ajax(f_id);
         });
@@ -26,6 +29,7 @@ let objFamiliarsByCat = {
         })
 
         .done(function (response) {
+            $('#ajax-loading').css('display', 'none');
             if (response.message == true) {
                 r = response.result
 
@@ -73,16 +77,14 @@ let objFamiliarsByCat = {
             }
 
             if (response.message == false ) {
-                $('#ajax-no-content').remove();
-                $('.fam').remove();
-                $('.filter-menu.category').after('<div id="ajax-no-content">Catégorie introuvable...</div>');
+                $('#ajax-no-content').css('display', 'block');
+                $('#ajax-no-content').html('<div class="alert alert-danger" role="alert">Catégorie introuvable...</</div>');
             }
         })
 
         .fail(function () {
-            $('#ajax-no-content').remove();
-            $('.fam').remove();
-            $('.filter-menu.category').after('<div id="ajax-no-content">Tiens ! Tiens ! Tiens ! Hé bha il y a un problème ^^, contact l\'admin si le problème persiste...</div>');
+            $('#ajax-no-content').css('display', 'block');
+            $('#ajax-no-content').html('<div class="alert alert-danger" role="alert">Tiens ! Tiens ! Tiens ! Hé bha il y a un problème ^^, contact l\'admin si le problème persiste...</div>');
         })
     }
 }

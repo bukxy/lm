@@ -31,6 +31,18 @@
             </div>
         </div>
     </div>
+
+    <div class="familiar-dragon-info alert alert-secondary row" role="alert">
+        <div class="col-lg-6 col-sm-6 col-12 text-center">
+            <img src="{{ asset('uploads/familiar-blue-dragon.png') }}" alt="">
+            <span>Compétence support</span>
+        </div>
+        <div class="col-lg-6 col-sm-6 col-12 text-center">
+            <img src="{{ asset('uploads/familiar-red-dragon.png') }}" alt="">
+            <span>Compétence attaque</span>
+        </div>
+    </div>
+
     <div class="filter-menu category">
         <div class="title">
             <div>
@@ -60,6 +72,12 @@
     <div id="ajax-no-content">
         <div class="alert alert-primary" role="alert">
             Cliquez sur un familier ou une catégorie...
+        </div>
+    </div>
+
+    <div id="ajax-loading" class="text-center">
+        <div class="spinner-grow text-primary" role="status">
+            <span class="sr-only">Loading...</span>
         </div>
     </div>
 

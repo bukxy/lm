@@ -19,7 +19,7 @@ class FrontController extends AbstractController
         $result = $paginator->paginate(
             $news,
             $request->query->getInt('page', 1), // Numéro de la page en cours, passé dans l'URL, 1 si aucune page
-            1 // Nombre de résultats par page
+            5 // Nombre de résultats par page
         );
 
         return $this->render('front/news.html.twig', [

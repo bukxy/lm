@@ -87,9 +87,6 @@ class Image
         return $this->id;
     }
 
-    /**
-     * @Groups("groupTest")
-     */
     public function getUser(): ?User
     {
         return $this->user;
