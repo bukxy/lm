@@ -38,10 +38,15 @@ class BoostTerritoryController extends AbstractController
     {
         if ($b) {
             $url = $request->server->get('HTTP_HOST');
+            if ($_SERVER['HTTPS']){
+                $http = 'https';
+            } else {
+                $http = 'http';
+            }
 
             return $this->json([
                     'message'       =>  true,
-                    'url'           =>  'https://'. $url . '/uploads',
+                    'url'           =>  $http .'://'. $url . '/uploads',
                     'result'        =>  $b
                 ], 200, [],
                     ['groups' => ['boost:read', 'image:read']]
@@ -60,10 +65,15 @@ class BoostTerritoryController extends AbstractController
     {
         if ($bcat) {
             $url = $request->server->get('HTTP_HOST');
+            if ($_SERVER['HTTPS']){
+                $http = 'https';
+            } else {
+                $http = 'http';
+            }
 
             return $this->json([
                     'message'       =>  true,
-                    'url'           =>  'https://'. $url . '/uploads',
+                    'url'           =>  $http .'://'. $url . '/uploads',
                     'result'        =>  $bRepo->findBy(['category' => $bcat->getId()])
                 ], 200, [],
                     ['groups' => ['boost:read', 'image:read']]

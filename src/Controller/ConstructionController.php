@@ -30,10 +30,15 @@ class ConstructionController extends AbstractController
     {
         if ($c) {
             $url = $request->server->get('HTTP_HOST');
+            if ($_SERVER['HTTPS']){
+                $http = 'https';
+            } else {
+                $http = 'http';
+            }
 
             return $this->json([
                     'message'       =>  true,
-                    'url'           =>  'https://'. $url . '/uploads',
+                    'url'           =>  $http .'://'. $url . '/uploads',
                     'result'        =>  $c
                 ], 200, [],
                     ['groups' => ['construction:read', 'image:read'] ]

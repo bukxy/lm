@@ -38,11 +38,16 @@ class FamiliarController extends AbstractController
     {
         if ($f) {
             $url = $request->server->get('HTTP_HOST');
+            if ($_SERVER['HTTPS']){
+                $http = 'https';
+            } else {
+                $http = 'http';
+            }
 
             return $this->json([
                     'message'       =>  true,
-                    'url'           =>  'https://'. $url . '/uploads/images/',
-                    'defaultImage'  =>  'https://'. $url . '/uploads/familiar.png',
+                    'url'           =>  $http .'://'. $url . '/uploads/images/',
+                    'defaultImage'  =>  $http .'://'. $url . '/uploads/familiar.png',
                     'result'        =>  $f
                 ], 200, [],
                     ['groups' => ['familiarByCat:read', 'image:read']]
@@ -61,11 +66,16 @@ class FamiliarController extends AbstractController
     {
         if ($fcat) {
             $url = $request->server->get('HTTP_HOST');
+            if ($_SERVER['HTTPS']){
+                $http = 'https';
+            } else {
+                $http = 'http';
+            }
 
             return $this->json([
                     'message'       =>  true,
-                    'url'           =>  'https://'. $url . '/uploads/images/',
-                    'defaultImage'  =>  'https://'. $url . '/uploads/familiar.png',
+                    'url'           =>  $http .'://'. $url . '/uploads/images/',
+                    'defaultImage'  =>  $http .'://'. $url . '/uploads/familiar.png',
                     'result'        =>  $fRepo->findBy(['familiarCat' => $fcat->getId()])
                 ], 200, [],
                     ['groups' => ['familiarByCat:read', 'image:read']]

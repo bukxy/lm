@@ -124,6 +124,11 @@ class User implements UserInterface
      */
     private $news;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Hunt", mappedBy="user")
+     */
+    private $hunts;
+
     public function __construct()
     {
         $this->images = new ArrayCollection();
@@ -139,6 +144,7 @@ class User implements UserInterface
         $this->researchCats = new ArrayCollection();
         $this->articles = new ArrayCollection();
         $this->news = new ArrayCollection();
+        $this->hunts = new ArrayCollection();
     }
 
     /**
@@ -606,6 +612,37 @@ class User implements UserInterface
         if ($this->news->contains($news)) {
             $this->news->removeElement($news);
             $news->removeUser($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Hunt[]
+     */
+    public function getHunts(): Collection
+    {
+        return $this->hunts;
+    }
+
+    public function addHunt(Hunt $hunt): self
+    {
+        if (!$this->hunts->contains($hunt)) {
+            $this->hunts[] = $hunt;
+            $hunt->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeHunt(Hunt $hunt): self
+    {
+        if ($this->hunts->contains($hunt)) {
+            $this->hunts->removeElement($hunt);
+            // set the owning side to null (unless already changed)
+            if ($hunt->getUser() === $this) {
+                $hunt->setUser(null);
+            }
         }
 
         return $this;

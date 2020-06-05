@@ -45,7 +45,7 @@ body .icon {
     background-color: rgba(0,0,0,0.25);
     border-radius: 45px 45px 0 0;
     box-shadow: 0 0 5px black;
-    padding: 0 0 60px 0;
+    padding: 0 0 40px 0;
 }
 
 .leftNav .navbar, .leftNav .dropdown-menu, .topNav .navbar, footer {background-color: #DED096;}
@@ -250,7 +250,7 @@ body .icon {
 }
 .filter-menu .title > div img, .const .name > div img{
     width: 100%;
-    rotate: 180deg;
+    transform : rotate(180deg);
 }
 .filter-menu .title > div > div, .const .name > div > div{
     position: absolute;
@@ -274,6 +274,7 @@ body .icon {
     overflow: auto;
     min-height: 50px;
     margin-bottom: 0;
+    justify-content: center;
 }
 
 .filter-list .ajax-view_content img {
@@ -533,6 +534,10 @@ footer {
         width: 100%;
         min-width: 350px;
     }
+
+    footer {
+        margin: 0;
+    }
 }
 
 @media screen and (max-width: 500px) {
@@ -550,7 +555,7 @@ footer {
     }
 
     #content .content-title {
-        top: 32px
+        top: 29px
     }
     #content .content-title div{
         min-width: 0;

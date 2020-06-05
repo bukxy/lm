@@ -62,6 +62,16 @@ class Image
     private $category;
 
     /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Hunt", mappedBy="huntImage")
+     */
+    private $huntImage;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Hunt", mappedBy="huntHead")
+     */
+    private $huntHead;
+
+    /**
      * Generates the magic method
      * 
      */
@@ -80,6 +90,8 @@ class Image
         $this->familiarBackground = new ArrayCollection();
         $this->familiarHead = new ArrayCollection();
         $this->researches = new ArrayCollection();
+        $this->huntImages = new ArrayCollection();
+        $this->huntHs = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -284,6 +296,68 @@ class Image
             // set the owning side to null (unless already changed)
             if ($research->getImage() === $this) {
                 $research->setImage(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Hunt[]
+     */
+    public function getHuntHead(): Collection
+    {
+        return $this->huntH;
+    }
+
+    public function addHuntHead(Hunt $huntH): self
+    {
+        if (!$this->$huntHs->contains($huntH)) {
+            $this->$huntHs[] = $huntH;
+            $huntH->setImage($this);
+        }
+
+        return $this;
+    }
+
+    public function removeHuntHead(Hunt $huntH): self
+    {
+        if ($this->$huntHs->contains($huntH)) {
+            $this->$huntHs->removeElement($huntH);
+            // set the owning side to null (unless already changed)
+            if ($huntH->getImage() === $this) {
+                $huntH->setImage(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Hunt[]
+     */
+    public function getHuntImage(): Collection
+    {
+        return $this->$huntI;
+    }
+
+    public function addHuntImage(Hunt $huntI): self
+    {
+        if (!$this->$huntImages->contains($huntI)) {
+            $this->$huntImages[] = $huntI;
+            $huntI->setImage($this);
+        }
+
+        return $this;
+    }
+
+    public function removeHuntImage(Hunt $huntI): self
+    {
+        if ($this->$huntImages->contains($huntI)) {
+            $this->$huntImages->removeElement($huntI);
+            // set the owning side to null (unless already changed)
+            if ($huntI->getImage() === $this) {
+                $huntI->setImage(null);
             }
         }
 

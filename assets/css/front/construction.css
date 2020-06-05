@@ -24,8 +24,9 @@
 .const > div:nth-child(2){
     width: 150px;
     height: auto;
-    position: absolute;
-    left: 10px;
+    position: relative;
+    margin: 0 auto 15px;
+    left: 0;
 }
 .const div:nth-child(2) img{
     width: 100%;
@@ -39,7 +40,6 @@
 .const .content div {
     background-color: #C7C8C2;
     padding: 5px;
-    max-height: 180px;
     height: auto;
     border-radius: 5px;
     word-wrap: break-word;
@@ -47,41 +47,12 @@
 }
 
 .const .content {
-    max-height: 200px;
-    height: auto;
-    width: 471px;
-    position: absolute;
-    top: 20px;
-    left: 170px;
+    width: 100%;
+    position: relative;
+    top: 0;
+    left: 0;
 }
 
 .const .content p{
     margin: 0;
-}
-
-.boost > div:nth-child(2){
-    width: 100px;
-    left: 35px;
-}
-
-@media screen and (max-width: 675px) {
-
-    .const div:nth-child(2){
-        position: relative;
-        margin: 0 auto 15px;
-        left: 0;
-    }
-
-    .const .content div {
-        margin: 0;
-        max-height: 175px;
-    }
-
-    .const .content{
-        max-height: 300px;
-        width: 100%;
-        position: relative;
-        top: 0;
-        left: 0;
-    }
 }
