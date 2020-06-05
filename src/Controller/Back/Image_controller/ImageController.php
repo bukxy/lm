@@ -88,7 +88,7 @@ class ImageController extends AbstractController
             }
 
             if ($form['alt']->getData() == null){
-                $i->setAlt('Aucune information sur l\'image est disponible');
+                $i->setAlt('Aucune description de l\'image');
             }
 
             $manager->persist($i);
@@ -101,7 +101,6 @@ class ImageController extends AbstractController
             'editMode'  => $i->getId() !== null
         ]);
     }
-
 
     /**
      * @Route("/delete/{id}", name="admin_image_delete")

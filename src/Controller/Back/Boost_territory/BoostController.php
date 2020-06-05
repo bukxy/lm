@@ -69,8 +69,20 @@ class BoostController extends AbstractController
     /**
      * @Route("/delete/{id}", name="admin_boost_delete")
      */
-    public function delete(BoostTerritory $b, EntityManagerInterface $manager, Security $security) {
+    public function delete(BoostTerritory $b, ImageRepository $i, EntityManagerInterface $manager, Security $security) {
         if ($security->getUser()){
+
+            $image = $i->findOneBy(['id' => $b->getImage()]);
+
+            $path = 'uploads/images/'.$image->getName();
+
+            if ($image && file_exists($path)){
+                unlink($path);
+                $b->setImage(null);
+                $manager->remove($image);
+                $manager->flush();
+            }
+
             $manager->remove($b);
             $manager->flush();
 
@@ -128,7 +140,7 @@ class BoostController extends AbstractController
             $i->setName($newFilename);
 
             if ($formImg['alt']->getData() == null){
-                $i->setAlt('Aucune information sur l\'image est disponible');
+                $i->setAlt('Aucune description de l\'image');
             }
 
             $manager->persist($b);

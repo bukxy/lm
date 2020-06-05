@@ -74,8 +74,20 @@ class ConstructionController extends AbstractController
     /**
      * @Route("/delete/{id}", name="admin_construction_delete")
      */
-    public function delete(Construction $c, EntityManagerInterface $manager, Security $security) {
+    public function delete(Construction $c, ImageRepository $i, EntityManagerInterface $manager, Security $security) {
         if ($security->getUser()){
+
+            $image = $i->findOneBy(['id' => $c->getImage()]);
+
+            $path = 'uploads/images/'.$image->getName();
+
+            if ($image && file_exists($path)){
+                unlink($path);
+                $c->setImage(null);
+                $manager->remove($image);
+                $manager->flush();
+            }
+
             $manager->remove($c);
             $manager->flush();
 
@@ -131,10 +143,10 @@ class ConstructionController extends AbstractController
             $i->setName($newFilename);
 
             if ($formImg['alt']->getData() == null){
-                $i->setAlt('Aucune information sur l\'image est disponible');
+                $i->setAlt('Aucune description de l\'image');
             }
 
-            $i->setImageCat($iCat->findOneBy(['name' => 'construction']));
+            // $i->setImageCat($iCat->findOneBy(['name' => 'construction']));
 
             $manager->persist($c);
             $manager->persist($i);

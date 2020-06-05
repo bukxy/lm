@@ -77,12 +77,41 @@ class FamiliarController extends AbstractController
     /**
      * @Route("/delete/{id}", name="admin_familiar_delete")
      */
-    public function delete(Familiar $f, EntityManagerInterface $manager, Security $security) {
+    public function delete(Familiar $f, ImageRepository $i, EntityManagerInterface $manager, Security $security) {
         if ($security->getUser()){
+
+            $imageBack = $i->findOneBy(['id' => $f->getImageBackground()]);
+            if ($imageBack) {
+                $pathBack = 'uploads/images/'.$imageBack->getName();
+            }
+
+            $imageHead = $i->findOneBy(['id' => $f->getImageHead()]);
+            if ($imageHead) {
+                $pathHead = 'uploads/images/'.$imageHead->getName();
+            }
+            
+            if ($imageBack && file_exists($pathBack)){
+                $f->setImageBackground(null);
+                $manager->remove($imageBack);
+                $manager->persist($f);
+                $manager->flush();
+                unlink($pathBack);
+            }
+            if ($imageHead && file_exists($pathHead)){
+                $f->setImageHead(null);
+                $manager->remove($imageHead);
+                $manager->persist($f);
+                $manager->flush();
+                unlink($pathHead);
+            }
+
             $manager->remove($f);
             $manager->flush();
 
             return $this->redirectToRoute('admin_familiar_list');
+            // return $this->render('back/debug.html.twig', [
+            //     'test'  =>  dump($imageBack, $imageHead)
+            // ]);
         }
     }
 
@@ -133,10 +162,8 @@ class FamiliarController extends AbstractController
 
             $i->setName($newFilename);
 
-            $i->setImageCat($iCat->findOneBy(['name' => 'familiar']));
-
             if ($formImg['alt']->getData() == null){
-                $i->setAlt('Aucune information sur l\'image est disponible');
+                $i->setAlt('Aucune description de l\'image');
             }
 
             $manager->persist($i);
@@ -212,8 +239,6 @@ class FamiliarController extends AbstractController
             $i->setUser($security->getUser());
 
             $i->setName($newFilename);
-
-            $i->setImageCat($iCat->findOneBy(['name' => 'familiar']));
 
             if ($formImg['alt']->getData() == null){
                 $i->setAlt('Aucune information sur l\'image est disponible');
