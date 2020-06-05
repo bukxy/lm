@@ -36,6 +36,11 @@ class Hunt
      */
     private $huntHead;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\HuntCat", inversedBy="monster")
+     */
+    private $huntCat;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -85,6 +90,18 @@ class Hunt
     public function setHuntHead(?Image $huntHead): self
     {
         $this->huntHead = $huntHead;
+
+        return $this;
+    }
+
+    public function getHuntCat(): ?HuntCat
+    {
+        return $this->huntCat;
+    }
+
+    public function setHuntCat(?HuntCat $huntCat): self
+    {
+        $this->huntCat = $huntCat;
 
         return $this;
     }
