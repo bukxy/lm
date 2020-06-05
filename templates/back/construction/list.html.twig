@@ -4,7 +4,6 @@
 
 {% block body %}
 
-    <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold text-primary">Liste des constructions</h6>
@@ -32,28 +31,26 @@
                     <tbody>
                         {% for c in constructions %}
                             <tr>
-                                <td class="lm-td" scope="row">{{ c.name }}</td>
-                                <td class="lm-td">{{ c.constructionCat }}</td>
+                                <td class="lm-td" scope="row"><div>{{ c.name }}</div></td>
+                                <td class="lm-td"><div>{{ c.constructionCat }}</div></td>
                                 {% if c.image is null %}
-                                    <td>
-                                        <div class="lm-options">
-                                            <button class="btn btn-primary">
-                                                <a href="{{ path('admin_construction_new_image', {'id' : c.id }) }}"><i class="fas fa-plus-circle"></i></a>
-                                            </button>
+                                    <td class="lm-td">
+                                        <div>
+                                            <a class="btn btn-primary btn-circle" href="{{ path('admin_construction_new_image', {'id' : c.id }) }}"><i class="fas fa-plus-circle"></i></a>
                                         </div>
                                     </td>
                                 {% else %}
                                     <td>
                                         <div class="lm-imgIcon m-auto">
-                                            <img class="lm-img" src="{{ asset('uploads/images/' ~ c.image) }}" alt="{{ c.image.alt }}">
+                                            <img src="{{ asset('uploads/images/' ~ c.image) }}" alt="{{ c.image.alt }}">
                                             <div class="img-overlay">
-                                                <a href="{{ path('admin_construction_delete_image', {'id' : c.id }) }}"><i class="fas fa-minus-circle"></i></a>
+                                                <a class="btn btn-danger btn-circle" href="{{ path('admin_construction_delete_image', {'id' : c.id }) }}"><i class="fas fa-minus-circle"></i></a>
                                             </div>
                                         </div>
                                     </td>
                                 {% endif %}
-                                <td>
-                                    <div class="lm-options">
+                                <td class="lm-td">
+                                    <div>
                                         <a class="btn btn-primary btn-circle" href="{{ path('admin_construction_edit', {'id' : c.id }) }}">
                                             <i class="fas fa-edit"></i>
                                         </a>

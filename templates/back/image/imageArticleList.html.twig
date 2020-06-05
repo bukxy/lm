@@ -33,14 +33,14 @@
                         {% for i in images %}
                             <tr>
                                 <td class="lm-td">{{ i.name }}</td>
-                                <td class="lm-td">{{ i.imageCat }}</td>
+                                <td class="lm-td">{{ i.category }}</td>
                                 <td class="text-center">
                                     <div class="lm-img m-auto">
                                         <img class="lm-img" src="{{ asset('uploads/images/' ~ i.name) }}" alt="{{ i.alt }}">
                                     </div>
                                 </td>
                                 <td>
-                                    <div class="lm-options">
+                                    <div class="lm-options lm-cat">
                                         <a class="btn btn-danger btn-circle" href="{{ path('admin_image_article_delete', {'id' : i.id }) }}">
                                             <i class="fas fa-minus-circle"></i>
                                         </a>

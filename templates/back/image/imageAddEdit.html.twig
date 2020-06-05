@@ -27,9 +27,14 @@
                             {{ form_row(formImage.name, {'label': 'Selectionner une image'}) }}
                         </div>
                         <div class="col-6">
-                            {{ form_row(formImage.alt, {'label': 'Description'}) }}  
+                            {{ form_row(formImage.category, {'label': 'Catégorie'}) }}
                         </div>
-                    </div>        
+                    </div>
+                    <div class="form-group row col-12 p-0 m-auto">
+                        <div class="col-12">
+                            {{ form_row(formImage.alt, {'label': 'Description'}) }}
+                        </div>
+                    </div>
                 </div>
                 <button type="submit" class="btn btn-primary m-auto">
                     {% if editMode %}

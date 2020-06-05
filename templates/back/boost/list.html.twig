@@ -4,7 +4,6 @@
 
 {% block body %}
 
-    <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold text-primary">Liste des boosts territoire</h6>
@@ -43,9 +42,9 @@
                                 {% else %}
                                     <td>
                                         <div class="lm-imgIcon m-auto">
-                                            <img class="lm-img" src="{{ asset('uploads/images/' ~ b.image) }}" alt="{{ b.image.alt }}">
+                                            <img src="{{ asset('uploads/images/' ~ b.image) }}" alt="{{ b.image.alt }}">
                                             <div class="img-overlay">
-                                                <a href="{{ path('admin_boost_delete_image', {'id' : b.id }) }}"><i class="fas fa-minus-circle"></i></a>
+                                                <a  class="btn btn-danger btn-circle" href="{{ path('admin_boost_delete_image', {'id' : b.id }) }}"><i class="fas fa-minus-circle"></i></a>
                                             </div>
                                         </div>
                                     </td>

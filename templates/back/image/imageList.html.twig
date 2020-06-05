@@ -33,10 +33,10 @@
                         {% for i in images %}
                             <tr>
                                 <td class="lm-td">{{ i.name }}</td>
-                                <td class="lm-td">{{ i.imageCat }}</td>
+                                <td class="lm-td">{{ i.category }}</td>
                                 <td class="text-center">
                                     <div class="lm-img m-auto">
-                                        <img class="" src="{{ asset('uploads/images/' ~ i.name) }}" alt="{{ i.alt }}">
+                                        <img class="lm-img" src="{{ asset('uploads/images/' ~ i.name) }}" alt="{{ i.alt }}">
                                     </div>
                                 </td>
                                 <td>
