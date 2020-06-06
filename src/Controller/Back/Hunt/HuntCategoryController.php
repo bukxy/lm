@@ -59,7 +59,7 @@ class HuntCategoryController extends AbstractController
     }
 
     /**
-     * @Route("/delete/{id}", name="admin_Hunt_category_delete")
+     * @Route("/delete/{id}", name="admin_hunt_category_delete")
      */
     public function deleteCategory(HuntCat $h, HuntCatRepository $hCatRepo, HuntRepository $hRepo, EntityManagerInterface $manager, Security $security) {
         if ($security->getUser()){

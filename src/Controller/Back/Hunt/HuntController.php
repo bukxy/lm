@@ -55,11 +55,11 @@ class HuntController extends AbstractController
 
             $user = $security->getUser();
 
-            if(!$h->getImageBackground()){
-                $h->setImageBackground(null);
+            if(!$h->getHuntImage()){
+                $h->setHuntImage(null);
             }
-            if(!$h->getImageHead()){
-                $h->setImageHead(null);
+            if(!$h->getHuntHead()){
+                $h->setHuntHead(null);
             }
 
             $h->setUser($user);
@@ -80,25 +80,25 @@ class HuntController extends AbstractController
     public function delete(Hunt $h,ImageRepository $i, EntityManagerInterface $manager, Security $security) {
         if ($security->getUser()){
 
-            $imageBack = $i->findOneBy(['id' => $h->getImageBack()]);
+            $imageBack = $i->findOneBy(['id' => $h->getHuntImage()]);
             if ($imageBack) {
                 $pathBack = 'uploads/images/'.$imageBack->getName();
             }
 
-            $imageHead = $i->findOneBy(['id' => $h->getImageHead()]);
+            $imageHead = $i->findOneBy(['id' => $h->getHuntHead()]);
             if ($imageHead) {
                 $pathHead = 'uploads/images/'.$imageHead->getName();
             }
             
             if ($imageBack && file_exists($pathBack)){
-                $h->setImageBack(null);
+                $h->setHuntImage(null);
                 $manager->remove($imageBack);
                 $manager->persist($h);
                 $manager->flush();
                 unlink($pathBack);
             }
             if ($imageHead && file_exists($pathHead)){
-                $h->setImageHead(null);
+                $h->setHuntHead(null);
                 $manager->remove($imageHead);
                 $manager->persist($h);
                 $manager->flush();
@@ -154,7 +154,7 @@ class HuntController extends AbstractController
 
             $user = $security->getUser();
 
-            $h->setImageBackground($i);
+            $h->setHuntImage($i);
             $i->setUser($user);
 
             $i->setName($newFilename);
@@ -180,12 +180,12 @@ class HuntController extends AbstractController
      */
     public function deleteImage(Hunt $h, ImageRepository $i, EntityManagerInterface $manager, Security $security) {
         if ($security->getUser()){
-            $image = $i->findOneBy(['id' => $h->getImageBackground()]);
+            $image = $i->findOneBy(['id' => $h->getHuntImage()]);
 
             $path = 'uploads/images/'.$image->getName();
 
             if ($image && file_exists($path)){
-                $h->setImageBackground(null);
+                $h->setHuntImage(null);
                 unlink($path);
                 $manager->remove($image);
                 $manager->persist($h);
@@ -241,7 +241,7 @@ class HuntController extends AbstractController
             }
 
             $manager->persist($i);
-            $h->setImageHead($i);
+            $h->setHuntHead($i);
             $manager->persist($h);
             $manager->flush();
             return $this->redirectToRoute('admin_hunt_list');
@@ -258,13 +258,13 @@ class HuntController extends AbstractController
      */
     public function deleteImageHead(Hunt $h, ImageRepository $i, EntityManagerInterface $manager, Security $security) {
         if ($security->getUser()){
-            $image = $i->findOneBy(['id' => $h->getImageHead()]);
+            $image = $i->findOneBy(['id' => $h->getHuntHead()]);
 
             $path = 'uploads/images/'.$image->getName();
 
             if ($image && file_exists($path)){
                 unlink($path);
-                $h->setImageHead(null);
+                $h->setHuntHead(null);
                 $manager->remove($image);
                 $manager->flush();
                 return $this->redirectToRoute('admin_hunt_list');
