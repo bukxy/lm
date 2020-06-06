@@ -1,0 +1,48 @@
+{% extends 'back/baseAdmin.html.twig' %}
+
+{% block title %}
+    {% if editMode %}
+        Edition monstre
+    {% else %}
+        Nouveau monstre
+    {% endif %}
+{% endblock %}
+
+{% block body %}
+    {{ form_start(form) }}
+
+        <div class="row col-lg-10 col-sm-12 m-auto">
+            <div class="card col-12 pb-3">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">
+                        {% if editMode %}
+                            Edition du monstre
+                        {% else %}
+                            Nouveau monstre
+                        {% endif %}
+                    </h6>
+                </div>
+                <div class="card-body">
+                    <div class="form-group row col-12 p-0 m-auto">
+                        <div class="col-6">
+                            {{ form_label(form.name, 'Nom du monstre') }}
+                            {{ form_widget(form.name) }}
+                        </div>
+                        <div class="col-6">
+                            {{ form_label(form.huntCat, 'Catégorie du monstre') }}
+                            {{ form_widget(form.huntCat) }}
+                        </div>
+                    </div>      
+                </div>
+                <button type="submit" class="btn btn-primary m-auto">
+                    {% if editMode %}
+                        Sauvegarder
+                    {% else %}
+                        Ajouter
+                    {% endif %}
+                </button>
+            </div>
+        </div>
+
+    {{ form_end(form) }}
+{% endblock %}

@@ -1,0 +1,90 @@
+{% extends 'back/baseAdmin.html.twig' %}
+
+{% block title %}Liste familiers{% endblock %}
+
+{% block body %}
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Liste des monstres</h6>
+            <a class="btn btn-success" href="{{ path('admin_hunt_new') }}">Nouveau monstre</a>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th class="text-center">Catégorie</th>
+                            <th class="text-center">Nom</th>
+                            <th class="text-center">Image</th>
+                            <th class="text-center">Icon</th>
+                            <th class="text-center">Options</th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th class="text-center">Catégorie</th>
+                            <th class="text-center">Nom</th>
+                            <th class="text-center">Image</th>
+                            <th class="text-center">Icon</th>
+                            <th class="text-center">Options</th>
+                        </tr>
+                    </tfoot>
+                    <tbody>
+                        {% for h in hunts %}
+                            <tr>
+                                <th class="lm-td" scope="row"><div>{{ h.huntCat }}</div></th>
+                                <td class="lm-td"><div>{{ h.name }}</div></td>
+                                {% if h.huntImage is null %}
+                                    <td class="lm-td">
+                                        <div>
+                                            <a class="btn btn-primary btn-circle" href="{{ path('admin_hunt_new_image', {'id' : h.id }) }}"><i class="fas fa-plus-circle"></i></a>
+                                        </div>
+                                    </td>
+                                {% else %}
+                                    <td>
+                                        <div class="lm-imgFam m-auto">
+                                            <img src="{{ asset('uploads/images/' ~ h.huntImage) }}" alt="{{ h.huntImage.alt }}">
+                                            <div class="img-overlay">
+                                                <a class="btn btn-danger btn-circle" href="{{ path('admin_hunt_delete_image', {'id' : h.id }) }}"><i class="fas fa-minus-circle"></i></a>
+                                            </div>
+                                        </div>
+                                    </td>
+                                {% endif %}
+
+                                {% if h.huntHead is null %}
+                                    <td class="lm-td">
+                                        <div>
+                                            <a class="btn btn-primary btn-circle" href="{{ path('admin_hunt_new_imageHead', {'id' : h.id }) }}"><i class="fas fa-plus-circle"></i></a>
+                                        </div>
+                                    </td>
+                                {% else %}
+                                    <td>
+                                        <div class="lm-imgIcon m-auto">
+                                            <img src="{{ asset('uploads/images/' ~ h.imageHead) }}" alt="{{ h.imageHead.alt }}">
+                                            <div class="img-overlay">
+                                                <a class="btn btn-danger btn-circle" href="{{ path('admin_hunt_delete_imageHead', {'id' : h.id }) }}"><i class="fas fa-minus-circle"></i></a>
+                                            </div>
+                                        </div>
+                                    </td>
+                                {% endif %}
+                                <td class="lm-td">
+                                    <div>
+                                        <a class="btn btn-primary btn-circle" href="{{ path('admin_hunt_edit', {'id' : h.id }) }}">
+                                            <i class="fas fa-edit"></i>
+                                        </a>
+                                        <a class="btn btn-danger btn-circle" href="{{ path('admin_hunt_delete', {'id' : h.id }) }}">
+                                            <i class="fas fa-minus-circle"></i>
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

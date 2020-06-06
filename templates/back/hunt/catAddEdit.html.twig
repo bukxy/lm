@@ -1,0 +1,39 @@
+{% extends 'back/baseAdmin.html.twig' %}
+
+{% block title %}
+	{% if editMode %}
+		Edition catégorie
+	{% else %}
+		Ajout catégorie
+	{% endif %}
+{% endblock %}
+
+{% block body %}
+    {{ form_start(formCat) }}
+        <div class="row col-lg-10 col-sm-12 m-auto">
+            <div class="card col-12 pb-3">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">
+                        {% if editMode %}
+                            Edition de la catégorie
+                        {% else %}
+                            Nouvelle catégorie
+                        {% endif %}
+                    </h6>
+                </div>
+                <div class="card-body">
+                    <div class="form-group col-12">
+                        {{ form_row(formCat.name, {'label': 'Nom de la catégorie'}) }}
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary m-auto">
+                    {% if editMode %}
+                        Sauvegarder
+                    {% else %}
+                        Ajouter
+                    {% endif %}
+                </button>
+            </div>
+        </div>
+    {{ form_end(formCat) }}
+{% endblock %}

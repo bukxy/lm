@@ -1,0 +1,77 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}La chasse{% endblock %}
+
+{% block contentTitle %}La chasse{% endblock %}
+
+{% block body %}
+
+    <div class="filter-menu">
+        <div class="title">
+            <div>
+                <img src="{{ asset('uploads/bandeau_rouge.png') }}" alt="">
+                <div class="text-center">
+                    <span>Liste</span>
+                </div>
+            </div>
+        </div>
+        <div class="filter-list familiar row">
+            <div class="col-12 mt-2">
+                <ul>
+                    {% for h in huntIcon %}
+                        <li value="{{ h.id }}" class="ajax-view_content">
+                            {% if h.huntHead is null %}
+                                <img src="{{ asset('uploads/default.png') }}" alt="">
+                            {% else %}
+                                <img src="{{ asset('uploads/images/' ~ h.huntHead ) }}" alt="{{ h.huntHead.alt }}">
+                            {% endif %}
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="filter-menu category">
+        <div class="title">
+            <div>
+                <img src="{{ asset('uploads/bandeau_rouge.png') }}" alt="">
+                <div class="text-center">
+                    <span>Catégories</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="filter-list familiar row">
+            <div class="col-12 mt-2">
+                <ul>
+                    {% for h in huntCat %}
+                        <li value="{{ f.id }}" class="ajax-view_contentByCat">
+                            <div>
+                                <img src="{{ asset('uploads/button.png') }}" alt="">
+                                <div class="text-center">{{ h.name }}</div>
+                            </div>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div id="ajax-no-content">
+        <div class="alert alert-primary" role="alert">
+            Cliquez sur un monstre ou une catégorie...
+        </div>
+    </div>
+
+    <div id="ajax-loading" class="text-center">
+        <div class="spinner-grow text-primary" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ encore_entry_script_tags('hunt') }}
+    {{ encore_entry_script_tags('huntByCat') }}
+{% endblock %}

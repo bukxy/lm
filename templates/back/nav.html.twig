@@ -52,8 +52,6 @@
     {% endif %}
 
     {% if is_granted('ROLE_ADMIN_NEWS') %}
-
-        <!-- Nav Item - Boost Menu -->
         <li class="nav-item">
             <a class="nav-link collapsed pt-0" href="{{ path('admin_news_list') }}">
                 <i class="far fa-newspaper"></i>
@@ -62,9 +60,7 @@
         </li>
 
         <!-- Divider -->
-        <hr
-        class="sidebar-divider">
-
+        <hr class="sidebar-divider">
     {% endif %}
 
     <!-- Heading -->
@@ -73,8 +69,6 @@
     </div>
 
     {% if is_granted('ROLE_ADMIN_IMAGES') %}
-
-        <!-- Nav Item - Boost Menu -->
         <li class="nav-item">
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseImage" aria-expanded="true" aria-controls="collapseImage">
                 <i class="fas fa-images"></i>
@@ -90,12 +84,9 @@
                 </div>
             </div>
         </li>
-
     {% endif %}
 
     {% if is_granted('ROLE_ADMIN_IMAGES_ARTICLE') %}
-
-        <!-- Nav Item - Boost Menu -->
         <li class="nav-item">
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseImage2" aria-expanded="true" aria-controls="collapseImage2">
                 <i class="fas fa-images"></i>
@@ -111,9 +102,7 @@
 
         <!-- Divider -->
         <hr class="sidebar-divider">
-
     {% endif %}
-
 
     <!-- Heading -->
     <div class="sidebar-heading">
@@ -121,8 +110,6 @@
     </div>
 
     {% if is_granted('ROLE_ADMIN_BOOSTS') %}
-
-        <!-- Nav Item - Boost Menu -->
         <li class="nav-item">
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBoost" aria-expanded="true" aria-controls="collapseBoost">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
@@ -138,12 +125,9 @@
                 </div>
             </div>
         </li>
-
     {% endif %}
 
     {% if is_granted('ROLE_ADMIN_CONSTRUCTIONS') %}
-
-        <!-- Nav Item - Construct Menu -->
         <li class="nav-item">
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseConstruct" aria-expanded="true" aria-controls="collapseConstruct">
                 <i class="fas fa-hammer"></i>
@@ -159,12 +143,9 @@
                 </div>
             </div>
         </li>
-
     {% endif %}
 
     {% if is_granted('ROLE_ADMIN_RESEARCHS') %}
-
-        <!-- Nav Item - Research Menu -->
         <li class="nav-item">
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseResearch" aria-expanded="true" aria-controls="collapseResearch">
                 <i class="fas fa-book"></i>
@@ -177,12 +158,9 @@
                 </div>
             </div>
         </li>
-
     {% endif %}
 
     {% if is_granted('ROLE_ADMIN_FAMILIARS') %}
-
-        <!-- Nav Item - Familiar Menu -->
         <li class="nav-item">
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseFamiliar" aria-expanded="true" aria-controls="collapseFamiliar">
                 <i class="fas fa-paw"></i>
@@ -198,7 +176,24 @@
                 </div>
             </div>
         </li>
+    {% endif %}
 
+    {% if is_granted('ROLE_ADMIN_HUNTS') %}
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseHunt" aria-expanded="true" aria-controls="collapseHunt">
+                <i class="fas fa-spider"></i>
+                <span>Chasse</span>
+            </a>
+            <div id="collapseHunt" class="collapse" aria-labelledby="headingHunt" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <h6 class="collapse-header">Les catégories</h6>
+                    <a class="collapse-item" href="{{ path('admin_hunt_category_list') }}"><i class="fas fa-list"></i> Liste</a>
+                    <div class="item-divider"></div>
+                    <h6 class="collapse-header">Les monstres</h6>
+                    <a class="collapse-item" href="{{ path('admin_hunt_list') }}"><i class="fas fa-list"></i> Liste</a>
+                </div>
+            </div>
+        </li>
     {% endif %}
 
     <!-- Divider -->

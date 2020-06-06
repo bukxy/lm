@@ -1,0 +1,50 @@
+{% extends 'back/baseAdmin.html.twig' %}
+
+{% block title %}Liste des catégories monstres{% endblock %}
+
+{% block body %}
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Liste des catégories de monstres</h6>
+            <a class="btn btn-success" href="{{ path('admin_hunt_category_new') }}">Nouvelle catégorie</a>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th class="text-center">Catégorie</th>
+                            <th class="text-center">Options</th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th class="text-center">Catégorie</th>
+                            <th class="text-center">Options</th>
+                        </tr>
+                    </tfoot>
+                    <tbody>
+                        {% for c in categories %}
+                            <tr>
+                                <td class="lm-catTd text-center">{{ c.name }}</td>
+                                <td>
+                                    <div class="lm-cat">
+                                        <a class="btn btn-primary btn-circle" href="{{ path('admin_hunt_category_edit', {'id' : c.id }) }}">
+                                            <i class="fas fa-edit"></i>
+                                        </a>
+                                        <a class="btn btn-danger btn-circle" href="{{ path('admin_hunt_category_delete', {'id' : c.id }) }}">
+                                            <i class="fas fa-minus-circle"></i>
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

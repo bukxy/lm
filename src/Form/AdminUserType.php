@@ -50,8 +50,8 @@ class AdminUserType extends AbstractType
                     'Gestion des constructions' => 'ROLE_ADMIN_CONSTRUCTIONS',
                     'Gestion des recherches'    => 'ROLE_ADMIN_RESEARCHS',
                     'Gestion des familiers'     => 'ROLE_ADMIN_FAMILIARS',
+                    'Gestion des chasses'       => 'ROLE_ADMIN_HUNTS',
                     'Gestion des evenements'    => 'ROLE_ADMIN_EVENTS',
-                    // ...
                 ],
             ])
         ;
