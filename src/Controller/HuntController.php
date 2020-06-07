@@ -2,11 +2,11 @@
 
 namespace App\Controller;
 
-use App\Entity\Familiar;
-use App\Entity\FamiliarCat;
+use App\Entity\Hunt;
+use App\Entity\HuntCat;
 use App\Repository\ImageRepository;
-use App\Repository\FamiliarRepository;
-use App\Repository\FamiliarCatRepository;
+use App\Repository\HuntRepository;
+use App\Repository\HuntCatRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Serializer\Encoder\XmlEncoder;
@@ -16,27 +16,27 @@ use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 /**
-* @Route("/familiar", name="familiar_")
+* @Route("/hunt", name="hunt_")
 */
-class FamiliarController extends AbstractController
+class HuntController extends AbstractController
 {
     /**
     * @Route("/", name="list")
     */
-    public function index(FamiliarRepository $f, FamiliarCatRepository $fc, Request $request)
+    public function index(HuntRepository $h, HuntCatRepository $hc, Request $request)
     {                
-        return $this->render('front/familiar.html.twig', [
-            'famIcon' => $f->findAll(),
-            'famCat' => $fc->findAll(),
+        return $this->render('front/hunt.html.twig', [
+            'huntIcon' => $h->findAll(),
+            'huntCat' => $hc->findAll(),
         ]);
     }
 
     /**
      * @Route("/{id}", name="one", methods={"POST"})
      */
-    public function oneFamiliar(Familiar $f = null, Request $request)
+    public function oneHunt(Hunt $h = null, Request $request)
     {
-        if ($f) {
+        if ($h) {
             $url = $request->server->get('HTTP_HOST');
             if ($_SERVER['HTTPS']){
                 $http = 'https';
@@ -47,10 +47,9 @@ class FamiliarController extends AbstractController
             return $this->json([
                     'message'       =>  true,
                     'url'           =>  $http .'://'. $url . '/uploads/images/',
-                    'defaultImage'  =>  $http .'://'. $url . '/uploads/familiar.png',
-                    'result'        =>  $f
+                    'result'        =>  $h
                 ], 200, [],
-                    ['groups' => ['familiarByCat:read', 'image:read']]
+                    ['groups' => ['huntByCat:read', 'image:read']]
             );
         } else {
             return $this->json([
@@ -62,9 +61,9 @@ class FamiliarController extends AbstractController
     /**
      * @Route("/category/{id}", name="listByCategory", methods={"POST"})
      */
-    public function listByCategory(FamiliarCat $fcat = null, FamiliarRepository $fRepo, Request $request)
+    public function listByCategory(HuntCat $hcat = null, HuntRepository $hRepo, Request $request)
     {
-        if ($fcat) {
+        if ($hcat) {
             $url = $request->server->get('HTTP_HOST');
             if ($_SERVER['HTTPS']){
                 $http = 'https';
@@ -74,11 +73,9 @@ class FamiliarController extends AbstractController
 
             return $this->json([
                     'message'       =>  true,
-                    'url'           =>  $http .'://'. $url . '/uploads/images/',
-                    'defaultImage'  =>  $http .'://'. $url . '/uploads/familiar.png',
-                    'result'        =>  $fRepo->findBy(['familiarCat' => $fcat->getId()])
+                    'result'        =>  $hRepo->findBy(['huntCat' => $hcat->getId()])
                 ], 200, [],
-                    ['groups' => ['familiarByCat:read', 'image:read']]
+                    ['groups' => ['huntByCat:read', 'image:read']]
             );
         } else {
             return $this->json([

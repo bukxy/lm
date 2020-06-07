@@ -290,23 +290,23 @@ body .icon {
     justify-content: center;
 }
 
-.filter-list li.ajax-view_contentByCat, .filter-list li.ajax-view_content, .filter-list.calculatorMenu li{
+.filter-list li.ajax-view_contentByCat, .filter-list li.ajax-view_contentAll, .filter-list li.ajax-view_content, .filter-list.calculatorMenu li{
     list-style: none;
     margin: 6px;
     padding: 0;
     position: relative;
     cursor: pointer;
 }
-.filter-list li.ajax-view_contentByCat {
+.filter-list li.ajax-view_contentByCat, .filter-list li.ajax-view_contentAll {
     width: 95px;
     height: 35px;
     padding: 0;
 }
-.filter-list li.ajax-view_contentByCat > div{
+.filter-list li.ajax-view_contentByCat > div, .filter-list li.ajax-view_contentAll > div{
     position: absolute;
     width: 95px;
 }
-.filter-list li.ajax-view_contentByCat > div > div, .filter-list.calculatorMenu li > div > div{
+.filter-list li.ajax-view_contentByCat > div > div, .filter-list li.ajax-view_contentAll > div > div , .filter-list.calculatorMenu li > div > div{
     position: absolute;
     width: 100%;
     color: white;
@@ -315,7 +315,7 @@ body .icon {
     left: 50%;
     transform: translate(-50%, -50%);
 }
-.filter-list li.ajax-view_contentByCat img, .filter-list.calculatorMenu li img{
+.filter-list li.ajax-view_contentByCat img,.filter-list li.ajax-view_contentAll img, .filter-list.calculatorMenu li img{
     width: 100%;
     height: auto;
 }

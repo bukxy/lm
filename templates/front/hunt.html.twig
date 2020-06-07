@@ -19,7 +19,7 @@
             <div class="col-12 mt-2">
                 <ul>
                     {% for h in huntIcon %}
-                        <li value="{{ h.id }}" class="ajax-view_content">
+                        <li value="{{ h.id }}" class="ajax-view_content" id="{{ h.huntCat.id }}">
                             {% if h.huntHead is null %}
                                 <img src="{{ asset('uploads/default.png') }}" alt="">
                             {% else %}
@@ -44,8 +44,14 @@
         <div class="filter-list familiar row">
             <div class="col-12 mt-2">
                 <ul>
+                    <li class="ajax-view_contentAll">
+                        <div>
+                            <img src="{{ asset('uploads/button.png') }}" alt="">
+                            <div class="text-center">Tous</div>
+                        </div>
+                    </li>
                     {% for h in huntCat %}
-                        <li value="{{ f.id }}" class="ajax-view_contentByCat">
+                        <li value="{{ h.id }}" class="ajax-view_contentByCat">
                             <div>
                                 <img src="{{ asset('uploads/button.png') }}" alt="">
                                 <div class="text-center">{{ h.name }}</div>
@@ -59,7 +65,7 @@
 
     <div id="ajax-no-content">
         <div class="alert alert-primary" role="alert">
-            Cliquez sur un monstre ou une catégorie...
+            Cliquez sur un monstre...
         </div>
     </div>
 

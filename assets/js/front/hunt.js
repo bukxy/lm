@@ -36,8 +36,6 @@ let objHunt = {
                 $('.filter-menu.category').after('<article class="fam"><div class="m-auto"></div></article>');
 
                 $('article.fam > div').append('<img src="' + response.url + r['huntImage']['name'] + '" alt="' + r['name'] + '">')
-
-                $('[data-toggle="tooltip"]').tooltip()
             }
 
             if (response.message == false ) {

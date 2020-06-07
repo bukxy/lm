@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\HuntRepository")
@@ -13,6 +14,7 @@ class Hunt
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     * @Groups("huntByCat:read")
      */
     private $id;
 
@@ -23,11 +25,13 @@ class Hunt
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups("huntByCat:read")
      */
     private $name;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Image", inversedBy="huntImage")
+     * @Groups("huntByCat:read")
      */
     private $huntImage;
 
