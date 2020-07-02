@@ -1,4 +1,4 @@
-# v.ALPHA
+# lord-mobile.net
 
 Site non officiel de tutoriels pour le jeu LordsMobile,
 
@@ -18,5 +18,3 @@ Plus tard :
 - forum
 - liste guilde
 - ...
-
-![github-small](https://peron-nicolas.com/build/img/screenshot_lm.jpg)
