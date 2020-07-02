@@ -4,6 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width" />
         <title>{% block title %}{% endblock %} - Lord-Mobile</title>
+        <link rel="stylesheet" href="{{ asset('build/css/loader.css') }}">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
         <meta name="description" content="Site non officiel Lords Mobile, vous y trouverez toutes sortes de tutoriels, un calculateur d'accélérateur, et bien d'autres"/>
@@ -21,7 +22,12 @@
 
         {% block stylesheets %}{% endblock %}
     </head>
-    <body class="m-auto">   
+    <body class="m-auto">
+        <div class="loader">
+            <div class="text-primary rotating" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
         <div id="top" class="icon"></div>
         <section class="bodyContent">
             <div class="col-lg-12 topNav mb-4">
@@ -63,7 +69,7 @@
         </div>
 
         <footer>
-            <div>lord-mobile.net 2k20 :)</div>
+            <div>lord-mobile.net 2k20 :) - développer sous <a href="https://symfony.com/">symfony</a> par Bukxy</div>
         </footer>
 
         {% block javascripts %}{% endblock %}
