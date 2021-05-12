@@ -1,5 +1,6 @@
 # lord-mobile.net
 
+( Abandonner )
 Site non officiel de tutoriels pour le jeu LordsMobile,
 
 - Familiers
@@ -12,9 +13,3 @@ Site non officiel de tutoriels pour le jeu LordsMobile,
 - ...
 
 Panel admin.
-
-
-Plus tard : 
-- forum
-- liste guilde
-- ...
