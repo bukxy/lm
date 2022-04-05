@@ -13,3 +13,5 @@ Site non officiel de tutoriels pour le jeu LordsMobile,
 - ...
 
 Panel admin.
+
+https://lord-mobile.peron-nicolas.com/
