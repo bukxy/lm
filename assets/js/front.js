@@ -13,6 +13,11 @@ $(function () {
     $('[data-toggle="tooltip"]').tooltip()
 })
 
+window.addEventListener('load', function () {
+	const loader = document.querySelector('.loader');
+	loader.className += " hidden";
+});
+
 $(document).scroll(function () {
     if ($(this).scrollTop() > 800) {
         $('.backToTop').fadeIn();
@@ -22,20 +27,6 @@ $(document).scroll(function () {
 });
 
 $(document).ready(function () {
-    // var stickyTop = $('.leftNav .navbar').offset().top;
-
-    // $(window).scroll(function () {
-    //     if ($(this).width() >= 1200 ) {
-    //         var windowTop = $(window).scrollTop();
-    //         if (stickyTop < windowTop && $(".leftNav").height() > windowTop) {
-    //             $('.leftNav .navbar').addClass('sticky');
-    //         } else {
-    //             $('.leftNav .navbar').removeClass('sticky');
-    //             $('.leftNav .navbar').css('transition','.5s');
-    //         }
-    //     }
-    // });
-
     // Add smooth scrolling on all links inside the navbar
     $(".backToTop a").on('click', function (event) {
 

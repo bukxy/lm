@@ -1,6 +1,5 @@
-# lord-mobile.net
+# v.ALPHA
 
-( Abandonner )
 Site non officiel de tutoriels pour le jeu LordsMobile,
 
 - Familiers
@@ -14,4 +13,10 @@ Site non officiel de tutoriels pour le jeu LordsMobile,
 
 Panel admin.
 
-https://lord-mobile.peron-nicolas.com/
+
+Plus tard : 
+- forum
+- liste guilde
+- ...
+
+![github-small](https://peron-nicolas.com/build/img/screenshot_lm.jpg)
