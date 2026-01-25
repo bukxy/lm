@@ -10,7 +10,7 @@
     "scripts": {
         "dev-server": "encore dev-server",
         "dev": "set NODE_OPTIONS=--openssl-legacy-provider && encore dev",
-        "watch": "encore dev --watch",
+        "watch": "set NODE_OPTIONS=--openssl-legacy-provider && encore dev --watch",
         "build": "set NODE_OPTIONS=--openssl-legacy-provider && encore production --progress"
     },
     "dependencies": {
