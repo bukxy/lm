@@ -1,7 +1,16 @@
-FROM ubuntu:latest
-FROM php:7.3-fpm
+# ===== FRONT =====
+FROM node:16-alpine AS node_builder
 
-LABEL authors="lordmobile"
+WORKDIR /app
+COPY package*.json ./
+RUN npm install
+
+COPY . .
+
+RUN npm run build
+
+# ===== BACK =====
+FROM php:7.3-fpm
 
 RUN apt-get update && apt-get install -y \
     git unzip zip \
@@ -10,10 +19,8 @@ RUN apt-get update && apt-get install -y \
     libonig-dev libxml2-dev \
   && rm -rf /var/lib/apt/lists/*
 
-# Extensions PHP (Symfony)
 RUN docker-php-ext-install -j$(nproc) intl pdo pdo_mysql zip opcache
 
-# GD (PHP 7.3 -> flags différents)
 RUN docker-php-ext-configure gd \
     --with-freetype-dir=/usr/include/ \
     --with-jpeg-dir=/usr/include/ \
@@ -22,6 +29,7 @@ RUN docker-php-ext-configure gd \
 # Composer
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
-RUN npm install && npm run build
-
 WORKDIR /var/www/html
+
+COPY . .
+COPY --from=node_builder /app/public/build /var/www/html/public/build
