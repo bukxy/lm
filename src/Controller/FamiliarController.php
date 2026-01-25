@@ -36,27 +36,18 @@ class FamiliarController extends AbstractController
      */
     public function oneFamiliar(Familiar $f = null, Request $request)
     {
-        if ($f) {
-            $url = $request->server->get('HTTP_HOST');
-            if ($_SERVER['HTTPS']){
-                $http = 'https';
-            } else {
-                $http = 'http';
-            }
-
-            return $this->json([
-                    'message'       =>  true,
-                    'url'           =>  $http .'://'. $url . '/uploads/images/',
-                    'defaultImage'  =>  $http .'://'. $url . '/uploads/familiar.png',
-                    'result'        =>  $f
-                ], 200, [],
-                    ['groups' => ['familiarByCat:read', 'image:read']]
-            );
-        } else {
-            return $this->json([
-                'message' => false
-            ], 200);
+        if (!$f) {
+            return $this->json(['message' => false], 200);
         }
+
+        return $this->json([
+            'message' => true,
+            'url'           =>  $request->getSchemeAndHttpHost() . '/uploads/images/',
+            'defaultImage'  =>  $request->getSchemeAndHttpHost() . '/uploads/familiar.png',
+            'result'        =>  $f
+        ], 200, [], [
+            'groups' => ['familiarByCat:read', 'image:read']
+        ]);
     }
 
     /**
@@ -64,26 +55,17 @@ class FamiliarController extends AbstractController
      */
     public function listByCategory(FamiliarCat $fcat = null, FamiliarRepository $fRepo, Request $request)
     {
-        if ($fcat) {
-            $url = $request->server->get('HTTP_HOST');
-            if ($_SERVER['HTTPS']){
-                $http = 'https';
-            } else {
-                $http = 'http';
-            }
-
-            return $this->json([
-                    'message'       =>  true,
-                    'url'           =>  $http .'://'. $url . '/uploads/images/',
-                    'defaultImage'  =>  $http .'://'. $url . '/uploads/familiar.png',
-                    'result'        =>  $fRepo->findBy(['familiarCat' => $fcat->getId()])
-                ], 200, [],
-                    ['groups' => ['familiarByCat:read', 'image:read']]
-            );
-        } else {
-            return $this->json([
-                'message' => false
-            ], 200);
+        if (!$fcat) {
+            return $this->json(['message' => false], 200);
         }
+
+        return $this->json([
+            'message'       => true,
+            'url'           => $request->getSchemeAndHttpHost() . '/uploads/images/',
+            'defaultImage'  =>  $request->getSchemeAndHttpHost() . '/uploads/familiar.png',
+            'result'        => $fRepo->findBy(['familiarCat' => $fcat->getId()]),
+        ], 200, [], [
+            'groups' => ['familiarByCat:read', 'image:read']
+        ]);
     }
 }

@@ -36,26 +36,17 @@ class BoostTerritoryController extends AbstractController
      */
     public function oneFamiliar(BoostTerritory $b = null, Request $request)
     {
-        if ($b) {
-            $url = $request->server->get('HTTP_HOST');
-            if ($_SERVER['HTTPS']){
-                $http = 'https';
-            } else {
-                $http = 'http';
-            }
-
-            return $this->json([
-                    'message'       =>  true,
-                    'url'           =>  $http .'://'. $url . '/uploads',
-                    'result'        =>  $b
-                ], 200, [],
-                    ['groups' => ['boost:read', 'image:read']]
-            );
-        } else {
-            return $this->json([
-                'message' => false
-            ], 200);
+        if (!$b) {
+            return $this->json(['message' => false], 200);
         }
+
+        return $this->json([
+            'message' => true,
+            'url'     => $request->getSchemeAndHttpHost() . '/uploads',
+            'result'  => $b,
+        ], 200, [], [
+            'groups' => ['boost:read', 'image:read']
+        ]);
     }
 
     /**
@@ -63,25 +54,17 @@ class BoostTerritoryController extends AbstractController
      */
     public function listByCategory(BoostTerritoryCat $bcat = null, BoostTerritoryRepository $bRepo, Request $request)
     {
-        if ($bcat) {
-            $url = $request->server->get('HTTP_HOST');
-            if ($_SERVER['HTTPS']){
-                $http = 'https';
-            } else {
-                $http = 'http';
-            }
-
-            return $this->json([
-                    'message'       =>  true,
-                    'url'           =>  $http .'://'. $url . '/uploads',
-                    'result'        =>  $bRepo->findBy(['category' => $bcat->getId()])
-                ], 200, [],
-                    ['groups' => ['boost:read', 'image:read']]
-            );
-        } else {
-            return $this->json([
-                'message' => false
-            ], 200);
+        if (!$bcat) {
+            return $this->json(['message' => false], 200);
         }
+
+        return $this->json([
+            'message' => true,
+            'url'     => $request->getSchemeAndHttpHost() . '/uploads',
+            'result'  => $bRepo->findBy(['category' => $bcat->getId()]),
+        ], 200, [], [
+            'groups' => ['boost:read', 'image:read']
+        ]);
+
     }
 }

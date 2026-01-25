@@ -28,25 +28,16 @@ class ConstructionController extends AbstractController
      */
     public function filter(Construction $c = null, Request $request)
     {
-        if ($c) {
-            $url = $request->server->get('HTTP_HOST');
-            if ($_SERVER['HTTPS']){
-                $http = 'https';
-            } else {
-                $http = 'http';
-            }
-
-            return $this->json([
-                    'message'       =>  true,
-                    'url'           =>  $http .'://'. $url . '/uploads',
-                    'result'        =>  $c
-                ], 200, [],
-                    ['groups' => ['construction:read', 'image:read'] ]
-            );
-        } else {
-            return $this->json([
-                'message' => false
-            ], 200);
+        if (!$c) {
+            return $this->json(['message' => false], 200);
         }
+
+        return $this->json([
+            'message' => true,
+            'url'     => $request->getSchemeAndHttpHost() . '/uploads',
+            'result'  => $c,
+        ], 200, [], [
+            'groups' => ['construction:read', 'image:read']
+        ]);
     }
 }
