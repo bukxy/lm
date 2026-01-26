@@ -58,6 +58,31 @@ Rendre **Lord Mobile** plus accessible aux débutants tout en restant utile aux 
 
 ---
 
+## 🐳 Docker
+[Documentation docker](https://docs.docker.com/manuals/)
+
+### ▶️ Démarrage du projet
+```bash
+docker compose up -d
+```
+
+⏹️ Arrêter les conteneurs
+```bash
+docker compose down
+```
+
+🔄 Rebuild des images
+```bash
+docker compose up -d --build
+```
+
+📄 Voir les logs
+```bash
+docker compose logs -f
+```
+
+---
+
 ## 📸 Aperçu
 
 <img width="800" height="500" alt="familiers" src="https://github.com/user-attachments/assets/64c5b35c-7597-4e5e-bf94-7cb412e28655" />
