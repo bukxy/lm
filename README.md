@@ -1,4 +1,4 @@
-# Projet inactif depuis 2020
+# Projet inactif depuis 2020 (Non terminé)
 
 # 🏰 Lord Mobile Helper
 👉 [Accéder au site ⚔️](https://lord-mobile.peron-nicolas.com)
