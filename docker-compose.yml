@@ -29,11 +29,8 @@ services:
     image: mysql:5.7
     container_name: lordmobile_mysql57
     command: --default-authentication-plugin=mysql_native_password
-    environment:
-      MYSQL_DATABASE: lordmobile
-      MYSQL_USER: gdeiXMPxYJfha8dC
-      MYSQL_PASSWORD: qpxsCSH8KYt6hxqh
-      MYSQL_ROOT_PASSWORD: root
+    env_file:
+      - docker.env
     ports:
       - "3306:3306"
     volumes:
