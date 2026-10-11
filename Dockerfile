@@ -6,7 +6,6 @@ RUN npm install
 COPY . .
 RUN npm run build
 
-COPY --from=node_builder /app/public/build /var/www/html/public/build
 
 # ===== BACK =====
 FROM php:7.3-fpm
@@ -36,6 +35,9 @@ RUN composer install --optimize-autoloader --no-interaction --no-scripts
 
 # 2) Code
 COPY . .
+
+# 3)
+COPY --from=node_builder /app/public/build /var/www/html/public/build
 
 # 4) Maintenant bin/console existe, on peut warmup
 RUN php bin/console cache:clear --env=prod --no-debug || true \
